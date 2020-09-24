@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <JobDef>
+    <defName>HuntAndLeave</defName>
+    <driverClass>VEE.Jobs.JobDriver_HuntAndLeave</driverClass>
+    <reportString>hunting TargetA.</reportString>
+    <alwaysShowWeapon>true</alwaysShowWeapon>
+    <suspendable>false</suspendable>
+    <allowOpportunisticPrefix>false</allowOpportunisticPrefix>
+  </JobDef>
+
+</Defs>

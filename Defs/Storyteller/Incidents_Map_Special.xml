@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+    <IncidentTargetTagDef>
+        <defName>Map_Dummy</defName>
+    </IncidentTargetTagDef>
+
+    <!--================= Purple event attracted events ================-->
+
+    <IncidentDef>
+        <defName>RaidEnemyPurple</defName>
+        <label>enemy raid ice age</label>
+        <targetTags>
+            <li>Map_Dummy</li>
+        </targetTags>
+        <workerClass>IncidentWorker_RaidEnemy</workerClass>
+        <baseChance>3.5</baseChance>
+        <category>ThreatBig</category>
+        <pointsScaleable>true</pointsScaleable>
+        <tale>Raid</tale>
+    </IncidentDef>
+
+    <IncidentDef>
+        <defName>ManhunterPackPurple</defName>
+        <label>manhunter pack</label>
+        <targetTags>
+            <li>Map_Dummy</li>
+        </targetTags>
+        <workerClass>IncidentWorker_ManhunterPack</workerClass>
+        <baseChance>4.5</baseChance>
+        <category>ThreatBig</category>
+        <minRefireDays>8</minRefireDays>
+        <pointsScaleable>true</pointsScaleable>
+        <tale>ManhunterPack</tale>
+    </IncidentDef>
+
+    <IncidentDef>
+        <defName>AnimalInsanityMassPurple</defName>
+        <label>mass animal insanity</label>
+        <targetTags>
+            <li>Map_Dummy</li>
+        </targetTags>
+        <workerClass>IncidentWorker_AnimalInsanityMass</workerClass>
+        <baseChance>3.3</baseChance>
+        <minRefireDays>1</minRefireDays>
+        <category>ThreatBig</category>
+        <pointsScaleable>true</pointsScaleable>
+    </IncidentDef>
+
+</Defs>
