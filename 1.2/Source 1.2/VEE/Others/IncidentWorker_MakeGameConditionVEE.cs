@@ -6,7 +6,7 @@ using RimWorld;
 
 namespace VEE
 {
-    class IncidentWorker_MakeGameConditionVEE : IncidentWorker
+    public class IncidentWorker_MakeGameConditionVEE : IncidentWorker
     {
         protected override bool CanFireNowSub(IncidentParms parms)
         {
