@@ -47,6 +47,53 @@ namespace VEE.RegularEvents
 
         private List<Pawn> GenerateGroup(Map map)
         {
+            ThingSetMakerParams parms = default(ThingSetMakerParams);
+            parms.traderDef = DefDatabase<TraderKindDef>.AllDefsListForReading.RandomElement();
+            parms.makingFaction = Find.FactionManager.RandomNonHostileFaction(false, false, false);
+            parms.tile = map.Tile;
+            float max = StorytellerUtility.DefaultThreatPointsNow(map) / 10;
+            if (max < 20f) max = 20f;
+            parms.totalMarketValueRange = new FloatRange(20f, max);
+
+            List<Thing> wares = ThingSetMakerDefOf.TraderStock.root.Generate(parms).InRandomOrder(null).ToList<Thing>();
+            List<Thing> list = (from x in wares
+                                where !(x is Pawn)
+                                select x).ToList<Thing>();
+
+            System.Random r = new System.Random();
+            List<Pawn> pawns = new List<Pawn>();
+            int num = Mathf.CeilToInt((float)list.Count / 8f);
+            int i = 0;
+            for (int j = 0; j < num; j++)
+            {
+                Pawn pawn = PawnGenerator.GeneratePawn(new PawnGenerationRequest(this.PickPawnKindDef(map).RandomElement(), null, PawnGenerationContext.NonPlayer));
+                if (i < list.Count)
+                {
+                    pawn.inventory.innerContainer.TryAdd(list[i], true);
+                    i++;
+                }
+                pawns.Add(pawn);
+            }
+            while (i < list.Count)
+            {
+                pawns.RandomElement<Pawn>().inventory.innerContainer.TryAdd(list[i], true);
+                i++;
+            }
+
+            while (pawns.Count > r.Next(2, 3)) pawns.Remove(pawns.InRandomOrder().RandomElement());
+
+            foreach (Pawn pawn1 in pawns)
+            {
+                for (int e = 0; e < r.Next(1, 5); e++)
+                {
+                    if (pawn1.inventory.innerContainer[e] != null) pawn1.inventory.innerContainer.RemoveAt(e);
+                }
+
+                pawn1.inventory.innerContainer.RemoveAll(t2 => t2.MarketValue > 800);
+            }
+
+            return pawns;
+            /* Old version
             System.Random r = new System.Random();
             Pawn pawn = null;
             List<Pawn> pawnsList = new List<Pawn>();
@@ -75,7 +122,7 @@ namespace VEE.RegularEvents
             }
 
             // Return list of pawn to spawn
-            return pawnsList;
+            return pawnsList; */
         }
 
         private List<PawnKindDef> PickPawnKindDef(Map map)
