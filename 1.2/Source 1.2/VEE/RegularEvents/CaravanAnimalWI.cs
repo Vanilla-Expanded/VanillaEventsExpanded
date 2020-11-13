@@ -47,49 +47,33 @@ namespace VEE.RegularEvents
 
         private List<Pawn> GenerateGroup(Map map)
         {
+            PawnKindDef pawnKind = this.PickPawnKindDef(map).RandomElement();
+            System.Random r = new System.Random();
+            int num = r.Next(1, 4);
+
             ThingSetMakerParams parms = default(ThingSetMakerParams);
             parms.traderDef = DefDatabase<TraderKindDef>.AllDefsListForReading.RandomElement();
             parms.makingFaction = Find.FactionManager.RandomNonHostileFaction(false, false, false);
             parms.tile = map.Tile;
-            float max = StorytellerUtility.DefaultThreatPointsNow(map) / 10;
-            if (max < 20f) max = 20f;
-            parms.totalMarketValueRange = new FloatRange(20f, max);
+            parms.totalMarketValueRange = new FloatRange(500f, 6000f);
+            parms.maxTotalMass = (pawnKind.RaceProps.baseBodySize * 35f) * num;
 
-            List<Thing> wares = ThingSetMakerDefOf.TraderStock.root.Generate(parms).InRandomOrder(null).ToList<Thing>();
-            List<Thing> list = (from x in wares
-                                where !(x is Pawn)
-                                select x).ToList<Thing>();
+            List<Thing> wares = ThingSetMakerDefOf.TraderStock.root.Generate(parms).ToList<Thing>();
+            wares.RemoveAll(t => t is Pawn || t.MarketValue > 690 || t.TryGetComp<CompRottable>() != null);
 
-            System.Random r = new System.Random();
             List<Pawn> pawns = new List<Pawn>();
-            int num = Mathf.CeilToInt((float)list.Count / 8f);
             int i = 0;
+
             for (int j = 0; j < num; j++)
             {
-                Pawn pawn = PawnGenerator.GeneratePawn(new PawnGenerationRequest(this.PickPawnKindDef(map).RandomElement(), null, PawnGenerationContext.NonPlayer));
-                if (i < list.Count)
-                {
-                    pawn.inventory.innerContainer.TryAdd(list[i], true);
-                    i++;
-                }
+                Pawn pawn = PawnGenerator.GeneratePawn(new PawnGenerationRequest(pawnKind, null, PawnGenerationContext.NonPlayer));
                 pawns.Add(pawn);
             }
-            while (i < list.Count)
+            while (i < wares.Count)
             {
-                pawns.RandomElement<Pawn>().inventory.innerContainer.TryAdd(list[i], true);
+                wares[i].stackCount = Mathf.Clamp(wares[i].stackCount, 1, r.Next(2, 20));
+                pawns.RandomElement().inventory.innerContainer.TryAdd(wares[i], true);
                 i++;
-            }
-
-            while (pawns.Count > r.Next(2, 3)) pawns.Remove(pawns.InRandomOrder().RandomElement());
-
-            foreach (Pawn pawn1 in pawns)
-            {
-                for (int e = 0; e < r.Next(1, 5); e++)
-                {
-                    if (pawn1.inventory.innerContainer[e] != null) pawn1.inventory.innerContainer.RemoveAt(e);
-                }
-
-                pawn1.inventory.innerContainer.RemoveAll(t2 => t2.MarketValue > 800);
             }
 
             return pawns;
