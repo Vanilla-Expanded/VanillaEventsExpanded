@@ -55,14 +55,20 @@ namespace VEE.RegularEvents
             parms.traderDef = DefDatabase<TraderKindDef>.AllDefsListForReading.RandomElement();
             parms.makingFaction = Find.FactionManager.RandomNonHostileFaction(false, false, false);
             parms.tile = map.Tile;
-            parms.totalMarketValueRange = new FloatRange(500f, 6000f);
+            parms.totalMarketValueRange = new FloatRange(500f, 4000f);
             parms.maxTotalMass = (pawnKind.RaceProps.baseBodySize * 35f) * num;
 
             List<Thing> wares = ThingSetMakerDefOf.TraderStock.root.Generate(parms).ToList<Thing>();
-            wares.RemoveAll(t => t is Pawn || t.MarketValue > 690 || t.TryGetComp<CompRottable>() != null);
+            wares.RemoveAll(t => t is Pawn || t.MarketValue > 190 || t.TryGetComp<CompRottable>() != null || (t is MinifiedThing tm && tm != null));
 
             List<Pawn> pawns = new List<Pawn>();
             int i = 0;
+
+            while(wares.Count > num * 5)
+            {
+                wares.Shuffle(); 
+                wares.RemoveLast();
+            }
 
             for (int j = 0; j < num; j++)
             {
