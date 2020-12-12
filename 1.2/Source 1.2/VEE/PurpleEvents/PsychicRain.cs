@@ -26,6 +26,18 @@ namespace VEE.PurpleEvents
             };
         }
 
+        public override WeatherDef ForcedWeather()
+        {
+            if (Find.CurrentMap?.mapTemperature?.OutdoorTemp <= 0)
+            {
+                return VEE_DefOf.SnowHard;
+            }
+            else
+            {
+                return VEE_DefOf.Rain;
+            }
+        }
+
         public override void Init()
         {
             LessonAutoActivator.TeachOpportunity(ConceptDefOf.ForbiddingDoors, OpportunityType.Critical);
@@ -37,10 +49,6 @@ namespace VEE.PurpleEvents
             List<Map> affectedMaps = base.AffectedMaps;
             foreach (Map map in affectedMaps)
             {
-                if (map.weatherManager.curWeather != VEE_DefOf.Rain)
-                {
-                    map.weatherManager.TransitionTo(VEE_DefOf.Rain);
-                }
                 if (Find.TickManager.TicksGame % 3451 == 0)
                 {
                     for (int i = 0; i < affectedMaps.Count; i++)
@@ -66,7 +74,7 @@ namespace VEE.PurpleEvents
                 Pawn pawn = allPawnsSpawned[i];
                 if (!pawn.Position.Roofed(map) && pawn.def.race.IsFlesh)
                 {
-                    pawn.ageTracker.AgeBiologicalTicks += 3451;
+                    pawn.ageTracker.AgeBiologicalTicks += 20706;
                 }
             }
         }
