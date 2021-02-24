@@ -43,6 +43,8 @@ namespace VEE.Settings
         internal static int earliestDayPurple = 180;
         internal static bool multipleAtOnce = false;
 
+        /*internal static int lastPurpleEventTickStart;*/
+
         public void ChangeDef()
         {
             List<IncidentDef> AllincidentDefs = DefDatabase<IncidentDef>.AllDefs.ToList();
@@ -139,6 +141,8 @@ namespace VEE.Settings
 
             Scribe_Values.Look(ref minRefireDaysPurple, "minRefireDaysPurple", 300);
             Scribe_Values.Look(ref earliestDayPurple, "earliestDayPurple", 180);
+
+            /*Scribe_Values.Look(ref lastPurpleEventTickStart, "lastPurpleEventTickStart");*/
         }
     }
 }

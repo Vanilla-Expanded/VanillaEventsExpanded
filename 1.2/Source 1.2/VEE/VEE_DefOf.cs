@@ -56,5 +56,8 @@ namespace VEE
         /* GameConditionDefOf */
         public static GameConditionDef IceAge;
         public static GameConditionDef GlobalWarming;
+
+        /* Letter def */
+        public static LetterDef PurpleEvent;
     }
 }

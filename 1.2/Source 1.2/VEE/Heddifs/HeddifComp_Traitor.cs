@@ -34,19 +34,21 @@ namespace VEE
 
         public override void CompPostTick(ref float severityAdjustment)
         {
-            if(this.ticksToDisappear == 20)
+            if (this.ticksToDisappear <= 20)
             {
-                this.Pawn.SetFaction(Find.FactionManager.RandomEnemyFaction(false, false, false, TechLevel.Undefined));
+                if (this.parent.pawn.Spawned)
+                {
+                    this.Pawn.SetFaction(Find.FactionManager.RandomEnemyFaction(false, false, false, TechLevel.Undefined));
+                    Find.LetterStack.ReceiveLetter("TraitorLabel".Translate(), "Traitor".Translate(this.Pawn.Named("PAWN")).AdjustedFor(this.Pawn, "PAWN"), LetterDefOf.ThreatBig, new TargetInfo(this.Pawn.Position, this.Pawn.Map, false), null, null);
 
-                string label = "TraitorLabel".Translate();
-                string text = "Traitor".Translate(this.Pawn.Named("PAWN")).AdjustedFor(this.Pawn, "PAWN");
+                    List<Pawn> pawnl = new List<Pawn>();
+                    pawnl.Add(this.Pawn);
+                    LordJob_AssaultColony lordJob = new LordJob_AssaultColony(this.Pawn.Faction, useAvoidGridSmart: true);
+                    LordMaker.MakeNewLord(this.Pawn.Faction, lordJob, this.Pawn.Map, pawnl);
 
-                Find.LetterStack.ReceiveLetter(label, text, LetterDefOf.ThreatBig, new TargetInfo(this.Pawn.Position, this.Pawn.Map, false), null, null);
+                    this.parent.pawn.health.hediffSet.hediffs.Remove(this.parent);
+                }
                 this.ticksToDisappear = 0;
-                List<Pawn> pawnl = new List<Pawn>();
-                pawnl.Add(this.Pawn);
-                LordJob_DefendPoint lordJob = new LordJob_DefendPoint(this.Pawn.Position);
-                LordMaker.MakeNewLord(this.Pawn.Faction, lordJob, this.Pawn.Map, pawnl);
             }
             this.ticksToDisappear--;
         }

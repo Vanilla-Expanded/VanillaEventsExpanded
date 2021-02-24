@@ -28,7 +28,7 @@ namespace VEE.RegularEvents
                 {
                     float rand = r.Next(leftPercentDamage, rightPercentDamage) / (float)100;
                     float damageAmount = intVec.GetFirstBuilding(map).MaxHitPoints * (float)rand;
-                    Log.Message(damageAmount.ToString());
+                    // Log.Message(damageAmount.ToString());
                     DamageInfo dinfo = new DamageInfo(DamageDefOf.Mining, damageAmount);
                     intVec.GetFirstBuilding(map).TakeDamage(dinfo);
                 }

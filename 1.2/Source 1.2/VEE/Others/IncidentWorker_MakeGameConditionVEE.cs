@@ -11,6 +11,11 @@ namespace VEE
         protected override bool CanFireNowSub(IncidentParms parms)
         {
             GameConditionManager gameConditionManager = parms.target.GameConditionManager;
+            /*if (this.def.letterDef == VEE_DefOf.PurpleEvent && Find.TickManager.TicksGame - VEE.Settings.VEE_ModSettings.lastPurpleEventTickStart < VEE.Settings.VEE_ModSettings.minRefireDaysPurple * 60000)
+            {
+                Log.Message("CTicks: " + Find.TickManager.TicksGame + " -- lastPurpleEventTickStart: " + VEE.Settings.VEE_ModSettings.lastPurpleEventTickStart);
+                return false;
+            }*/
             if (gameConditionManager == null)
             {
                 Log.ErrorOnce(string.Format("Couldn't find condition manager for incident target {0}", parms.target), 70849667, false);
@@ -32,6 +37,7 @@ namespace VEE
                     return false;
                 }
             }
+            /*if (this.def.letterDef == VEE_DefOf.PurpleEvent) VEE.Settings.VEE_ModSettings.lastPurpleEventTickStart = Find.TickManager.TicksGame;*/
             return true;
         }
 
@@ -42,7 +48,10 @@ namespace VEE
             GameCondition gameCondition = GameConditionMaker.MakeCondition(this.def.gameCondition, duration);
             gameConditionManager.RegisterCondition(gameCondition);
             parms.letterHyperlinkThingDefs = gameCondition.def.letterHyperlinks;
-            base.SendStandardLetter(this.def.letterLabel, this.def.letterText, this.def.letterDef, parms, LookTargets.Invalid, Array.Empty<NamedArgument>());
+            if (this.def.letterLabel != null && this.def.letterText != null && this.def.letterDef != null)
+            {
+                base.SendStandardLetter(this.def.letterLabel, this.def.letterText, this.def.letterDef, parms, LookTargets.Invalid, Array.Empty<NamedArgument>());
+            }
             return true;
         }
     }

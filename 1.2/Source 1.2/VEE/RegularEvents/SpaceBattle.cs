@@ -10,6 +10,7 @@ using Verse.Sound;
 
 namespace VEE.RegularEvents
 {
+    [StaticConstructorOnStartup]
     public class SpaceBattle : GameCondition
     {
         IntVec3 aroundThis = new IntVec3();
@@ -17,7 +18,8 @@ namespace VEE.RegularEvents
 
         public override void Init()
         {
-            this.TryFindShipChunkDropCell(this.SingleMap.Center, this.SingleMap, 999, out aroundThis);
+            RCellFinder.TryFindRandomCellOutsideColonyNearTheCenterOfTheMap(this.SingleMap.Center, this.SingleMap, 25f, out aroundThis);
+            Find.LetterStack.ReceiveLetter(LetterMaker.MakeLetter("SpaceBattleLabel".Translate(), "SpaceBattle".Translate(), LetterDefOf.NegativeEvent, new LookTargets(aroundThis, SingleMap)));
         }
 
         public override void ExposeData()
@@ -54,7 +56,7 @@ namespace VEE.RegularEvents
                 for (int i = 0; i < r.Next(1, 2); i++)
                 {
                     IntVec3 pos = new IntVec3();
-                    TryFindShipChunkDropCell(aroundThis, map, 60, out pos);
+                    TryFindShipChunkDropCell(VEE_DefOf.SlagIncoming, aroundThis, map, 50, out pos);
                     Skyfaller sk1 = SkyfallerMaker.SpawnSkyfaller(VEE_DefOf.SlagIncoming, ThingDefOf.ChunkSlagSteel, pos, map);
                 }
             }
@@ -63,7 +65,7 @@ namespace VEE.RegularEvents
                 for (int i = 0; i < r.Next(1, 2); i++)
                 {
                     IntVec3 intVec = new IntVec3();
-                    TryFindShipChunkDropCell(aroundThis, map, 40, out intVec);
+                    TryFindShipChunkDropCell(ThingDefOf.DropPodIncoming, aroundThis, map, 60, out intVec);
                     PawnGenerationRequest request = new PawnGenerationRequest(PawnKindDefOf.SpaceRefugee, null);
                     Pawn pawn = PawnGenerator.GeneratePawn(request);
                     DamageInfo damageInfo = new DamageInfo(DamageDefOf.Bullet, 1);
@@ -76,7 +78,7 @@ namespace VEE.RegularEvents
                     {
                         HealthUtility.DamageUntilDowned(pawn, true);
                     }
-                    pawn.apparel.WornApparel.RemoveAll((Apparel a) => a.MarketValue > 300);
+                    pawn.apparel.WornApparel.RemoveAll((Apparel a) => a.MarketValue > 400);
                     List<Thing> list = new List<Thing>();
                     list.Add(pawn);
                     ChangeDeadPawnsToTheirCorpses(list);
@@ -84,14 +86,11 @@ namespace VEE.RegularEvents
 
                 }
             }
-            if (delay % 1500 == 0)
+            if (delay % 2000 == 0)
             {
-                for (int i = 0; i < r.Next(1, 2); i++)
-                {
-                    IntVec3 pos = new IntVec3();
-                    TryFindShipChunkDropCell(aroundThis, map, 35, out pos);
-                    Skyfaller sk2 = SkyfallerMaker.SpawnSkyfaller(ThingDefOf.ShipChunkIncoming, VEE_DefOf.VEE_ShipChunkHuman, pos, map);
-                }
+                IntVec3 pos = new IntVec3();
+                TryFindShipChunkDropCell(ThingDefOf.ShipChunkIncoming, aroundThis, map, 35, out pos);
+                Skyfaller sk2 = SkyfallerMaker.SpawnSkyfaller(ThingDefOf.ShipChunkIncoming, VEE_DefOf.VEE_ShipChunkHuman, pos, map);
             }
 
             // Explosion handle
@@ -112,10 +111,11 @@ namespace VEE.RegularEvents
             for (int i = this.projectiles.Count - 1; i >= 0; i--)
             {
                 this.projectiles[i].Tick();
+                this.Draw();
                 if (this.projectiles[i].LifeTime <= 0)
                 {
                     IntVec3 targetCell = this.projectiles[i].targetCell;
-                    float radius = (float)Rand.Range(5, 9);
+                    float radius = (float)Rand.Range(4, 8);
                     DamageDef bomb = DamageDefOf.Bomb;
                     GenExplosion.DoExplosion(targetCell, map, radius, bomb, null);
                     this.projectiles.RemoveAt(i);
@@ -123,76 +123,24 @@ namespace VEE.RegularEvents
             }
         }
 
+        private void Draw()
+        {
+            if (this.projectiles.NullOrEmpty<Bombardment.BombardmentProjectile>())
+            {
+                return;
+            }
+            for (int i = 0; i < this.projectiles.Count; i++)
+            {
+                this.projectiles[i].Draw(ProjectileMaterial);
+            }
+        }
+
         private void GetNextExplosionCell()
         {
-            this.nextExplosionCell = (from x in GenRadial.RadialCellsAround(this.aroundThis, 40, true)
+            this.nextExplosionCell = (from x in GenRadial.RadialCellsAround(this.aroundThis, 30, true)
                                       where x.InBounds(this.SingleMap)
                                       select x).RandomElementByWeight((IntVec3 x) => Bombardment.DistanceChanceFactor.Evaluate(x.DistanceTo(this.aroundThis)));
         }
-
-        /*public override void GameConditionTick()
-        {
-            Map map = this.SingleMap;
-            System.Random r = new System.Random();
-            delay++;
-
-            if (delay % 500 == 0)
-            {
-                for (int i = 0; i < r.Next(1, 2); i++)
-                {
-                    IntVec3 pos = new IntVec3();
-                    TryFindShipChunkDropCell(aroundThis, map, 60, out pos);
-                    Skyfaller sk1 = SkyfallerMaker.SpawnSkyfaller(VEE_DefOf.SlagIncoming, ThingDefOf.ChunkSlagSteel, pos, map);
-                }
-            }
-            if (delay % 1200 == 0)
-            {
-                for (int i = 0; i < r.Next(1, 2); i++)
-                {
-                    IntVec3 intVec = new IntVec3();
-                    TryFindShipChunkDropCell(aroundThis, map, 40, out intVec);
-                    PawnGenerationRequest request = new PawnGenerationRequest(PawnKindDefOf.SpaceRefugee, null);
-                    Pawn pawn = PawnGenerator.GeneratePawn(request);
-                    DamageInfo damageInfo = new DamageInfo(DamageDefOf.Bullet, 1);
-                    System.Random random = new System.Random();
-                    if(random.Next(0,101) > 25)
-                    {
-                        pawn.Kill(damageInfo);
-                    }
-                    else
-                    {
-                        HealthUtility.DamageUntilDowned(pawn, true);
-                    }
-                    pawn.apparel.WornApparel.RemoveAll((Apparel a) => a.MarketValue > 300);
-                    List<Thing> list = new List<Thing>();
-                    list.Add(pawn);
-                    ChangeDeadPawnsToTheirCorpses(list);
-                    DropPodUtility.DropThingsNear(intVec, map, list, 1, false, true, true);
-                    
-                }
-            }
-            if (delay % 1500 == 0)
-            {
-                for (int i = 0; i < r.Next(1,2); i++)
-                {
-                    IntVec3 pos = new IntVec3();
-                    TryFindShipChunkDropCell(aroundThis, map, 40, out pos);
-                    Skyfaller sk2 = SkyfallerMaker.SpawnSkyfaller(ThingDefOf.ShipChunkIncoming, VEE_DefOf.VEE_ShipChunkHuman, pos, map);
-                }
-            }
-            if (delay % 900 == 0)
-            {
-                for (int i = 0; i < r.Next(1, 4); i++)
-                {
-                    float radius = (float)Rand.Range(5, 11);
-                    DamageDef bomb = DamageDefOf.Bomb;
-                    IntVec3 pos2 = new IntVec3();
-                    TryFindShipChunkDropCell(aroundThis, map, 40, out pos2);
-                    GenExplosion.DoExplosion(pos2, map, radius, bomb, null);
-                    this.StartRandomFire(pos2, map);
-                }
-            }
-        }*/
 
         private void ChangeDeadPawnsToTheirCorpses(List<Thing> things)
         {
@@ -205,10 +153,9 @@ namespace VEE.RegularEvents
             }
         }
 
-        public bool TryFindShipChunkDropCell(IntVec3 nearLoc, Map map, int maxDist, out IntVec3 pos)
+        public bool TryFindShipChunkDropCell(ThingDef skyfaller, IntVec3 nearLoc, Map map, int maxDist, out IntVec3 pos)
         {
-            ThingDef shipChunkIncoming = ThingDefOf.ShipChunkIncoming;
-            return CellFinderLoose.TryFindSkyfallerCell(shipChunkIncoming, map, out pos, 10, nearLoc, maxDist, true, false, false, false, true, false, null);
+            return CellFinderLoose.TryFindSkyfallerCell(skyfaller, map, out pos, 10, nearLoc, maxDist, false, false, false, false, true, true, null);
         }
 
         public void StartRandomFire(IntVec3 pos, Map map)
@@ -217,24 +164,6 @@ namespace VEE.RegularEvents
                          where x.InBounds(map)
                          select x).RandomElementByWeight((IntVec3 x) => SpaceBattle.DistanceChanceFactor.Evaluate(x.DistanceTo(pos)));
             FireUtility.TryStartFireIn(c, map, Rand.Range(0.1f, 0.925f));
-        }
-
-        private Pawn FindPawn(List<Thing> things)
-        {
-            for (int i = 0; i < things.Count; i++)
-            {
-                Pawn pawn = things[i] as Pawn;
-                if (pawn != null)
-                {
-                    return pawn;
-                }
-                Corpse corpse = things[i] as Corpse;
-                if (corpse != null)
-                {
-                    return corpse.InnerPawn;
-                }
-            }
-            return null;
         }
 
         public static readonly SimpleCurve DistanceChanceFactor = new SimpleCurve
@@ -248,5 +177,7 @@ namespace VEE.RegularEvents
                 true
             }
         };
+
+        private static readonly Material ProjectileMaterial = MaterialPool.MatFrom("Things/Projectile/Bullet_Big", ShaderDatabase.Transparent, Color.white);
     }
 }
