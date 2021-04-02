@@ -119,12 +119,11 @@ namespace VEE.PurpleEvents
                 if (this.TicksPassed % 100 == 0 && number <= 800f)
                 {
                     this.FlowersList = DefDatabase<ThingDef>.AllDefsListForReading.Where((ThingDef x) => x.plant != null && x.plant.sowTags.Contains("Decorative")).ToList();
-                    IntVec3 flowerPos = CellFinderLoose.RandomCellWith((IntVec3 i) => i.GetTerrain(affectedMaps[k]).fertility > 0 && i.GetFirstBuilding(affectedMaps[k]) == null
-                                                                            && i.GetPlant(affectedMaps[k]) == null && !i.GetThingList(affectedMaps[k]).Any(), affectedMaps[k]);
-                    if (flowerPos != null)
+                    IntVec3 flowerPos = CellFinderLoose.RandomCellWith((IntVec3 i) => i.GetTerrain(affectedMaps[k]).fertility > 0 && i.GetFirstBuilding(affectedMaps[k]) == null, affectedMaps[k]);
+                    if (flowerPos != null && flowerPos.InBounds(affectedMaps[k]))
                     {
                         ThingDef thingDefFlower = this.FlowersList.RandomElement();
-                        flowerPos.GetThingList(affectedMaps[k]).RemoveAll((Thing match) => match.def.plant != null);
+                        if (flowerPos.GetFirstThing<Plant>(affectedMaps[k]) is Plant p && p != null) p.Destroy(); 
                         
                         Thing flower = GenSpawn.Spawn(thingDefFlower, flowerPos, affectedMaps[k], WipeMode.Vanish);
                         Plant flowerP = flower as Plant;

@@ -263,26 +263,26 @@ It will last anywhere between a few days to a season.</letterText>
   </IncidentDef>
 
   <IncidentDef>
-		<defName>VEE_CropSprout</defName>
-		<label>crop sprout</label>
-		<category>Misc</category>
-		<targetTags>
-			<li>Map_PlayerHome</li>
-		</targetTags>
-		<workerClass>VEE.RegularEvents.Cropsprout</workerClass>
-		<baseChance>0.35</baseChance>
-	</IncidentDef>
+    <defName>VEE_CropSprout</defName>
+    <label>crop sprout</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>VEE.RegularEvents.Cropsprout</workerClass>
+    <baseChance>0.35</baseChance>
+  </IncidentDef>
 
   <IncidentDef>
-		<defName>VEE_BattleAnimalsWanderIn</defName>
-		<label>battle animals wander in</label>
-		<category>Misc</category>
-		<targetTags>
-			<li>Map_PlayerHome</li>
-		</targetTags>
-		<workerClass>VEE.RegularEvents.battleAnimal</workerClass>
-		<baseChance>0.25</baseChance>
-	</IncidentDef>
+    <defName>VEE_BattleAnimalsWanderIn</defName>
+    <label>battle animals wander in</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>VEE.RegularEvents.battleAnimal</workerClass>
+    <baseChance>0.25</baseChance>
+  </IncidentDef>
 
   <IncidentDef>
     <defName>VEE_Drought</defName>
@@ -307,26 +307,26 @@ Drought is devastating for plant life and will quickly destroy all the crops not
   </IncidentDef>
 
   <IncidentDef>
-		<defName>VEE_WildMenWanderIn</defName>
-		<label>wild men wander in</label>
-		<category>Misc</category>
-		<targetTags>
-			<li>Map_PlayerHome</li>
-		</targetTags>
-		<workerClass>VEE.RegularEvents.WildMenWanderIn</workerClass>
+    <defName>VEE_WildMenWanderIn</defName>
+    <label>wild men wander in</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>VEE.RegularEvents.WildMenWanderIn</workerClass>
     <populationEffect>IncreaseMedium</populationEffect>
-		<baseChance>0.50</baseChance>
-	</IncidentDef>
+    <baseChance>0.50</baseChance>
+  </IncidentDef>
 
   <IncidentDef>
-		<defName>VEE_HuntingParty</defName>
-		<label>hunting party</label>
-		<category>Misc</category>
-		<targetTags>
-			<li>Map_PlayerHome</li>
-		</targetTags>
-		<workerClass>VEE.RegularEvents.HuntingParty</workerClass>
-		<baseChance>0.45</baseChance>
-	</IncidentDef>
+    <defName>VEE_HuntingParty</defName>
+    <label>hunting party</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>VEE.RegularEvents.HuntingParty</workerClass>
+    <baseChance>0.45</baseChance>
+  </IncidentDef>
 
 </Defs>
