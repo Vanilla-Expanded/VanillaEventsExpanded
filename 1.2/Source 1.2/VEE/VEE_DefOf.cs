@@ -44,8 +44,6 @@ namespace VEE
         public static ThingDef VEE_ShipChunkHuman;
         public static ThingDef VEE_Shuttle;
         public static ThingDef ShuttleChunkIncoming;
-        public static ThingDef VEE_Dummy;
-        public static ThingDef HydroponicsBasin;
         public static ThingDef SlagIncoming;
 
         /* IncidentDefOf */
@@ -56,6 +54,7 @@ namespace VEE
         /* GameConditionDefOf */
         public static GameConditionDef IceAge;
         public static GameConditionDef GlobalWarming;
+        public static GameConditionDef Drought;
 
         /* Letter def */
         public static LetterDef PurpleEvent;

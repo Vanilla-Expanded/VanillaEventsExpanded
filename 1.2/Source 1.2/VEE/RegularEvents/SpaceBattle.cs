@@ -18,7 +18,7 @@ namespace VEE.RegularEvents
 
         public override void Init()
         {
-            RCellFinder.TryFindRandomCellOutsideColonyNearTheCenterOfTheMap(this.SingleMap.Center, this.SingleMap, 25f, out aroundThis);
+            RCellFinder.TryFindRandomCellOutsideColonyNearTheCenterOfTheMap(this.SingleMap.Center, this.SingleMap, 40f, out aroundThis);
             Find.LetterStack.ReceiveLetter(LetterMaker.MakeLetter("SpaceBattleLabel".Translate(), "SpaceBattle".Translate(), LetterDefOf.NegativeEvent, new LookTargets(aroundThis, SingleMap)));
         }
 
@@ -155,7 +155,7 @@ namespace VEE.RegularEvents
 
         public bool TryFindShipChunkDropCell(ThingDef skyfaller, IntVec3 nearLoc, Map map, int maxDist, out IntVec3 pos)
         {
-            return CellFinderLoose.TryFindSkyfallerCell(skyfaller, map, out pos, 10, nearLoc, maxDist, false, false, false, false, true, true, null);
+            return CellFinderLoose.TryFindSkyfallerCell(skyfaller, map, out pos, 10, nearLoc, maxDist, false, false, false, true, true, true, null);
         }
 
         public void StartRandomFire(IntVec3 pos, Map map)

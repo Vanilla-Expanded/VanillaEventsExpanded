@@ -10,4 +10,17 @@
 	<packageId>VanillaExpanded.VEE</packageId>
 	<description>Vanilla Events Expanded adds several new events to the game, all in line with vanilla events - nothing too drastic. A new tier of events is added - Purple events. Instead of having strict negative or positive effects, purple events force players to adapt as they last significantly longer than events like Toxic Fallout or Volcanic Winter.
 	</description>
+	<modDependencies>
+		<li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+			<steamWorkshopUrl>https://steamcommunity.com/workshop/filedetails/?id=2009463077</steamWorkshopUrl>
+		</li>
+	</modDependencies>
+	<loadAfter>
+		<li>Ludeon.RimWorld</li>
+		<li>Ludeon.RimWorld.Royalty</li>
+		<li>brrainz.harmony</li>
+	</loadAfter>
 </ModMetaData>
