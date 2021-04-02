@@ -2,7 +2,7 @@
 <Defs>
 
     <ThoughtDef>
-        <defName>Aurora</defName>
+        <defName>VEE_Aurora</defName>
         <workerClass>ThoughtWorker_Aurora</workerClass>
         <gameCondition>PsychicBloom</gameCondition>
         <stages>
