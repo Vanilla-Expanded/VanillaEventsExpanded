@@ -74,6 +74,7 @@
     <Compile Include="Jobs\JobDriver_HuntAndLeave.cs" />
     <Compile Include="Heddifs\HeddifCompPropreties_Traitor.cs" />
     <Compile Include="Heddifs\HeddifComp_Traitor.cs" />
+    <Compile Include="MapComp_Drought.cs" />
     <Compile Include="Others\IncidentWorker_MakeGameConditionVEE.cs" />
     <Compile Include="Others\WorldLayerRegenerateBiomes.cs" />
     <Compile Include="PurpleEvents\GlobalWarming.cs" />

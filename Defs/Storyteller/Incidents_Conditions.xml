@@ -296,13 +296,13 @@ It will last anywhere between a few days to a season.</letterText>
     <letterLabel>Drought</letterLabel>
     <letterText>An unusual drought has set in.
 
-Drought is devastating for plant life and will quickly destroy all the crops not planted in the hydroponics. Be sure to quickly harvest any plants you can.</letterText>
+Drought is devastating for plant life and will quickly prevent all the crops not planted in hydroponics or high fertility soil to grow.</letterText>
     <letterDef>NegativeEvent</letterDef>
     <baseChance>0.15</baseChance>
     <minRefireDays>40</minRefireDays>
     <durationDays>
-      <min>0.6</min>
-      <max>2.5</max>
+      <min>8</min>
+      <max>15</max>
     </durationDays>
   </IncidentDef>
 

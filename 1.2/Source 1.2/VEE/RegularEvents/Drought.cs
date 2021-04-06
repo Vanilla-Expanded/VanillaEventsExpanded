@@ -11,31 +11,19 @@ namespace VEE.RegularEvents
 {
     public class Drought : GameCondition
     {
-        public override int TransitionTicks => 1000;
-
         public override void Init()
         {
-            HarmonyInit.droughtGoingOn = true;
-            HarmonyInit.maps.Add(this.SingleMap);
-            this.SingleMap.fertilityGrid.FertilityGridUpdate();
+            this.SingleMap.GetComponent<MapComp_Drought>().droughtGoingOn = true;
         }
 
-        public override void End()
+        public override float PlantDensityFactor(Map map)
         {
-            HarmonyInit.droughtGoingOn = false;
-            if (HarmonyInit.maps.Contains(this.SingleMap)) HarmonyInit.maps.Remove(this.SingleMap);
-            this.SingleMap.fertilityGrid.FertilityGridUpdate();
+            return 0f;
         }
 
         public override WeatherDef ForcedWeather()
         {
             return WeatherDefOf.Clear;
-        }
-
-        public override void GameConditionTick()
-        {
-            if (!HarmonyInit.droughtGoingOn) HarmonyInit.droughtGoingOn = true;
-            if (!HarmonyInit.maps.Contains(this.SingleMap)) HarmonyInit.maps.Add(this.SingleMap);
         }
     }
 }
