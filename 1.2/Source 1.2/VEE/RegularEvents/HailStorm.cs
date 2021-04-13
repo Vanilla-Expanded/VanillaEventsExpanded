@@ -61,7 +61,7 @@ namespace VEE.RegularEvents
             for (int i = 0; i < allPawnsSpawned.Count; i++)
             {
                 Pawn pawn = allPawnsSpawned[i];
-                if (!pawn.Position.Roofed(map) && pawn.def.race.IsFlesh)
+                if (!pawn.Position.Roofed(map) && pawn.def.race.IsFlesh && Rand.Bool)
                 {
                     DamageInfo dinfo = new DamageInfo(DamageDefOf.Blunt, 2, 1);
                     pawn.TakeDamage(dinfo);

@@ -8,7 +8,7 @@ using Verse;
 
 namespace VEE
 {
-    class MapComp_Drought : MapComponent
+    public class MapComp_Drought : MapComponent
     {
         public MapComp_Drought(Map map) : base(map) { }
 
@@ -20,7 +20,7 @@ namespace VEE
             base.MapComponentTick();
             if (Find.TickManager.TicksGame % 1024 == 0)
             {
-                Log.Message($"Is drought going on: {droughtGoingOn}. Affected plant(s): {affectedPlants.Count}.");
+                // Log.Message($"Is drought going on: {droughtGoingOn}. Affected plant(s): {affectedPlants.Count}.");
                 if (!map.gameConditionManager.ConditionIsActive(VEE_DefOf.Drought))
                 {
                     this.droughtGoingOn = false;
@@ -36,6 +36,7 @@ namespace VEE
         {
             base.ExposeData();
             Scribe_Values.Look<bool>(ref this.droughtGoingOn, "droughtGoingOn");
+            HarmonyInit.mapCompDrought = null;
         }
     }
 }

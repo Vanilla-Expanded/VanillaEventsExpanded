@@ -20,6 +20,8 @@ namespace VEE
             harmonyInstance.PatchAll();
         }
 
+        public static MapComp_Drought mapCompDrought;
+
         private static float AddDroughtLine(IntVec3 cell, float num)
         {
             GUI.color = new Color(1f, 1f, 1f, 0.8f);
@@ -45,18 +47,30 @@ namespace VEE
         [HarmonyPostfix]
         public static void Postfix(IntVec3 loc, ref Map ___map, ref float __result)
         {
-            MapComp_Drought mapComp_Drought = ___map.GetComponent<MapComp_Drought>();
+            MapComp_Drought mapComp_Drought;
+            if (HarmonyInit.mapCompDrought == null)
+            {
+                mapComp_Drought = ___map.GetComponent<MapComp_Drought>();
+                HarmonyInit.mapCompDrought = mapComp_Drought;
+            }
+            else
+            {
+                mapComp_Drought = HarmonyInit.mapCompDrought;
+            }
+
             if (mapComp_Drought != null && mapComp_Drought.droughtGoingOn)
             {
                 Thing t = loc.GetEdifice(___map);
                 if ((t != null && !t.def.AffectsFertility) || t == null)
                 {
-                    float fa = 0f;
                     if (__result > 1f)
                     {
-                        fa = 0.6f;
+                        __result = Mathf.Clamp(__result, 0f, 0.7f);
                     }
-                    __result = Mathf.Clamp(__result, 0f, 0.1f + fa);
+                    else
+                    {
+                        __result = Mathf.Clamp(__result, 0f, 0.1f);
+                    }
                 }
             }
         }
@@ -71,10 +85,24 @@ namespace VEE
         {
             if (__instance.Map != null)
             {
-                MapComp_Drought mapComp_Drought = __instance.Map.GetComponent<MapComp_Drought>();
-                if (mapComp_Drought != null && mapComp_Drought.droughtGoingOn && !mapComp_Drought.affectedPlants.ContainsKey(__instance))
+                if (HarmonyInit.mapCompDrought != null && HarmonyInit.mapCompDrought.droughtGoingOn)
                 {
-                    mapComp_Drought.affectedPlants.Add(__instance, __instance.Map.fertilityGrid.FertilityAt(__instance.Position) < __instance.def.plant.fertilityMin);
+                    bool test = __instance.Map.fertilityGrid.FertilityAt(__instance.Position) < __instance.def.plant.fertilityMin;
+                    HarmonyInit.mapCompDrought.affectedPlants.SetOrAdd(__instance, test);
+
+                    if (test && (!__instance.def.plant.dieIfLeafless || __instance.def.label.Contains("grass")))
+                    {
+                        bool flag = !__instance.LeaflessNow;
+                        ___madeLeaflessTick = Find.TickManager.TicksGame;
+                        if (flag)
+                        {
+                            __instance.Map.mapDrawer.MapMeshDirty(__instance.Position, MapMeshFlag.Things);
+                        }
+                    }
+                    else
+                    {
+                        ___madeLeaflessTick = -99999;
+                    }
                 }
             }
         }
@@ -103,28 +131,29 @@ namespace VEE
         [HarmonyPostfix]
         public static void Postfix(ref Plant __instance, ref float __result)
         {
-            MapComp_Drought mapComp_Drought = __instance.Map.GetComponent<MapComp_Drought>();
-            if (mapComp_Drought != null && mapComp_Drought.droughtGoingOn && __instance.Map.fertilityGrid.FertilityAt(__instance.Position) < __instance.def.plant.fertilityMin && mapComp_Drought.affectedPlants.ContainsKey(__instance))
+            if (HarmonyInit.mapCompDrought != null && HarmonyInit.mapCompDrought.droughtGoingOn && __instance.Map.fertilityGrid.FertilityAt(__instance.Position) < __instance.def.plant.fertilityMin && HarmonyInit.mapCompDrought.affectedPlants.ContainsKey(__instance))
             {
                 __result = 0f;
             }
         }
     }
-    
-    [HarmonyPatch(typeof(Plant))]
+
+    /*[HarmonyPatch(typeof(Plant))]
     [HarmonyPatch("LeaflessNow", MethodType.Getter)]
     public class Plant_LeaflessNow_Patch
     {
         [HarmonyPostfix]
         public static void Postfix(ref Plant __instance, ref bool __result)
         {
-            MapComp_Drought mapComp_Drought = __instance.Map.GetComponent<MapComp_Drought>();
-            if (mapComp_Drought != null && mapComp_Drought.droughtGoingOn && __instance.Map.fertilityGrid.FertilityAt(__instance.Position) < __instance.def.plant.fertilityMin && mapComp_Drought.affectedPlants.ContainsKey(__instance))
+            if (HarmonyInit.mapCompDrought != null && HarmonyInit.mapCompDrought.droughtGoingOn)
             {
-                __result = true;
+                if (__instance.GrowthRate == 0f)
+                {
+                    __result = true;
+                }
             }
         }
-    }
+    }*/
 
     [HarmonyPatch(typeof(Plant))]
     [HarmonyPatch("PostMapInit", MethodType.Normal)]
@@ -145,18 +174,6 @@ namespace VEE
     [HarmonyPatch("MouseoverReadoutOnGUI", MethodType.Normal)]
     public class MouseoverReadout_Patch
     {
-        /*[HarmonyPostfix]
-        public static void Postfix(ref TerrainDef ___cachedTerrain, ref string ___cachedTerrainString)
-        {
-            if (HarmonyInit.droughtGoingOn && HarmonyInit.maps.Contains(Find.CurrentMap))
-            {
-                if (___cachedTerrain != null)
-                {
-                    string t = ((double)___cachedTerrain.fertility > 0.0001) ? (" " + "FertShort".TranslateSimple() + " " + Find.CurrentMap.fertilityGrid.FertilityAt(UI.MouseCell()).ToStringPercent()) : "";
-                    ___cachedTerrainString = ___cachedTerrain.LabelCap + ((___cachedTerrain.passability != Traversability.Impassable) ? (" (" + "WalkSpeed".Translate((13f / ((float)___cachedTerrain.pathCost + 13f)).ToStringPercent()) + t + ")") : null);
-                }
-            }
-        }*/
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
