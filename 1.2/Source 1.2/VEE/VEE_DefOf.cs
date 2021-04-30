@@ -20,6 +20,7 @@ namespace VEE
         /* Weather DEF */
         public static WeatherDef SnowHard;
         public static WeatherDef Rain;
+        public static WeatherDef VEE_Hail;
 
         /* Biome DEF */
         public static BiomeDef TemperateSwamp;
