@@ -1,9 +1,5 @@
-﻿using System;
+﻿using RimWorld;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using RimWorld;
-using RimWorld.Planet;
 using UnityEngine;
 using Verse;
 
@@ -74,7 +70,7 @@ namespace VEE.PurpleEvents
                 Pawn pawn = allPawnsSpawned[i];
                 if (!pawn.Position.Roofed(map) && pawn.def.race.IsFlesh)
                 {
-                    pawn.ageTracker.AgeBiologicalTicks += 20706;
+                    pawn.ageTracker.AgeBiologicalTicks += (long)(20706f * pawn.GetStatValue(StatDefOf.PsychicSensitivity));
                 }
             }
         }

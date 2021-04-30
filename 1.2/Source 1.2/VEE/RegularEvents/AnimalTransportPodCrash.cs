@@ -19,6 +19,7 @@ namespace VEE.RegularEvents
             Pawn pawn = this.RandomPawnFromThingList(things, parms);
             pawn.Name = PawnBioAndNameGenerator.GeneratePawnName(pawn, NameStyle.Full);
             pawn.health.AddHediff(VEE_DefOf.MightJoin);
+            HealthUtility.DamageUntilDowned(pawn);
 
             string label = "LetterLabelAnimalPodCrash".Translate();
             string text = "AnimalPodCrash".Translate(pawn.Named("PAWN")).AdjustedFor(pawn, "PAWN");

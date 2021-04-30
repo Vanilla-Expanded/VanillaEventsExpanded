@@ -56,7 +56,7 @@ namespace VEE.RegularEvents
                 for (int i = 0; i < r.Next(1, 2); i++)
                 {
                     IntVec3 pos = new IntVec3();
-                    TryFindShipChunkDropCell(VEE_DefOf.SlagIncoming, aroundThis, map, 50, out pos);
+                    VEETryFindSkyfallerCell(VEE_DefOf.SlagIncoming, aroundThis, map, 50, out pos);
                     Skyfaller sk1 = SkyfallerMaker.SpawnSkyfaller(VEE_DefOf.SlagIncoming, ThingDefOf.ChunkSlagSteel, pos, map);
                 }
             }
@@ -65,7 +65,7 @@ namespace VEE.RegularEvents
                 for (int i = 0; i < r.Next(1, 2); i++)
                 {
                     IntVec3 intVec = new IntVec3();
-                    TryFindShipChunkDropCell(ThingDefOf.DropPodIncoming, aroundThis, map, 60, out intVec);
+                    VEETryFindSkyfallerCell(ThingDefOf.DropPodIncoming, aroundThis, map, 60, out intVec);
                     PawnGenerationRequest request = new PawnGenerationRequest(PawnKindDefOf.SpaceRefugee, null);
                     Pawn pawn = PawnGenerator.GeneratePawn(request);
                     DamageInfo damageInfo = new DamageInfo(DamageDefOf.Bullet, 1);
@@ -89,7 +89,7 @@ namespace VEE.RegularEvents
             if (delay % 2000 == 0)
             {
                 IntVec3 pos = new IntVec3();
-                TryFindShipChunkDropCell(ThingDefOf.ShipChunkIncoming, aroundThis, map, 35, out pos);
+                VEETryFindSkyfallerCell(ThingDefOf.ShipChunkIncoming, aroundThis, map, 35, out pos);
                 Skyfaller sk2 = SkyfallerMaker.SpawnSkyfaller(ThingDefOf.ShipChunkIncoming, VEE_DefOf.VEE_ShipChunkHuman, pos, map);
             }
 
@@ -115,9 +115,8 @@ namespace VEE.RegularEvents
                 if (this.projectiles[i].LifeTime <= 0)
                 {
                     IntVec3 targetCell = this.projectiles[i].targetCell;
-                    float radius = (float)Rand.Range(4, 8);
-                    DamageDef bomb = DamageDefOf.Bomb;
-                    GenExplosion.DoExplosion(targetCell, map, radius, bomb, null);
+                    DamageDef bomb = Rand.Range(1, 10) > 2 ? DamageDefOf.Bomb : DamageDefOf.Flame;
+                    GenExplosion.DoExplosion(targetCell, map, Rand.Range(3f, 6f), bomb, null);
                     this.projectiles.RemoveAt(i);
                 }
             }
@@ -138,7 +137,7 @@ namespace VEE.RegularEvents
         private void GetNextExplosionCell()
         {
             this.nextExplosionCell = (from x in GenRadial.RadialCellsAround(this.aroundThis, 30, true)
-                                      where x.InBounds(this.SingleMap)
+                                      where x.InBounds(this.SingleMap) && !x.Fogged(SingleMap) && !x.Roofed(SingleMap)
                                       select x).RandomElementByWeight((IntVec3 x) => Bombardment.DistanceChanceFactor.Evaluate(x.DistanceTo(this.aroundThis)));
         }
 
@@ -153,7 +152,7 @@ namespace VEE.RegularEvents
             }
         }
 
-        public bool TryFindShipChunkDropCell(ThingDef skyfaller, IntVec3 nearLoc, Map map, int maxDist, out IntVec3 pos)
+        public bool VEETryFindSkyfallerCell(ThingDef skyfaller, IntVec3 nearLoc, Map map, int maxDist, out IntVec3 pos)
         {
             return CellFinderLoose.TryFindSkyfallerCell(skyfaller, map, out pos, 10, nearLoc, maxDist, false, false, false, true, true, true, null);
         }
