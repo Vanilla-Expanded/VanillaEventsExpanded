@@ -18,7 +18,8 @@ namespace VEE.RegularEvents
 
         public override void Init()
         {
-            RCellFinder.TryFindRandomCellOutsideColonyNearTheCenterOfTheMap(this.SingleMap.Center, this.SingleMap, 40f, out aroundThis);
+            RCellFinder.TryFindRandomExitSpot(this.SingleMap.mapPawns.AllPawns.RandomElement(), out IntVec3 fallPos);
+            RCellFinder.TryFindRandomCellOutsideColonyNearTheCenterOfTheMap(fallPos, this.SingleMap, 50f, out aroundThis);
             Find.LetterStack.ReceiveLetter(LetterMaker.MakeLetter("SpaceBattleLabel".Translate(), "SpaceBattle".Translate(), LetterDefOf.NegativeEvent, new LookTargets(aroundThis, SingleMap)));
         }
 

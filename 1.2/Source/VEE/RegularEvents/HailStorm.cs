@@ -64,6 +64,12 @@ namespace VEE.RegularEvents
             return VEE_DefOf.VEE_Hail;
         }
 
+        public override void End()
+        {
+            base.End();
+            this.SingleMap.weatherManager.TransitionTo(WeatherDefOf.Clear);
+        }
+
         public override void GameConditionDraw(Map map)
         {
             for (int i = 0; i < this.overlays.Count; i++)

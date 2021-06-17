@@ -1,10 +1,7 @@
-﻿using System;
+﻿using RimWorld;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using UnityEngine;
 using Verse;
-using RimWorld;
 
 namespace VEE.RegularEvents
 {
@@ -15,9 +12,8 @@ namespace VEE.RegularEvents
             Map map = (Map)parms.target;
             List<Thing> things = ThingSetMakerDefOf.ResourcePod.root.Generate();
             IncidentParms incidentParms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.ThreatBig, map);
-            Log.Message((map.wealthWatcher.WealthTotal * 0.01).ToString());
-            IEnumerable<ThingStuffPair> baseA = ThingStuffPair.AllWith((ThingDef apparel) => apparel.apparel != null && apparel.apparel.defaultOutfitTags != null 
-                                                        && apparel.apparel.defaultOutfitTags.Contains("Soldier") == true 
+            IEnumerable<ThingStuffPair> baseA = ThingStuffPair.AllWith((ThingDef apparel) => apparel.apparel != null && apparel.apparel.defaultOutfitTags != null
+                                                        && apparel.apparel.defaultOutfitTags.Contains("Soldier") == true
                                                         && apparel.apparel.defaultOutfitTags.Contains("Worker") == true && apparel.apparel.tags != null);
             IEnumerable<ThingStuffPair> source = from w in baseA
                                                  where w.Price <= map.wealthWatcher.WealthTotal * 0.01

@@ -1,11 +1,7 @@
 ﻿using HarmonyLib;
 using RimWorld;
-using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using System.Reflection.Emit;
-using System.Text;
 using UnityEngine;
 using Verse;
 
@@ -20,7 +16,7 @@ namespace VEE
             harmonyInstance.PatchAll();
         }
 
-        public static MapComp_Drought mapCompDrought;
+        public static Dictionary<Map, MapComp_Drought> mapCompDrought = new Dictionary<Map, MapComp_Drought>();
 
         private static float AddDroughtLine(IntVec3 cell, float num)
         {
@@ -30,8 +26,8 @@ namespace VEE
             if (mapComp_Drought != null && map.GetComponent<MapComp_Drought>().droughtGoingOn)
             {
                 if (cell.GetTerrain(map).fertility > 0)
-                { 
-                    Widgets.Label(new Rect(15f, (float)UI.screenHeight - 65f - num, 999f, 999f), "VEE_DroughtGui".Translate(map.fertilityGrid.FertilityAt(cell).ToStringPercent())); 
+                {
+                    Widgets.Label(new Rect(15f, (float)UI.screenHeight - 65f - num, 999f, 999f), "VEE_DroughtGui".Translate(map.fertilityGrid.FertilityAt(cell).ToStringPercent()));
                 }
                 num += 19f;
             }
@@ -47,29 +43,32 @@ namespace VEE
         [HarmonyPostfix]
         public static void Postfix(IntVec3 loc, ref Map ___map, ref float __result)
         {
-            MapComp_Drought mapComp_Drought;
-            if (HarmonyInit.mapCompDrought == null)
+            if (___map != null && HarmonyInit.mapCompDrought != null)
             {
-                mapComp_Drought = ___map.GetComponent<MapComp_Drought>();
-                HarmonyInit.mapCompDrought = mapComp_Drought;
-            }
-            else
-            {
-                mapComp_Drought = HarmonyInit.mapCompDrought;
-            }
-
-            if (mapComp_Drought != null && mapComp_Drought.droughtGoingOn)
-            {
-                Thing t = loc.GetEdifice(___map);
-                if ((t != null && !t.def.AffectsFertility) || t == null)
+                MapComp_Drought mapComp_Drought;
+                if (HarmonyInit.mapCompDrought.ContainsKey(___map) && HarmonyInit.mapCompDrought.TryGetValue(___map) != null)
                 {
-                    if (__result > 1f)
+                    mapComp_Drought = HarmonyInit.mapCompDrought.TryGetValue(___map);
+                }
+                else
+                {
+                    mapComp_Drought = ___map.GetComponent<MapComp_Drought>();
+                    HarmonyInit.mapCompDrought.Add(___map, mapComp_Drought);
+                }
+
+                if (mapComp_Drought != null && mapComp_Drought.droughtGoingOn)
+                {
+                    Thing t = loc.GetEdifice(___map);
+                    if (((t != null && !t.def.AffectsFertility) || t == null) && !loc.Roofed(___map))
                     {
-                        __result = Mathf.Clamp(__result, 0f, 0.7f);
-                    }
-                    else
-                    {
-                        __result = Mathf.Clamp(__result, 0f, 0.1f);
+                        if (__result > 1f)
+                        {
+                            __result = Mathf.Clamp(__result, 0f, 0.7f);
+                        }
+                        else
+                        {
+                            __result = Mathf.Clamp(__result, 0f, 0.1f);
+                        }
                     }
                 }
             }
@@ -83,18 +82,18 @@ namespace VEE
         [HarmonyPostfix]
         public static void Postfix(ref Plant __instance, ref int ___madeLeaflessTick)
         {
-            if (__instance.Map != null)
+            if (__instance.Map != null && HarmonyInit.mapCompDrought != null)
             {
-                if (HarmonyInit.mapCompDrought != null && HarmonyInit.mapCompDrought.droughtGoingOn)
+                MapComp_Drought mcd = HarmonyInit.mapCompDrought.TryGetValue(__instance.Map);
+                if (mcd != null && mcd.droughtGoingOn)
                 {
                     bool test = __instance.Map.fertilityGrid.FertilityAt(__instance.Position) < __instance.def.plant.fertilityMin;
-                    HarmonyInit.mapCompDrought.affectedPlants.SetOrAdd(__instance, test);
+                    mcd.affectedPlants.SetOrAdd(__instance, test);
 
                     if (test && (!__instance.def.plant.dieIfLeafless || __instance.def.label.Contains("grass")))
                     {
-                        bool flag = !__instance.LeaflessNow;
                         ___madeLeaflessTick = Find.TickManager.TicksGame;
-                        if (flag)
+                        if (!__instance.LeaflessNow)
                         {
                             __instance.Map.mapDrawer.MapMeshDirty(__instance.Position, MapMeshFlag.Things);
                         }
@@ -108,22 +107,6 @@ namespace VEE
         }
     }
 
-    /*[HarmonyPatch(typeof(Plant))]
-    [HarmonyPatch("GetInspectString", MethodType.Normal)]
-    public class Plant_GetInspectString_Patch
-    {
-        [HarmonyPostfix]
-        public static void Postfix(ref Plant __instance, ref string __result)
-        {
-            if (HarmonyInit.droughtGoingOn && HarmonyInit.affectedPlants.TryGetValue(__instance, false))
-            {
-                StringBuilder stringBuilder = new StringBuilder(__result);
-                stringBuilder.AppendInNewLine("VEE_Decay".Translate());
-                __result = stringBuilder.ToString().TrimEndNewlines();
-            }
-        }
-    }*/
-
     [HarmonyPatch(typeof(Plant))]
     [HarmonyPatch("GrowthRate", MethodType.Getter)]
     public class Plant_GrowthRate_Patch
@@ -131,29 +114,16 @@ namespace VEE
         [HarmonyPostfix]
         public static void Postfix(ref Plant __instance, ref float __result)
         {
-            if (HarmonyInit.mapCompDrought != null && HarmonyInit.mapCompDrought.droughtGoingOn && __instance.Map.fertilityGrid.FertilityAt(__instance.Position) < __instance.def.plant.fertilityMin && HarmonyInit.mapCompDrought.affectedPlants.ContainsKey(__instance))
+            if (__instance.Map != null && HarmonyInit.mapCompDrought != null)
             {
-                __result = 0f;
-            }
-        }
-    }
-
-    /*[HarmonyPatch(typeof(Plant))]
-    [HarmonyPatch("LeaflessNow", MethodType.Getter)]
-    public class Plant_LeaflessNow_Patch
-    {
-        [HarmonyPostfix]
-        public static void Postfix(ref Plant __instance, ref bool __result)
-        {
-            if (HarmonyInit.mapCompDrought != null && HarmonyInit.mapCompDrought.droughtGoingOn)
-            {
-                if (__instance.GrowthRate == 0f)
+                MapComp_Drought mcd = HarmonyInit.mapCompDrought.TryGetValue(__instance.Map);
+                if (mcd != null && mcd.droughtGoingOn && __instance.Map.fertilityGrid.FertilityAt(__instance.Position) < __instance.def.plant.fertilityMin && mcd.affectedPlants.ContainsKey(__instance))
                 {
-                    __result = true;
+                    __result = 0f;
                 }
             }
         }
-    }*/
+    }
 
     [HarmonyPatch(typeof(Plant))]
     [HarmonyPatch("PostMapInit", MethodType.Normal)]
