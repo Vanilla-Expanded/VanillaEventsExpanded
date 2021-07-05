@@ -16,13 +16,13 @@
 
 Flora and Fauna is suffering from these changes as biomes shift into their colder counterparts. Resources become scarce, forcing factions into conflict.
 
-It will last anywhere between a season to several years. (Visual changes will only appear upon saving/reloading the current save)</letterText>
+It will last anywhere between a season to several years.</letterText>
     <letterDef>PurpleEvent</letterDef>
     <baseChance>0.04</baseChance>
     <earliestDay>180</earliestDay>
     <minRefireDays>300</minRefireDays>
     <durationDays>
-      <min>15</min>
+      <min>40</min>
       <max>120</max>
     </durationDays>
   </IncidentDef>
@@ -41,13 +41,13 @@ It will last anywhere between a season to several years. (Visual changes will on
 
 Flora and Fauna is suffering from these changes as biomes shift into their warmer counterparts. Resources become scarce, forcing factions into conflict.
 
-It will last anywhere between a season to several years. (Visual changes will only appear upon saving/reloading the current save)</letterText>
+It will last anywhere between a season to several years.</letterText>
     <letterDef>PurpleEvent</letterDef>
     <baseChance>0.04</baseChance>
     <earliestDay>180</earliestDay>
     <minRefireDays>300</minRefireDays>
     <durationDays>
-      <min>15</min>
+      <min>40</min>
       <max>120</max>
     </durationDays>
   </IncidentDef>

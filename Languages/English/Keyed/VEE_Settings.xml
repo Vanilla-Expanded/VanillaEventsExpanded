@@ -32,4 +32,7 @@
     <DBaseC>Drought</DBaseC>
     <WMWIBaseC>Wild men wander in</WMWIBaseC>
     <HPBaseC>Hunting party</HPBaseC>
+
+    <GCWResetOBO>Stop world condition...</GCWResetOBO>
+    <GCMResetOBO>Stop map condition...</GCMResetOBO>
 </LanguageData>
