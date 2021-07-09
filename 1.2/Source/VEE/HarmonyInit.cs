@@ -132,8 +132,11 @@ namespace VEE
         [HarmonyPostfix]
         public static void Postfix(ref Plant __instance, ref int ___madeLeaflessTick)
         {
-            MapComp_Drought mapComp_Drought = __instance.Map.GetComponent<MapComp_Drought>();
-            if (mapComp_Drought != null && mapComp_Drought.droughtGoingOn && __instance.Map.fertilityGrid.FertilityAt(__instance.Position) < __instance.def.plant.fertilityMin)
+            if (__instance.Map.GetComponent<MapComp_Drought>() is MapComp_Drought mapComp_Drought
+                && mapComp_Drought != null
+                && mapComp_Drought.droughtGoingOn
+                && __instance.def?.plant?.leaflessGraphic != null
+                && __instance.Map?.fertilityGrid?.FertilityAt(__instance.Position) < __instance.def?.plant?.fertilityMin)
             {
                 ___madeLeaflessTick = Find.TickManager.TicksGame;
             }
