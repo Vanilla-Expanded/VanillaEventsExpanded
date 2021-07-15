@@ -16,6 +16,7 @@ namespace VEE.RegularEvents
             Map map = (Map)parms.target;
             List<Thing> things = VEE_DefOf.AnimalPod.root.Generate();
             IntVec3 intVec = DropCellFinder.RandomDropSpot(map);
+
             Pawn pawn = this.RandomPawnFromThingList(things, parms);
             pawn.Name = PawnBioAndNameGenerator.GeneratePawnName(pawn, NameStyle.Full);
             pawn.health.AddHediff(VEE_DefOf.MightJoin);
@@ -35,19 +36,22 @@ namespace VEE.RegularEvents
 
         private Pawn RandomPawnFromThingList(List<Thing> things, IncidentParms parms)
         {
-            Map map = (Map)parms.target;
-            bool done = false;
-            float percent = 0.001f;
-            while (!done)
+            if (things != null && things.Count > 0)
             {
-                Pawn randPawn = things.RandomElement() as Pawn;
-                if (randPawn.MarketValue < map.wealthWatcher.WealthTotal * percent)
+                Map map = (Map)parms.target;
+                bool done = false;
+                float percent = 0.001f;
+                while (!done)
                 {
-                    return randPawn;
-                }
-                else
-                {
-                    percent += 0.001f;
+                    Pawn randPawn = things.RandomElement() as Pawn;
+                    if (randPawn.MarketValue < map.wealthWatcher.WealthTotal * percent)
+                    {
+                        return randPawn;
+                    }
+                    else
+                    {
+                        percent += 0.01f;
+                    }
                 }
             }
             return null;

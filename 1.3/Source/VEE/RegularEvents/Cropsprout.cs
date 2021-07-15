@@ -22,21 +22,19 @@ namespace VEE.RegularEvents
                 return false;
             }
             Map map = (Map)parms.target;
-            IntVec3 intVec;
             IEnumerable<ThingStuffPair> allP = ThingStuffPair.AllWith((ThingDef p) => p.plant != null && p.plant.harvestTag == "Standard" && p.plant.harvestYield != 0 && p.plant.harvestedThingDef != null && !p.defName.Contains("RB_"));
             ThingStuffPair plantChoosen = allP.InRandomOrder().RandomElement();
-            return map.weatherManager.growthSeasonMemory.GrowthSeasonOutdoorsNow && this.TryFindRootCell(map, out intVec, plantChoosen.thing);
+            return map.weatherManager.growthSeasonMemory.GrowthSeasonOutdoorsNow && this.TryFindRootCell(map, out IntVec3 intVec, plantChoosen.thing);
         }
 
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
             Map map = (Map)parms.target;
-            IntVec3 root;
 
             IEnumerable<ThingStuffPair> allP = ThingStuffPair.AllWith((ThingDef p) => p.plant != null && p.plant.harvestTag == "Standard" && p.plant.harvestYield != 0 && p.plant.harvestedThingDef != null);
             ThingStuffPair plantChoosen = allP.InRandomOrder().RandomElement();
 
-            if (!this.TryFindRootCell(map, out root, plantChoosen.thing))
+            if (!this.TryFindRootCell(map, out IntVec3 root, plantChoosen.thing))
             {
                 return false;
             }
@@ -74,7 +72,7 @@ namespace VEE.RegularEvents
 
         private bool TryFindRootCell(Map map, out IntVec3 cell, ThingDef plant)
         {
-            return CellFinderLoose.TryFindRandomNotEdgeCellWith(10, (IntVec3 x) => this.CanSpawnAt(x, map, plant) && x.GetRoom(map).CellCount >= 64, map, out cell);
+            return CellFinderLoose.TryFindRandomNotEdgeCellWith(10, (IntVec3 x) => this.CanSpawnAt(x, map, plant), map, out cell);
         }
 
         private bool CanSpawnAt(IntVec3 c, Map map, ThingDef plantC)
