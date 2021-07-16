@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using RimWorld;
 using Verse;
-using Verse.Sound;
-using RimWorld;
+using Random = UnityEngine.Random;
 
 namespace VEE
 {
-    class Shuttle : Building
+    internal class Shuttle : Building
     {
         public override void ExposeData()
         {
@@ -18,34 +15,31 @@ namespace VEE
         public override void Tick()
         {
             base.Tick();
-            if(t == 250)
+            if (t == 250)
             {
-                System.Random rnd = new System.Random();
-                int nbP = rnd.Next(2, 5);
+                int nbP = Random.Range(2, 5);
 
                 for (int i = 0; i <= nbP; i++)
                 {
-                    PawnGenerationRequest request = new PawnGenerationRequest(PawnKindDefOf.SpaceRefugee, null);
-                    Pawn pawn = PawnGenerator.GeneratePawn(request);
+                    Pawn pawn = PawnGenerator.GeneratePawn(PawnKindDefOf.SpaceRefugee);
                     HealthUtility.DamageUntilDowned(pawn, true);
                     pawn.guest.getRescuedThoughtOnUndownedBecauseOfPlayer = true;
+                    pawn.apparel.WornApparel.RemoveAll((Apparel a) => a.MarketValue > 300);
 
-                    int d = rnd.Next(1, 4);
-                    if (d == 2 && !pawn.Dead)
+                    if (Random.Range(1, 4) == 2 && !pawn.Dead)
                     {
                         DamageInfo damageInfo = new DamageInfo(DamageDefOf.Bullet, 50);
                         pawn.Kill(damageInfo);
                     }
-                    pawn.apparel.WornApparel.RemoveAll((Apparel a) => a.MarketValue > 300);
 
-                    IntVec3 intVec;
-                    DropCellFinder.TryFindDropSpotNear(this.Position, this.Map, out intVec, false, true);
-                    GenPlace.TryPlaceThing(pawn, intVec, this.Map, ThingPlaceMode.Near, null, null);
+                    RCellFinder.TryFindRandomCellNearWith(this.Position, c => c.Walkable(this.Map), this.Map, out IntVec3 intVec);
+                    if (pawn.Dead) GenPlace.TryPlaceThing(pawn.Corpse, intVec, this.Map, ThingPlaceMode.Near);
+                    else GenPlace.TryPlaceThing(pawn, intVec, this.Map, ThingPlaceMode.Near);
                 }
             }
             this.t++;
         }
 
-        int t;
+        private int t;
     }
 }
