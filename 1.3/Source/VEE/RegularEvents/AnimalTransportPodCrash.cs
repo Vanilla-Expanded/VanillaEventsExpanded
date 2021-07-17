@@ -34,13 +34,13 @@ namespace VEE.RegularEvents
             if (things != null && things.Count > 0)
             {
                 float wealthTotal = map.wealthWatcher.WealthTotal;
-                float percent = 0.05f;
+                float percent = 0.001f;
                 while (true)
                 {
                     if (things.RandomElement() is Pawn p && p.MarketValue < wealthTotal * percent)
                         return p;
                     else
-                        percent += 0.05f;
+                        percent += 0.005f;
                 }
             }
             return null;
