@@ -1,10 +1,5 @@
-﻿using System;
+﻿using RimWorld;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using RimWorld;
-using RimWorld.Planet;
-using UnityEngine;
 using Verse;
 
 namespace VEE.RegularEvents
@@ -15,9 +10,8 @@ namespace VEE.RegularEvents
         {
             Map map = (Map)parms.target;
             List<Thing> things = VEE_DefOf.AnimalPod.root.Generate();
-            IntVec3 intVec = DropCellFinder.RandomDropSpot(map);
 
-            Pawn pawn = this.RandomPawnFromThingList(things, parms);
+            Pawn pawn = this.RandomPawnFromThingList(things, map);
             pawn.Name = PawnBioAndNameGenerator.GeneratePawnName(pawn, NameStyle.Full);
             pawn.health.AddHediff(VEE_DefOf.MightJoin);
             HealthUtility.DamageUntilDowned(pawn);
@@ -25,6 +19,7 @@ namespace VEE.RegularEvents
             string label = "LetterLabelAnimalPodCrash".Translate();
             string text = "AnimalPodCrash".Translate(pawn.Named("PAWN")).AdjustedFor(pawn, "PAWN");
 
+            IntVec3 intVec = DropCellFinder.RandomDropSpot(map);
             Find.LetterStack.ReceiveLetter(label, text, LetterDefOf.NeutralEvent, new TargetInfo(intVec, map, false), null, null);
             ActiveDropPodInfo activeDropPodInfo = new ActiveDropPodInfo();
             activeDropPodInfo.innerContainer.TryAddRangeOrTransfer(things, true, false);
@@ -34,24 +29,18 @@ namespace VEE.RegularEvents
             return true;
         }
 
-        private Pawn RandomPawnFromThingList(List<Thing> things, IncidentParms parms)
+        private Pawn RandomPawnFromThingList(List<Thing> things, Map map)
         {
             if (things != null && things.Count > 0)
             {
-                Map map = (Map)parms.target;
-                bool done = false;
-                float percent = 0.001f;
-                while (!done)
+                float wealthTotal = map.wealthWatcher.WealthTotal;
+                float percent = 0.05f;
+                while (true)
                 {
-                    Pawn randPawn = things.RandomElement() as Pawn;
-                    if (randPawn.MarketValue < map.wealthWatcher.WealthTotal * percent)
-                    {
-                        return randPawn;
-                    }
+                    if (things.RandomElement() is Pawn p && p.MarketValue < wealthTotal * percent)
+                        return p;
                     else
-                    {
-                        percent += 0.01f;
-                    }
+                        percent += 0.05f;
                 }
             }
             return null;
