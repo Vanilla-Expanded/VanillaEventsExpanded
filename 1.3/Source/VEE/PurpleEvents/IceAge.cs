@@ -38,6 +38,6 @@ namespace VEE.PurpleEvents
             Find.World.renderer = new WorldRenderer();
         }
 
-        public override int ChangeTileTemp() => 5;
+        public override int ChangeTileTemp() => -5;
     }
 }

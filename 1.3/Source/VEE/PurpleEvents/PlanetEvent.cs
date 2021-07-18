@@ -60,7 +60,7 @@ namespace VEE.PurpleEvents
                 biomeTempChange++;
             }
 
-            if (this.TicksLeft % 240000 == 8 || this.TicksLeft % 240000 == 4)
+            if (this.TicksLeft.TicksToDays() == 8 || this.TicksLeft.TicksToDays() == 4)
             {
                 Find.World.grid.tiles.ForEach(t => t.temperature -= this.ChangeTileTemp());
             }
