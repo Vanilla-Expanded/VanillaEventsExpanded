@@ -18,8 +18,8 @@ namespace VEE.RegularEvents
 
         public override void Init()
         {
-            RCellFinder.TryFindRandomExitSpot(this.SingleMap.mapPawns.AllPawns.RandomElement(), out IntVec3 fallPos);
-            RCellFinder.TryFindRandomCellOutsideColonyNearTheCenterOfTheMap(fallPos, this.SingleMap, 50f, out aroundThis);
+            RCellFinder.TryFindRandomPawnEntryCell(out IntVec3 reach, this.SingleMap, 1f, false, c => c.Walkable(this.SingleMap));
+            RCellFinder.TryFindRandomCellOutsideColonyNearTheCenterOfTheMap(reach, this.SingleMap, 50f, out aroundThis);
             Find.LetterStack.ReceiveLetter(LetterMaker.MakeLetter("SpaceBattleLabel".Translate(), "SpaceBattle".Translate(), LetterDefOf.NegativeEvent, new LookTargets(aroundThis, SingleMap)));
         }
 
@@ -41,7 +41,7 @@ namespace VEE.RegularEvents
             }
         }
 
-        private int bombIntervalTicks = 1500;
+        private readonly int bombIntervalTicks = 1500;
         private int ticksToNextEffect;
         private IntVec3 nextExplosionCell = new IntVec3();
         private List<Bombardment.BombardmentProjectile> projectiles = new List<Bombardment.BombardmentProjectile>();
@@ -80,8 +80,10 @@ namespace VEE.RegularEvents
                         HealthUtility.DamageUntilDowned(pawn, true);
                     }
                     pawn.apparel.WornApparel.RemoveAll((Apparel a) => a.MarketValue > 400);
-                    List<Thing> list = new List<Thing>();
-                    list.Add(pawn);
+                    List<Thing> list = new List<Thing>
+                    {
+                        pawn
+                    };
                     ChangeDeadPawnsToTheirCorpses(list);
                     DropPodUtility.DropThingsNear(intVec, map, list, 1, false, true, true);
 
@@ -125,7 +127,7 @@ namespace VEE.RegularEvents
 
         private void Draw()
         {
-            if (this.projectiles.NullOrEmpty<Bombardment.BombardmentProjectile>())
+            if (this.projectiles.NullOrEmpty())
             {
                 return;
             }
@@ -146,16 +148,16 @@ namespace VEE.RegularEvents
         {
             for (int i = 0; i < things.Count; i++)
             {
-                if (things[i].ParentHolder is Corpse)
+                if (things[i].ParentHolder is Corpse corpse)
                 {
-                    things[i] = (Corpse)things[i].ParentHolder;
+                    things[i] = corpse;
                 }
             }
         }
 
         public bool VEETryFindSkyfallerCell(ThingDef skyfaller, IntVec3 nearLoc, Map map, int maxDist, out IntVec3 pos)
         {
-            return CellFinderLoose.TryFindSkyfallerCell(skyfaller, map, out pos, 10, nearLoc, maxDist, false, false, false, true, true, true, null);
+            return CellFinderLoose.TryFindSkyfallerCell(skyfaller, map, out pos, 10, nearLoc, maxDist, false, false, false, true, true, true, c => c.InBounds(map) && !c.Fogged(map) && c.Walkable(map));
         }
 
         public void StartRandomFire(IntVec3 pos, Map map)
