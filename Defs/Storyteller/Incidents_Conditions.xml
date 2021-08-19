@@ -172,7 +172,7 @@ It will last anywhere between a few days to a season.</letterText>
     <baseChance>2</baseChance>
   </IncidentDef>
 
-  <IncidentDef>
+  <!-- <IncidentDef>
     <defName>VEE_WandererJoinTraitor</defName>
     <label>wanderer join</label>
     <category>Misc</category>
@@ -185,7 +185,7 @@ It will last anywhere between a few days to a season.</letterText>
     <baseChance>0.4</baseChance>
     <pawnKind>Villager</pawnKind>
     <populationEffect>IncreaseEasy</populationEffect>
-  </IncidentDef>
+  </IncidentDef> -->
 
   <IncidentDef>
     <defName>VEE_SpaceBattle</defName>

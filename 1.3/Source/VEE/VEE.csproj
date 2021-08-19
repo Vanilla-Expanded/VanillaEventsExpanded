@@ -49,6 +49,7 @@
     <Compile Include="PurpleEvents\PlanetEvent.cs" />
     <Compile Include="PurpleEvents\PsychicBloom.cs" />
     <Compile Include="PurpleEvents\PsychicRain.cs" />
+    <Compile Include="QuestNode_Root_WandererJoinTraitor_WalkIn.cs" />
     <Compile Include="RegularEvents\AnimalTransportPodCrash.cs" />
     <Compile Include="RegularEvents\ApparelPod.cs" />
     <Compile Include="RegularEvents\battleAnimal.cs" />
