@@ -86,10 +86,11 @@ namespace VEE.PurpleEvents
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.Look<int>(ref this.curColorIndex, "curColorIndex", 0, false);
-            Scribe_Values.Look<int>(ref this.prevColorIndex, "prevColorIndex", 0, false);
-            Scribe_Values.Look<float>(ref this.curColorTransition, "curColorTransition", 0f, false);
+            Scribe_Values.Look(ref this.curColorIndex, "curColorIndex", 0, false);
+            Scribe_Values.Look(ref this.prevColorIndex, "prevColorIndex", 0, false);
+            Scribe_Values.Look(ref this.curColorTransition, "curColorTransition", 0f, false);
             Scribe_Values.Look(ref number, "number", 0f, false);
+            Scribe_Collections.Look(ref this.flowersList, "flowerlist", LookMode.Def);
         }
 
         private List<ThingDef> flowersList;

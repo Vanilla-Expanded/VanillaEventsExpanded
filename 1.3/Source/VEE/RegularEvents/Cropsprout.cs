@@ -11,62 +11,48 @@ namespace VEE.RegularEvents
 {
     public class Cropsprout : IncidentWorker
     {
-        private static readonly IntRange CountRange = new IntRange(10, 20);
-        private const int MinRoomCells = 64;
-        private const int SpawnRadius = 6;
+        private readonly List<string> excludedPlant = new List<string> { "Plant_TreeGauranlen", "Plant_MossGauranlen", "Plant_PodGauranlen", "Plant_TreeAnima", "Plant_GrassAnima" };
+        private ThingDef plantChoosen;
+        private IntVec3 cell;
 
         protected override bool CanFireNowSub(IncidentParms parms)
         {
-            if (!base.CanFireNowSub(parms))
-            {
-                return false;
-            }
             Map map = (Map)parms.target;
-            IEnumerable<ThingStuffPair> allP = ThingStuffPair.AllWith((ThingDef p) => p.plant != null && p.plant.harvestTag == "Standard" && p.plant.harvestYield != 0 && p.plant.harvestedThingDef != null && !p.defName.Contains("RB_"));
-            ThingStuffPair plantChoosen = allP.InRandomOrder().RandomElement();
-            return map.weatherManager.growthSeasonMemory.GrowthSeasonOutdoorsNow && this.TryFindRootCell(map, out IntVec3 intVec, plantChoosen.thing);
+
+            if (!base.CanFireNowSub(parms)) return false;
+            if (!map.weatherManager.growthSeasonMemory.GrowthSeasonOutdoorsNow) return false;
+
+            this.plantChoosen = ThingStuffPair.AllWith(p => 
+                p.plant != null && 
+                p.plant.harvestTag == "Standard" && 
+                p.plant.harvestYield != 0 && 
+                p.plant.harvestedThingDef != null && 
+                !p.defName.Contains("RB_") &&
+                !this.excludedPlant.Contains(p.defName)).InRandomOrder().RandomElement().thing;
+            
+            return this.TryFindRootCell(map, out this.cell, this.plantChoosen);
         }
 
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
             Map map = (Map)parms.target;
+            int pNumber = Rand.RangeInclusive(10, 20);
 
-            IEnumerable<ThingStuffPair> allP = ThingStuffPair.AllWith((ThingDef p) => p.plant != null && p.plant.harvestTag == "Standard" && p.plant.harvestYield != 0 && p.plant.harvestedThingDef != null);
-            ThingStuffPair plantChoosen = allP.InRandomOrder().RandomElement();
-
-            if (!this.TryFindRootCell(map, out IntVec3 root, plantChoosen.thing))
+            for (int i = 0; i < pNumber; i++)
             {
-                return false;
-            }
-            Thing thing = null;
-            int randomInRange = CountRange.RandomInRange;
-
-            for (int i = 0; i < randomInRange; i++)
-            {
-                IntVec3 intVec;
-                if (!CellFinder.TryRandomClosewalkCellNear(root, map, 6, out intVec, (IntVec3 x) => this.CanSpawnAt(x, map, plantChoosen.thing)))
+                if (CellFinder.TryRandomClosewalkCellNear(this.cell, map, 6, out IntVec3 intVec, x => this.CanSpawnAt(x, map, this.plantChoosen)))
                 {
-                    break;
-                }
-                Plant plant = intVec.GetPlant(map);
-                if (plant != null)
-                {
-                    plant.Destroy(DestroyMode.Vanish);
-                }
-                Thing thing2 = GenSpawn.Spawn(plantChoosen.thing, intVec, map, WipeMode.Vanish);
-                Plant plant1 = thing2 as Plant;
-                plant1.Growth = 0.5f;
-                if (thing == null)
-                {
-                    thing = thing2;
+                    Plant p = intVec.GetPlant(map);
+                    if (p == null || !this.excludedPlant.Contains(p.def.defName))
+                    {
+                        p?.DeSpawn();
+                        Plant crop = GenSpawn.Spawn(this.plantChoosen, intVec, map, WipeMode.Vanish) as Plant;
+                        crop.Growth = 0.5f;
+                    }
                 }
             }
-            if (thing == null)
-            {
-                return false;
-            }
-            string t = "CS1".Translate() + " " + thing.Label + " " +"CS2".Translate();
-            Find.LetterStack.ReceiveLetter("CSLabel".Translate(), t, LetterDefOf.PositiveEvent, new TargetInfo(thing.Position, map, false), null, null);
+            
+            Find.LetterStack.ReceiveLetter("CSLabel".Translate(), $"{"CS1".Translate()} {this.plantChoosen.label} {"CS2".Translate()}", LetterDefOf.PositiveEvent, new TargetInfo(this.cell, map), hyperlinkThingDefs: new List<ThingDef> { this.plantChoosen });
             return true;
         }
 
@@ -77,22 +63,9 @@ namespace VEE.RegularEvents
 
         private bool CanSpawnAt(IntVec3 c, Map map, ThingDef plantC)
         {
-            if (!c.Standable(map) || c.Fogged(map) || map.fertilityGrid.FertilityAt(c) < plantC.plant.fertilityMin || !c.GetRoom(map).PsychologicallyOutdoors || c.GetEdifice(map) != null || !PlantUtility.GrowthSeasonNow(c, map, false))
+            if (!c.Standable(map) || c.Fogged(map) || map.fertilityGrid.FertilityAt(c) < plantC.plant.fertilityMin || c.GetEdifice(map) != null || !PlantUtility.GrowthSeasonNow(c, map))
             {
                 return false;
-            }
-            Plant plant = c.GetPlant(map);
-            if (plant != null && plant.def.plant.growDays > 10f)
-            {
-                return false;
-            }
-            List<Thing> thingList = c.GetThingList(map);
-            for (int i = 0; i < thingList.Count; i++)
-            {
-                if (thingList[i].def == plantC)
-                {
-                    return false;
-                }
             }
             return true;
         }
