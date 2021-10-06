@@ -23,7 +23,6 @@ namespace VEE
 
             if (Find.TickManager.TicksGame % 1024 == 0)
             {
-                // Log.Message($"Is drought going on: {droughtGoingOn}. Affected plant(s): {affectedPlants.Count}.");
                 if (!map.gameConditionManager.ConditionIsActive(VEE_DefOf.Drought))
                 {
                     this.droughtGoingOn = false;
@@ -32,13 +31,18 @@ namespace VEE
                 {
                     affectedPlants.Clear();
                 }
+
+                if (this.droughtGoingOn && map.weatherDecider.ForcedWeather.rainRate > 0)
+                {
+                    map.gameConditionManager.GetActiveCondition(VEE_DefOf.Drought).End();
+                }
             }
         }
 
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.Look<bool>(ref this.droughtGoingOn, "droughtGoingOn");
+            Scribe_Values.Look(ref this.droughtGoingOn, "droughtGoingOn");
             HarmonyInit.mapCompDrought = null;
         }
     }
