@@ -17,8 +17,8 @@ namespace VEE.RegularEvents
                 return false;
             }
             Map map = (Map)parms.target;
-            IntVec3 intVec;
-            return !map.GameConditionManager.ConditionIsActive(GameConditionDefOf.ToxicFallout) && map.mapTemperature.SeasonAcceptableFor(ThingDefOf.Human) && this.TryFindEntryCell(map, out intVec) && FindHuntPrey(map).Count > 0;
+
+            return !map.GameConditionManager.ConditionIsActive(GameConditionDefOf.ToxicFallout) && map.mapTemperature.SeasonAcceptableFor(ThingDefOf.Human) && this.TryFindEntryCell(map, out IntVec3 intVec) && FindHuntPrey(map).Count > 0;
         }
         protected override bool TryExecuteWorker(IncidentParms parms)
         {

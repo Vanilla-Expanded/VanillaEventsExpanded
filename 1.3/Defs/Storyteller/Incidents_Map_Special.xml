@@ -5,7 +5,6 @@
   </IncidentTargetTagDef>
 
   <!--================= Purple event attracted events ================-->
-
   <IncidentDef>
     <defName>RaidEnemyPurple</defName>
     <label>enemy raid ice age</label>
@@ -45,5 +44,4 @@
     <category>ThreatBig</category>
     <pointsScaleable>true</pointsScaleable>
   </IncidentDef>
-
 </Defs>

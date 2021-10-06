@@ -7,7 +7,7 @@
     <targetTags>
       <li>World</li>
     </targetTags>
-    <workerClass>VEE.IncidentWorker_MakeGameConditionVEE</workerClass>
+    <workerClass>VEE.IncidentWorker_MakeGameConditionPurple</workerClass>
     <gameCondition>IceAge</gameCondition>
     <letterLabel>Ice Age</letterLabel>
     <letterText>Atmospheric composition of the planet drastically changed resulting in a significant drop in temperature.
@@ -32,7 +32,7 @@ It will last anywhere between a season to several years.</letterText>
     <targetTags>
       <li>World</li>
     </targetTags>
-    <workerClass>VEE.IncidentWorker_MakeGameConditionVEE</workerClass>
+    <workerClass>VEE.IncidentWorker_MakeGameConditionPurple</workerClass>
     <gameCondition>GlobalWarming</gameCondition>
     <letterLabel>Global Warming</letterLabel>
     <letterText>Global temperatures have suddenly risen to dangerous levels.
@@ -57,7 +57,7 @@ It will last anywhere between a season to several years.</letterText>
     <targetTags>
       <li>World</li>
     </targetTags>
-    <workerClass>VEE.IncidentWorker_MakeGameConditionVEE</workerClass>
+    <workerClass>VEE.IncidentWorker_MakeGameConditionPurple</workerClass>
     <gameCondition>PsychicRain</gameCondition>
     <letterLabel>Psychic Rain</letterLabel>
     <letterText>A dangerous psychic entity caused disturbance on subatomic levels, resonating across all particles of the atmosphere.
@@ -82,7 +82,7 @@ It will last anywhere between a season to several years.</letterText>
     <targetTags>
       <li>World</li>
     </targetTags>
-    <workerClass>VEE.IncidentWorker_MakeGameConditionVEE</workerClass>
+    <workerClass>VEE.IncidentWorker_MakeGameConditionPurple</workerClass>
     <gameCondition>LongNight</gameCondition>
     <letterLabel>Long Night</letterLabel>
     <letterText>A space entity of unimaginable size has covered a local star, resulting in a long lasting eclipse.
@@ -107,7 +107,7 @@ It will last anywhere between a season to several years.</letterText>
     <targetTags>
       <li>World</li>
     </targetTags>
-    <workerClass>VEE.IncidentWorker_MakeGameConditionVEE</workerClass>
+    <workerClass>VEE.IncidentWorker_MakeGameConditionPurple</workerClass>
     <gameCondition>PsychicBloom</gameCondition>
     <letterLabel>Psychic Bloom</letterLabel>
     <letterText>A strong psychic pulse emitted by a long forgotten entity changed the very genetical structure of local flora. Whilst the sky filled with a seemingly endless auroras, colourful flowers started sprouting everywhere. 

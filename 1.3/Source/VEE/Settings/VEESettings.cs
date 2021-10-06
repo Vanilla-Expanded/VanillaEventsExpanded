@@ -15,8 +15,10 @@ namespace VEE.Settings
 
         public Dictionary<string, float> incidentsOccurenceForReset = new Dictionary<string, float>();
 
-        public int numberOfMods = 0;
-        public int incidentsLoaded = 0;
+        internal int numberOfMods = 0;
+        internal int incidentsLoaded = 0;
+        internal int daysBetweenPurpleEvent = 300;
+        internal string daysBetweenPurpleEventBuffer;
 
         private readonly float startPos = 48f;
         private readonly float offset = 10f;
@@ -56,8 +58,15 @@ namespace VEE.Settings
                 CenteredLabel(fullRect, "NeedToBeIngame".Translate());
                 y += offset + sLineHeight;
             }
+            // Days between purple events
+            Rect entryLabelRect = new Rect(inRect.x, y, inRect.width, sLineHeight);
+            Widgets.Label(entryLabelRect, "VEE_DaysBetweenPurpleEvents".Translate());
+            y += sLineHeight;
+            Rect entryRect = new Rect(inRect.x, y, inRect.width, sLineHeight);
+            Widgets.IntEntry(entryRect, ref daysBetweenPurpleEvent, ref daysBetweenPurpleEventBuffer);
+            y += offset + sLineHeight;
             // Incident settings
-            Rect outRect = new Rect(inRect.x, y, inRect.width, inRect.height - 95f);
+            Rect outRect = new Rect(inRect.x, y, inRect.width, inRect.height - (offset + sLineHeight) * 4);
 
             Rect viewRect = new Rect(inRect.x, y, inRect.width - borderOffsest, (incidentsLoaded + numberOfMods) * lineHeight);
             Widgets.BeginScrollView(outRect, ref scrollPosition, viewRect, true);
@@ -102,6 +111,7 @@ namespace VEE.Settings
         public override void ExposeData()
         {
             base.ExposeData();
+            Scribe_Values.Look(ref this.daysBetweenPurpleEvent, "daysBetweenPurpleEvent");
             Scribe_Collections.Look(ref incidentsStatus, "incidentsStatus", LookMode.Value, LookMode.Value);
             Scribe_Collections.Look(ref incidentsOccurence, "incidentsOccurence", LookMode.Value, LookMode.Value);
             Scribe_Collections.Look(ref incidentsOccurenceForReset, "incidentsOccurenceForReset", LookMode.Value, LookMode.Value);

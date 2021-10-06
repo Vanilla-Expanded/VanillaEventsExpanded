@@ -35,4 +35,6 @@
 
     <GCWResetOBO>Stop world condition...</GCWResetOBO>
     <GCMResetOBO>Stop map condition...</GCMResetOBO>
+
+    <VEE_DaysBetweenPurpleEvents>Number of day(s) in-between purple events:</VEE_DaysBetweenPurpleEvents>
 </LanguageData>
