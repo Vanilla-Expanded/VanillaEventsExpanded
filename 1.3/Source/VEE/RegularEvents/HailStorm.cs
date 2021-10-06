@@ -28,10 +28,7 @@ namespace VEE.RegularEvents
             LessonAutoActivator.TeachOpportunity(ConceptDefOf.AllowedAreas, OpportunityType.Critical);
         }
 
-        public override bool AllowEnjoyableOutsideNow(Map map)
-        {
-            return false;
-        }
+        public override bool AllowEnjoyableOutsideNow(Map map) => false;
 
         public override void ExposeData()
         {
@@ -59,10 +56,7 @@ namespace VEE.RegularEvents
             }
         }
 
-        public override WeatherDef ForcedWeather()
-        {
-            return VEE_DefOf.VEE_Hail;
-        }
+        public override WeatherDef ForcedWeather() => VEE_DefOf.VEE_Hail;
 
         public override void GameConditionDraw(Map map)
         {

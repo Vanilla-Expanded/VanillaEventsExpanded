@@ -22,6 +22,8 @@ namespace VEE.PurpleEvents
             };
         }
 
+        public override bool AllowEnjoyableOutsideNow(Map map) => false;
+
         public override WeatherDef ForcedWeather()
         {
             if (Find.CurrentMap?.mapTemperature?.OutdoorTemp <= 0)
@@ -47,17 +49,11 @@ namespace VEE.PurpleEvents
             {
                 if (Find.TickManager.TicksGame % 3451 == 0)
                 {
-                    for (int i = 0; i < affectedMaps.Count; i++)
-                    {
-                        this.DoPawnsAgeFaster(affectedMaps[i]);
-                    }
+                    this.DoPawnsAgeFaster(map);
                 }
                 for (int j = 0; j < this.overlays.Count; j++)
                 {
-                    for (int k = 0; k < affectedMaps.Count; k++)
-                    {
-                        this.overlays[j].TickOverlay(affectedMaps[k]);
-                    }
+                    this.overlays[j].TickOverlay(map);
                 }
             }
         }

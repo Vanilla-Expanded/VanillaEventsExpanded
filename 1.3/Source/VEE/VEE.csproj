@@ -44,7 +44,7 @@
     <Compile Include="Heddifs\HeddifComp_Traitor.cs" />
     <Compile Include="Comps\MapComp_Drought.cs" />
     <Compile Include="Comps\WorldComp_Purple.cs" />
-    <Compile Include="Others\IncidentWorker_MakeGameConditionVEE.cs" />
+    <Compile Include="Others\IncidentWorker_MakeGameCondition.cs" />
     <Compile Include="PurpleEvents\GlobalWarming.cs" />
     <Compile Include="PurpleEvents\LongNight.cs" />
     <Compile Include="PurpleEvents\PlanetEvent.cs" />

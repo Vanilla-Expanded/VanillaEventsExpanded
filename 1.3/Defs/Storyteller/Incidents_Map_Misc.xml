@@ -31,9 +31,7 @@
     <workerClass>IncidentWorker_MakeGameCondition</workerClass>
     <gameCondition>Drought</gameCondition>
     <letterLabel>Drought</letterLabel>
-    <letterText>An unusual drought has set in.
-
-Drought is devastating for plant life and will quickly prevent all the crops not planted in hydroponics or high fertility soil to grow.</letterText>
+    <letterText>An unusual drought has set in.\n\nDrought is devastating for plant life and will quickly prevent all the crops not planted in hydroponics or high fertility soil to grow.</letterText>
     <letterDef>NegativeEvent</letterDef>
     <baseChance>0.15</baseChance>
     <minRefireDays>40</minRefireDays>
@@ -50,8 +48,11 @@ Drought is devastating for plant life and will quickly prevent all the crops not
     <targetTags>
       <li>Map_PlayerHome</li>
     </targetTags>
-    <workerClass>IncidentWorker_MakeGameCondition</workerClass>
+    <workerClass>VEE.IncidentWorker_MakeGameConditionNoLetter</workerClass>
     <gameCondition>SpaceBattle</gameCondition>
+    <letterLabel>Space Battle</letterLabel>
+    <letterText>Several massive spaceships have engaged in combat in the planet’s orbit. Missed shots and debris can impact the ground in the area. This can lead to massive fires.</letterText>
+    <letterDef>NegativeEvent</letterDef>
     <baseChance>0.3</baseChance>
     <minRefireDays>40</minRefireDays>
     <durationDays>

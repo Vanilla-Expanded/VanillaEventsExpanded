@@ -16,6 +16,8 @@ namespace VEE.RegularEvents
         IntVec3 aroundThis = new IntVec3();
         int delay = 0;
 
+        public override bool AllowEnjoyableOutsideNow(Map map) => false;
+
         public override void Init()
         {
             RCellFinder.TryFindRandomPawnEntryCell(out IntVec3 reach, this.SingleMap, 1f, false, c => c.Walkable(this.SingleMap));
