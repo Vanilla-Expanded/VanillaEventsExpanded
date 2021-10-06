@@ -93,7 +93,7 @@ namespace VEE.PurpleEvents
         }
 
         private List<ThingDef> flowersList;
-        private List<string> excludedPlant = new List<string> { "Plant_TreeGauranlen", "Plant_MossGauranlen", "Plant_PodGauranlen", "Plant_TreeAnima", "Plant_GrassAnima" };
+        private readonly List<string> excludedPlant = new List<string> { "Plant_TreeGauranlen", "Plant_MossGauranlen", "Plant_PodGauranlen", "Plant_TreeAnima", "Plant_GrassAnima" };
 
         public override void Init()
         {

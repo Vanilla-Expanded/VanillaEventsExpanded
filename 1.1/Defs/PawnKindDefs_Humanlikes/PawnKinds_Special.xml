@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+    <PawnKindDef ParentName="OutlanderBase">
+        <defName>Hunter</defName>
+        <label>hunter</label>
+        <labelMale>hunter</labelMale>
+        <labelFemale>hunter</labelFemale>
+        <labelPlural>hunters</labelPlural>
+        <combatPower>200</combatPower>
+        <minGenerationAge>20</minGenerationAge>
+        <maxGenerationAge>30</maxGenerationAge>
+        <isFighter>true</isFighter>
+        <race>Human</race>
+        <invNutrition>10.0</invNutrition>
+        <requiredWorkTags>
+            <li>Violent</li>
+            <li>Caring</li>
+        </requiredWorkTags>
+        <gearHealthRange>1~1</gearHealthRange>
+        <apparelMoney>200~1500</apparelMoney>
+        <weaponMoney>500~1100</weaponMoney>
+        <weaponTags>
+            <li>NeolithicRangedBasic</li>
+            <li>NeolithicRangedDecent</li>
+            <li>SimpleGun</li>
+            <li>SniperRifle</li>
+        </weaponTags>
+    </PawnKindDef>
+</Defs>

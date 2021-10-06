@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <ThingDef ParentName="BuildingBase">
+        <defName>VEE_ShipChunkHuman</defName>
+        <graphicData>
+            <texPath>Things/Buildings_Exotic/ShipChunkHuman</texPath>
+            <graphicClass>Graphic_Random</graphicClass>
+            <drawSize>(2,2)</drawSize>
+            <damageData>
+                <rect>(0.1,0.1,1.8,1.8)</rect>
+            </damageData>
+            <shadowData>
+                <volume>(1.39,0.5,1.25)</volume>
+            </shadowData>
+        </graphicData>
+        <label>ship chunk</label>
+        <description>A chunk of a spacecraft. Can be deconstructed to yield useful resources.</description>
+        <category>Building</category>
+        <altitudeLayer>Building</altitudeLayer>
+        <pathCost>35</pathCost>
+        <blockWind>true</blockWind>
+        <passability>PassThroughOnly</passability>
+        <fillPercent>0.50</fillPercent>
+        <size>(2,2)</size>
+        <statBases>
+            <MaxHitPoints>300</MaxHitPoints>
+            <Flammability>0</Flammability>
+            <Beauty>-20</Beauty>
+            <WorkToBuild>12000</WorkToBuild>
+        </statBases>
+        <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+        <killedLeavings>
+            <ChunkSlagSteel>2</ChunkSlagSteel>
+        </killedLeavings>
+        <costList>
+            <ComponentIndustrial>11</ComponentIndustrial>
+            <Steel>40</Steel>
+        </costList>
+        <building>
+            <claimable>false</claimable>
+            <alwaysDeconstructible>true</alwaysDeconstructible>
+        </building>
+        <selectable>true</selectable>
+        <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+        <drawerType>MapMeshOnly</drawerType>
+        <repairEffect>ConstructMetal</repairEffect>
+    </ThingDef>
+
+    <ThingDef ParentName="BuildingBase">
+        <defName>VEE_Shuttle</defName>
+        <thingClass>VEE.Shuttle</thingClass>
+        <tickerType>Normal</tickerType>
+        <graphicData>
+            <texPath>Things/Buildings_Exotic/ShipChunkShuttle</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(4,3)</drawSize>
+            <damageData>
+                <rect>(0.1,0.1,1.8,1.8)</rect>
+            </damageData>
+            <shadowData>
+                <volume>(1.39,0.5,1.25)</volume>
+            </shadowData>
+        </graphicData>
+        <label>shuttle chunk</label>
+        <description>A chunk of a shuttle. Can be deconstructed to yield useful resources.</description>
+        <category>Building</category>
+        <altitudeLayer>Building</altitudeLayer>
+        <pathCost>50</pathCost>
+        <blockWind>true</blockWind>
+        <passability>PassThroughOnly</passability>
+        <fillPercent>0.50</fillPercent>
+        <size>(4,3)</size>
+        <statBases>
+            <MaxHitPoints>300</MaxHitPoints>
+            <Flammability>0</Flammability>
+            <Beauty>-20</Beauty>
+            <WorkToBuild>12000</WorkToBuild>
+        </statBases>
+        <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+        <killedLeavings>
+            <ChunkSlagSteel>5</ChunkSlagSteel>
+        </killedLeavings>
+        <costList>
+            <ComponentIndustrial>11</ComponentIndustrial>
+            <Steel>100</Steel>
+        </costList>
+        <building>
+            <claimable>false</claimable>
+            <alwaysDeconstructible>true</alwaysDeconstructible>
+        </building>
+        <selectable>true</selectable>
+        <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+        <drawerType>MapMeshOnly</drawerType>
+        <repairEffect>ConstructMetal</repairEffect>
+    </ThingDef>
+
+    <ThingDef ParentName="SkyfallerBase">
+        <defName>ShuttleChunkIncoming</defName>
+        <label>shuttle chunk (incoming)</label>
+        <size>(4, 3)</size>
+        <skyfaller>
+            <shadowSize>(4.5, 3.5)</shadowSize>
+            <explosionRadius>4</explosionRadius>
+            <explosionDamage>Bomb</explosionDamage>
+            <explosionDamageFactor>0.8</explosionDamageFactor>
+        </skyfaller>
+    </ThingDef>
+
+    <!-- ========== Slag Incoming ========== -->
+    <ThingDef ParentName="SkyfallerBase">
+        <defName>SlagIncoming</defName>
+        <label>slag (incoming)</label>
+        <size>(1, 1)</size>
+        <skyfaller>
+            <shadowSize>(1.5, 1.5)</shadowSize>
+            <explosionRadius>3</explosionRadius>
+            <explosionDamage>Bomb</explosionDamage>
+            <explosionDamageFactor>0.4</explosionDamageFactor>
+        </skyfaller>
+  </ThingDef>
+
+</Defs>

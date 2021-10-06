@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <GameConditionDef>
+    <defName>IceAge</defName>
+    <conditionClass>VEE.PurpleEvents.IceAge</conditionClass>
+    <label>Ice Age</label>
+    <description>Atmospheric composition of the planet drastically changed resulting in a significant drop in temperature.
+
+Flora and Fauna is suffering from these changes as biomes shift into their colder counterparts. Resources become scarce, forcing factions into conflict.
+
+It will last anywhere between a season to several years.</description>
+    <endMessage>The ice age is ending</endMessage>
+    <canBePermanent>false</canBePermanent>
+    <exclusiveConditions>
+      <li>GlobalWarming</li>
+      <li>PsychicRain</li>
+      <li>LongNight</li>
+      <li>PsychicBloom</li>
+    </exclusiveConditions>
+  </GameConditionDef>
+
+  <GameConditionDef>
+    <defName>GlobalWarming</defName>
+    <conditionClass>VEE.PurpleEvents.GlobalWarming</conditionClass>
+    <label>Global Warming</label>
+    <description>Global temperatures have suddenly risen to dangerous levels.
+
+Flora and Fauna is suffering from these changes as biomes shift into their warmer counterparts. Resources become scarce, forcing factions into conflict.
+
+It will last anywhere between a season to several years.</description>
+    <endMessage>The global warming is ending</endMessage>
+    <canBePermanent>false</canBePermanent>
+    <exclusiveConditions>
+      <li>IceAge</li>
+      <li>PsychicRain</li>
+      <li>LongNight</li>
+      <li>PsychicBloom</li>
+    </exclusiveConditions>
+  </GameConditionDef>
+  
+  <GameConditionDef>
+    <defName>PsychicRain</defName>
+    <conditionClass>VEE.PurpleEvents.PsychicRain</conditionClass>
+    <label>Psychic Rain</label>
+    <description>A dangerous psychic entity caused disturbance on subatomic levels, resonating across all particles of the atmosphere.
+
+A seemingly endless supernatural rain has begun, altering the very composition of time. Any person or creature not under the roof will age significantly faster.
+
+It will last anywhere between a season to several years.</description>
+    <endMessage>The psychic rain is ending</endMessage>
+    <canBePermanent>true</canBePermanent>
+    <exclusiveConditions>
+      <li>GlobalWarming</li>
+      <li>IceAge</li>
+      <li>LongNight</li>
+      <li>PsychicBloom</li>
+      <li>Drought</li>
+    </exclusiveConditions>
+  </GameConditionDef>
+
+  <GameConditionDef>
+    <defName>LongNight</defName>
+    <conditionClass>VEE.PurpleEvents.LongNight</conditionClass>
+    <label>Long Night</label>
+    <description>A space entity of unimaginable size has covered a local star, resulting in a long lasting eclipse.
+
+Terrified of this supernatural phenomenon, other factions will use this time to wage war and conflict across the surface.
+
+It will last anywhere between a season to several years.</description>
+    <endMessage>The long night is ending</endMessage>
+    <canBePermanent>true</canBePermanent>
+    <exclusiveConditions>
+      <li>GlobalWarming</li>
+      <li>PsychicRain</li>
+      <li>IceAge</li>
+      <li>PsychicBloom</li>
+      <li>Eclipse</li>
+    </exclusiveConditions>
+  </GameConditionDef>
+
+  <GameConditionDef>
+    <defName>PsychicBloom</defName>
+    <conditionClass>VEE.PurpleEvents.PsychicBloom</conditionClass>
+    <label>Psychic Bloom</label>
+    <description>A strong psychic pulse emitted by a long forgotten entity changed the very genetical structure of local flora. Whilst the sky filled with a seemingly endless auroras, colourful flowers started sprouting everywhere. 
+
+All pawns will gain a positive mood buff for the time of the event. The rapidly spreading flowers will overgrow everything, including your fields. 
+
+It will last anywhere between a few days to a season.</description>
+    <endMessage>The psychic bloom is ending</endMessage>
+    <canBePermanent>true</canBePermanent>
+    <exclusiveConditions>
+      <li>GlobalWarming</li>
+      <li>PsychicRain</li>
+      <li>LongNight</li>
+      <li>IceAge</li>
+    </exclusiveConditions>
+  </GameConditionDef>
+
+</Defs>
