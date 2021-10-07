@@ -27,6 +27,7 @@ namespace VEE.RegularEvents
                 p.plant.harvestTag == "Standard" && 
                 p.plant.harvestYield != 0 && 
                 p.plant.harvestedThingDef != null && 
+                !p.plant.cavePlant &&
                 !p.defName.Contains("RB_") &&
                 !this.excludedPlant.Contains(p.defName)).InRandomOrder().RandomElement().thing;
             
