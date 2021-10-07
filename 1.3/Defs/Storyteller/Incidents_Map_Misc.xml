@@ -11,7 +11,7 @@
     <workerClass>IncidentWorker_MakeGameCondition</workerClass>
     <gameCondition>HailStorm</gameCondition>
     <letterLabel>Hail Storm</letterLabel>
-    <letterText>A freak, small scale hail storm is ravaging the local area. Any person or creature not hiding under the roof risks getting injured by ice pellets.</letterText>
+    <letterText>A freak, small scale hail storm is ravaging the local area. Any person or creature not hiding under the roof risks getting injured by ice pellets. Get some blunt resistant armour!</letterText>
     <letterDef>NegativeEvent</letterDef>
     <baseChance>0.15</baseChance>
     <minRefireDays>40</minRefireDays>

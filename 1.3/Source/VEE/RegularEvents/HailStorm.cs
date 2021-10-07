@@ -20,8 +20,6 @@ namespace VEE.RegularEvents
             };
         }
 
-        private Dictionary<Pawn, bool> pawnsArmorValue = new Dictionary<Pawn, bool>();
-
         public override void Init()
         {
             LessonAutoActivator.TeachOpportunity(ConceptDefOf.ForbiddingDoors, OpportunityType.Critical);
@@ -29,16 +27,6 @@ namespace VEE.RegularEvents
         }
 
         public override bool AllowEnjoyableOutsideNow(Map map) => false;
-
-        public override void ExposeData()
-        {
-            Scribe_Collections.Look<Pawn, bool>(ref pawnsArmorValue, "pawnarmorvalue", LookMode.Deep, LookMode.Value);
-            if (Scribe.mode == LoadSaveMode.PostLoadInit)
-            {
-                
-            }
-            base.ExposeData();
-        }
 
         public override void GameConditionTick()
         {
@@ -74,7 +62,7 @@ namespace VEE.RegularEvents
                 Pawn pawn = allPawnsSpawned[i];
                 if (pawn != null && !pawn.Position.Roofed(map) && pawn.def.race != null && pawn.def.race.IsFlesh && Rand.Bool)
                 {
-                    if (GetOverallArmor(pawn, StatDefOf.ArmorRating_Blunt) < 0.06f)
+                    if (GetOverallArmor(pawn, StatDefOf.ArmorRating_Blunt) < 0.1f)
                     {
                         DamageInfo dinfo = new DamageInfo(DamageDefOf.Blunt, 0.8f);
                         dinfo.SetBodyRegion(BodyPartHeight.Top, BodyPartDepth.Outside);
@@ -87,26 +75,30 @@ namespace VEE.RegularEvents
         private float GetOverallArmor(Pawn pawn, StatDef stat)
         {
             float num = 0f;
-            float num2 = Mathf.Clamp01(pawn.GetStatValue(stat, true) / 2f);
-            List<BodyPartRecord> allParts = pawn.RaceProps.body.AllParts;
-            List<Apparel> list = (pawn.apparel != null) ? pawn.apparel.WornApparel : null;
-            for (int i = 0; i < allParts.Count; i++)
+            if (pawn.RaceProps.Humanlike && pawn.apparel?.WornApparel is List<Apparel> apparels && apparels.Count > 0)
             {
-                float num3 = 1f - num2;
-                if (list != null)
+                float num2 = Mathf.Clamp01(pawn.GetStatValue(stat, true) / 2f);
+
+                List<BodyPartRecord> allParts = pawn.RaceProps.body.AllParts;
+                for (int i = 0; i < allParts.Count; i++)
                 {
-                    for (int j = 0; j < list.Count; j++)
+                    float num3 = 1f - num2;
+                    for (int j = 0; j < apparels.Count; j++)
                     {
-                        if (list[j].def.apparel.CoversBodyPart(allParts[i]))
+                        if (apparels[j].def.apparel.CoversBodyPart(allParts[i]))
                         {
-                            float num4 = Mathf.Clamp01(list[j].GetStatValue(stat, true) / 2f);
+                            float num4 = Mathf.Clamp01(apparels[j].GetStatValue(stat, true) / 2f);
                             num3 *= 1f - num4;
                         }
                     }
+                    num += allParts[i].coverageAbs * (1f - num3);
                 }
-                num += allParts[i].coverageAbs * (1f - num3);
+                num = Mathf.Clamp(num * 2f, 0f, 2f);
             }
-            num = Mathf.Clamp(num * 2f, 0f, 2f);
+            else if (pawn.RaceProps.Animal)
+            {
+                num = pawn.GetStatValue(stat, true);
+            }
 
             return num;
         }
