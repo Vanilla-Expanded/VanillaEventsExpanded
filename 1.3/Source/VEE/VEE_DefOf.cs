@@ -40,6 +40,7 @@ namespace VEE
         /* PawnKindDefOf */
         public static PawnKindDef StrangerInBlack;
         public static PawnKindDef Hunter;
+        public static PawnKindDef VEE_TribalHunter;
 
         /* ThingDefOf */
         public static ThingDef VEE_ShipChunkHuman;
@@ -59,5 +60,9 @@ namespace VEE
 
         /* Letter def */
         public static LetterDef PurpleEvent;
+
+        /* Meme def */
+        [MayRequireIdeology]
+        public static MemeDef AnimalPersonhood;
     }
 }

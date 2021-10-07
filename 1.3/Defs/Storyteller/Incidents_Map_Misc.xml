@@ -182,7 +182,7 @@
     <targetTags>
       <li>Map_PlayerHome</li>
     </targetTags>
-    <workerClass>VEE.RegularEvents.HuntingParty</workerClass>
+    <workerClass>VEE.HuntingParty</workerClass>
     <baseChance>0.45</baseChance>
   </IncidentDef>
 

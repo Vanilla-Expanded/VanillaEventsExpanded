@@ -17,21 +17,11 @@ namespace VEE.Jobs
             get
             {
                 Corpse corpse = this.Corpse;
-                if (corpse != null)
-                {
-                    return corpse.InnerPawn;
-                }
-                return (Pawn)this.job.GetTarget(TargetIndex.A).Thing;
+                return corpse != null ? corpse.InnerPawn : (Pawn)this.job.GetTarget(TargetIndex.A).Thing;
             }
         }
 
-        private Corpse Corpse
-        {
-            get
-            {
-                return this.job.GetTarget(TargetIndex.A).Thing as Corpse;
-            }
-        }
+        private Corpse Corpse => this.job.GetTarget(TargetIndex.A).Thing as Corpse;
 
         public override void ExposeData()
         {
@@ -39,14 +29,7 @@ namespace VEE.Jobs
             Scribe_Values.Look<int>(ref this.jobStartTick, "jobStartTick", 0, false);
         }
 
-        public override string GetReport()
-        {
-            if (this.Victim != null)
-            {
-                return this.job.def.reportString.Replace("TargetA", this.Victim.LabelShort);
-            }
-            return base.GetReport();
-        }
+        public override string GetReport() => this.Victim != null ? JobUtility.GetResolvedJobReport(this.job.def.reportString, this.Victim) : base.GetReport();
 
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
@@ -158,8 +141,7 @@ namespace VEE.Jobs
                     return;
                 }
                 corpse.SetForbidden(false, true);
-                IntVec3 c;
-                if (RCellFinder.TryFindBestExitSpot(this.pawn, out c))
+                if (RCellFinder.TryFindBestExitSpot(this.pawn, out IntVec3 c))
                 {
                     this.pawn.Reserve(corpse, this.job, 1, -1, null, true);
                     this.pawn.Reserve(c, this.job, 1, -1, null, true);
@@ -175,9 +157,6 @@ namespace VEE.Jobs
         }
 
         private int jobStartTick = -1;
-        private const TargetIndex VictimInd = TargetIndex.A;
-        private const TargetIndex CorpseInd = TargetIndex.A;
-        private const TargetIndex StoreCellInd = TargetIndex.B;
-        private const int MaxHuntTicks = 50000;
+        private const int MaxHuntTicks = 60000;
     }
 }

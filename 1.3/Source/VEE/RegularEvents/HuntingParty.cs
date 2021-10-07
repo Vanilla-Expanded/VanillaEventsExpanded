@@ -5,66 +5,72 @@ using System.Text;
 using UnityEngine;
 using Verse;
 using RimWorld;
+using Verse.AI;
 
-namespace VEE.RegularEvents
+namespace VEE
 {
     public class HuntingParty : IncidentWorker
     {
+        private IntVec3 entryCell;
+        private Faction faction;
+        private List<Pawn> huntTargets = new List<Pawn>();
+
         protected override bool CanFireNowSub(IncidentParms parms)
         {
-            if (!base.CanFireNowSub(parms))
-            {
-                return false;
-            }
             Map map = (Map)parms.target;
 
-            return !map.GameConditionManager.ConditionIsActive(GameConditionDefOf.ToxicFallout) && map.mapTemperature.SeasonAcceptableFor(ThingDefOf.Human) && this.TryFindEntryCell(map, out IntVec3 intVec) && FindHuntPrey(map).Count > 0;
+            return base.CanFireNowSub(parms) && 
+                    !map.GameConditionManager.ConditionIsActive(GameConditionDefOf.ToxicFallout) && 
+                    map.mapTemperature.SeasonAcceptableFor(ThingDefOf.Human) && 
+                    this.TryFindEntryCell(map, out this.entryCell) &&
+                    this.TryFindFaction(out this.faction) &&
+                    this.FindHuntPrey(map, out this.huntTargets);
         }
+
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
             Map map = (Map)parms.target;
-            System.Random r = new System.Random();
-            IntVec3 loc;
-            if (!this.TryFindEntryCell(map, out loc))
+            this.TryFindEntryCell(map, out this.entryCell);
+            this.TryFindFaction(out this.faction);
+            this.FindHuntPrey(map, out this.huntTargets);
+            // Spawn hunters
+            int pawnNumber = Math.Min(Rand.RangeInclusive(3, 5), this.huntTargets.Count);
+            PawnKindDef kind = this.faction.def.techLevel >= TechLevel.Industrial ? VEE_DefOf.Hunter : VEE_DefOf.VEE_TribalHunter;
+            for (int i = 0; i < pawnNumber; i++)
             {
-                return false;
+                Pawn pawn = PawnGenerator.GeneratePawn(kind, this.faction);
+                GenSpawn.Spawn(pawn, this.entryCell, map, WipeMode.VanishOrMoveAside);
+                pawn.jobs.TryTakeOrderedJob(new Job(VEE_DefOf.HuntAndLeave, new LocalTargetInfo(this.huntTargets[0])));
+                this.huntTargets.RemoveAt(0);
             }
-            Faction faction = Find.FactionManager.RandomNonHostileFaction(false, false, false, TechLevel.Undefined);
-            List<Pawn> pawnL = new List<Pawn>();
-            List<Pawn> huntable = FindHuntPrey(map);
-            
-            int rand = r.Next(3, 7);
-            if(rand > huntable.Count)
-            {
-                rand = huntable.Count;
-            }
-            
-            for (int i = 0; i < rand; i++)
-            {
-                Pawn pawn = PawnGenerator.GeneratePawn(VEE_DefOf.Hunter, faction);
-                pawn.skills.GetSkill(SkillDefOf.Shooting).levelInt = 15;
-                pawnL.Add(pawn);
-            }
-            foreach (Pawn pawn in pawnL)
-            {
-                GenSpawn.Spawn(pawn, loc, map, WipeMode.Vanish);
-                pawn.jobs.TryTakeOrderedJob(new Verse.AI.Job(VEE_DefOf.HuntAndLeave, new LocalTargetInfo(huntable[0])));
-                huntable.RemoveAt(0);
-            }
-            Find.LetterStack.ReceiveLetter("HPLabel".Translate(), "HP".Translate(faction), LetterDefOf.NeutralEvent, new LookTargets(loc, map), null, null);
+            // Send letter
+            Find.LetterStack.ReceiveLetter("HPLabel".Translate(), "HP".Translate(this.faction), LetterDefOf.NeutralEvent, new LookTargets(this.entryCell, map), this.faction);
             return true;
         }
-        private List<Pawn> FindHuntPrey(Map map)
-        {
-            List<Pawn> all = map.mapPawns.AllPawns.ToList();
-            all.RemoveAll((Pawn t) => t.Faction != null || t.RaceProps.manhunterOnDamageChance > 0.05f || t.IsWildMan() || t.IsPrisoner);
 
-            return all;
+        private bool FindHuntPrey(Map map, out List<Pawn> huntTargets)
+        {
+            huntTargets = map.mapPawns.AllPawns.ToList();
+            huntTargets.RemoveAll(p => p.Faction != null || p.RaceProps.manhunterOnDamageChance > 0.1f || p.IsWildMan() || p.IsPrisoner);
+            huntTargets = huntTargets.OrderByDescending(p => p.RaceProps.baseBodySize).ToList();
+
+            if (huntTargets.Count > 0) return true;
+            return false;
         }
 
         private bool TryFindEntryCell(Map map, out IntVec3 cell)
         {
             return CellFinder.TryFindRandomEdgeCellWith((IntVec3 c) => map.reachability.CanReachColony(c), map, CellFinder.EdgeRoadChance_Ignore, out cell);
+        }
+
+        private bool TryFindFaction(out Faction faction)
+        {
+            List<Faction> factions = Find.FactionManager.AllFactions.ToList().FindAll(f => f != Faction.OfPlayer && !f.HostileTo(Faction.OfPlayer) && !f.Hidden && !f.defeated && f.def.techLevel >= TechLevel.Neolithic);
+            if (ModLister.IdeologyInstalled && ModsConfig.IdeologyActive) factions.RemoveAll(f => f.ideos.HasAnyIdeoWithMeme(VEE_DefOf.AnimalPersonhood));
+            faction = factions.RandomElement();
+
+            if (faction != null) return true;
+            return false;
         }
     }
 }
