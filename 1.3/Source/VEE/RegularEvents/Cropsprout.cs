@@ -29,6 +29,7 @@ namespace VEE.RegularEvents
                 p.plant.harvestedThingDef != null && 
                 !p.plant.cavePlant &&
                 !p.defName.Contains("RB_") &&
+                !p.defName.Contains("AB_") &&
                 !this.excludedPlant.Contains(p.defName)).InRandomOrder().RandomElement().thing;
             
             return this.TryFindRootCell(map, out this.cell, this.plantChoosen);
