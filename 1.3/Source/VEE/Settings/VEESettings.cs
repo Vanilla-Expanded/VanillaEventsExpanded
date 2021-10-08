@@ -43,6 +43,8 @@ namespace VEE.Settings
                     string key = incidentsOccurence.ElementAt(num).Key;
                     incidentsOccurence[key] = incidentsOccurenceForReset[key];
                 }
+                daysBetweenPurpleEvent = 300;
+                daysBetweenPurpleEventBuffer = "300";
             }
             y += offset + sLineHeight;
             // Stop conditions
@@ -122,19 +124,20 @@ namespace VEE.Settings
             if (Widgets.ButtonText(leftRect, "GCWResetOBO".Translate()) && Find.World != null)
             {
                 var floatMenuOptions = new List<FloatMenuOption>();
-                var activeConditions = Find.World.GameConditionManager.ActiveConditions;
-                if (activeConditions.Count > 0)
+                if (Find.World.GameConditionManager != null && !Find.World.GameConditionManager.ActiveConditions.NullOrEmpty())
                 {
-                    foreach (GameCondition item in activeConditions)
+                    var activeConditions = Find.World.GameConditionManager.ActiveConditions;
+                    if (activeConditions.Count > 0)
                     {
-                        if (!item.Permanent)
-                            floatMenuOptions.Add(new FloatMenuOption(item.Label, () => item.End()));
+                        foreach (GameCondition item in activeConditions)
+                        {
+                            if (!item.Permanent)
+                                floatMenuOptions.Add(new FloatMenuOption(item.Label, () => item.End()));
+                        }
                     }
                 }
-                else
-                {
-                    floatMenuOptions.Add(new FloatMenuOption("Nothing to end", null));
-                }
+
+                if (floatMenuOptions.Count == 0) floatMenuOptions.Add(new FloatMenuOption("Nothing to end", null));
                 Find.WindowStack.Add(new FloatMenu(floatMenuOptions));
             }
         }
@@ -144,19 +147,20 @@ namespace VEE.Settings
             if (Widgets.ButtonText(rightRect, "GCMResetOBO".Translate()) && Find.CurrentMap != null)
             {
                 var floatMenuOptions = new List<FloatMenuOption>();
-                var activeConditions = Find.CurrentMap.GameConditionManager.ActiveConditions;
-                if (activeConditions.Count > 0)
+                if (Find.CurrentMap.GameConditionManager != null && !Find.CurrentMap.GameConditionManager.ActiveConditions.NullOrEmpty())
                 {
-                    foreach (GameCondition item in activeConditions)
+                    var activeConditions = Find.CurrentMap.GameConditionManager.ActiveConditions;
+                    if (activeConditions.Count > 0)
                     {
-                        if (!item.Permanent)
-                            floatMenuOptions.Add(new FloatMenuOption(item.Label, () => item.End()));
+                        foreach (GameCondition item in activeConditions)
+                        {
+                            if (!item.Permanent)
+                                floatMenuOptions.Add(new FloatMenuOption(item.Label, () => item.End()));
+                        }
                     }
                 }
-                else
-                {
-                    floatMenuOptions.Add(new FloatMenuOption("Nothing to end", null));
-                }
+
+                if (floatMenuOptions.Count == 0) floatMenuOptions.Add(new FloatMenuOption("Nothing to end", null));
                 Find.WindowStack.Add(new FloatMenu(floatMenuOptions));
             }
         }

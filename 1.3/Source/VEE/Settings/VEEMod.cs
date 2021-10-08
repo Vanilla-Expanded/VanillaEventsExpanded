@@ -26,7 +26,7 @@ namespace VEE.Settings
             settings.DoSettingsWindowContents(inRect);
         }
 
-        public override string SettingsCategory() => "Vanilla Event Expanded";
+        public override string SettingsCategory() => "Vanilla Events Expanded";
 
         public override void WriteSettings()
         {
