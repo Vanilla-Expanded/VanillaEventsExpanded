@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Mcg9/zLXKEhqdTQ6clOG1mt4473vCAvSNSPb7tp+LV3tR543C3E/QrNaCoERIddzkr9sUMctYB9Lvt170x2kRA==",
+  "dgSpecHash": "rr2Zt7cOVgEz6BNeGZLLBaum/if3PrfPXXBXFNOdVt22EFTZ3jAB4rmtI714Qq4e0ck9Vc1S0OHKFKpADqH64Q==",
   "success": true,
   "projectFilePath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\RimWorld\\Mods\\Vanilla-Events-Expanded\\1.3\\Source\\VEE\\VEE.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\kylia\\.nuget\\packages\\krafs.rimworld.ref\\1.3.3142-beta\\krafs.rimworld.ref.1.3.3142-beta.nupkg.sha512",
+    "C:\\Users\\kylia\\.nuget\\packages\\krafs.rimworld.ref\\1.3.3117\\krafs.rimworld.ref.1.3.3117.nupkg.sha512",
     "C:\\Users\\kylia\\.nuget\\packages\\lib.harmony\\2.1.1\\lib.harmony.2.1.1.nupkg.sha512"
   ],
   "logs": []
