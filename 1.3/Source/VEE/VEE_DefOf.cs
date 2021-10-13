@@ -57,6 +57,9 @@ namespace VEE
         public static GameConditionDef IceAge;
         public static GameConditionDef GlobalWarming;
         public static GameConditionDef Drought;
+        public static GameConditionDef HailStorm;
+        public static GameConditionDef SpaceBattle;
+        public static GameConditionDef PsychicRain;
 
         /* Letter def */
         public static LetterDef PurpleEvent;
