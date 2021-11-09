@@ -24,12 +24,15 @@ namespace VEE.Settings
 
         public static void RemoveDef(IncidentDef def)
         {
-            try
+            if (def != null)
             {
-                MethodInfo methodInfo = AccessTools.Method(typeof(DefDatabase<IncidentDef>), "Remove", null, null);
-                methodInfo.Invoke(null, new object[] { def });
+                try
+                {
+                    MethodInfo methodInfo = AccessTools.Method(typeof(DefDatabase<IncidentDef>), "Remove", null, null);
+                    methodInfo.Invoke(null, new object[] { def });
+                }
+                catch { };
             }
-            catch { };
         }
 
         public static void DoAlteration()
