@@ -20,12 +20,6 @@
     <stages>
       <li>
         <becomeVisible>false</becomeVisible>
-        <capMods>
-          <li>
-            <capacity>Consciousness</capacity>
-            <setMax>1</setMax>
-          </li>
-        </capMods>
       </li>
     </stages>
   </HediffDef>
@@ -50,12 +44,6 @@
     <stages>
       <li>
         <becomeVisible>false</becomeVisible>
-        <capMods>
-          <li>
-            <capacity>Consciousness</capacity>
-            <setMax>1</setMax>
-          </li>
-        </capMods>
       </li>
     </stages>
   </HediffDef>
@@ -74,12 +62,6 @@
     <stages>
       <li>
         <becomeVisible>false</becomeVisible>
-        <capMods>
-          <li>
-            <capacity>Consciousness</capacity>
-            <setMax>1</setMax>
-          </li>
-        </capMods>
       </li>
     </stages>
   </HediffDef>
