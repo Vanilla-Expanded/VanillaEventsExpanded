@@ -19,7 +19,7 @@ namespace VEE.RegularEvents
                                                         && apparel.apparel.defaultOutfitTags.Contains("Soldier") == true 
                                                         && apparel.apparel.defaultOutfitTags.Contains("Worker") == true && apparel.apparel.tags != null);
             IEnumerable<ThingStuffPair> source = from w in baseA
-                                                 where w.Price <= map.wealthWatcher.WealthTotal * 0.01
+                                                 where w.Price != 0 && w.Price <= map.wealthWatcher.WealthTotal * 0.01
                                                  select w;
 
             IntVec3 intVec = DropCellFinder.RandomDropSpot(map);

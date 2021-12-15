@@ -17,7 +17,7 @@ namespace VEE.RegularEvents
             IncidentParms incidentParms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.ThreatBig, map); 
             IEnumerable<ThingStuffPair> baseW = ThingStuffPair.AllWith((ThingDef td) => td.equipmentType == EquipmentType.Primary && td.recipeMaker != null);
             IEnumerable<ThingStuffPair> source = from w in baseW
-                                                 where w.Price <= map.wealthWatcher.WealthTotal * 0.01
+                                                 where w.Price != 0 && w.Price <= map.wealthWatcher.WealthTotal * 0.01
                                                  select w;
             
             IntVec3 intVec = DropCellFinder.RandomDropSpot(map);
