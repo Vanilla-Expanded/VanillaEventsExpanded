@@ -11,22 +11,22 @@ namespace VEE.RegularEvents
             {
                 return false;
             }
-            if (!this.TryFindFormerFaction(out Faction faction))
+            if (!TryFindFormerFaction(out Faction faction))
             {
                 return false;
             }
             Map map = (Map)parms.target;
-            return !map.GameConditionManager.ConditionIsActive(GameConditionDefOf.ToxicFallout) && map.mapTemperature.SeasonAcceptableFor(ThingDefOf.Human) && this.TryFindEntryCell(map, out IntVec3 intVec);
+            return !map.GameConditionManager.ConditionIsActive(GameConditionDefOf.ToxicFallout) && map.mapTemperature.SeasonAcceptableFor(ThingDefOf.Human) && TryFindEntryCell(map, out IntVec3 intVec);
         }
 
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
             Map map = (Map)parms.target;
-            if (!this.TryFindEntryCell(map, out IntVec3 loc))
+            if (!TryFindEntryCell(map, out IntVec3 loc))
             {
                 return false;
             }
-            if (!this.TryFindFormerFaction(out Faction faction))
+            if (!TryFindFormerFaction(out Faction faction))
             {
                 return false;
             }

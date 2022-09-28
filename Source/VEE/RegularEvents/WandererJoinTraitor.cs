@@ -12,22 +12,22 @@ namespace VEE.RegularEvents
                 return false;
             }
             Map map = (Map)parms.target;
-            return this.TryFindEntryCell(map, out IntVec3 intVec);
+            return TryFindEntryCell(map, out IntVec3 intVec);
         }
 
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
             Map map = (Map)parms.target;
-            if (!this.TryFindEntryCell(map, out IntVec3 loc))
+            if (!TryFindEntryCell(map, out IntVec3 loc))
             {
                 return false;
             }
             Gender? gender = null;
-            if (this.def.pawnFixedGender != Gender.None)
+            if (def.pawnFixedGender != Gender.None)
             {
-                gender = new Gender?(this.def.pawnFixedGender);
+                gender = new Gender?(def.pawnFixedGender);
             }
-            PawnKindDef pawnKind = this.def.pawnKind;
+            PawnKindDef pawnKind = def.pawnKind;
             Faction ofPlayer = Faction.OfPlayer;
             Gender? fixedGender = gender;
             PawnGenerationRequest request = new PawnGenerationRequest(pawnKind, ofPlayer, mustBeCapableOfViolence: true);
@@ -36,8 +36,8 @@ namespace VEE.RegularEvents
 
             pawn.health.AddHediff(VEE_DefOf.Traitor);
 
-            string text = this.def.letterText.Formatted(pawn.Named("PAWN")).AdjustedFor(pawn, "PAWN");
-            string label = this.def.letterLabel.Formatted(pawn.Named("PAWN")).AdjustedFor(pawn, "PAWN");
+            string text = def.letterText.Formatted(pawn.Named("PAWN")).AdjustedFor(pawn, "PAWN");
+            string label = def.letterLabel.Formatted(pawn.Named("PAWN")).AdjustedFor(pawn, "PAWN");
             Find.LetterStack.ReceiveLetter(label, text, LetterDefOf.PositiveEvent, pawn, null, null);
             return true;
         }

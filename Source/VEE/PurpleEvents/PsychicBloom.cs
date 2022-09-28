@@ -18,7 +18,7 @@ namespace VEE.PurpleEvents
         {
             get
             {
-                return Color.Lerp(PsychicBloom.Colors[this.prevColorIndex], PsychicBloom.Colors[this.curColorIndex], this.curColorTransition);
+                return Color.Lerp(PsychicBloom.Colors[prevColorIndex], PsychicBloom.Colors[curColorIndex], curColorTransition);
             }
         }
 
@@ -47,8 +47,8 @@ namespace VEE.PurpleEvents
 
         public override SkyTarget? SkyTarget(Map map)
         {
-            Color currentColor = this.CurrentColor;
-            SkyColorSet colorSet = new SkyColorSet(Color.Lerp(Color.white, currentColor, 0.075f) * this.Brightness(map), new Color(0.92f, 0.92f, 0.92f), Color.Lerp(Color.white, currentColor, 0.025f) * this.Brightness(map), 1f);
+            Color currentColor = CurrentColor;
+            SkyColorSet colorSet = new SkyColorSet(Color.Lerp(Color.white, currentColor, 0.075f) * Brightness(map), new Color(0.92f, 0.92f, 0.92f), Color.Lerp(Color.white, currentColor, 0.025f) * Brightness(map), 1f);
             float glow = Mathf.Max(GenCelestial.CurCelestialSunGlow(map), 0.25f);
             return new SkyTarget?(new SkyTarget(glow, colorSet, 1f, 1f));
         }
@@ -61,7 +61,7 @@ namespace VEE.PurpleEvents
         private int GetNewColorIndex()
         {
             return (from x in Enumerable.Range(0, PsychicBloom.Colors.Length)
-                    where x != this.curColorIndex
+                    where x != curColorIndex
                     select x).RandomElement<int>();
         }
 
@@ -84,11 +84,11 @@ namespace VEE.PurpleEvents
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.Look(ref this.curColorIndex, "curColorIndex", 0, false);
-            Scribe_Values.Look(ref this.prevColorIndex, "prevColorIndex", 0, false);
-            Scribe_Values.Look(ref this.curColorTransition, "curColorTransition", 0f, false);
+            Scribe_Values.Look(ref curColorIndex, "curColorIndex", 0, false);
+            Scribe_Values.Look(ref prevColorIndex, "prevColorIndex", 0, false);
+            Scribe_Values.Look(ref curColorTransition, "curColorTransition", 0f, false);
             Scribe_Values.Look(ref number, "number", 0f, false);
-            Scribe_Collections.Look(ref this.flowersList, "flowerlist", LookMode.Def);
+            Scribe_Collections.Look(ref flowersList, "flowerlist", LookMode.Def);
         }
 
         private List<ThingDef> flowersList;
@@ -97,35 +97,35 @@ namespace VEE.PurpleEvents
         public override void Init()
         {
             base.Init();
-            this.curColorIndex = Rand.Range(0, PsychicBloom.Colors.Length);
-            this.prevColorIndex = this.curColorIndex;
-            this.curColorTransition = 1f;
-            this.number = 0f;
-            this.flowersList = DefDatabase<ThingDef>.AllDefsListForReading.Where((ThingDef x) => x.plant != null && x.plant.sowTags.Contains("Decorative")).ToList();
+            curColorIndex = Rand.Range(0, PsychicBloom.Colors.Length);
+            prevColorIndex = curColorIndex;
+            curColorTransition = 1f;
+            number = 0f;
+            flowersList = DefDatabase<ThingDef>.AllDefsListForReading.Where((ThingDef x) => x.plant != null && x.plant.sowTags.Contains("Decorative")).ToList();
         }
 
         public override void GameConditionTick()
         {
-            this.curColorTransition += 1f / TransitionDurationTicks;
-            if (this.curColorTransition >= 1f)
+            curColorTransition += 1f / TransitionDurationTicks;
+            if (curColorTransition >= 1f)
             {
-                this.prevColorIndex = this.curColorIndex;
-                this.curColorIndex = this.GetNewColorIndex();
-                this.curColorTransition = 0f;
+                prevColorIndex = curColorIndex;
+                curColorIndex = GetNewColorIndex();
+                curColorTransition = 0f;
             }
 
             List<Map> affectedMaps = base.AffectedMaps;
             for (int k = 0; k < affectedMaps.Count; k++)
             {
-                if (this.TicksPassed % 100 == 0 && number <= 800f)
+                if (TicksPassed % 100 == 0 && number <= 800f)
                 {
                     IntVec3 flowerPos = CellFinderLoose.RandomCellWith(i => i.GetTerrain(affectedMaps[k]).fertility > 0.1f && i.GetFirstBuilding(affectedMaps[k]) == null, affectedMaps[k]);
                     if (flowerPos != null && flowerPos.InBounds(affectedMaps[k]))
                     {
-                        ThingDef thingDefFlower = this.flowersList.RandomElement();
+                        ThingDef thingDefFlower = flowersList.RandomElement();
                         if (flowerPos.GetFirstThing<Plant>(affectedMaps[k]) is Plant p && p != null)
                         {
-                            if (!this.excludedPlant.Contains(p.def.defName))
+                            if (!excludedPlant.Contains(p.def.defName))
                             {
                                 p.Destroy();
                                 Plant flower = GenSpawn.Spawn(thingDefFlower, flowerPos, affectedMaps[k], WipeMode.Vanish) as Plant;
@@ -135,7 +135,7 @@ namespace VEE.PurpleEvents
                         }
                     }
                 }
-                else if (this.TicksPassed % 60000 == 0)
+                else if (TicksPassed % 60000 == 0)
                 {
                     number -= 25f;
                 }

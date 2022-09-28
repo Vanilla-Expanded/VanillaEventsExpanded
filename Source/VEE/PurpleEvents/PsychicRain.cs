@@ -15,8 +15,8 @@ namespace VEE.PurpleEvents
             ColorInt colorInt = new ColorInt(147, 112, 219);
             Color toColor = colorInt.ToColor;
             ColorInt colorInt2 = new ColorInt(234, 200, 255);
-            this.PsychicRainColors = new SkyColorSet(toColor, colorInt2.ToColor, new Color(0.6f, 0.4f, 0.9f), 0.85f);
-            this.overlays = new List<SkyOverlay>
+            PsychicRainColors = new SkyColorSet(toColor, colorInt2.ToColor, new Color(0.6f, 0.4f, 0.9f), 0.85f);
+            overlays = new List<SkyOverlay>
             {
                 new WeatherOverlay_Rain()
             };
@@ -49,11 +49,11 @@ namespace VEE.PurpleEvents
             {
                 if (Find.TickManager.TicksGame % 3451 == 0)
                 {
-                    this.DoPawnsAgeFaster(map);
+                    DoPawnsAgeFaster(map);
                 }
-                for (int j = 0; j < this.overlays.Count; j++)
+                for (int j = 0; j < overlays.Count; j++)
                 {
-                    this.overlays[j].TickOverlay(map);
+                    overlays[j].TickOverlay(map);
                 }
             }
         }
@@ -73,9 +73,9 @@ namespace VEE.PurpleEvents
 
         public override void GameConditionDraw(Map map)
         {
-            for (int i = 0; i < this.overlays.Count; i++)
+            for (int i = 0; i < overlays.Count; i++)
             {
-                this.overlays[i].DrawOverlay(map);
+                overlays[i].DrawOverlay(map);
             }
         }
 
@@ -86,12 +86,12 @@ namespace VEE.PurpleEvents
 
         public override SkyTarget? SkyTarget(Map map)
         {
-            return new SkyTarget?(new SkyTarget(0.85f, this.PsychicRainColors, 1f, 1f));
+            return new SkyTarget?(new SkyTarget(0.85f, PsychicRainColors, 1f, 1f));
         }
 
         public override List<SkyOverlay> SkyOverlays(Map map)
         {
-            return this.overlays;
+            return overlays;
         }
     }
 }

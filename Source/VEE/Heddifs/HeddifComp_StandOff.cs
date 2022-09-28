@@ -12,7 +12,7 @@ namespace VEE
         {
             get
             {
-                return (HeddifCompPropreties_Standoff)this.props;
+                return (HeddifCompPropreties_Standoff)props;
             }
         }
 
@@ -29,21 +29,21 @@ namespace VEE
         {
             if (t == 0)
             {
-                pawnl.Add(this.Pawn);
-                this.Pawn.SetFaction(Find.FactionManager.RandomEnemyFaction());
+                pawnl.Add(Pawn);
+                Pawn.SetFaction(Find.FactionManager.RandomEnemyFaction());
 
                 LordJob_VisitColony lordJob1 = new LordJob_VisitColony();
-                LordMaker.MakeNewLord(this.Pawn.Faction, lordJob1, this.Pawn.Map);
+                LordMaker.MakeNewLord(Pawn.Faction, lordJob1, Pawn.Map);
             }
             if (t % 100 == 0)
             {
-                if (GenDate.DayTick(GenTicks.TicksAbs, Find.WorldGrid.LongLatOf(this.Pawn.Map.Tile).x) > 29500 && GenDate.DayTick(GenTicks.TicksAbs, Find.WorldGrid.LongLatOf(this.Pawn.Map.Tile).x) < 30500 && flag)
+                if (GenDate.DayTick(GenTicks.TicksAbs, Find.WorldGrid.LongLatOf(Pawn.Map.Tile).x) > 29500 && GenDate.DayTick(GenTicks.TicksAbs, Find.WorldGrid.LongLatOf(Pawn.Map.Tile).x) < 30500 && flag)
                 {
                     Job job = new Job(JobDefOf.Wait_Wander);
-                    this.Pawn.jobs.TryTakeOrderedJob(job);
-                    this.Pawn.jobs.StopAll();
-                    LordJob_DefendPoint lordJob = new LordJob_DefendPoint(this.Pawn.Position);
-                    LordMaker.MakeNewLord(this.Pawn.Faction, lordJob, this.Pawn.Map);
+                    Pawn.jobs.TryTakeOrderedJob(job);
+                    Pawn.jobs.StopAll();
+                    LordJob_DefendPoint lordJob = new LordJob_DefendPoint(Pawn.Position);
+                    LordMaker.MakeNewLord(Pawn.Faction, lordJob, Pawn.Map);
 
                     flag = false;
                 }

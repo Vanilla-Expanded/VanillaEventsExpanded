@@ -9,7 +9,7 @@ namespace VEE
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.Look<int>(ref this.t, "t", 0, false);
+            Scribe_Values.Look<int>(ref t, "t", 0, false);
         }
 
         public override void Tick()
@@ -32,12 +32,12 @@ namespace VEE
                         pawn.Kill(damageInfo);
                     }
 
-                    RCellFinder.TryFindRandomCellNearWith(this.Position, c => c.Walkable(this.Map), this.Map, out IntVec3 intVec);
-                    if (pawn.Dead) GenPlace.TryPlaceThing(pawn.Corpse, intVec, this.Map, ThingPlaceMode.Near);
-                    else GenPlace.TryPlaceThing(pawn, intVec, this.Map, ThingPlaceMode.Near);
+                    RCellFinder.TryFindRandomCellNearWith(Position, c => c.Walkable(Map), Map, out IntVec3 intVec);
+                    if (pawn.Dead) GenPlace.TryPlaceThing(pawn.Corpse, intVec, Map, ThingPlaceMode.Near);
+                    else GenPlace.TryPlaceThing(pawn, intVec, Map, ThingPlaceMode.Near);
                 }
             }
-            this.t++;
+            t++;
         }
 
         private int t;

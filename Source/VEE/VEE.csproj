@@ -58,7 +58,6 @@
     <Compile Include="RegularEvents\Cropsprout.cs" />
     <Compile Include="RegularEvents\Drought.cs" />
     <Compile Include="RegularEvents\EarthQuake.cs" />
-    <Compile Include="RegularEvents\HailStorm.cs" />
     <Compile Include="RegularEvents\HuntingParty.cs" />
     <Compile Include="RegularEvents\MeteoriteShower.cs" />
     <Compile Include="RegularEvents\ShuttleCrash.cs" />

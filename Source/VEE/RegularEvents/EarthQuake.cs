@@ -48,7 +48,7 @@ namespace VEE.RegularEvents
             /* ========== Near epicenter ========== */
             CellRect cellRect = CellRect.CenteredOn(epicenter, 5);
             IEnumerable<IntVec3> a0to5 = cellRect.Cells;
-            this.DamageInRadius(a0to5.ToList(), map, 50, 25, 75);
+            DamageInRadius(a0to5.ToList(), map, 50, 25, 75);
 
             /* ========== 5 cell after epicenter ========== */
             CellRect cellRect2 = CellRect.CenteredOn(epicenter, 10);
@@ -61,7 +61,7 @@ namespace VEE.RegularEvents
                     a5to10.Add(item);
                 }
             }
-            this.DamageInRadius(a5to10, map, 25, 20, 40);
+            DamageInRadius(a5to10, map, 25, 20, 40);
 
             /* ========== 10 cell after epicenter ========== */
             CellRect cellRect3 = CellRect.CenteredOn(epicenter, 20);
@@ -74,7 +74,7 @@ namespace VEE.RegularEvents
                     a10to20.Add(item);
                 }
             }
-            this.DamageInRadius(a10to20, map, 10, 5, 20);
+            DamageInRadius(a10to20, map, 10, 5, 20);
 
             for (int i = 0; i < 6; i++)
             {

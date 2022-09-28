@@ -6,7 +6,7 @@ namespace VEE
     {
         public HeddifCompPropreties_Traitor()
         {
-            this.compClass = typeof(VEE.HeddifComp_Traitor);
+            compClass = typeof(VEE.HeddifComp_Traitor);
         }
 
         public IntRange disappearsAfterTicks = default(IntRange);

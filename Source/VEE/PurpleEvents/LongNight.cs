@@ -13,7 +13,7 @@ namespace VEE.PurpleEvents
 
         public override SkyTarget? SkyTarget(Map map)
         {
-            return new SkyTarget?(new SkyTarget(0f, this.EclipseSkyColors, 1f, 0f));
+            return new SkyTarget?(new SkyTarget(0f, EclipseSkyColors, 1f, 0f));
         }
 
         public override void Init()

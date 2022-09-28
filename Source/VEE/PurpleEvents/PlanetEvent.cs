@@ -46,10 +46,10 @@ namespace VEE.PurpleEvents
         {
             if (Find.TickManager.TicksGame % 240000 == 0 && biomeTempChange < 5)
             {
-                Find.World.grid.tiles.ForEach(t => t.temperature += this.ChangeTileTemp());
+                Find.World.grid.tiles.ForEach(t => t.temperature += ChangeTileTemp());
                 if (biomeTempChange == 1)
                 {
-                    this.ChangeBiomes();
+                    ChangeBiomes();
                 }
                 /*else if (biomeTempChange == 2)
                 {
@@ -58,9 +58,9 @@ namespace VEE.PurpleEvents
                 biomeTempChange++;
             }
 
-            if (this.TicksLeft.TicksToDays() == 8 || this.TicksLeft.TicksToDays() == 4)
+            if (TicksLeft.TicksToDays() == 8 || TicksLeft.TicksToDays() == 4)
             {
-                Find.World.grid.tiles.ForEach(t => t.temperature -= this.ChangeTileTemp());
+                Find.World.grid.tiles.ForEach(t => t.temperature -= ChangeTileTemp());
             }
 
             if (boolNoSave)

@@ -9,7 +9,7 @@ namespace VEE
         {
             get
             {
-                return (HeddifCompPropreties_MightJoin)this.props;
+                return (HeddifCompPropreties_MightJoin)props;
             }
         }
 
@@ -21,11 +21,11 @@ namespace VEE
         public override void CompPostTick(ref float severityAdjustment)
         {
             System.Random r = new System.Random();
-            if (!this.Pawn.health.HasHediffsNeedingTend() && !this.Pawn.health.Downed)
+            if (!Pawn.health.HasHediffsNeedingTend() && !Pawn.health.Downed)
             {
                 if (r.Next(0, 101) < 60)
                 {
-                    this.Pawn.SetFaction(Faction.OfPlayer, null);
+                    Pawn.SetFaction(Faction.OfPlayer, null);
                     string label = "AJLabel".Translate();
                     string text = "AJLetter".Translate();
                     Find.LetterStack.ReceiveLetter(label, text, LetterDefOf.NeutralEvent, null, null, null);
@@ -36,7 +36,7 @@ namespace VEE
                     string text = "ADJLetter".Translate();
                     Find.LetterStack.ReceiveLetter(label, text, LetterDefOf.NeutralEvent, null, null, null);
                 }
-                this.Pawn.health.RemoveHediff(this.parent);
+                Pawn.health.RemoveHediff(parent);
             }
         }
     }

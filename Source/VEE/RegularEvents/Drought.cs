@@ -7,7 +7,7 @@ namespace VEE.RegularEvents
     {
         public override void Init()
         {
-            this.SingleMap.GetComponent<MapComp_Drought>().droughtGoingOn = true;
+            SingleMap.GetComponent<MapComp_Drought>().droughtGoingOn = true;
         }
 
         public override float PlantDensityFactor(Map map)

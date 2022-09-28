@@ -6,7 +6,7 @@ namespace VEE
     {
         public HeddifCompPropreties_MightJoin()
         {
-            this.compClass = typeof(VEE.HeddifComp_MightJoin);
+            compClass = typeof(VEE.HeddifComp_MightJoin);
         }
     }
 }

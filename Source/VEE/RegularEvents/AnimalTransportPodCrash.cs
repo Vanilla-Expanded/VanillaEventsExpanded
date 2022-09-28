@@ -11,7 +11,7 @@ namespace VEE.RegularEvents
             Map map = (Map)parms.target;
             List<Thing> things = VEE_DefOf.AnimalPod.root.Generate();
 
-            Pawn pawn = this.RandomPawnFromThingList(things, map);
+            Pawn pawn = RandomPawnFromThingList(things, map);
             pawn.Name = PawnBioAndNameGenerator.GeneratePawnName(pawn, NameStyle.Full);
             pawn.health.AddHediff(VEE_DefOf.MightJoin);
             HealthUtility.DamageUntilDowned(pawn);

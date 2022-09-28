@@ -17,8 +17,8 @@ namespace VEE.RegularEvents
 
         public override void Init()
         {
-            RCellFinder.TryFindRandomPawnEntryCell(out IntVec3 reach, this.SingleMap, 1f, false, c => c.Walkable(this.SingleMap));
-            RCellFinder.TryFindRandomCellOutsideColonyNearTheCenterOfTheMap(reach, this.SingleMap, 50f, out aroundThis);
+            RCellFinder.TryFindRandomPawnEntryCell(out IntVec3 reach, SingleMap, 1f, false, c => c.Walkable(SingleMap));
+            RCellFinder.TryFindRandomCellOutsideColonyNearTheCenterOfTheMap(reach, SingleMap, 50f, out aroundThis);
             Find.LetterStack.ReceiveLetter(LetterMaker.MakeLetter("SpaceBattleLabel".Translate(), "SpaceBattle".Translate(), LetterDefOf.NegativeEvent, new LookTargets(aroundThis, SingleMap)));
         }
 
@@ -29,13 +29,13 @@ namespace VEE.RegularEvents
 
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
-                if (!this.nextExplosionCell.IsValid)
+                if (!nextExplosionCell.IsValid)
                 {
-                    this.GetNextExplosionCell();
+                    GetNextExplosionCell();
                 }
-                if (this.projectiles == null)
+                if (projectiles == null)
                 {
-                    this.projectiles = new List<Bombardment.BombardmentProjectile>();
+                    projectiles = new List<Bombardment.BombardmentProjectile>();
                 }
             }
         }
@@ -47,7 +47,7 @@ namespace VEE.RegularEvents
 
         public override void GameConditionTick()
         {
-            Map map = this.SingleMap;
+            Map map = SingleMap;
             System.Random r = new System.Random();
             delay++;
 
@@ -96,50 +96,50 @@ namespace VEE.RegularEvents
 
             // Explosion handle
 
-            if (!this.nextExplosionCell.IsValid)
+            if (!nextExplosionCell.IsValid)
             {
-                this.ticksToNextEffect = this.bombIntervalTicks;
-                this.GetNextExplosionCell();
+                ticksToNextEffect = bombIntervalTicks;
+                GetNextExplosionCell();
             }
-            this.ticksToNextEffect--;
-            if (this.ticksToNextEffect <= 0 && base.TicksLeft >= this.bombIntervalTicks)
+            ticksToNextEffect--;
+            if (ticksToNextEffect <= 0 && base.TicksLeft >= bombIntervalTicks)
             {
-                SoundDefOf.Bombardment_PreImpact.PlayOneShot(new TargetInfo(this.nextExplosionCell, map, false));
-                this.projectiles.Add(new Bombardment.BombardmentProjectile(200, this.nextExplosionCell));
-                this.ticksToNextEffect = this.bombIntervalTicks;
-                this.GetNextExplosionCell();
+                SoundDefOf.Bombardment_PreImpact.PlayOneShot(new TargetInfo(nextExplosionCell, map, false));
+                projectiles.Add(new Bombardment.BombardmentProjectile(200, nextExplosionCell));
+                ticksToNextEffect = bombIntervalTicks;
+                GetNextExplosionCell();
             }
-            for (int i = this.projectiles.Count - 1; i >= 0; i--)
+            for (int i = projectiles.Count - 1; i >= 0; i--)
             {
-                this.projectiles[i].Tick();
-                this.Draw();
-                if (this.projectiles[i].LifeTime <= 0)
+                projectiles[i].Tick();
+                Draw();
+                if (projectiles[i].LifeTime <= 0)
                 {
-                    IntVec3 targetCell = this.projectiles[i].targetCell;
+                    IntVec3 targetCell = projectiles[i].targetCell;
                     DamageDef bomb = Rand.Range(1, 10) > 2 ? DamageDefOf.Bomb : DamageDefOf.Flame;
                     GenExplosion.DoExplosion(targetCell, map, Rand.Range(3f, 6f), bomb, null);
-                    this.projectiles.RemoveAt(i);
+                    projectiles.RemoveAt(i);
                 }
             }
         }
 
         private void Draw()
         {
-            if (this.projectiles.NullOrEmpty())
+            if (projectiles.NullOrEmpty())
             {
                 return;
             }
-            for (int i = 0; i < this.projectiles.Count; i++)
+            for (int i = 0; i < projectiles.Count; i++)
             {
-                this.projectiles[i].Draw(ProjectileMaterial);
+                projectiles[i].Draw(ProjectileMaterial);
             }
         }
 
         private void GetNextExplosionCell()
         {
-            this.nextExplosionCell = (from x in GenRadial.RadialCellsAround(this.aroundThis, 30, true)
-                                      where x.InBounds(this.SingleMap) && !x.Fogged(SingleMap) && !x.Roofed(SingleMap)
-                                      select x).RandomElementByWeight((IntVec3 x) => Bombardment.DistanceChanceFactor.Evaluate(x.DistanceTo(this.aroundThis)));
+            nextExplosionCell = (from x in GenRadial.RadialCellsAround(aroundThis, 30, true)
+                                      where x.InBounds(SingleMap) && !x.Fogged(SingleMap) && !x.Roofed(SingleMap)
+                                      select x).RandomElementByWeight((IntVec3 x) => Bombardment.DistanceChanceFactor.Evaluate(x.DistanceTo(aroundThis)));
         }
 
         private void ChangeDeadPawnsToTheirCorpses(List<Thing> things)

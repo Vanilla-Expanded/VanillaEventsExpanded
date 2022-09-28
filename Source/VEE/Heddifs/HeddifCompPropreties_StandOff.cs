@@ -6,7 +6,7 @@ namespace VEE
     {
         public HeddifCompPropreties_Standoff()
         {
-            this.compClass = typeof(VEE.HeddifComp_StandOff);
+            compClass = typeof(VEE.HeddifComp_StandOff);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace VEE
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.Look(ref this.tickLastPurpleEvent, "tickLastPurpleEvent", 0);
+            Scribe_Values.Look(ref tickLastPurpleEvent, "tickLastPurpleEvent", 0);
         }
     }
 }

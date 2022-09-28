@@ -10,13 +10,13 @@ namespace VEE.RegularEvents
         protected override bool CanFireNowSub(IncidentParms parms)
         {
             Map map = (Map)parms.target;
-            return this.TryFindCell(out IntVec3 intVec, map);
+            return TryFindCell(out IntVec3 intVec, map);
         }
 
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
             Map map = (Map)parms.target;
-            if (!this.TryFindCell(out IntVec3 intVecb, map))
+            if (!TryFindCell(out IntVec3 intVecb, map))
             {
                 return false;
             }
@@ -40,8 +40,8 @@ namespace VEE.RegularEvents
                 intVec = intVecb;
             }
 
-            string text = string.Format(this.def.letterText, list[0].def.label).CapitalizeFirst();
-            Find.LetterStack.ReceiveLetter(this.def.letterLabel, text, LetterDefOf.NeutralEvent, new TargetInfo(intVecb, map, false), null, null);
+            string text = string.Format(def.letterText, list[0].def.label).CapitalizeFirst();
+            Find.LetterStack.ReceiveLetter(def.letterLabel, text, LetterDefOf.NeutralEvent, new TargetInfo(intVecb, map, false), null, null);
             return true;
         }
 

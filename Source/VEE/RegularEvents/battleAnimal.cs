@@ -14,7 +14,7 @@ namespace VEE.RegularEvents
                 return false;
             }
             Map map = (Map)parms.target;
-            return RCellFinder.TryFindRandomPawnEntryCell(out IntVec3 intVec, map, CellFinder.EdgeRoadChance_Animal, false, null) && this.TryFindRandomPawnKind(map, out PawnKindDef pawnKindDef);
+            return RCellFinder.TryFindRandomPawnEntryCell(out IntVec3 intVec, map, CellFinder.EdgeRoadChance_Animal, false, null) && TryFindRandomPawnKind(map, out PawnKindDef pawnKindDef);
         }
 
         protected override bool TryExecuteWorker(IncidentParms parms)
@@ -24,7 +24,7 @@ namespace VEE.RegularEvents
             {
                 return false;
             }
-            if (!this.TryFindRandomPawnKind(map, out PawnKindDef pawnKindDef))
+            if (!TryFindRandomPawnKind(map, out PawnKindDef pawnKindDef))
             {
                 return false;
             }

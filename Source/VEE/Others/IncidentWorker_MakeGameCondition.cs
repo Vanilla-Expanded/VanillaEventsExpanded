@@ -20,11 +20,11 @@ namespace VEE
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
             GameConditionManager conditionManager = parms.target.GameConditionManager;
-            GameCondition gameCondition = GameConditionMaker.MakeCondition(this.def.gameCondition, Mathf.RoundToInt(this.def.durationDays.RandomInRange * 60000f));
+            GameCondition gameCondition = GameConditionMaker.MakeCondition(def.gameCondition, Mathf.RoundToInt(def.durationDays.RandomInRange * 60000f));
 
             conditionManager.RegisterCondition(gameCondition);
             parms.letterHyperlinkThingDefs = gameCondition.def.letterHyperlinks;
-            this.SendStandardLetter(this.def.letterLabel, this.def.letterText, this.def.letterDef, parms, LookTargets.Invalid);
+            SendStandardLetter(def.letterLabel, def.letterText, def.letterDef, parms, LookTargets.Invalid);
             return true;
         }
     }
@@ -34,7 +34,7 @@ namespace VEE
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
             GameConditionManager conditionManager = parms.target.GameConditionManager;
-            GameCondition gameCondition = GameConditionMaker.MakeCondition(this.def.gameCondition, Mathf.RoundToInt(this.def.durationDays.RandomInRange * 60000f));
+            GameCondition gameCondition = GameConditionMaker.MakeCondition(def.gameCondition, Mathf.RoundToInt(def.durationDays.RandomInRange * 60000f));
 
             conditionManager.RegisterCondition(gameCondition);
             return true;

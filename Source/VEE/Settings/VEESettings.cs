@@ -113,7 +113,7 @@ namespace VEE.Settings
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.Look(ref this.daysBetweenPurpleEvent, "daysBetweenPurpleEvent");
+            Scribe_Values.Look(ref daysBetweenPurpleEvent, "daysBetweenPurpleEvent");
             Scribe_Collections.Look(ref incidentsStatus, "incidentsStatus", LookMode.Value, LookMode.Value);
             Scribe_Collections.Look(ref incidentsOccurence, "incidentsOccurence", LookMode.Value, LookMode.Value);
             Scribe_Collections.Look(ref incidentsOccurenceForReset, "incidentsOccurenceForReset", LookMode.Value, LookMode.Value);

@@ -17,32 +17,28 @@ namespace VEE
         {
             Map map = (Map)parms.target;
 
-            return base.CanFireNowSub(parms) &&
-                    !map.GameConditionManager.ConditionIsActive(GameConditionDefOf.ToxicFallout) &&
-                    map.mapTemperature.SeasonAcceptableFor(ThingDefOf.Human) &&
-                    this.TryFindEntryCell(map, out this.entryCell) &&
-                    this.TryFindFaction(out this.faction) &&
-                    this.FindHuntPrey(map, out this.huntTargets);
+            var c = TryFindEntryCell(map, out entryCell);
+            var f = TryFindFaction(out faction);
+            var p = FindHuntPrey(map, out huntTargets);
+
+            return base.CanFireNowSub(parms) && !map.GameConditionManager.ConditionIsActive(GameConditionDefOf.ToxicFallout) && c && f && p;
         }
 
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
             Map map = (Map)parms.target;
-            this.TryFindEntryCell(map, out this.entryCell);
-            this.TryFindFaction(out this.faction);
-            this.FindHuntPrey(map, out this.huntTargets);
             // Spawn hunters
-            int pawnNumber = Math.Min(Rand.RangeInclusive(3, 5), this.huntTargets.Count);
-            PawnKindDef kind = this.faction.def.techLevel >= TechLevel.Industrial ? VEE_DefOf.Hunter : VEE_DefOf.VEE_TribalHunter;
+            int pawnNumber = Math.Min(Rand.RangeInclusive(3, 5), huntTargets.Count);
+            PawnKindDef kind = faction.def.techLevel >= TechLevel.Industrial ? VEE_DefOf.Hunter : VEE_DefOf.VEE_TribalHunter;
             for (int i = 0; i < pawnNumber; i++)
             {
-                Pawn pawn = PawnGenerator.GeneratePawn(kind, this.faction);
-                GenSpawn.Spawn(pawn, this.entryCell, map, WipeMode.VanishOrMoveAside);
-                pawn.jobs.TryTakeOrderedJob(new Job(VEE_DefOf.HuntAndLeave, new LocalTargetInfo(this.huntTargets[0])));
-                this.huntTargets.RemoveAt(0);
+                Pawn pawn = PawnGenerator.GeneratePawn(kind, faction);
+                GenSpawn.Spawn(pawn, entryCell, map, WipeMode.VanishOrMoveAside);
+                pawn.jobs.TryTakeOrderedJob(new Job(VEE_DefOf.HuntAndLeave, new LocalTargetInfo(huntTargets[0])));
+                huntTargets.RemoveAt(0);
             }
             // Send letter
-            Find.LetterStack.ReceiveLetter("HPLabel".Translate(), "HP".Translate(this.faction), LetterDefOf.NeutralEvent, new LookTargets(this.entryCell, map), this.faction);
+            Find.LetterStack.ReceiveLetter("HPLabel".Translate(), "HP".Translate(faction), LetterDefOf.NeutralEvent, new LookTargets(entryCell, map), faction);
             return true;
         }
 

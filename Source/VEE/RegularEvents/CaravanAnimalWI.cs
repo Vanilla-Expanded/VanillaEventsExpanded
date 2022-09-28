@@ -11,19 +11,19 @@ namespace VEE.RegularEvents
         protected override bool CanFireNowSub(IncidentParms parms)
         {
             Map map = (Map)parms.target;
-            return !map.gameConditionManager.ConditionIsActive(GameConditionDefOf.ToxicFallout) && this.TryFindEntryCell(map, out IntVec3 intVec) && this.PickPawnKindDef(map).Count > 0;
+            return !map.gameConditionManager.ConditionIsActive(GameConditionDefOf.ToxicFallout) && TryFindEntryCell(map, out IntVec3 intVec) && PickPawnKindDef(map).Count > 0;
         }
 
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
             Map map = (Map)parms.target;
-            if (!this.TryFindEntryCell(map, out IntVec3 intVec))
+            if (!TryFindEntryCell(map, out IntVec3 intVec))
             {
                 return false;
             }
 
             IntVec3 loc = CellFinder.RandomClosewalkCellNear(intVec, map, 10, null);
-            List<Pawn> group = this.GenerateGroup(map);
+            List<Pawn> group = GenerateGroup(map);
             Pawn pawn = new Pawn();
             foreach (Pawn p in group)
             {
@@ -43,7 +43,7 @@ namespace VEE.RegularEvents
 
         private List<Pawn> GenerateGroup(Map map)
         {
-            PawnKindDef pawnKind = this.PickPawnKindDef(map).RandomElement();
+            PawnKindDef pawnKind = PickPawnKindDef(map).RandomElement();
             System.Random r = new System.Random();
             int num = r.Next(1, 4);
 
@@ -140,8 +140,8 @@ namespace VEE.RegularEvents
             // Things removal
             list.RemoveAll((Thing thing) => thing is Pawn || thing is MinifiedThing || thing.def.defName == "Silver"); // No pawn nor minified buildings
             list.Shuffle(); // Randomise order so we don't always have the same items
-            int listValue = this.CalculateWealth(list);
-            int listWeight = this.CalculateWeight(list);
+            int listValue = CalculateWealth(list);
+            int listWeight = CalculateWeight(list);
             while (listValue > maxValue)
             {
                 if (list.Count < 2)
@@ -158,8 +158,8 @@ namespace VEE.RegularEvents
                     list.Pop();
                 }
 
-                listValue = this.CalculateWealth(list);
-                listWeight = this.CalculateWeight(list);
+                listValue = CalculateWealth(list);
+                listWeight = CalculateWeight(list);
             }
 
             while (listWeight > carryCap)
@@ -180,7 +180,7 @@ namespace VEE.RegularEvents
                         listWeight = 0;
                     }
                 }
-                listWeight = this.CalculateWeight(list);
+                listWeight = CalculateWeight(list);
             }
 
             // Return the thing list

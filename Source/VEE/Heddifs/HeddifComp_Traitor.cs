@@ -11,7 +11,7 @@ namespace VEE
         {
             get
             {
-                return (HeddifCompPropreties_Traitor)this.props;
+                return (HeddifCompPropreties_Traitor)props;
             }
         }
 
@@ -19,55 +19,55 @@ namespace VEE
         {
             get
             {
-                return base.CompShouldRemove || this.ticksToDisappear <= 0;
+                return base.CompShouldRemove || ticksToDisappear <= 0;
             }
         }
 
         public override void CompPostMake()
         {
             base.CompPostMake();
-            this.ticksToDisappear = this.Props.disappearsAfterTicks.RandomInRange;
+            ticksToDisappear = Props.disappearsAfterTicks.RandomInRange;
         }
 
         public override void CompPostTick(ref float severityAdjustment)
         {
-            if (this.ticksToDisappear <= 20)
+            if (ticksToDisappear <= 20)
             {
-                if (this.parent.pawn.Spawned)
+                if (parent.pawn.Spawned)
                 {
-                    this.Pawn.SetFaction(Find.FactionManager.RandomEnemyFaction(false, false, false, TechLevel.Undefined));
-                    Find.LetterStack.ReceiveLetter("TraitorLabel".Translate(), "Traitor".Translate(this.Pawn.Named("PAWN")).AdjustedFor(this.Pawn, "PAWN"), LetterDefOf.ThreatBig, new TargetInfo(this.Pawn.Position, this.Pawn.Map, false), null, null);
+                    Pawn.SetFaction(Find.FactionManager.RandomEnemyFaction(false, false, false, TechLevel.Undefined));
+                    Find.LetterStack.ReceiveLetter("TraitorLabel".Translate(), "Traitor".Translate(Pawn.Named("PAWN")).AdjustedFor(Pawn, "PAWN"), LetterDefOf.ThreatBig, new TargetInfo(Pawn.Position, Pawn.Map, false), null, null);
 
                     List<Pawn> pawnl = new List<Pawn>();
-                    pawnl.Add(this.Pawn);
-                    LordJob_AssaultColony lordJob = new LordJob_AssaultColony(this.Pawn.Faction, useAvoidGridSmart: true);
-                    LordMaker.MakeNewLord(this.Pawn.Faction, lordJob, this.Pawn.Map, pawnl);
+                    pawnl.Add(Pawn);
+                    LordJob_AssaultColony lordJob = new LordJob_AssaultColony(Pawn.Faction, useAvoidGridSmart: true);
+                    LordMaker.MakeNewLord(Pawn.Faction, lordJob, Pawn.Map, pawnl);
 
-                    this.parent.pawn.health.hediffSet.hediffs.Remove(this.parent);
+                    parent.pawn.health.hediffSet.hediffs.Remove(parent);
                 }
-                this.ticksToDisappear = 0;
+                ticksToDisappear = 0;
             }
-            this.ticksToDisappear--;
+            ticksToDisappear--;
         }
 
         public override void CompPostMerged(Hediff other)
         {
             base.CompPostMerged(other);
             HeddifComp_Traitor HeddifComp_Traitor = other.TryGetComp<HeddifComp_Traitor>();
-            if (HeddifComp_Traitor != null && HeddifComp_Traitor.ticksToDisappear > this.ticksToDisappear)
+            if (HeddifComp_Traitor != null && HeddifComp_Traitor.ticksToDisappear > ticksToDisappear)
             {
-                this.ticksToDisappear = HeddifComp_Traitor.ticksToDisappear;
+                ticksToDisappear = HeddifComp_Traitor.ticksToDisappear;
             }
         }
 
         public override void CompExposeData()
         {
-            Scribe_Values.Look<int>(ref this.ticksToDisappear, "ticksToDisappear", 0, false);
+            Scribe_Values.Look<int>(ref ticksToDisappear, "ticksToDisappear", 0, false);
         }
 
         public override string CompDebugString()
         {
-            return "ticksToDisappear: " + this.ticksToDisappear;
+            return "ticksToDisappear: " + ticksToDisappear;
         }
 
         private int ticksToDisappear;

@@ -23,14 +23,14 @@ namespace VEE
             {
                 if (!map.gameConditionManager.ConditionIsActive(VEE_DefOf.Drought))
                 {
-                    this.droughtGoingOn = false;
+                    droughtGoingOn = false;
                 }
-                if (!this.droughtGoingOn)
+                if (!droughtGoingOn)
                 {
                     affectedPlants.Clear();
                 }
 
-                if (this.droughtGoingOn && map.weatherDecider.ForcedWeather.rainRate > 0)
+                if (droughtGoingOn && map.weatherDecider.ForcedWeather.rainRate > 0)
                 {
                     map.gameConditionManager.GetActiveCondition(VEE_DefOf.Drought).End();
                 }
@@ -40,7 +40,7 @@ namespace VEE
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.Look(ref this.droughtGoingOn, "droughtGoingOn");
+            Scribe_Values.Look(ref droughtGoingOn, "droughtGoingOn");
             HarmonyInit.mapCompDrought = null;
         }
     }
