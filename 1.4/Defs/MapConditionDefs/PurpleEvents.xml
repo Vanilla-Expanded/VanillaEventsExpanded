@@ -1,6 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
   <GameConditionDef>
     <defName>IceAge</defName>
     <conditionClass>VEE.PurpleEvents.IceAge</conditionClass>
@@ -38,7 +37,7 @@ It will last anywhere between a season to several years.</description>
       <li>PsychicBloom</li>
     </exclusiveConditions>
   </GameConditionDef>
-  
+
   <GameConditionDef>
     <defName>PsychicRain</defName>
     <conditionClass>VEE.PurpleEvents.PsychicRain</conditionClass>
@@ -97,5 +96,4 @@ It will last anywhere between a few days to a season.</description>
       <li>IceAge</li>
     </exclusiveConditions>
   </GameConditionDef>
-
 </Defs>

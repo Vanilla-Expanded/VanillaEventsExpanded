@@ -1,19 +1,5 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-  <GameConditionDef>
-    <defName>HailStorm</defName>
-    <conditionClass>VEE.RegularEvents.HailStorm</conditionClass>
-    <label>Hail Storm</label>
-    <description>A freak, small scale hail storm is ravaging the local area. Any person or creature not hiding under the roof risks getting injured by ice pellets.</description>
-    <endMessage>The hail storm is ending.</endMessage>
-    <letterText>A freak, small scale hail storm is ravaging the local area. Any person or creature not hiding under the roof risks getting injured by ice pellets.</letterText>
-    <letterDef>NegativeEvent</letterDef>
-    <canBePermanent>true</canBePermanent>
-    <exclusiveConditions>
-      <li>Drought</li>
-    </exclusiveConditions>
-  </GameConditionDef>
-
   <GameConditionDef>
     <defName>Drought</defName>
     <conditionClass>VEE.RegularEvents.Drought</conditionClass>
@@ -24,7 +10,6 @@
     <letterDef>NegativeEvent</letterDef>
     <canBePermanent>true</canBePermanent>
     <exclusiveConditions>
-      <li>HailStorm</li>
       <li>PsychicRain</li>
       <li>PsychicBloom</li>
     </exclusiveConditions>

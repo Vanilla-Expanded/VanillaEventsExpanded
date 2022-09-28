@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
   <ThoughtDef>
     <defName>VEE_Aurora</defName>
     <workerClass>ThoughtWorker_Aurora</workerClass>
@@ -13,18 +12,4 @@
       </li>
     </stages>
   </ThoughtDef>
-
-  <ThoughtDef>
-    <defName>VEE_Hail</defName>
-    <durationDays>0.1</durationDays>
-    <stackLimit>1</stackLimit>
-    <stages>
-      <li>
-        <label>hit by hailstones</label>
-        <description>I'm getting hit by hailstones.</description>
-        <baseMoodEffect>-2</baseMoodEffect>
-      </li>
-    </stages>
-  </ThoughtDef>
-
 </Defs>

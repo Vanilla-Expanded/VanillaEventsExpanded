@@ -1,26 +1,6 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
   <!-- ========== Condition events ========== -->
-  <IncidentDef>
-    <defName>VEE_HailStorm</defName>
-    <label>hail storm</label>
-    <category>Misc</category>
-    <targetTags>
-      <li>Map_PlayerHome</li>
-    </targetTags>
-    <workerClass>IncidentWorker_MakeGameCondition</workerClass>
-    <gameCondition>HailStorm</gameCondition>
-    <letterLabel>Hail Storm</letterLabel>
-    <letterText>A freak, small scale hail storm is ravaging the local area. Any person or creature not hiding under the roof risks getting injured by ice pellets. Get some blunt resistant armour!</letterText>
-    <letterDef>NegativeEvent</letterDef>
-    <baseChance>0.15</baseChance>
-    <minRefireDays>40</minRefireDays>
-    <durationDays>
-      <min>0.6</min>
-      <max>1.5</max>
-    </durationDays>
-  </IncidentDef>
-
   <IncidentDef>
     <defName>VEE_Drought</defName>
     <label>drought</label>
