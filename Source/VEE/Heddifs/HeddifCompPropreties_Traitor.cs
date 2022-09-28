@@ -1,9 +1,8 @@
-﻿using System;
-using Verse;
+﻿using Verse;
 
 namespace VEE
 {
-    class HeddifCompPropreties_Traitor : HediffCompProperties
+    internal class HeddifCompPropreties_Traitor : HediffCompProperties
     {
         public HeddifCompPropreties_Traitor()
         {

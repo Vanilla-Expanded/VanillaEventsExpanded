@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <GameConditionDef>
+    <defName>HailStorm</defName>
+    <conditionClass>VEE.RegularEvents.HailStorm</conditionClass>
+    <label>Hail Storm</label>
+    <description>A freak, small scale hail storm is ravaging the local area. Any person or creature not hiding under the roof risks getting injured by ice pellets.</description>
+    <endMessage>The hail storm is ending.</endMessage>
+    <letterText>A freak, small scale hail storm is ravaging the local area. Any person or creature not hiding under the roof risks getting injured by ice pellets.</letterText>
+    <letterDef>NegativeEvent</letterDef>
+    <canBePermanent>true</canBePermanent>
+    <exclusiveConditions>
+      <li>Drought</li>
+    </exclusiveConditions>
+  </GameConditionDef>
+
+  <GameConditionDef>
+    <defName>Drought</defName>
+    <conditionClass>VEE.RegularEvents.Drought</conditionClass>
+    <label>Drought</label>
+    <description>An unusual drought has set in.\n\nDrought is devastating for plant life and will quickly destroy all the crops not planted in the hydroponics. Be sure to quickly harvest any plants you can.</description>
+    <endMessage>The drought is ending.</endMessage>
+    <letterText>An unusual drought has set in.\n\nDrought is devastating for plant life and will quickly prevent all the crops not planted in hydroponics or high fertility soil to grow.</letterText>
+    <letterDef>NegativeEvent</letterDef>
+    <canBePermanent>true</canBePermanent>
+    <exclusiveConditions>
+      <li>HailStorm</li>
+      <li>PsychicRain</li>
+      <li>PsychicBloom</li>
+    </exclusiveConditions>
+  </GameConditionDef>
+
+  <GameConditionDef>
+    <defName>SpaceBattle</defName>
+    <conditionClass>VEE.RegularEvents.SpaceBattle</conditionClass>
+    <label>Space battle</label>
+    <description>A space battle is raging in the sky, may last up to half a day.</description>
+    <endMessage>The space battle is ending.</endMessage>
+    <letterText>Several massive spaceships have engaged in combat in the planet’s orbit. Missed shots and debris can impact the ground in the area. This can lead to massive fires.</letterText>
+    <letterDef>NegativeEvent</letterDef>
+    <canBePermanent>false</canBePermanent>
+  </GameConditionDef>
+</Defs>

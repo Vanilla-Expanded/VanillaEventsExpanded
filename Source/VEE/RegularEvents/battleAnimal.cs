@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using RimWorld;
-using RimWorld.Planet;
 using UnityEngine;
 using Verse;
 
@@ -18,21 +14,17 @@ namespace VEE.RegularEvents
                 return false;
             }
             Map map = (Map)parms.target;
-            IntVec3 intVec;
-            PawnKindDef pawnKindDef;
-            return RCellFinder.TryFindRandomPawnEntryCell(out intVec, map, CellFinder.EdgeRoadChance_Animal, false, null) && this.TryFindRandomPawnKind(map, out pawnKindDef);
+            return RCellFinder.TryFindRandomPawnEntryCell(out IntVec3 intVec, map, CellFinder.EdgeRoadChance_Animal, false, null) && this.TryFindRandomPawnKind(map, out PawnKindDef pawnKindDef);
         }
 
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
             Map map = (Map)parms.target;
-            IntVec3 intVec;
-            if (!RCellFinder.TryFindRandomPawnEntryCell(out intVec, map, CellFinder.EdgeRoadChance_Animal, false, null))
+            if (!RCellFinder.TryFindRandomPawnEntryCell(out IntVec3 intVec, map, CellFinder.EdgeRoadChance_Animal, false, null))
             {
                 return false;
             }
-            PawnKindDef pawnKindDef;
-            if (!this.TryFindRandomPawnKind(map, out pawnKindDef))
+            if (!this.TryFindRandomPawnKind(map, out PawnKindDef pawnKindDef))
             {
                 return false;
             }

@@ -1,9 +1,8 @@
-﻿using System;
-using Verse;
+﻿using Verse;
 
 namespace VEE
 {
-    class HeddifCompPropreties_Standoff : HediffCompProperties
+    internal class HeddifCompPropreties_Standoff : HediffCompProperties
     {
         public HeddifCompPropreties_Standoff()
         {

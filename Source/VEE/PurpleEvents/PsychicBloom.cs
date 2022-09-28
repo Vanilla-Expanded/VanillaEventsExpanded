@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using RimWorld;
-using RimWorld.Planet;
 using UnityEngine;
 using Verse;
 
@@ -16,7 +13,7 @@ namespace VEE.PurpleEvents
         private int prevColorIndex = -1;
         private float curColorTransition;
         public const float MaxSunGlow = 0.5f;
-        
+
         public Color CurrentColor
         {
             get
@@ -80,9 +77,10 @@ namespace VEE.PurpleEvents
             new Color(0.75f, 0f, 1f)
         };
 
-        float number;
+        private float number;
 
         /* ===== saving ===== */
+
         public override void ExposeData()
         {
             base.ExposeData();
@@ -108,7 +106,7 @@ namespace VEE.PurpleEvents
 
         public override void GameConditionTick()
         {
-            this.curColorTransition += 1f / (float)this.TransitionDurationTicks;
+            this.curColorTransition += 1f / TransitionDurationTicks;
             if (this.curColorTransition >= 1f)
             {
                 this.prevColorIndex = this.curColorIndex;
@@ -116,7 +114,7 @@ namespace VEE.PurpleEvents
                 this.curColorTransition = 0f;
             }
 
-            List<Map> affectedMaps = base.AffectedMaps; 
+            List<Map> affectedMaps = base.AffectedMaps;
             for (int k = 0; k < affectedMaps.Count; k++)
             {
                 if (this.TicksPassed % 100 == 0 && number <= 800f)

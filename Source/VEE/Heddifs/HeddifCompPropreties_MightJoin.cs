@@ -1,9 +1,8 @@
-﻿using System;
-using Verse;
+﻿using Verse;
 
 namespace VEE
 {
-    class HeddifCompPropreties_MightJoin : HediffCompProperties
+    internal class HeddifCompPropreties_MightJoin : HediffCompProperties
     {
         public HeddifCompPropreties_MightJoin()
         {

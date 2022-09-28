@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using RimWorld;
-using RimWorld.Planet;
 using UnityEngine;
 using Verse;
 
@@ -11,7 +7,8 @@ namespace VEE.RegularEvents
 {
     public class HailStorm : GameCondition
     {
-        private List<SkyOverlay> overlays;
+        private readonly List<SkyOverlay> overlays;
+
         public HailStorm()
         {
             this.overlays = new List<SkyOverlay>
@@ -32,7 +29,7 @@ namespace VEE.RegularEvents
         {
             List<Map> affectedMaps = base.AffectedMaps;
             foreach (Map map in affectedMaps)
-            {                
+            {
                 if (Find.TickManager.TicksGame % 3451 == 0)
                 {
                     this.DoPawnsBluntamage(map);

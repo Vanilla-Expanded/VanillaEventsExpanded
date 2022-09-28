@@ -1,16 +1,14 @@
-﻿using RimWorld;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using RimWorld;
 using Verse;
 
 namespace VEE
 {
     public class MapComp_Drought : MapComponent
     {
-        public MapComp_Drought(Map map) : base(map) { }
+        public MapComp_Drought(Map map) : base(map)
+        {
+        }
 
         public bool droughtGoingOn = false;
         public Dictionary<Plant, bool> affectedPlants = new Dictionary<Plant, bool>();

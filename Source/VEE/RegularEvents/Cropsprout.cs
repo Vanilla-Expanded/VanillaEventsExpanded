@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using RimWorld;
-using RimWorld.Planet;
-using UnityEngine;
 using Verse;
 
 namespace VEE.RegularEvents
@@ -22,16 +17,16 @@ namespace VEE.RegularEvents
             if (!base.CanFireNowSub(parms)) return false;
             if (!map.weatherManager.growthSeasonMemory.GrowthSeasonOutdoorsNow) return false;
 
-            this.plantChoosen = ThingStuffPair.AllWith(p => 
-                p.plant != null && 
-                p.plant.harvestTag == "Standard" && 
-                p.plant.harvestYield != 0 && 
-                p.plant.harvestedThingDef != null && 
+            this.plantChoosen = ThingStuffPair.AllWith(p =>
+                p.plant != null &&
+                p.plant.harvestTag == "Standard" &&
+                p.plant.harvestYield != 0 &&
+                p.plant.harvestedThingDef != null &&
                 !p.plant.cavePlant &&
                 !p.defName.Contains("RB_") &&
                 !p.defName.Contains("AB_") &&
                 !this.excludedPlant.Contains(p.defName)).InRandomOrder().RandomElement().thing;
-            
+
             return this.TryFindRootCell(map, out this.cell, this.plantChoosen);
         }
 
@@ -53,7 +48,7 @@ namespace VEE.RegularEvents
                     }
                 }
             }
-            
+
             Find.LetterStack.ReceiveLetter("CSLabel".Translate(), $"{"CS1".Translate()} {this.plantChoosen.label} {"CS2".Translate()}", LetterDefOf.PositiveEvent, new TargetInfo(this.cell, map), hyperlinkThingDefs: new List<ThingDef> { this.plantChoosen });
             return true;
         }

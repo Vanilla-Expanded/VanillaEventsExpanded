@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using RimWorld;
 using Verse;
-using Verse.AI.Group;
-using Verse.AI;
-using RimWorld;
 
 namespace VEE
 {
-    class HeddifComp_MightJoin : HediffComp
+    internal class HeddifComp_MightJoin : HediffComp
     {
         public HediffCompProperties Props
         {
@@ -29,7 +23,7 @@ namespace VEE
             System.Random r = new System.Random();
             if (!this.Pawn.health.HasHediffsNeedingTend() && !this.Pawn.health.Downed)
             {
-                if(r.Next(0,101) < 60)
+                if (r.Next(0, 101) < 60)
                 {
                     this.Pawn.SetFaction(Faction.OfPlayer, null);
                     string label = "AJLabel".Translate();

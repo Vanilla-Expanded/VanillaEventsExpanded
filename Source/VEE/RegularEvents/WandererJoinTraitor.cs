@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using RimWorld;
-using RimWorld.Planet;
-using UnityEngine;
+﻿using RimWorld;
 using Verse;
 
 namespace VEE.RegularEvents
@@ -18,15 +12,13 @@ namespace VEE.RegularEvents
                 return false;
             }
             Map map = (Map)parms.target;
-            IntVec3 intVec;
-            return this.TryFindEntryCell(map, out intVec);
+            return this.TryFindEntryCell(map, out IntVec3 intVec);
         }
 
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
             Map map = (Map)parms.target;
-            IntVec3 loc;
-            if (!this.TryFindEntryCell(map, out loc))
+            if (!this.TryFindEntryCell(map, out IntVec3 loc))
             {
                 return false;
             }

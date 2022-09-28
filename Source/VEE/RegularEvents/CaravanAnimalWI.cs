@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using RimWorld;
 using UnityEngine;
 using Verse;
-using RimWorld;
 
 namespace VEE.RegularEvents
 {
@@ -13,19 +11,17 @@ namespace VEE.RegularEvents
         protected override bool CanFireNowSub(IncidentParms parms)
         {
             Map map = (Map)parms.target;
-            IntVec3 intVec;
-            return !map.gameConditionManager.ConditionIsActive(GameConditionDefOf.ToxicFallout) && this.TryFindEntryCell(map, out intVec) && this.PickPawnKindDef(map).Count > 0;
+            return !map.gameConditionManager.ConditionIsActive(GameConditionDefOf.ToxicFallout) && this.TryFindEntryCell(map, out IntVec3 intVec) && this.PickPawnKindDef(map).Count > 0;
         }
 
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
             Map map = (Map)parms.target;
-            IntVec3 intVec;
-            if (!this.TryFindEntryCell(map, out intVec))
+            if (!this.TryFindEntryCell(map, out IntVec3 intVec))
             {
                 return false;
             }
-            
+
             IntVec3 loc = CellFinder.RandomClosewalkCellNear(intVec, map, 10, null);
             List<Pawn> group = this.GenerateGroup(map);
             Pawn pawn = new Pawn();
@@ -64,9 +60,9 @@ namespace VEE.RegularEvents
             List<Pawn> pawns = new List<Pawn>();
             int i = 0;
 
-            while(wares.Count > num * 5)
+            while (wares.Count > num * 5)
             {
-                wares.Shuffle(); 
+                wares.Shuffle();
                 wares.RemoveLast();
             }
 
@@ -148,7 +144,7 @@ namespace VEE.RegularEvents
             int listWeight = this.CalculateWeight(list);
             while (listValue > maxValue)
             {
-                if(list.Count < 2)
+                if (list.Count < 2)
                 {
                     return list;
                 }
@@ -161,7 +157,7 @@ namespace VEE.RegularEvents
                 {
                     list.Pop();
                 }
-                
+
                 listValue = this.CalculateWealth(list);
                 listWeight = this.CalculateWeight(list);
             }
@@ -174,7 +170,7 @@ namespace VEE.RegularEvents
                 }
                 else
                 {
-                    if(list.Count > 1)
+                    if (list.Count > 1)
                     {
                         list.Pop();
                     }
@@ -186,7 +182,7 @@ namespace VEE.RegularEvents
                 }
                 listWeight = this.CalculateWeight(list);
             }
-            
+
             // Return the thing list
             return list;
         }

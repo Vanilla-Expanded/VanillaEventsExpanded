@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using UnityEngine;
-using Verse;
 using RimWorld;
+using Verse;
 
 namespace VEE.RegularEvents
 {
@@ -83,7 +80,7 @@ namespace VEE.RegularEvents
             {
                 Find.CameraDriver.shaker.DoShake(4);
             }
-            
+
             string label = "EarthquakeLabel".Translate();
             string text = "Earthquake".Translate();
             Find.LetterStack.ReceiveLetter(label, text, LetterDefOf.NegativeEvent, new TargetInfo(epicenter, map, false), null, null);

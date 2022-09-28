@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using UnityEngine;
-using Verse;
 using RimWorld;
+using Verse;
 using Verse.AI;
 
 namespace VEE
@@ -19,9 +17,9 @@ namespace VEE
         {
             Map map = (Map)parms.target;
 
-            return base.CanFireNowSub(parms) && 
-                    !map.GameConditionManager.ConditionIsActive(GameConditionDefOf.ToxicFallout) && 
-                    map.mapTemperature.SeasonAcceptableFor(ThingDefOf.Human) && 
+            return base.CanFireNowSub(parms) &&
+                    !map.GameConditionManager.ConditionIsActive(GameConditionDefOf.ToxicFallout) &&
+                    map.mapTemperature.SeasonAcceptableFor(ThingDefOf.Human) &&
                     this.TryFindEntryCell(map, out this.entryCell) &&
                     this.TryFindFaction(out this.faction) &&
                     this.FindHuntPrey(map, out this.huntTargets);

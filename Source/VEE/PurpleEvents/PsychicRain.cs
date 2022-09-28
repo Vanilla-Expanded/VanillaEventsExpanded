@@ -1,5 +1,5 @@
-﻿using RimWorld;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -8,7 +8,7 @@ namespace VEE.PurpleEvents
     public class PsychicRain : GameCondition
     {
         private SkyColorSet PsychicRainColors;
-        private List<SkyOverlay> overlays;
+        private readonly List<SkyOverlay> overlays;
 
         public PsychicRain()
         {

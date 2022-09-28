@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using RimWorld;
-using RimWorld.Planet;
-using UnityEngine;
 using Verse;
 
 namespace VEE
 {
-    class ThingSetMaker_AnimalPod : ThingSetMaker
+    internal class ThingSetMaker_AnimalPod : ThingSetMaker
     {
         protected override IEnumerable<ThingDef> AllGeneratableThingsDebugSub(ThingSetMakerParams parms)
         {
@@ -22,7 +17,7 @@ namespace VEE
             List<PawnKindDef> allPawnKindDefs = DefDatabase<PawnKindDef>.AllDefsListForReading;
 
             allAnimals.AddRange(DefDatabase<PawnKindDef>.AllDefsListForReading.FindAll(p => p.race.race.Animal && p.RaceProps.IsFlesh && !p.RaceProps.Insect && p.canArriveManhunter == true));
-            
+
             Pawn pawn = PawnGenerator.GeneratePawn(allAnimals.RandomElement());
             outThings.Add(pawn);
             HealthUtility.DamageUntilDowned(pawn, true);

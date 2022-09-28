@@ -1,6 +1,6 @@
-﻿using RimWorld;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -72,7 +72,7 @@ namespace VEE.Settings
 
             Rect viewRect = new Rect(inRect.x, y, inRect.width - borderOffsest, (incidentsLoaded + numberOfMods) * lineHeight);
             Widgets.BeginScrollView(outRect, ref scrollPosition, viewRect, true);
-            
+
             Listing_Standard lst = new Listing_Standard();
             lst.Begin(viewRect);
 

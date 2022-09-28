@@ -1,13 +1,12 @@
-﻿using RimWorld;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
+using RimWorld;
 using UnityEngine;
 using Verse;
 
 namespace VEE.Settings
 {
     [StaticConstructorOnStartup]
-    class VEEData
+    internal class VEEData
     {
         internal static List<IncidentDef> tempDefs = new List<IncidentDef>();
     }

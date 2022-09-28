@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThoughtDef>
+    <defName>VEE_Aurora</defName>
+    <workerClass>ThoughtWorker_Aurora</workerClass>
+    <gameCondition>PsychicBloom</gameCondition>
+    <stages>
+      <li>
+        <label>beautiful aurora</label>
+        <description>The view is amazing.</description>
+        <baseMoodEffect>14</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>VEE_Hail</defName>
+    <durationDays>0.1</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>hit by hailstones</label>
+        <description>I'm getting hit by hailstones.</description>
+        <baseMoodEffect>-2</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>

@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
+﻿using RimWorld;
 using Verse;
-using RimWorld;
 
 namespace VEE.RegularEvents
 {
@@ -16,25 +11,22 @@ namespace VEE.RegularEvents
             {
                 return false;
             }
-            Faction faction;
-            if (!this.TryFindFormerFaction(out faction))
+            if (!this.TryFindFormerFaction(out Faction faction))
             {
                 return false;
             }
             Map map = (Map)parms.target;
-            IntVec3 intVec;
-            return !map.GameConditionManager.ConditionIsActive(GameConditionDefOf.ToxicFallout) && map.mapTemperature.SeasonAcceptableFor(ThingDefOf.Human) && this.TryFindEntryCell(map, out intVec);
+            return !map.GameConditionManager.ConditionIsActive(GameConditionDefOf.ToxicFallout) && map.mapTemperature.SeasonAcceptableFor(ThingDefOf.Human) && this.TryFindEntryCell(map, out IntVec3 intVec);
         }
+
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
             Map map = (Map)parms.target;
-            IntVec3 loc;
-            if (!this.TryFindEntryCell(map, out loc))
+            if (!this.TryFindEntryCell(map, out IntVec3 loc))
             {
                 return false;
             }
-            Faction faction;
-            if (!this.TryFindFormerFaction(out faction))
+            if (!this.TryFindFormerFaction(out Faction faction))
             {
                 return false;
             }
@@ -47,10 +39,12 @@ namespace VEE.RegularEvents
             Find.LetterStack.ReceiveLetter("WMWILabel".Translate(), "WMWI".Translate(), LetterDefOf.NeutralEvent, new LookTargets(loc, map), null, null);
             return true;
         }
+
         private bool TryFindEntryCell(Map map, out IntVec3 cell)
         {
             return CellFinder.TryFindRandomEdgeCellWith((IntVec3 c) => map.reachability.CanReachColony(c), map, CellFinder.EdgeRoadChance_Ignore, out cell);
         }
+
         private bool TryFindFormerFaction(out Faction formerFaction)
         {
             return Find.FactionManager.TryGetRandomNonColonyHumanlikeFaction(out formerFaction, false, true, TechLevel.Undefined);

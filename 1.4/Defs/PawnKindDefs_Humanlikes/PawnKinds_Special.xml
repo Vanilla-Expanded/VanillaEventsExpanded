@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <PawnKindDef Name="HunterBase" Abstract="True">
+    <race>Human</race>
+    <initialWillRange>2~4</initialWillRange>
+    <initialResistanceRange>14~23</initialResistanceRange>
+    <combatPower>30</combatPower>
+    <minGenerationAge>20</minGenerationAge>
+    <maxGenerationAge>40</maxGenerationAge>
+    <!-- Hediffs -->
+    <techHediffsChance>0.15</techHediffsChance>
+    <techHediffsMoney>700~1200</techHediffsMoney>
+    <techHediffsTags>
+      <li>Simple</li>
+      <li>Advanced</li>
+      <li>ImplantEmpireCommon</li>
+    </techHediffsTags>
+    <!-- Apparel/weapons -->
+    <biocodeWeaponChance>0.2</biocodeWeaponChance>
+    <gearHealthRange>0.7~3.2</gearHealthRange>
+    <apparelMoney>1000~1500</apparelMoney>
+    <apparelAllowHeadgearChance>0.6</apparelAllowHeadgearChance>
+    <weaponMoney>330~850</weaponMoney>
+    <!-- Shooting required -->
+    <isFighter>true</isFighter>
+    <requiredWorkTags>
+      <li>Violent</li>
+      <li>Caring</li>
+    </requiredWorkTags>
+    <backstoryCryptosleepCommonality>0</backstoryCryptosleepCommonality>
+    <disallowedTraits>
+      <li>Brawler</li>
+      <li>Nudist</li>
+    </disallowedTraits>
+    <skills>
+      <li>
+        <skill>Shooting</skill>
+        <range>10~20</range>
+      </li>
+    </skills>
+    <!-- Inventory -->
+    <invNutrition>2.55</invNutrition>
+    <!-- CE -->
+    <modExtensions>
+      <li MayRequire="CETeam.CombatExtended" Class="CombatExtended.LoadoutPropertiesExtension">
+        <primaryMagazineCount>
+          <min>50</min>
+          <max>80</max>
+        </primaryMagazineCount>
+        <shieldChance>0</shieldChance>
+        <sidearms>
+          <li>
+            <generateChance>1</generateChance>
+            <sidearmMoney>
+              <min>20</min>
+              <max>120</max>
+            </sidearmMoney>
+            <weaponTags>
+              <li>CE_Sidearm_Melee</li>
+            </weaponTags>
+          </li>
+        </sidearms>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+  <!-- Tribal Hunter -->
+  <PawnKindDef ParentName="HunterBase">
+    <defName>VEE_TribalHunter</defName>
+    <label>hunter</label>
+    <backstoryFiltersOverride>
+      <li>
+        <categoriesAdulthood>
+          <li>TribalHunter</li>
+        </categoriesAdulthood>
+      </li>
+    </backstoryFiltersOverride>
+    <invFoodDef>Pemmican</invFoodDef>
+    <apparelTags>
+      <li>Neolithic</li>
+    </apparelTags>
+    <weaponTags>
+      <li>NeolithicRangedDecent</li>
+    </weaponTags>
+  </PawnKindDef>
+  <!-- Industrial Hunter -->
+  <PawnKindDef ParentName="HunterBase">
+    <defName>Hunter</defName>
+    <label>hunter</label>
+    <apparelTags>
+      <li>IndustrialAdvanced</li>
+      <li>IndustrialMilitaryBasic</li>
+      <li>IndustrialMilitaryAdvanced</li>
+    </apparelTags>
+    <weaponMoney>600~950</weaponMoney>
+    <weaponTags>
+      <li>SniperRifle</li>
+      <li>Gun</li>
+    </weaponTags>
+    <inventoryOptions>
+      <skipChance>0.9</skipChance>
+      <subOptionsChooseOne>
+        <li>
+          <thingDef>MedicineIndustrial</thingDef>
+          <countRange>1</countRange>
+        </li>
+      </subOptionsChooseOne>
+    </inventoryOptions>
+  </PawnKindDef>
+</Defs>

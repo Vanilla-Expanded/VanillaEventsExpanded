@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using RimWorld;
-using RimWorld.Planet;
 using UnityEngine;
 using Verse;
 
@@ -14,15 +10,13 @@ namespace VEE.RegularEvents
         protected override bool CanFireNowSub(IncidentParms parms)
         {
             Map map = (Map)parms.target;
-            IntVec3 intVec;
-            return this.TryFindCell(out intVec, map);
+            return this.TryFindCell(out IntVec3 intVec, map);
         }
 
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
             Map map = (Map)parms.target;
-            IntVec3 intVecb;
-            if (!this.TryFindCell(out intVecb, map))
+            if (!this.TryFindCell(out IntVec3 intVecb, map))
             {
                 return false;
             }
@@ -45,7 +39,7 @@ namespace VEE.RegularEvents
                 SkyfallerMaker.SpawnSkyfaller(ThingDefOf.MeteoriteIncoming, list, intVec, map);
                 intVec = intVecb;
             }
-            
+
             string text = string.Format(this.def.letterText, list[0].def.label).CapitalizeFirst();
             Find.LetterStack.ReceiveLetter(this.def.letterLabel, text, LetterDefOf.NeutralEvent, new TargetInfo(intVecb, map, false), null, null);
             return true;
@@ -56,7 +50,7 @@ namespace VEE.RegularEvents
             int maxMineables = ThingSetMaker_Meteorite.MineablesCountRange.max;
             return CellFinderLoose.TryFindSkyfallerCell(ThingDefOf.MeteoriteIncoming, map, out cell, 10, default(IntVec3), -1, true, false, false, false, true, true, delegate (IntVec3 x)
             {
-                int num = Mathf.CeilToInt(Mathf.Sqrt((float)maxMineables)) + 2;
+                int num = Mathf.CeilToInt(Mathf.Sqrt(maxMineables)) + 2;
                 CellRect cellRect = CellRect.CenteredOn(x, num, num);
                 int num2 = 0;
                 foreach (IntVec3 c in cellRect)

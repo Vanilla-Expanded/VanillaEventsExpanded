@@ -1,8 +1,6 @@
-﻿using RimWorld;
+﻿using System.Collections.Generic;
+using RimWorld;
 using RimWorld.Planet;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Verse;
 
 namespace VEE.PurpleEvents

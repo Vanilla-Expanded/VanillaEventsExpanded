@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using RimWorld;
 using Verse;
 using Verse.AI.Group;
-using RimWorld;
 
 namespace VEE
 {
-    class HeddifComp_Traitor : HediffComp
+    internal class HeddifComp_Traitor : HediffComp
     {
         public HeddifCompPropreties_Traitor Props
         {

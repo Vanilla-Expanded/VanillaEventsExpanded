@@ -1,7 +1,7 @@
-﻿using HarmonyLib;
-using RimWorld;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Reflection.Emit;
+using HarmonyLib;
+using RimWorld;
 using UnityEngine;
 using Verse;
 using Verse.AI;
@@ -28,7 +28,7 @@ namespace VEE
             {
                 if (cell.GetTerrain(map).fertility > 0)
                 {
-                    Widgets.Label(new Rect(15f, (float)UI.screenHeight - 65f - num, 999f, 999f), "VEE_DroughtGui".Translate(map.fertilityGrid.FertilityAt(cell).ToStringPercent()));
+                    Widgets.Label(new Rect(15f, UI.screenHeight - 65f - num, 999f, 999f), "VEE_DroughtGui".Translate(map.fertilityGrid.FertilityAt(cell).ToStringPercent()));
                 }
                 num += 19f;
             }

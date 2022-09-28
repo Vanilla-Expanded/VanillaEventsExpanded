@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using RimWorld;
-using RimWorld.Planet;
-using UnityEngine;
+﻿using RimWorld;
 using Verse;
-
 
 namespace VEE
 {
-
     [DefOf]
     public static class VEE_DefOf
     {
@@ -65,6 +57,7 @@ namespace VEE
         public static LetterDef PurpleEvent;
 
         /* Meme def */
+
         [MayRequireIdeology]
         public static MemeDef AnimalPersonhood;
     }

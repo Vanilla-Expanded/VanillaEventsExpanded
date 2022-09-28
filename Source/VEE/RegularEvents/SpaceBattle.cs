@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using RimWorld;
-using RimWorld.Planet;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
@@ -13,8 +10,8 @@ namespace VEE.RegularEvents
     [StaticConstructorOnStartup]
     public class SpaceBattle : GameCondition
     {
-        IntVec3 aroundThis = new IntVec3();
-        int delay = 0;
+        private IntVec3 aroundThis = new IntVec3();
+        private int delay = 0;
 
         public override bool AllowEnjoyableOutsideNow(Map map) => false;
 
@@ -88,7 +85,6 @@ namespace VEE.RegularEvents
                     };
                     ChangeDeadPawnsToTheirCorpses(list);
                     DropPodUtility.DropThingsNear(intVec, map, list, 1, false, true, true);
-
                 }
             }
             if (delay % 2000 == 0)

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <!-- ========== Condition events ========== -->
+  <IncidentDef>
+    <defName>VEE_HailStorm</defName>
+    <label>hail storm</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>IncidentWorker_MakeGameCondition</workerClass>
+    <gameCondition>HailStorm</gameCondition>
+    <letterLabel>Hail Storm</letterLabel>
+    <letterText>A freak, small scale hail storm is ravaging the local area. Any person or creature not hiding under the roof risks getting injured by ice pellets. Get some blunt resistant armour!</letterText>
+    <letterDef>NegativeEvent</letterDef>
+    <baseChance>0.15</baseChance>
+    <minRefireDays>40</minRefireDays>
+    <durationDays>
+      <min>0.6</min>
+      <max>1.5</max>
+    </durationDays>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>VEE_Drought</defName>
+    <label>drought</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>IncidentWorker_MakeGameCondition</workerClass>
+    <gameCondition>Drought</gameCondition>
+    <letterLabel>Drought</letterLabel>
+    <letterText>An unusual drought has set in.\n\nDrought is devastating for plant life and will quickly prevent all the crops not planted in hydroponics or high fertility soil to grow.</letterText>
+    <letterDef>NegativeEvent</letterDef>
+    <baseChance>0.15</baseChance>
+    <minRefireDays>40</minRefireDays>
+    <durationDays>
+      <min>6</min>
+      <max>10</max>
+    </durationDays>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>VEE_SpaceBattle</defName>
+    <label>space battle</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>VEE.IncidentWorker_MakeGameConditionNoLetter</workerClass>
+    <gameCondition>SpaceBattle</gameCondition>
+    <letterLabel>Space Battle</letterLabel>
+    <letterText>Several massive spaceships have engaged in combat in the planet’s orbit. Missed shots and debris can impact the ground in the area. This can lead to massive fires.</letterText>
+    <letterDef>NegativeEvent</letterDef>
+    <baseChance>0.3</baseChance>
+    <minRefireDays>40</minRefireDays>
+    <durationDays>
+      <min>0.2</min>
+      <max>0.5</max>
+    </durationDays>
+  </IncidentDef>
+
+  <!-- ========== Regular events ========== -->
+  <IncidentDef>
+    <defName>VEE_MeteoriteShower</defName>
+    <label>meteorite shower</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>VEE.RegularEvents.MeteoriteShower</workerClass>
+    <baseChance>0.4</baseChance>
+    <letterLabel>Meteorite Shower</letterLabel>
+    <letterText>Several large meteorites have struck ground in the area. They left behind large lumps of resources.</letterText>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>VEE_AnimalPodCrash</defName>
+    <label>animal transport pod crash</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>VEE.RegularEvents.AnimalTransportPodCrash</workerClass>
+    <baseChance>2</baseChance>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>VEE_ShuttleCrash</defName>
+    <label>shuttle crash</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>VEE.RegularEvents.ShuttleCrash</workerClass>
+    <baseChance>0.5</baseChance>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>VEE_Earthquake</defName>
+    <label>earthquake</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>VEE.RegularEvents.EarthQuake</workerClass>
+    <baseChance>0.3</baseChance>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>VEE_Cargopodsweapons</defName>
+    <label>cargo pods (weapons)</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>VEE.RegularEvents.WeaponPod</workerClass>
+    <baseChance>2</baseChance>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>VEE_Cargopodsapparel</defName>
+    <label>cargo pods (apparel)</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>VEE.RegularEvents.ApparelPod</workerClass>
+    <baseChance>2</baseChance>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>VEE_CaravanAnimalsWanderIn</defName>
+    <label>caravan animals wander in</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>VEE.RegularEvents.CaravanAnimalWI</workerClass>
+    <baseChance>0.8</baseChance>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>VEE_CropSprout</defName>
+    <label>crop sprout</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>VEE.RegularEvents.Cropsprout</workerClass>
+    <baseChance>0.35</baseChance>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>VEE_BattleAnimalsWanderIn</defName>
+    <label>battle animals wander in</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>VEE.RegularEvents.battleAnimal</workerClass>
+    <baseChance>0.25</baseChance>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>VEE_WildMenWanderIn</defName>
+    <label>wild men wander in</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>VEE.RegularEvents.WildMenWanderIn</workerClass>
+    <populationEffect>IncreaseMedium</populationEffect>
+    <baseChance>0.50</baseChance>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>VEE_HuntingParty</defName>
+    <label>hunting party</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>VEE.HuntingParty</workerClass>
+    <baseChance>0.45</baseChance>
+  </IncidentDef>
+
+</Defs>

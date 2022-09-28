@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Verse;
-using Verse.AI.Group;
-using Verse.AI;
+﻿using System.Collections.Generic;
 using RimWorld;
+using Verse;
+using Verse.AI;
+using Verse.AI.Group;
 
 namespace VEE
 {
-    class HeddifComp_StandOff : HediffComp
+    internal class HeddifComp_StandOff : HediffComp
     {
         public HediffCompProperties Props
         {
@@ -30,7 +27,7 @@ namespace VEE
 
         public override void CompPostTick(ref float severityAdjustment)
         {
-            if(t == 0)
+            if (t == 0)
             {
                 pawnl.Add(this.Pawn);
                 this.Pawn.SetFaction(Find.FactionManager.RandomEnemyFaction());
@@ -38,7 +35,7 @@ namespace VEE
                 LordJob_VisitColony lordJob1 = new LordJob_VisitColony();
                 LordMaker.MakeNewLord(this.Pawn.Faction, lordJob1, this.Pawn.Map);
             }
-            if (t%100 == 0)
+            if (t % 100 == 0)
             {
                 if (GenDate.DayTick(GenTicks.TicksAbs, Find.WorldGrid.LongLatOf(this.Pawn.Map.Tile).x) > 29500 && GenDate.DayTick(GenTicks.TicksAbs, Find.WorldGrid.LongLatOf(this.Pawn.Map.Tile).x) < 30500 && flag)
                 {
