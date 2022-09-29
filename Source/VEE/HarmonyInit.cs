@@ -148,7 +148,7 @@ namespace VEE
         [HarmonyPostfix]
         public static void Postfix(ref Plant __instance, ref int ___madeLeaflessTick)
         {
-            if (__instance.Map.GetComponent<MapComp_Drought>() is MapComp_Drought mapComp_Drought
+            if (__instance?.Map.GetComponent<MapComp_Drought>() is MapComp_Drought mapComp_Drought
                 && mapComp_Drought != null
                 && mapComp_Drought.droughtGoingOn
                 && __instance.def?.plant?.leaflessGraphic != null
