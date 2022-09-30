@@ -8,19 +8,24 @@ namespace VEE
     {
         protected override IEnumerable<ThingDef> AllGeneratableThingsDebugSub(ThingSetMakerParams parms)
         {
-            return DefDatabase<ThingDef>.AllDefsListForReading.FindAll(p => p.race.Animal && p.race.IsFlesh && !p.race.Insect);
+            throw new System.NotImplementedException();
         }
 
         protected override void Generate(ThingSetMakerParams parms, List<Thing> outThings)
         {
-            List<PawnKindDef> allAnimals = new List<PawnKindDef>();
-            List<PawnKindDef> allPawnKindDefs = DefDatabase<PawnKindDef>.AllDefsListForReading;
-
-            allAnimals.AddRange(DefDatabase<PawnKindDef>.AllDefsListForReading.FindAll(p => p.race.race.Animal && p.RaceProps.IsFlesh && !p.RaceProps.Insect && p.canArriveManhunter == true));
-
-            Pawn pawn = PawnGenerator.GeneratePawn(allAnimals.RandomElement());
-            outThings.Add(pawn);
+            var pawn = PawnGenerator.GeneratePawn(AllGeneratable().RandomElement());
             HealthUtility.DamageUntilDowned(pawn, true);
+            outThings.Add(pawn);
+        }
+
+        List<PawnKindDef> AllGeneratable()
+        {
+            return DefDatabase<PawnKindDef>.AllDefsListForReading.FindAll(t => t.RaceProps.Animal
+                                                                            && t.RaceProps.baseBodySize > 0.45f
+                                                                            && t.canArriveManhunter
+                                                                            && t.RaceProps.IsFlesh
+                                                                            && !t.RaceProps.Insect
+                                                                            && !t.race.tradeTags.Contains("VEE_Exclude"));
         }
     }
 }
