@@ -20,9 +20,6 @@ namespace VEE
         public static BiomeDef ExtremeDesert;
         public static BiomeDef AridShrubland;
 
-        /* ThingSetMakerDef DEF */
-        public static ThingSetMakerDef AnimalPod;
-
         /* Hediff */
         public static HediffDef Traitor;
         public static HediffDef MightJoin;
@@ -54,7 +51,6 @@ namespace VEE
         public static LetterDef PurpleEvent;
 
         /* Meme def */
-
         [MayRequireIdeology]
         public static MemeDef AnimalPersonhood;
     }

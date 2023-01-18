@@ -35,8 +35,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="HarmonyInit.cs" />
-    <Compile Include="Heddifs\HeddifCompPropreties_MightJoin.cs" />
-    <Compile Include="Heddifs\HeddifComp_MightJoin.cs" />
+    <Compile Include="Heddifs\HediffCompProperties\HediffCompPropreties_MightJoin.cs" />
+    <Compile Include="Heddifs\HediffComp_MightJoin.cs" />
     <Compile Include="Jobs\JobDriver_HuntAndLeave.cs" />
     <Compile Include="Heddifs\HediffCompProperties\HeddifCompPropreties_Traitor.cs" />
     <Compile Include="Heddifs\HeddifComp_Traitor.cs" />
@@ -62,7 +62,6 @@
     <Compile Include="RegularEvents\SpaceBattle.cs" />
     <Compile Include="RegularEvents\WandererJoinTraitor.cs" />
     <Compile Include="Others\ShuttleInfo.cs" />
-    <Compile Include="Others\ThingSetMaker_AnimalPod.cs" />
     <Compile Include="RegularEvents\WeaponPod.cs" />
     <Compile Include="RegularEvents\WildMenWanderIn.cs" />
     <Compile Include="Settings\DefsAlterer.cs" />

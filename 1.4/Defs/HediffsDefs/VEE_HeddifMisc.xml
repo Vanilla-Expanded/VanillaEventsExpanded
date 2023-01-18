@@ -32,7 +32,7 @@
     <isBad>false</isBad>
     <initialSeverity>1</initialSeverity>
     <comps>
-      <li Class="VEE.HeddifCompPropreties_MightJoin"></li>
+      <li Class="VEE.HediffCompPropreties_MightJoin"></li>
     </comps>
     <stages>
       <li>
