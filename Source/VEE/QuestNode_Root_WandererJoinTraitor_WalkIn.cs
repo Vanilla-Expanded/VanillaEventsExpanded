@@ -9,14 +9,12 @@ namespace VEE
     {
         public override Pawn GeneratePawn()
         {
-            PawnGenerationRequest request = new PawnGenerationRequest(PawnKindDefOf.Villager, Faction.OfPlayer, mustBeCapableOfViolence: true);
-            if (Find.Storyteller.difficulty.ChildrenAllowed)
+            var request = new PawnGenerationRequest(PawnKindDefOf.Villager, Faction.OfPlayer, mustBeCapableOfViolence: true)
             {
-                request.AllowedDevelopmentalStages |= DevelopmentalStage.Child;
-            }
+                AllowedDevelopmentalStages = DevelopmentalStage.Adult
+            };
 
-            Pawn pawn = PawnGenerator.GeneratePawn(request);
-
+            var pawn = PawnGenerator.GeneratePawn(request);
             pawn.health.AddHediff(VEE_DefOf.Traitor);
 
             if (!pawn.IsWorldPawn())
