@@ -25,7 +25,6 @@ namespace VEE
 
         /* Hediff */
         public static HediffDef Traitor;
-        public static HediffDef StandOff;
         public static HediffDef MightJoin;
 
         /* PawnKindDefOf */

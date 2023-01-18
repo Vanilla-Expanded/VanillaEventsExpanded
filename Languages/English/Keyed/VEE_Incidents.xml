@@ -14,11 +14,11 @@ If rescued, it can freely join the colony, or go back to living in the wild.</An
     <TraitorLabel>Traitor!</TraitorLabel>
     <Traitor>A colonist named {PAWN_nameDef}, which you have accepted into your ranks, turns out to be an enemy agent from {PAWN_factionName}.
 
-You can capture him for recruitment or slavery purposes.</Traitor>
+You can capture {PAWN_objective} for recruitment or slavery purposes.</Traitor>
 
     <!-- Space Battle -->
     <SpaceBattleLabel>Space battle</SpaceBattleLabel>
-    <SpaceBattle>Several massive spaceships have engaged in combat in the planet’s orbit. Missed shots and debris can impact the ground in the area. This can lead to massive fires.</SpaceBattle>
+    <SpaceBattle>Several massive spaceships have engaged in combat in the planet's orbit. Missed shots and debris can impact the ground in the area. This can lead to massive fires.</SpaceBattle>
 
     <!-- Shuttle Crash -->
     <ShuttleCrashLabel>Shuttle Crash</ShuttleCrashLabel>
@@ -28,19 +28,19 @@ The crew is not affiliated with any faction, which means they can be rescued and
 
     <!-- Earthquake -->
     <EarthquakeLabel>Earthquake</EarthquakeLabel>
-    <Earthquake>Changes in the planet’s crust caused a small scale localised earthquake. Some structures can become damaged and roofs can collapse.</Earthquake>
+    <Earthquake>Changes in the planet's crust caused a small scale localised earthquake. Some structures can become damaged and roofs can collapse.</Earthquake>
 
     <!-- Cargo pods (weapons) -->
     <CPWLabel>Cargo pods (weapons)</CPWLabel>
     <CPW>You have detected a cluster of cargo pods crashing nearby.
 
-Perhaps you’ll find something useful in the wreckage.</CPW>
+Perhaps you'll find something useful in the wreckage.</CPW>
 
     <!-- Cargo pods (apparel) -->
     <CPALabel>Cargo pods (apparel)</CPALabel>
     <CPA>You have detected a cluster of cargo pods crashing nearby.
 
-Perhaps you’ll find something useful in the wreckage.</CPA>
+Perhaps you'll find something useful in the wreckage.</CPA>
 
     <!-- Caravan animals wander in -->
     <CAWILabel>Caravan animals wander in</CAWILabel>

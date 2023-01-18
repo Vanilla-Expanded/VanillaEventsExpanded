@@ -1,68 +1,52 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using RimWorld;
 using Verse;
 using Verse.AI.Group;
 
 namespace VEE
 {
-    internal class HeddifComp_Traitor : HediffComp
+    public class HediffComp_Traitor : HediffComp
     {
-        public HeddifCompPropreties_Traitor Props
-        {
-            get
-            {
-                return (HeddifCompPropreties_Traitor)props;
-            }
-        }
+        public HediffCompPropreties_Traitor Props => (HediffCompPropreties_Traitor)props;
 
-        public override bool CompShouldRemove
-        {
-            get
-            {
-                return base.CompShouldRemove || ticksToDisappear <= 0;
-            }
-        }
+        private int ticksToDisappear;
 
         public override void CompPostMake()
         {
-            base.CompPostMake();
             ticksToDisappear = Props.disappearsAfterTicks.RandomInRange;
         }
 
         public override void CompPostTick(ref float severityAdjustment)
         {
-            if (ticksToDisappear <= 20)
+            var pawn = Pawn;
+            if (pawn.Spawned && pawn.IsHashIntervalTick(250))
             {
-                if (parent.pawn.Spawned)
+                ticksToDisappear -= 250;
+                if (ticksToDisappear <= 0)
                 {
-                    Pawn.SetFaction(Find.FactionManager.RandomEnemyFaction(false, false, false, TechLevel.Undefined));
-                    Find.LetterStack.ReceiveLetter("TraitorLabel".Translate(), "Traitor".Translate(Pawn.Named("PAWN")).AdjustedFor(Pawn, "PAWN"), LetterDefOf.ThreatBig, new TargetInfo(Pawn.Position, Pawn.Map, false), null, null);
+                    var faction = Find.FactionManager.RandomEnemyFaction(allowNonHumanlike: false);
+                    pawn.SetFaction(faction);
 
-                    List<Pawn> pawnl = new List<Pawn>();
-                    pawnl.Add(Pawn);
-                    LordJob_AssaultColony lordJob = new LordJob_AssaultColony(Pawn.Faction, useAvoidGridSmart: true);
-                    LordMaker.MakeNewLord(Pawn.Faction, lordJob, Pawn.Map, pawnl);
+                    var map = pawn.Map;
+                    LordMaker.MakeNewLord(faction, new LordJob_AssaultColony(faction, true, false, false, true, true, false, true), map, new List<Pawn> { pawn });
+                    Find.LetterStack.ReceiveLetter("TraitorLabel".Translate(), "Traitor".Translate(pawn.Named("PAWN")).AdjustedFor(pawn), LetterDefOf.ThreatBig, new TargetInfo(pawn.Position, map, false));
 
                     parent.pawn.health.hediffSet.hediffs.Remove(parent);
                 }
-                ticksToDisappear = 0;
             }
-            ticksToDisappear--;
         }
 
         public override void CompPostMerged(Hediff other)
         {
-            base.CompPostMerged(other);
-            HeddifComp_Traitor HeddifComp_Traitor = other.TryGetComp<HeddifComp_Traitor>();
-            if (HeddifComp_Traitor != null && HeddifComp_Traitor.ticksToDisappear > ticksToDisappear)
-            {
-                ticksToDisappear = HeddifComp_Traitor.ticksToDisappear;
-            }
+            var hediffComp = other.TryGetComp<HediffComp_Traitor>();
+            if (hediffComp != null && hediffComp.ticksToDisappear > ticksToDisappear)
+                ticksToDisappear = hediffComp.ticksToDisappear;
         }
 
         public override void CompExposeData()
         {
-            Scribe_Values.Look<int>(ref ticksToDisappear, "ticksToDisappear", 0, false);
+            Scribe_Values.Look(ref ticksToDisappear, "ticksToDisappear");
         }
 
         public override string CompDebugString()
@@ -70,6 +54,19 @@ namespace VEE
             return "ticksToDisappear: " + ticksToDisappear;
         }
 
-        private int ticksToDisappear;
+        public override IEnumerable<Gizmo> CompGetGizmos()
+        {
+            if (Prefs.DevMode)
+            {
+                yield return new Command_Action
+                {
+                    defaultLabel = "DEBUG: Now",
+                    action = new Action(() =>
+                    {
+                        ticksToDisappear = 200;
+                    })
+                };
+            }
+        }
     }
 }
