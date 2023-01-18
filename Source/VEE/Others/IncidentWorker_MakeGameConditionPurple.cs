@@ -10,7 +10,7 @@ namespace VEE
         {
             if (Find.World.GetComponent<WorldComp_Purple>() is WorldComp_Purple comp)
             {
-                bool enoughDaysPassed = comp.tickLastPurpleEvent == 0 || Find.TickManager.TicksGame - comp.tickLastPurpleEvent > 60000 * Settings.VEEMod.settings.daysBetweenPurpleEvent;
+                bool enoughDaysPassed = comp.tickLast == 0 || Find.TickManager.TicksGame - comp.tickLast > 60000 * Settings.VEEMod.settings.daysBetweenPurpleEvent;
                 return base.CanFireNowSub(parms) && enoughDaysPassed;
             }
             return false;
@@ -18,14 +18,14 @@ namespace VEE
 
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
-            GameConditionManager conditionManager = parms.target.GameConditionManager;
-            GameCondition gameCondition = GameConditionMaker.MakeCondition(def.gameCondition, Mathf.RoundToInt(def.durationDays.RandomInRange * 60000f));
+            var gameCondition = GameConditionMaker.MakeCondition(def.gameCondition, Mathf.RoundToInt(def.durationDays.RandomInRange * 60000f));
 
-            conditionManager.RegisterCondition(gameCondition);
+            parms.target.GameConditionManager.RegisterCondition(gameCondition);
             parms.letterHyperlinkThingDefs = gameCondition.def.letterHyperlinks;
             SendStandardLetter(def.letterLabel, def.letterText, def.letterDef, parms, LookTargets.Invalid);
 
-            Find.World.GetComponent<WorldComp_Purple>().tickLastPurpleEvent = Find.TickManager.TicksGame;
+            if (Find.World.GetComponent<WorldComp_Purple>() is WorldComp_Purple comp)
+                comp.tickLast = Find.TickManager.TicksGame;
 
             return true;
         }
@@ -35,10 +35,9 @@ namespace VEE
     {
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
-            GameConditionManager conditionManager = parms.target.GameConditionManager;
-            GameCondition gameCondition = GameConditionMaker.MakeCondition(def.gameCondition, Mathf.RoundToInt(def.durationDays.RandomInRange * 60000f));
+            var gameCondition = GameConditionMaker.MakeCondition(def.gameCondition, Mathf.RoundToInt(def.durationDays.RandomInRange * 60000f));
 
-            conditionManager.RegisterCondition(gameCondition);
+            parms.target.GameConditionManager.RegisterCondition(gameCondition);
             return true;
         }
     }

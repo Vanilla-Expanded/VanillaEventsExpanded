@@ -3,9 +3,9 @@ using Verse;
 
 namespace VEE
 {
-    internal class WorldComp_Purple : WorldComponent
+    public class WorldComp_Purple : WorldComponent
     {
-        internal int tickLastPurpleEvent = 0;
+        internal int tickLast = 0;
 
         public WorldComp_Purple(World world) : base(world)
         {
@@ -13,8 +13,7 @@ namespace VEE
 
         public override void ExposeData()
         {
-            base.ExposeData();
-            Scribe_Values.Look(ref tickLastPurpleEvent, "tickLastPurpleEvent", 0);
+            Scribe_Values.Look(ref tickLast, "tickLast");
         }
     }
 }
