@@ -1,5 +1,6 @@
 ﻿using RimWorld;
 using Verse;
+using Verse.AI;
 
 namespace VEE
 {
@@ -26,7 +27,7 @@ namespace VEE
 
         /* PawnKindDefOf */
         public static PawnKindDef StrangerInBlack;
-        public static PawnKindDef Hunter;
+        public static PawnKindDef VEE_Hunter;
         public static PawnKindDef VEE_TribalHunter;
 
         /* ThingDefOf */
@@ -49,6 +50,8 @@ namespace VEE
 
         /* Letter def */
         public static LetterDef PurpleEvent;
+
+        public static DutyDef VEE_CarryAndLeave;
 
         /* Meme def */
         [MayRequireIdeology]

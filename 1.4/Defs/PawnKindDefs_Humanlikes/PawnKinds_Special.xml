@@ -16,7 +16,7 @@
       <li>ImplantEmpireCommon</li>
     </techHediffsTags>
     <!-- Apparel/weapons -->
-    <biocodeWeaponChance>0.2</biocodeWeaponChance>
+    <biocodeWeaponChance>1</biocodeWeaponChance>
     <gearHealthRange>0.7~3.2</gearHealthRange>
     <apparelMoney>1000~1500</apparelMoney>
     <apparelAllowHeadgearChance>0.6</apparelAllowHeadgearChance>
@@ -84,7 +84,7 @@
   </PawnKindDef>
   <!-- Industrial Hunter -->
   <PawnKindDef ParentName="HunterBase">
-    <defName>Hunter</defName>
+    <defName>VEE_Hunter</defName>
     <label>hunter</label>
     <apparelTags>
       <li>IndustrialAdvanced</li>

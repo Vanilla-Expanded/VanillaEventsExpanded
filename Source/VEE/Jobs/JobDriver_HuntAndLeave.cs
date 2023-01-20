@@ -8,6 +8,8 @@ namespace VEE.Jobs
 {
     internal class JobDriver_HuntAndLeave : JobDriver
     {
+        private Corpse Corpse => job.GetTarget(TargetIndex.A).Thing as Corpse;
+
         public Pawn Victim
         {
             get
@@ -17,98 +19,84 @@ namespace VEE.Jobs
             }
         }
 
-        private Corpse Corpse => job.GetTarget(TargetIndex.A).Thing as Corpse;
-
-        public override void ExposeData()
-        {
-            base.ExposeData();
-            Scribe_Values.Look<int>(ref jobStartTick, "jobStartTick", 0, false);
-        }
-
         public override string GetReport() => Victim != null ? JobUtility.GetResolvedJobReport(job.def.reportString, Victim) : base.GetReport();
 
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
-            Pawn pawn = this.pawn;
-            LocalTargetInfo target = Victim;
-            Job job = this.job;
-            return pawn.Reserve(target, job, 1, -1, null, errorOnFailed);
+            if (Corpse != null)
+                return !Map.reservationManager.IsReservedByAnyoneOf(Corpse, pawn.Faction);
+            if (Victim != null)
+                return !Map.reservationManager.IsReservedByAnyoneOf(Victim, pawn.Faction);
+
+            return false;
         }
 
         protected override IEnumerable<Toil> MakeNewToils()
         {
-            this.FailOn(delegate ()
-            {
-                if (!job.ignoreDesignations)
-                {
-                    Pawn victim = Victim;
-                    if (victim != null && !victim.Dead && base.Map.designationManager.DesignationOn(victim, DesignationDefOf.Hunt) == null)
-                    {
-                        return true;
-                    }
-                }
-                return false;
-            });
-            yield return new Toil
-            {
-                initAction = delegate ()
-                {
-                    jobStartTick = Find.TickManager.TicksGame;
-                }
-            };
+            this.FailOn(() => Victim == null && Corpse == null);
+            // Start hunt
             yield return Toils_Combat.TrySetJobToUseAttackVerb(TargetIndex.A);
-            Toil startCollectCorpseLabel = Toils_General.Label();
-            Toil slaughterLabel = Toils_General.Label();
-            Toil gotoCastPos = Toils_Combat.GotoCastPosition(TargetIndex.A, TargetIndex.None, true, 0.95f).JumpIfDespawnedOrNull(TargetIndex.A, startCollectCorpseLabel).FailOn(() => Find.TickManager.TicksGame > jobStartTick + MaxHuntTicks);
+            // Create label
+            var startCollectCorpseLabel = Toils_General.Label();
+            var slaughterLabel = Toils_General.Label();
+            var fleeToil = Toils_General.Label();
+            // Jump if already dead
+            yield return Toils_Jump.JumpIf(startCollectCorpseLabel, () => Corpse != null);
+            // Go to cast position toil
+            var gotoCastPos = Toils_Combat.GotoCastPosition(TargetIndex.A, TargetIndex.None, true, 0.95f)
+                .JumpIfDespawnedOrNull(TargetIndex.A, startCollectCorpseLabel);
             yield return gotoCastPos;
-            Toil slaughterIfPossible = Toils_Jump.JumpIf(slaughterLabel, delegate
+            // Slaughter toil
+            var slaughterIfPossible = Toils_Jump.JumpIf(slaughterLabel, delegate
             {
                 Pawn victim = Victim;
                 return (victim.RaceProps.DeathActionWorker == null || !victim.RaceProps.DeathActionWorker.DangerousInMelee) && victim.Downed;
             });
             yield return slaughterIfPossible;
+            // Jump to gotoCastPos if can't not hittable
             yield return Toils_Jump.JumpIfTargetNotHittable(TargetIndex.A, gotoCastPos);
-            yield return Toils_Combat.CastVerb(TargetIndex.A, false).JumpIfDespawnedOrNull(TargetIndex.A, startCollectCorpseLabel).FailOn(() => Find.TickManager.TicksGame > jobStartTick + MaxHuntTicks);
+            yield return Toils_Combat.CastVerb(TargetIndex.A, false)
+                .JumpIfDespawnedOrNull(TargetIndex.A, startCollectCorpseLabel);
+            yield return Toils_Combat.CastVerb(TargetIndex.A, false);
             yield return Toils_Jump.JumpIfTargetDespawnedOrNull(TargetIndex.A, startCollectCorpseLabel);
             yield return Toils_Jump.Jump(slaughterIfPossible);
+            // Slaughter
             yield return slaughterLabel;
             yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.Touch).FailOnMobile(TargetIndex.A);
             yield return Toils_General.WaitWith(TargetIndex.A, 180, true, false).FailOnMobile(TargetIndex.A);
             yield return Toils_General.Do(delegate
             {
                 if (Victim.Dead)
-                {
                     return;
-                }
+
                 ExecutionUtility.DoExecutionByCut(pawn, Victim);
                 pawn.records.Increment(RecordDefOf.AnimalsSlaughtered);
-                if (pawn.InMentalState)
-                {
-                    pawn.MentalState.Notify_SlaughteredAnimal();
-                }
             });
             yield return Toils_Jump.Jump(startCollectCorpseLabel);
+
             yield return startCollectCorpseLabel;
             yield return StartCollectCorpseToil();
             yield return Toils_Goto.GotoCell(TargetIndex.A, PathEndMode.ClosestTouch).FailOnDespawnedNullOrForbidden(TargetIndex.A).FailOnSomeonePhysicallyInteracting(TargetIndex.A);
             yield return Toils_Haul.StartCarryThing(TargetIndex.A, false, false, false);
-            Toil gotoCell = Toils_Goto.GotoCell(TargetIndex.B, PathEndMode.OnCell);
+            var gotoCell = Toils_Goto.GotoCell(TargetIndex.B, PathEndMode.OnCell);
             gotoCell.AddPreTickAction(delegate
             {
-                if (base.Map.exitMapGrid.IsExitCell(pawn.Position))
-                {
-                    pawn.ExitMap(true, CellRect.WholeMap(base.Map).GetClosestEdge(pawn.Position));
-                }
+                var map = Map;
+                var pos = pawn.Position;
+
+                if (map.exitMapGrid.IsExitCell(pos))
+                    pawn.ExitMap(true, CellRect.WholeMap(map).GetClosestEdge(pos));
             });
             yield return gotoCell;
             yield return new Toil
             {
                 initAction = delegate ()
                 {
-                    if (pawn.Position.OnEdge(pawn.Map) || pawn.Map.exitMapGrid.IsExitCell(pawn.Position))
-                    {
-                        pawn.ExitMap(true, CellRect.WholeMap(base.Map).GetClosestEdge(pawn.Position));
-                    }
+                    var map = Map;
+                    var pos = pawn.Position;
+
+                    if (pos.OnEdge(map) || map.exitMapGrid.IsExitCell(pos))
+                        pawn.ExitMap(true, CellRect.WholeMap(map).GetClosestEdge(pos));
                 },
                 defaultCompleteMode = ToilCompleteMode.Instant
             };
@@ -151,8 +139,5 @@ namespace VEE.Jobs
             };
             return toil;
         }
-
-        private int jobStartTick = -1;
-        private const int MaxHuntTicks = 60000;
     }
 }

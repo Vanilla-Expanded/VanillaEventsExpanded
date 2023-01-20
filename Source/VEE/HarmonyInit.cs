@@ -185,4 +185,18 @@ namespace VEE
             yield break;
         }
     }
+
+    [HarmonyPatch(typeof(Faction))]
+    [HarmonyPatch("Notify_MemberDied", MethodType.Normal)]
+    public class Faction_Notify_MemberDied
+    {
+        [HarmonyPrefix]
+        public static bool Prefix(Pawn member)
+        {
+            if (member.kindDef == VEE_DefOf.VEE_Hunter || member.kindDef == VEE_DefOf.VEE_TribalHunter)
+                return false;
+
+            return true;
+        }
+    }
 }
