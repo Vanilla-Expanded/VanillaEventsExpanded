@@ -95,7 +95,7 @@ namespace VEE.Settings
                         Rect rFHalf = r.LeftHalf();
                         Widgets.CheckboxLabeled(rFHalf, i.label.CapitalizeFirst(), ref status);
                         Rect rSHalf = r.RightHalf();
-                        incidentsOccurence[i.defName] = Widgets.HorizontalSlider(rSHalf, incidentsOccurence[i.defName], 0.01f, 20f, true, $"Base chance: {incidentsOccurence[i.defName]}", roundTo: 0.01f);
+                        incidentsOccurence[i.defName] = Widgets.HorizontalSlider_NewTemp(rSHalf, incidentsOccurence[i.defName], 0.01f, 20f, true, $"Base chance: {incidentsOccurence[i.defName]}", roundTo: 0.01f);
                     }
                     else
                     {
