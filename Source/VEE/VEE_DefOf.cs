@@ -54,6 +54,7 @@ namespace VEE
         public static DutyDef VEE_CarryAndLeave;
 
         /* Meme def */
+
         [MayRequireIdeology]
         public static MemeDef AnimalPersonhood;
     }

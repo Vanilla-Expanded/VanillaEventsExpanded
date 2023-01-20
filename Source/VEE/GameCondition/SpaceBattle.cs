@@ -138,8 +138,8 @@ namespace VEE.RegularEvents
         private void GetNextExplosionCell()
         {
             nextExplosionCell = (from x in GenRadial.RadialCellsAround(aroundThis, 30, true)
-                                      where x.InBounds(SingleMap) && !x.Fogged(SingleMap) && !x.Roofed(SingleMap)
-                                      select x).RandomElementByWeight((IntVec3 x) => Bombardment.DistanceChanceFactor.Evaluate(x.DistanceTo(aroundThis)));
+                                 where x.InBounds(SingleMap) && !x.Fogged(SingleMap) && !x.Roofed(SingleMap)
+                                 select x).RandomElementByWeight((IntVec3 x) => Bombardment.DistanceChanceFactor.Evaluate(x.DistanceTo(aroundThis)));
         }
 
         private void ChangeDeadPawnsToTheirCorpses(List<Thing> things)
