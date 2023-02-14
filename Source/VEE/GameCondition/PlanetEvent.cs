@@ -77,7 +77,9 @@ namespace VEE.PurpleEvents
             base.Init();
             SaveTileTemp();
             SaveTileBiome();
-            ChangeTileTemp();
+
+            Find.World.grid.tiles.ForEach(t => t.temperature += ChangeTileTemp());
+            biomeTempChange++;
 
             DefDatabase<IncidentDef>.GetNamed(VEE_DefOf.RaidEnemyPurple.defName).targetTags.Add(IncidentTargetTagDefOf.Map_PlayerHome);
         }
