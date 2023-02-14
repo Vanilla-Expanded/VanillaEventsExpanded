@@ -30,12 +30,13 @@ namespace VEE.RegularEvents
 
         private Pawn RandomAnimalByWeight()
         {
-            var source = DefDatabase<PawnKindDef>.AllDefsListForReading.FindAll(t => t.RaceProps.Animal
+            var source = DefDatabase<PawnKindDef>.AllDefsListForReading.FindAll(t => t.RaceProps != null
+                                                                            && t.RaceProps.Animal
                                                                             && t.RaceProps.baseBodySize > 0.45f
                                                                             && t.canArriveManhunter
                                                                             && t.RaceProps.IsFlesh
                                                                             && !t.RaceProps.Insect
-                                                                            && !t.race.tradeTags.Contains("VEE_Exclude"));
+                                                                            && (t.race.tradeTags == null || !t.race.tradeTags.Contains("VEE_Exclude")));
             float max = source.Max(k => k.race.BaseMarketValue) + 1f;
 
             var kind = source.RandomElementByWeight((k) => max - k.race.BaseMarketValue);
