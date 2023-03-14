@@ -66,7 +66,7 @@ namespace VEE.PurpleEvents
                 Pawn pawn = allPawnsSpawned[i];
                 if (!pawn.Position.Roofed(map) && pawn.def.race.IsFlesh)
                 {
-                    pawn.ageTracker.AgeBiologicalTicks += (long)(20706f * pawn.GetStatValue(StatDefOf.PsychicSensitivity));
+                    pawn.ageTracker.AgeTickMothballed((int)(20706f * pawn.GetStatValue(StatDefOf.PsychicSensitivity)));
                 }
             }
         }
