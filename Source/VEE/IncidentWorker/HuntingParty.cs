@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
 using Verse;
+using Verse.AI;
 using Verse.AI.Group;
 
 namespace VEE
@@ -21,7 +22,7 @@ namespace VEE
                    && !map.GameConditionManager.ConditionIsActive(GameConditionDefOf.ToxicFallout)
                    && TryFindEntryCell(map, out entryCell)
                    && TryFindFaction(out faction)
-                   && FindHuntPrey(map, faction, out huntTargets);
+                   && FindHuntPrey(map, faction, entryCell, out huntTargets);
         }
 
         protected override bool TryExecuteWorker(IncidentParms parms)
@@ -30,6 +31,12 @@ namespace VEE
             // Spawn hunters
             var lordPawns = new List<Pawn>();
             var pawnNumber = Math.Min(Rand.RangeInclusive(4, 7), huntTargets.Count);
+            if (pawnNumber == 0)
+            {
+                // Prevent an NRE if the event is triggered by force when CanFireNowSub returns false.
+                return false;
+            }
+
             var pawnKind = faction.def.techLevel >= TechLevel.Industrial ? VEE_DefOf.VEE_Hunter : VEE_DefOf.VEE_TribalHunter;
 
             for (int i = 0; i < pawnNumber; i++)
@@ -48,7 +55,7 @@ namespace VEE
             return true;
         }
 
-        private bool FindHuntPrey(Map map, Faction faction, out List<Pawn> huntTargets)
+        private bool FindHuntPrey(Map map, Faction faction, IntVec3 entryCell, out List<Pawn> huntTargets)
         {
             huntTargets = new List<Pawn>();
             var allPawns = map.mapPawns.AllPawns.ToList();
@@ -56,7 +63,8 @@ namespace VEE
             for (int i = 0; i < allPawns.Count; i++)
             {
                 var p = allPawns[i];
-                if (p.Faction == null && !p.RaceProps.DeathActionWorker.DangerousInMelee && !p.IsWildMan() && !p.IsPrisoner)
+                if (p.Faction == null && !p.RaceProps.DeathActionWorker.DangerousInMelee && !p.IsWildMan() && !p.IsPrisoner
+                    && map.reachability.CanReach(entryCell, (LocalTargetInfo) p, PathEndMode.OnCell, TraverseMode.NoPassClosedDoors))
                 {
                     if (faction.def.techLevel >= TechLevel.Industrial && p.RaceProps.manhunterOnDamageChance <= 0.5f)
                         huntTargets.Add(p);
