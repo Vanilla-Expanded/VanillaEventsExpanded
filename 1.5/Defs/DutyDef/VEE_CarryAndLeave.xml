@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <DutyDef>
+    <defName>VEE_CarryAndLeave</defName>
+    <thinkNode Class="ThinkNode_Priority">
+      <subNodes>
+        <li Class="VEE.JobGiver_AICarryDutyFocusAndExit" />
+        <li Class="JobGiver_ExitMapBest">
+          <defaultLocomotion>Jog</defaultLocomotion>
+        </li>
+      </subNodes>
+    </thinkNode>
+  </DutyDef>
+</Defs>

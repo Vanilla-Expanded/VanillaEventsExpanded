@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThoughtDef>
+    <defName>VEE_Aurora</defName>
+    <workerClass>ThoughtWorker_Aurora</workerClass>
+    <gameCondition>PsychicBloom</gameCondition>
+    <stages>
+      <li>
+        <label>beautiful aurora</label>
+        <description>The view is amazing.</description>
+        <baseMoodEffect>14</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>

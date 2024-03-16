@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+  <QuestScriptDef>
+    <defName>VEE_WandererJoinsTraitor</defName>
+    <autoAccept>true</autoAccept>
+    <defaultHidden>true</defaultHidden>
+    <isRootSpecial>true</isRootSpecial>
+    <successHistoryEvent MayRequire="Ludeon.RimWorld.Ideology">CharityFulfilled_WandererJoins</successHistoryEvent>
+    <failedOrExpiredHistoryEvent MayRequire="Ludeon.RimWorld.Ideology">CharityRefused_WandererJoins</failedOrExpiredHistoryEvent>
+    <questNameRules>
+      <rulesStrings>
+        <li>questName->Wanderer joins</li>
+      </rulesStrings>
+    </questNameRules>
+    <questDescriptionRules>
+      <rulesStrings>
+        <li>questDescription-></li>
+      </rulesStrings>
+    </questDescriptionRules>
+    <root Class="VEE.QuestNode_Root_WandererJoinTraitor_WalkIn" />
+  </QuestScriptDef>
+
+  <IncidentDef>
+    <defName>VEE_WandererJoinsTraitor</defName>
+    <label>wanderer join (traitor)</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>IncidentWorker_GiveQuest</workerClass>
+    <questScriptDef>VEE_WandererJoinsTraitor</questScriptDef>
+    <baseChance>0.4</baseChance>
+    <populationEffect>IncreaseEasy</populationEffect>
+  </IncidentDef>
+</Defs>
