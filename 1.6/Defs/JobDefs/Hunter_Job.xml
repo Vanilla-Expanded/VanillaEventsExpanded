@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <JobDef>
+    <defName>HuntAndLeave</defName>
+    <driverClass>VEE.Jobs.JobDriver_HuntAndLeave</driverClass>
+    <reportString>hunting TargetA.</reportString>
+    <playerInterruptible>false</playerInterruptible>
+    <checkOverrideOnDamage>Never</checkOverrideOnDamage>
+    <alwaysShowWeapon>true</alwaysShowWeapon>
+    <neverFleeFromEnemies>true</neverFleeFromEnemies>
+    <suspendable>false</suspendable>
+  </JobDef>
+</Defs>
