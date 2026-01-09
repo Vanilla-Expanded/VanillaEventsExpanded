@@ -23,13 +23,9 @@ namespace VEE
         {
             GUI.color = new Color(1f, 1f, 1f, 0.8f);
             Map map = Find.CurrentMap;
-            MapComp_Drought mapComp_Drought = map.GetComponent<MapComp_Drought>();
-            if (mapComp_Drought != null && mapComp_Drought.droughtGoingOn)
+            if (map != null && map.GetComponent<MapComp_Drought>() is MapComp_Drought mapComp_Drought && mapComp_Drought.droughtGoingOn && cell.GetTerrain(map) != null && cell.GetTerrain(map).fertility > 0 && map.fertilityGrid != null)
             {
-                if (cell.GetTerrain(map).fertility > 0)
-                {
-                    Widgets.Label(new Rect(15f, UI.screenHeight - 65f - num, 999f, 999f), "VEE_DroughtGui".Translate(map.fertilityGrid.FertilityAt(cell).ToStringPercent()));
-                }
+                Widgets.Label(new Rect(15f, UI.screenHeight - 65f - num, 999f, 999f), "VEE_DroughtGui".Translate(map.fertilityGrid.FertilityAt(cell).ToStringPercent()));
                 num += 19f;
             }
             GUI.color = Color.white;
@@ -59,26 +55,20 @@ namespace VEE
         [HarmonyPostfix]
         public static void Postfix(IntVec3 loc, ref Map ___map, ref float __result)
         {
-            if (___map != null && HarmonyInit.mapCompDrought != null)
+            if (___map != null
+                && ___map.GetComponent<MapComp_Drought>() is MapComp_Drought mapComp_Drought
+                && mapComp_Drought.droughtGoingOn)
             {
-                if (HarmonyInit.mapCompDrought.TryGetValue(___map, out var mapComp_Drought) is false)
+                Thing t = loc.GetEdifice(___map);
+                if (((t != null && !t.def.AffectsFertility) || t == null) && !loc.Roofed(___map))
                 {
-                    HarmonyInit.mapCompDrought[___map] = mapComp_Drought = ___map.GetComponent<MapComp_Drought>();
-                }
-
-                if (mapComp_Drought != null && mapComp_Drought.droughtGoingOn)
-                {
-                    Thing t = loc.GetEdifice(___map);
-                    if (((t != null && !t.def.AffectsFertility) || t == null) && !loc.Roofed(___map))
+                    if (__result > 1f)
                     {
-                        if (__result > 1f)
-                        {
-                            __result = Mathf.Clamp(__result, 0f, 0.7f);
-                        }
-                        else
-                        {
-                            __result = Mathf.Clamp(__result, 0f, 0.1f);
-                        }
+                        __result = Mathf.Clamp(__result, 0f, 0.7f);
+                    }
+                    else
+                    {
+                        __result = Mathf.Clamp(__result, 0f, 0.1f);
                     }
                 }
             }
@@ -92,26 +82,27 @@ namespace VEE
         [HarmonyPostfix]
         public static void Postfix(ref Plant __instance, ref int ___madeLeaflessTick)
         {
-            if (__instance.Map != null && HarmonyInit.mapCompDrought != null)
+            if (__instance != null
+                && __instance.Map != null
+                && __instance.Map.GetComponent<MapComp_Drought>() is MapComp_Drought mcd
+                && mcd.droughtGoingOn
+                && __instance.def?.plant != null
+                && __instance.Map.fertilityGrid != null)
             {
-                MapComp_Drought mcd = HarmonyInit.mapCompDrought.TryGetValue(__instance.Map);
-                if (mcd != null && mcd.droughtGoingOn)
-                {
-                    bool test = __instance.Map.fertilityGrid.FertilityAt(__instance.Position) < __instance.def.plant.fertilityMin;
-                    mcd.affectedPlants.SetOrAdd(__instance, test);
+                bool test = __instance.Map.fertilityGrid.FertilityAt(__instance.Position) < __instance.def.plant.fertilityMin;
+                mcd.affectedPlants.SetOrAdd(__instance, test);
 
-                    if (test && (!__instance.def.plant.dieIfLeafless || __instance.def.label.Contains("grass")))
+                if (test && (!__instance.def.plant.dieIfLeafless || __instance.def.label.Contains("grass")))
+                {
+                    ___madeLeaflessTick = Find.TickManager.TicksGame;
+                    if (!__instance.LeaflessNow)
                     {
-                        ___madeLeaflessTick = Find.TickManager.TicksGame;
-                        if (!__instance.LeaflessNow)
-                        {
-                            __instance.Map.mapDrawer.MapMeshDirty(__instance.Position, MapMeshFlagDefOf.Things);
-                        }
+                        __instance.Map.mapDrawer.MapMeshDirty(__instance.Position, MapMeshFlagDefOf.Things);
                     }
-                    else
-                    {
-                        ___madeLeaflessTick = -99999;
-                    }
+                }
+                else
+                {
+                    ___madeLeaflessTick = -99999;
                 }
             }
         }
@@ -124,13 +115,16 @@ namespace VEE
         [HarmonyPostfix]
         public static void Postfix(ref Plant __instance, ref float __result)
         {
-            if (__instance.Map != null && HarmonyInit.mapCompDrought != null)
+            if (__instance != null
+                && __instance.Map != null
+                && __instance.Map.GetComponent<MapComp_Drought>() is MapComp_Drought mcd
+                && mcd.droughtGoingOn
+                && __instance.def?.plant != null
+                && __instance.Map.fertilityGrid != null
+                && mcd.affectedPlants.ContainsKey(__instance)
+                && __instance.Map.fertilityGrid.FertilityAt(__instance.Position) < __instance.def.plant.fertilityMin)
             {
-                MapComp_Drought mcd = HarmonyInit.mapCompDrought.TryGetValue(__instance.Map);
-                if (mcd != null && mcd.droughtGoingOn && __instance.Map.fertilityGrid.FertilityAt(__instance.Position) < __instance.def.plant.fertilityMin && mcd.affectedPlants.ContainsKey(__instance))
-                {
-                    __result = 0f;
-                }
+                __result = 0f;
             }
         }
     }
@@ -143,7 +137,6 @@ namespace VEE
         public static void Postfix(ref Plant __instance, ref int ___madeLeaflessTick)
         {
             if (__instance?.Map.GetComponent<MapComp_Drought>() is MapComp_Drought mapComp_Drought
-                && mapComp_Drought != null
                 && mapComp_Drought.droughtGoingOn
                 && __instance.def?.plant?.leaflessGraphic != null
                 && __instance.Map?.fertilityGrid?.FertilityAt(__instance.Position) < __instance.def?.plant?.fertilityMin)
