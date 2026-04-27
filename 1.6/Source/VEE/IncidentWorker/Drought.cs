@@ -5,19 +5,25 @@ namespace VEE.RegularEvents
 {
     public class Drought : GameCondition
     {
-        public override void Init()
-        {
-            SingleMap.GetComponent<MapComp_Drought>().droughtGoingOn = true;
-        }
+       
 
         public override float PlantDensityFactor(Map map)
         {
             return 0f;
         }
 
-        public override WeatherDef ForcedWeather()
+        public override float AnimalDensityFactor(Map map)
         {
-            return WeatherDefOf.Clear;
+            return 0f;
+        }
+
+        public override float WeatherCommonalityFactor(WeatherDef weather, Map map)
+        {
+            if (weather == WeatherDefOf.Clear || weather == VEE_DefOf.DryThunderstorm)
+            {
+                return 1f;
+            }
+            return 0f;
         }
     }
 }

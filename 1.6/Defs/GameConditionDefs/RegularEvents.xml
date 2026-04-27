@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<GameConditionDef>
+		<defName>VEE_Drought</defName>
+		<conditionClass>VEE.RegularEvents.Drought</conditionClass>
+		<label>Drought</label>
+		<description>An extreme drought has set over the area. Rain clouds have vanished, and the sun is baking the earth.\n\nOutdoor crops and wild plants will suffer heavily from the lack of moisture, almost halting their growth and eventually dying off. The fires will spread much quicker.\n\nPlants sown in hydroponics systems are not affected.</description>
+		<endMessage>The drought is ending.</endMessage>
+		<letterText>An extreme drought has set over the area. Rain clouds have vanished, and the sun is baking the earth.\n\nOutdoor crops and wild plants will suffer heavily from the lack of moisture, almost halting their growth and eventually dying off. The fires will spread much quicker.\n\nPlants sown in hydroponics systems are not affected.</letterText>
+		<letterDef>ThreatSmall</letterDef>
+		<canBePermanent>true</canBePermanent>
+		<weatherDef>Clear</weatherDef> <!-- Initial -->
+		<exclusiveConditions>
+			<li>PsychicRain</li>
+			<li>PsychicBloom</li>
+		</exclusiveConditions>
+		<modExtensions>
+			<li Class="VEF.Maps.MapConditionExtension">
+				<tideStrengthMultiplier>0.5</tideStrengthMultiplier>
+				<watermillStrengthMultiplier>0.5</watermillStrengthMultiplier>
+			</li>
+		</modExtensions>
+	</GameConditionDef>
+	<GameConditionDef>
+		<defName>SpaceBattle</defName>
+		<conditionClass>VEE.RegularEvents.SpaceBattle</conditionClass>
+		<label>Space battle</label>
+		<description>A space battle is raging in the sky, may last up to half a day.</description>
+		<endMessage>The space battle is ending.</endMessage>
+		<letterText>Several massive spaceships have engaged in combat in the planet’s orbit. Missed shots and debris can impact the ground in the area. This can lead to massive fires.</letterText>
+		<letterDef>NegativeEvent</letterDef>
+		<canBePermanent>false</canBePermanent>
+	</GameConditionDef>
+</Defs>

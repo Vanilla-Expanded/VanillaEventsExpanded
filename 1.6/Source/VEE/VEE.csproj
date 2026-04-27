@@ -35,6 +35,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="HarmonyInit.cs" />
+    <Compile Include="Harmony\Fire_SpreadInterval.cs" />
+    <Compile Include="Harmony\Plant_GrowthRate.cs" />
+    <Compile Include="Harmony\Plant_TickLong.cs" />
     <Compile Include="Hediffs\HediffCompProperties\HediffCompPropreties_MightJoin.cs" />
     <Compile Include="Hediffs\HediffComp_MightJoin.cs" />
     <Compile Include="IncidentWorker\IncidentWorker_MakeGameConditionNoLetter.cs" />
@@ -44,7 +47,6 @@
     <Compile Include="Jobs\JobGiver_AICarryDutyFocusAndExit.cs" />
     <Compile Include="Jobs\LordJob_HuntingParty.cs" />
     <Compile Include="Jobs\LordToil_Hunt.cs" />
-    <Compile Include="MapComponent\MapComp_Drought.cs" />
     <Compile Include="WorldComponent\WorldComp_Purple.cs" />
     <Compile Include="IncidentWorker\IncidentWorker_MakeGameConditionPurple.cs" />
     <Compile Include="GameCondition\GlobalWarming.cs" />
@@ -77,7 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Lib.Harmony" ExcludeAssets="runtime">
-      <Version>2.3.6</Version>
+      <Version>2.4.2</Version>
       <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>

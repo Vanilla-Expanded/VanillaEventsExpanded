@@ -13,6 +13,7 @@ namespace VEE
         /* Weather DEF */
         public static WeatherDef SnowHard;
         public static WeatherDef Rain;
+        public static WeatherDef DryThunderstorm;
 
         /* Biome DEF */
         public static BiomeDef TemperateSwamp;
@@ -45,9 +46,9 @@ namespace VEE
         /* GameConditionDefOf */
         public static GameConditionDef IceAge;
         public static GameConditionDef GlobalWarming;
-        public static GameConditionDef Drought;
         public static GameConditionDef SpaceBattle;
         public static GameConditionDef PsychicRain;
+        public static GameConditionDef VEE_Drought;
 
         /* Letter def */
         public static LetterDef PurpleEvent;
