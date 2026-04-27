@@ -4,21 +4,19 @@ using RimWorld;
 
 namespace VEE
 {
-    public class VEE_Fire_SpreadInterval
-    {
 
-        [HarmonyPatch(typeof(Fire))]
-        [HarmonyPatch("SpreadInterval", MethodType.Getter)]
-        public class VEE_Fire_SpreadInterval_Patch
+    [HarmonyPatch(typeof(Fire))]
+    [HarmonyPatch("SpreadInterval", MethodType.Getter)]
+    public class VEE_Fire_SpreadInterval_Patch
+    {
+        [HarmonyPostfix]
+        public static void Postfix(Fire __instance, ref float __result)
         {
-            [HarmonyPostfix]
-            public static void Postfix(Fire __instance, ref float __result)
+            if (__instance.Map.gameConditionManager.ConditionIsActive(VEE_DefOf.VEE_Drought))
             {
-                if (__instance.Map.gameConditionManager.ConditionIsActive(VEE_DefOf.VEE_Drought))
-                {
-                    __result /= 2;
-                }
+                __result /= 2;
             }
         }
     }
+
 }

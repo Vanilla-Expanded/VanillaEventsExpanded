@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Verse;
+
+namespace VEE
+{
+    [StaticConstructorOnStartup]
+    public class StaticCollections
+    {
+
+        public static List<ThingDef> nonSmoothedMineables = new List<ThingDef>();
+
+        static StaticCollections()
+        {
+
+            nonSmoothedMineables.AddRange(DefDatabase<ThingDef>.AllDefsListForReading.Where( x => x.mineable && !x.building.mineablePreventMeteorite && !x.IsSmoothed));
+           
+        }
+
+
+    }
+}

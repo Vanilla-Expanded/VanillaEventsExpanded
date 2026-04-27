@@ -60,13 +60,20 @@
 		<defName>VEE_MeteoriteShower</defName>
 		<label>meteorite shower</label>
 		<category>Misc</category>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<canOccurOnAllPlanetLayers>true</canOccurOnAllPlanetLayers>
+		<earliestDay>15</earliestDay>
+		<minGreatestPopulation>0</minGreatestPopulation>
 		<targetTags>
 			<li>Map_PlayerHome</li>
 		</targetTags>
 		<workerClass>VEE.RegularEvents.MeteoriteShower</workerClass>
-		<baseChance>0.4</baseChance>
+		<baseChance>0.2</baseChance>
+		<minRefireDays>45</minRefireDays>
 		<letterLabel>Meteorite Shower</letterLabel>
-		<letterText>Several large meteorites have struck ground in the area. They left behind large lumps of resources.</letterText>
+		<letterText>A cluster of meteorites has entered the atmosphere and is breaking apart directly over your area! \n\nSeveral rocks will strike the ground in a localized area over the next few hours. They will obliterate anything they hit.\n\nMeteorites like that are likely to leave behind some resources.</letterText>
+		<letterDef>NeutralEvent</letterDef>
+		<tale>MeteoriteImpact</tale>
 	</IncidentDef>
 	<IncidentDef>
 		<defName>VEE_AnimalPodCrash</defName>

@@ -59,5 +59,7 @@ namespace VEE
 
         [MayRequireIdeology]
         public static MemeDef AnimalPersonhood;
+
+        public static ThingSetMakerDef VEE_MeteoriteShowerMaker;
     }
 }
