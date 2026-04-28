@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using RimWorld;
 using Verse;
+using VEF;
+using VEF.AnimalBehaviours;
 
 namespace VEE.RegularEvents
 {
@@ -36,6 +38,7 @@ namespace VEE.RegularEvents
                                                                             && t.canArriveManhunter
                                                                             && t.RaceProps.IsFlesh
                                                                             && !t.RaceProps.Insect
+                                                                            && !StaticCollectionsClass.questDisabledAnimals.Contains(t)
                                                                             && (t.race.tradeTags == null || !t.race.tradeTags.Contains("VEE_Exclude")));
             float max = source.Max(k => k.race.BaseMarketValue) + 1f;
 
