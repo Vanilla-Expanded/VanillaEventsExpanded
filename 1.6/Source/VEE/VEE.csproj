@@ -34,6 +34,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Defs\CropSproutCandidatesDef.cs" />
     <Compile Include="Harmony\HarmonyInit.cs" />
     <Compile Include="Harmony\Fire_SpreadInterval.cs" />
     <Compile Include="Harmony\Plant_GrowthRate.cs" />

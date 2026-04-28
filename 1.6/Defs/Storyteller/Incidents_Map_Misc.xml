@@ -76,14 +76,49 @@
 		<tale>MeteoriteImpact</tale>
 	</IncidentDef>
 	<IncidentDef>
-		<defName>VEE_AnimalPodCrash</defName>
-		<label>animal transport pod crash</label>
+		<defName>VEE_CropSprout</defName>
+		<label>crop sprout</label>
 		<category>Misc</category>
 		<targetTags>
 			<li>Map_PlayerHome</li>
 		</targetTags>
+		<workerClass>VEE.RegularEvents.Cropsprout</workerClass>
+		<baseChance>1.2</baseChance>
+		<minRefireDays>15</minRefireDays>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<canOccurOnAllPlanetLayers>false</canOccurOnAllPlanetLayers>
+		<earliestDay>0</earliestDay>
+		<minGreatestPopulation>0</minGreatestPopulation>
+		<allowedBiomes>
+			<li>TemperateForest</li>
+			<li>BorealForest</li>
+			<li>TropicalRainforest</li>
+			<li>AridShrubland</li>
+			<li>TropicalSwamp</li>
+			<li>TemperateSwamp</li>
+			<li MayRequire="Ludeon.RimWorld.Odyssey">Grasslands</li>
+			<li MayRequire="sarg.alphabiomes">AB_IdyllicMeadows</li>
+			<li MayRequire="sarg.alphabiomes">AB_FeraliskInfestedJungle</li>
+			<li MayRequire="sarg.alphabiomes">AB_MiasmicMangrove</li>
+			<li MayRequire="sarg.alphabiomes">AB_MycoticJungle</li>
+			<li MayRequire="sarg.alphabiomes">AB_OcularForest</li>
+			<li MayRequire="sarg.alphabiomes">AB_TarPits</li>
+		</allowedBiomes>
+	</IncidentDef>
+	<IncidentDef>
+		<defName>VEE_AnimalPodCrash</defName>
+		<label>animal pod crash</label>
+		<category>Misc</category>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<canOccurOnAllPlanetLayers>true</canOccurOnAllPlanetLayers>
+		<earliestDay>0</earliestDay>
+		<minGreatestPopulation>0</minGreatestPopulation>
 		<workerClass>VEE.RegularEvents.AnimalTransportPodCrash</workerClass>
-		<baseChance>2</baseChance>
+		<baseChance>0.8</baseChance>
+		<minRefireDays>15</minRefireDays>
 	</IncidentDef>
 	<IncidentDef>
 		<defName>VEE_ShuttleCrash</defName>
@@ -134,16 +169,6 @@
 		</targetTags>
 		<workerClass>VEE.RegularEvents.CaravanAnimalWI</workerClass>
 		<baseChance>0.8</baseChance>
-	</IncidentDef>
-	<IncidentDef>
-		<defName>VEE_CropSprout</defName>
-		<label>crop sprout</label>
-		<category>Misc</category>
-		<targetTags>
-			<li>Map_PlayerHome</li>
-		</targetTags>
-		<workerClass>VEE.RegularEvents.Cropsprout</workerClass>
-		<baseChance>0.35</baseChance>
 	</IncidentDef>
 	<IncidentDef>
 		<defName>VEE_BattleAnimalsWanderIn</defName>

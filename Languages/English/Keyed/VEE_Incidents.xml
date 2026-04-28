@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
     <!-- Animal transport pod crash -->
-    <LetterLabelAnimalPodCrash>Animal transport pod crash</LetterLabelAnimalPodCrash>
-    <AnimalPodCrash>A crate with a {PAWN_kind} called {PAWN_nameDef} is crashing in a transport pod nearby. If it survives the crash it will be badly wounded.
-
-If rescued, it can freely join the colony, or go back to living in the wild.</AnimalPodCrash>
-
-    <AJLabel>Rescued animal join</AJLabel>
+    <LetterLabelAnimalPodCrash>Animal pod crash</LetterLabelAnimalPodCrash>
+    <AnimalPodCrash>A transport pod carrying a {PAWN_kind} called {PAWN_nameDef} is crashing nearby. If it survives the crash, it will be badly wounded.\n\nIf you tend to its wounds, it may decide to stick around.</AnimalPodCrash>
+    <AJLabel>Rescued animal joined</AJLabel>
     <AJLetter>The animal you rescued is joining the colony</AJLetter>
-    <ADJLabel>Rescued animal don't join</ADJLabel>
+    <ADJLabel>Rescued animal didn't join</ADJLabel>
     <ADJLetter>The animal you rescued isn't joining the colony</ADJLetter>
+	
     <!-- Traitor -->
     <TraitorLabel>Traitor!</TraitorLabel>
     <Traitor>A colonist named {PAWN_nameDef}, which you have accepted into your ranks, turns out to be an enemy agent from {PAWN_factionName}.
@@ -49,10 +47,9 @@ Perhaps you'll find something useful in the wreckage.</CPA>
 They seem to have belonged to some caravan, as they still carry packs with valuable items. You can collect these items if you tame them or kill them. Otherwise, they will leave the area in a couple of days.</CAWI>
 
     <!-- Crop sprout -->
-    <CSLabel>Crop sprout</CSLabel>
-    <CS1>A large field of</CS1>
-    <CS2>has sprouted nearby. If you wait for it to grow, you will be able to harvest plenty of food! If left unharvested, it will slowly rot and disappear.</CS2>
-
+    <CSLabel>Wild {0} sprout</CSLabel>
+    <CSLetterContent>A grove of wild {0} has sprouted nearby!\n\nIf you wait for the plants to grow, you'll be able to harvest them.</CSLetterContent>
+   
     <!-- Battle animals wander in -->
     <BAWILabel>Battle animals wander in</BAWILabel>
     <BAWI>A group of {0}, abandoned or lost, wanders in.

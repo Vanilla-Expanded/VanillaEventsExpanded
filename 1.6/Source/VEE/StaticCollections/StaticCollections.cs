@@ -12,12 +12,21 @@ namespace VEE
     {
 
         public static List<ThingDef> nonSmoothedMineables = new List<ThingDef>();
+        public static List<ThingDef> cropSproutCandidates = new List<ThingDef>();
 
         static StaticCollections()
         {
 
             nonSmoothedMineables.AddRange(DefDatabase<ThingDef>.AllDefsListForReading.Where( x => x.mineable && !x.building.mineablePreventMeteorite && !x.IsSmoothed));
+
            
+            List<CropSproutCandidatesDef> allCropSproutCandidates = DefDatabase<CropSproutCandidatesDef>.AllDefsListForReading;
+            foreach (CropSproutCandidatesDef individualList in allCropSproutCandidates)
+            {
+                cropSproutCandidates.AddRange(individualList.cropSproutCandidates);
+            }
+
+
         }
 
 
