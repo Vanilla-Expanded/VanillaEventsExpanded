@@ -138,12 +138,17 @@
 	<IncidentDef>
 		<defName>VEE_Earthquake</defName>
 		<label>earthquake</label>
-		<category>Misc</category>
+		<category>ThreatBig</category>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<canOccurOnAllPlanetLayers>true</canOccurOnAllPlanetLayers>
+		<earliestDay>30</earliestDay>
+		<minGreatestPopulation>0</minGreatestPopulation>
 		<targetTags>
 			<li>Map_PlayerHome</li>
 		</targetTags>
 		<workerClass>VEE.RegularEvents.EarthQuake</workerClass>
-		<baseChance>0.3</baseChance>
+		<baseChance>0.4</baseChance>	
+		<minRefireDays>60</minRefireDays>
 	</IncidentDef>
 	<IncidentDef>
 		<defName>VEE_Cargopodsweapons</defName>

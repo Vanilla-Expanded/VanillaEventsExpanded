@@ -34,6 +34,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Building and Thing\EarthquakeEpicenter.cs" />
     <Compile Include="Defs\CropSproutCandidatesDef.cs" />
     <Compile Include="Harmony\HarmonyInit.cs" />
     <Compile Include="Harmony\Fire_SpreadInterval.cs" />
@@ -71,7 +72,7 @@
     <Compile Include="IncidentWorker\ShuttleCrash.cs" />
     <Compile Include="GameCondition\SpaceBattle.cs" />
     <Compile Include="IncidentWorker\WandererJoinTraitor.cs" />
-    <Compile Include="Building\Shuttle.cs" />
+    <Compile Include="Building and Thing\Shuttle.cs" />
     <Compile Include="IncidentWorker\WeaponPod.cs" />
     <Compile Include="IncidentWorker\WildMenWanderIn.cs" />
     <Compile Include="Settings\DefsAlterer.cs" />

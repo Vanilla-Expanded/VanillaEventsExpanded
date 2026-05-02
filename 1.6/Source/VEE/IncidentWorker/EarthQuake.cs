@@ -2,11 +2,50 @@
 using System.Linq;
 using RimWorld;
 using Verse;
+using Verse.Noise;
 
 namespace VEE.RegularEvents
 {
+    public struct RichterScaleChances
+    {
+        public int scale;
+        public float chance;
+    }
+
+    [StaticConstructorOnStartup]
     public class EarthQuake : IncidentWorker
     {
+
+        private static readonly RichterScaleChances[] RichterScaleChances;
+
+        static EarthQuake()
+        {
+            RichterScaleChances[] array = new RichterScaleChances[10];
+            RichterScaleChances richterScaleChances = new RichterScaleChances{scale = 1,chance = 0.2f};
+            array[0] = richterScaleChances;
+            richterScaleChances = new RichterScaleChances { scale = 2, chance = 0.18f };
+            array[1] = richterScaleChances;
+            richterScaleChances = new RichterScaleChances { scale = 3, chance = 0.16f };
+            array[2] = richterScaleChances;
+            richterScaleChances = new RichterScaleChances { scale = 4, chance = 0.14f };
+            array[3] = richterScaleChances;
+            richterScaleChances = new RichterScaleChances { scale = 5, chance = 0.11f };
+            array[4] = richterScaleChances;
+            richterScaleChances = new RichterScaleChances { scale = 6, chance = 0.08f };
+            array[5] = richterScaleChances;
+            richterScaleChances = new RichterScaleChances { scale = 7, chance = 0.06f };
+            array[6] = richterScaleChances;
+            richterScaleChances = new RichterScaleChances { scale = 8, chance = 0.04f };
+            array[7] = richterScaleChances;
+            richterScaleChances = new RichterScaleChances { scale = 9, chance = 0.02f };
+            array[8] = richterScaleChances;
+            richterScaleChances = new RichterScaleChances { scale = 10, chance = 0.01f };
+            array[9] = richterScaleChances;
+
+            RichterScaleChances = array;
+        }
+
+
         protected override bool CanFireNowSub(IncidentParms parms)
         {
             if (!base.CanFireNowSub(parms))
@@ -16,28 +55,10 @@ namespace VEE.RegularEvents
             return true;
         }
 
-        private void DamageInRadius(List<IntVec3> list, Map map, int chanceDamage, int leftPercentDamage, int rightPercentDamage)
+        public int GetScale()
         {
-            System.Random r = new System.Random();
-            foreach (IntVec3 intVec in list)
-            {
-                if (r.Next(0, 101) < chanceDamage && intVec.GetFirstBuilding(map) != null)
-                {
-                    float rand = r.Next(leftPercentDamage, rightPercentDamage) / (float)100;
-                    float damageAmount = intVec.GetFirstBuilding(map).MaxHitPoints * (float)rand;
-                    // Log.Message(damageAmount.ToString());
-                    DamageInfo dinfo = new DamageInfo(DamageDefOf.Mining, damageAmount);
-                    intVec.GetFirstBuilding(map).TakeDamage(dinfo);
-                }
-            }
-        }
+            return RichterScaleChances.RandomElementByWeight(x => x.chance).scale;
 
-        public void PrintList(IEnumerable<IntVec3> list)
-        {
-            foreach (IntVec3 item in list)
-            {
-                Log.Message(item.ToString());
-            }
         }
 
         protected override bool TryExecuteWorker(IncidentParms parms)
@@ -45,46 +66,23 @@ namespace VEE.RegularEvents
             Map map = (Map)parms.target;
             IntVec3 epicenter = new IntVec3();
             CellFinderLoose.TryFindSkyfallerCell(ThingDefOf.ShipChunkIncoming, map, TerrainAffordanceDefOf.Walkable, out epicenter, 30, map.Center, 999, true, false, false, false, true, false, null);
-            /* ========== Near epicenter ========== */
-            CellRect cellRect = CellRect.CenteredOn(epicenter, 5);
-            IEnumerable<IntVec3> a0to5 = cellRect.Cells;
-            DamageInRadius(a0to5.ToList(), map, 50, 25, 75);
+            int earthquakeScale = GetScale();
+            int earthquakeRadius = 10 + earthquakeScale * 5;
+            int earthquakeDuration = earthquakeScale * 60;
 
-            /* ========== 5 cell after epicenter ========== */
-            CellRect cellRect2 = CellRect.CenteredOn(epicenter, 10);
-            IEnumerable<IntVec3> a0to10 = cellRect2.Cells;
-            List<IntVec3> a5to10 = new List<IntVec3>();
-            foreach (IntVec3 item in a0to10)
-            {
-                if (!a0to5.Contains(item))
-                {
-                    a5to10.Add(item);
-                }
-            }
-            DamageInRadius(a5to10, map, 25, 20, 40);
+            EarthquakeEpicenter earthquakeItem = GenSpawn.Spawn(VEE_DefOf.VEE_EarthquakeEpicenter, epicenter, map) as EarthquakeEpicenter;
+            earthquakeItem.earthquakeScale = earthquakeScale;
+            earthquakeItem.earthquakeRadius = earthquakeRadius;
+            earthquakeItem.earthquakeDuration = earthquakeDuration;
 
-            /* ========== 10 cell after epicenter ========== */
-            CellRect cellRect3 = CellRect.CenteredOn(epicenter, 20);
-            IEnumerable<IntVec3> a0to20 = cellRect3.Cells;
-            List<IntVec3> a10to20 = new List<IntVec3>();
-            foreach (IntVec3 item in a0to20)
-            {
-                if (!a0to5.Contains(item) && !a5to10.Contains(item))
-                {
-                    a10to20.Add(item);
-                }
-            }
-            DamageInRadius(a10to20, map, 10, 5, 20);
-
-            for (int i = 0; i < 6; i++)
-            {
-                Find.CameraDriver.shaker.DoShake(4);
-            }
-
-            string label = "EarthquakeLabel".Translate();
-            string text = "Earthquake".Translate();
-            Find.LetterStack.ReceiveLetter(label, text, LetterDefOf.NegativeEvent, new TargetInfo(epicenter, map, false), null, null);
+            string label = "EarthquakeLabel".Translate(earthquakeScale);
+            string text = "EarthquakeDesc".Translate(earthquakeScale);
+            Find.LetterStack.ReceiveLetter(label, text, LetterDefOf.ThreatBig, new TargetInfo(epicenter, map, false), null, null);
             return true;
         }
+
+       
+
+        
     }
 }

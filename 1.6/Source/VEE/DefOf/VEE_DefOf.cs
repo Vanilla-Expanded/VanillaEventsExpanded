@@ -40,7 +40,7 @@ namespace VEE
         public static ThingDef VEE_ShuttleChunkIncoming_Combat;
         public static ThingDef VEE_Shuttle_Heavy;
         public static ThingDef VEE_ShuttleChunkIncoming_Heavy;
-
+        public static ThingDef VEE_EarthquakeEpicenter;
         public static ThingDef SlagIncoming;
 
         /* IncidentDefOf */
@@ -67,5 +67,7 @@ namespace VEE
 
         public static ThingSetMakerDef VEE_MeteoriteShowerMaker;
         public static ThingSetMakerDef VEE_ShuttleCrash_Resources;
+
+        public static EffecterDef VEE_EmergencePointSustained8X8;
     }
 }
