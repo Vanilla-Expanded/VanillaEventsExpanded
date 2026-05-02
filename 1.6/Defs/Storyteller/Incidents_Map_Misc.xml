@@ -124,11 +124,16 @@
 		<defName>VEE_ShuttleCrash</defName>
 		<label>shuttle crash</label>
 		<category>Misc</category>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<canOccurOnAllPlanetLayers>true</canOccurOnAllPlanetLayers>
+		<earliestDay>15</earliestDay>
+		<minGreatestPopulation>0</minGreatestPopulation>
 		<targetTags>
 			<li>Map_PlayerHome</li>
 		</targetTags>
 		<workerClass>VEE.RegularEvents.ShuttleCrash</workerClass>
-		<baseChance>0.5</baseChance>
+		<baseChance>0.35</baseChance>
+		<minRefireDays>30</minRefireDays>
 	</IncidentDef>
 	<IncidentDef>
 		<defName>VEE_Earthquake</defName>

@@ -19,10 +19,8 @@ You can capture {PAWN_objective} for recruitment or slavery purposes.</Traitor>
     <SpaceBattle>Several massive spaceships have engaged in combat in the planet's orbit. Missed shots and debris can impact the ground in the area. This can lead to massive fires.</SpaceBattle>
 
     <!-- Shuttle Crash -->
-    <ShuttleCrashLabel>Shuttle Crash</ShuttleCrashLabel>
-    <ShuttleCrash>A planet-bound shuttle is crashing nearby. If the crew survives the impact, they will be badly wounded. The crashed ship can be deconstructed for useful resources.
-
-The crew is not affiliated with any faction, which means they can be rescued and may join you freely, or captured for recruitment or slavery purposes.</ShuttleCrash>
+    <ShuttleCrashLabel>Shuttle crash</ShuttleCrashLabel>
+    <ShuttleCrash>A heavily damaged shuttle is plummeting from the sky and will violently crash nearby.\n\nThe impact will scatter chemfuel and ignite a dangerous fire.\n\nCargo and passengers will be found among the wreckage.\n\nYou must act quickly if you want to rescue the survivors, salvage the cargo, and stop the fire from spreading out of control.</ShuttleCrash>
 
     <!-- Earthquake -->
     <EarthquakeLabel>Earthquake</EarthquakeLabel>

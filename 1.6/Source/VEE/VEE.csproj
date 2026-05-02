@@ -48,6 +48,7 @@
     <Compile Include="Jobs\JobGiver_AICarryDutyFocusAndExit.cs" />
     <Compile Include="Jobs\LordJob_HuntingParty.cs" />
     <Compile Include="Jobs\LordToil_Hunt.cs" />
+    <Compile Include="Skyfaller\IncomingSmoker.cs" />
     <Compile Include="StaticCollections\StaticCollections.cs" />
     <Compile Include="ThingSetMakers\ThingSetMaker_MeteoriteShower.cs" />
     <Compile Include="WorldComponent\WorldComp_Purple.cs" />
@@ -70,7 +71,7 @@
     <Compile Include="IncidentWorker\ShuttleCrash.cs" />
     <Compile Include="GameCondition\SpaceBattle.cs" />
     <Compile Include="IncidentWorker\WandererJoinTraitor.cs" />
-    <Compile Include="Building\ShuttleInfo.cs" />
+    <Compile Include="Building\Shuttle.cs" />
     <Compile Include="IncidentWorker\WeaponPod.cs" />
     <Compile Include="IncidentWorker\WildMenWanderIn.cs" />
     <Compile Include="Settings\DefsAlterer.cs" />

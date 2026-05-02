@@ -36,6 +36,11 @@ namespace VEE
         public static ThingDef VEE_ShipChunkHuman;
         public static ThingDef VEE_Shuttle;
         public static ThingDef ShuttleChunkIncoming;
+        public static ThingDef VEE_Shuttle_Combat;
+        public static ThingDef VEE_ShuttleChunkIncoming_Combat;
+        public static ThingDef VEE_Shuttle_Heavy;
+        public static ThingDef VEE_ShuttleChunkIncoming_Heavy;
+
         public static ThingDef SlagIncoming;
 
         /* IncidentDefOf */
@@ -61,5 +66,6 @@ namespace VEE
         public static MemeDef AnimalPersonhood;
 
         public static ThingSetMakerDef VEE_MeteoriteShowerMaker;
+        public static ThingSetMakerDef VEE_ShuttleCrash_Resources;
     }
 }
