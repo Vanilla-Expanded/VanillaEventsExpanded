@@ -27,10 +27,8 @@ You can capture {PAWN_objective} for recruitment or slavery purposes.</Traitor>
     <EarthquakeDesc>A magnitude {0} earthquake has struck the region!\n\nThe violent shaking has ruptured the ground and caused severe structural damage near the epicenter. Repairs may be required.</EarthquakeDesc>
 
     <!-- Cargo pods (weapons) -->
-    <CPWLabel>Cargo pods (weapons)</CPWLabel>
-    <CPW>You have detected a cluster of cargo pods crashing nearby.
-
-Perhaps you'll find something useful in the wreckage.</CPW>
+    <CPWLabel>Cargo pods (weapon)</CPWLabel>
+    <CPW>You have detected a cargo pod landing nearby!\n\nIt seems to have carried some weapon, which you can retrieve from the wreckage.</CPW>
 
     <!-- Cargo pods (apparel) -->
     <CPALabel>Cargo pods (apparel)</CPALabel>

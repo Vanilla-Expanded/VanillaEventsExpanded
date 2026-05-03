@@ -31,7 +31,7 @@
 			<MaxHitPoints>250</MaxHitPoints>
 			<Flammability>0</Flammability>
 			<Beauty>-20</Beauty>
-			<WorkToBuild>14</WorkToBuild>
+			<WorkToBuild>1440</WorkToBuild>
 		</statBases>
 		<killedLeavings>
 			<Plasteel>25</Plasteel>

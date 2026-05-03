@@ -152,13 +152,18 @@
 	</IncidentDef>
 	<IncidentDef>
 		<defName>VEE_Cargopodsweapons</defName>
-		<label>cargo pods (weapons)</label>
+		<label>cargo pods (weapon)</label>
 		<category>Misc</category>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<canOccurOnAllPlanetLayers>true</canOccurOnAllPlanetLayers>
+		<earliestDay>5</earliestDay>
+		<minGreatestPopulation>0</minGreatestPopulation>
 		<targetTags>
 			<li>Map_PlayerHome</li>
 		</targetTags>
 		<workerClass>VEE.RegularEvents.WeaponPod</workerClass>
-		<baseChance>2</baseChance>
+		<baseChance>0.6</baseChance>	
+		<minRefireDays>60</minRefireDays>
 	</IncidentDef>
 	<IncidentDef>
 		<defName>VEE_Cargopodsapparel</defName>

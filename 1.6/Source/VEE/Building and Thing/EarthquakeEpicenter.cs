@@ -62,8 +62,12 @@ namespace VEE
                     List<Thing> thingsHere = Map.thingGrid.ThingsListAtFast(cell).ToList();
                     foreach (Thing thing in thingsHere)
                     {
-                        DamageInfo damageInfo = new DamageInfo(DamageDefOf.Crush, 50);
-                        thing.TakeDamage(damageInfo);
+                        if(!(thing is Pawn))
+                        {
+                            DamageInfo damageInfo = new DamageInfo(DamageDefOf.Crush, 50);
+                            thing.TakeDamage(damageInfo);
+                        }
+                        
                     }
 
                 }
