@@ -36,9 +36,7 @@ You can capture {PAWN_objective} for recruitment or slavery purposes.</Traitor>
 
     <!-- Caravan animals wander in -->
     <CAWILabel>Caravan animals wander in</CAWILabel>
-    <CAWI>A group of {PAWN_kind}, abandoned or lost, wanders in.
-
-They seem to have belonged to some caravan, as they still carry packs with valuable items. You can collect these items if you tame them or kill them. Otherwise, they will leave the area in a couple of days.</CAWI>
+    <CAWI>A small group of {0} has wandered into the area from the wilderness.\n\nThey appear to be the remnants of a lost or destroyed merchant caravan, as they are burdened with packs full of trading goods.\n\nYou can attempt to tame the animals to claim them and their cargo safely, or you can hunt them down to forcibly take the supplies.</CAWI>
 
     <!-- Crop sprout -->
     <CSLabel>Wild {0} sprout</CSLabel>

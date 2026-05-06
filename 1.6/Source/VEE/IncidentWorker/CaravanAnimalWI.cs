@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
 using UnityEngine;
+using VEF.AnimalBehaviours;
 using Verse;
 
 namespace VEE.RegularEvents
@@ -32,7 +34,7 @@ namespace VEE.RegularEvents
                 pawn = p;
             }
 
-            Find.LetterStack.ReceiveLetter("CAWILabel".Translate(pawn.Named("PAWN")).AdjustedFor(pawn, "PAWN"), "CAWI".Translate(pawn.Named("PAWN")).AdjustedFor(pawn, "PAWN"), LetterDefOf.PositiveEvent, pawn, null, null);
+            Find.LetterStack.ReceiveLetter("CAWILabel".Translate(), "CAWI".Translate(pawn.GetKindLabelPlural()), LetterDefOf.PositiveEvent, pawn, null, null);
             return true;
         }
 
@@ -44,14 +46,15 @@ namespace VEE.RegularEvents
         private List<Pawn> GenerateGroup(Map map)
         {
             PawnKindDef pawnKind = PickPawnKindDef(map).RandomElement();
-            System.Random r = new System.Random();
-            int num = r.Next(1, 4);
+
+            int num = new IntRange(2, 3).RandomInRange;
 
             ThingSetMakerParams parms = default(ThingSetMakerParams);
             parms.traderDef = DefDatabase<TraderKindDef>.AllDefsListForReading.RandomElement();
             parms.makingFaction = Find.FactionManager.RandomNonHostileFaction(false, false, false);
             parms.tile = map.Tile;
-            parms.totalMarketValueRange = new FloatRange(500f, 4000f);
+            float wealth = (float)Math.Min(map.wealthWatcher.WealthTotal * 0.02, 2000);
+            parms.totalMarketValueRange = new FloatRange(wealth, wealth);
             parms.maxTotalMass = (pawnKind.RaceProps.baseBodySize * 35f) * num;
 
             List<Thing> wares = ThingSetMakerDefOf.TraderStock.root.Generate(parms).ToList<Thing>();
@@ -73,42 +76,13 @@ namespace VEE.RegularEvents
             }
             while (i < wares.Count)
             {
-                wares[i].stackCount = Mathf.Clamp(wares[i].stackCount, 1, r.Next(2, 20));
+                wares[i].stackCount = Mathf.Clamp(wares[i].stackCount, 1, new IntRange(2,20).RandomInRange);
                 pawns.RandomElement().inventory.innerContainer.TryAdd(wares[i], true);
                 i++;
             }
 
             return pawns;
-            /* Old version
-            System.Random r = new System.Random();
-            Pawn pawn = null;
-            List<Pawn> pawnsList = new List<Pawn>();
-
-            // Choose pawnkind and number of them
-            PawnKindDef kindDef = this.PickPawnKindDef(map).RandomElement();
-            int numberOfAnimal = r.Next(1, 3);
-
-            // Wealth Manager
-            int pawnsValue = (int)kindDef.race.BaseMarketValue * (numberOfAnimal / 2);
-            int maxValueTotal = (int)(map.wealthWatcher.WealthTotal * 0.01f);
-            int leftForThings = maxValueTotal - pawnsValue;
-
-            // Generate each pawn and choose random inventory for each
-            for (int i = 0; i <= numberOfAnimal; i++)
-            {
-                pawn = PawnGenerator.GeneratePawn(kindDef, null);
-                List<Thing> toAdd = this.GenerateInventory(kindDef, (int)(leftForThings / numberOfAnimal));
-                // Add items to inner inventory
-                foreach (Thing thing in toAdd)
-                {
-                    pawn.inventory.innerContainer.TryAdd(thing);
-                }
-                // Add the new pawn to list
-                pawnsList.Add(pawn);
-            }
-
-            // Return list of pawn to spawn
-            return pawnsList; */
+           
         }
 
         private List<PawnKindDef> PickPawnKindDef(Map map)
@@ -120,7 +94,11 @@ namespace VEE.RegularEvents
                 if (allPawnKindDefs[i].race.race.Animal && allPawnKindDefs[i].race.race.packAnimal)
                 {
                     float outdoorTemp = map.mapTemperature.OutdoorTemp;
-                    if (outdoorTemp > allPawnKindDefs[i].race.GetStatValueAbstract(StatDefOf.ComfyTemperatureMin, null) && outdoorTemp < allPawnKindDefs[i].race.GetStatValueAbstract(StatDefOf.ComfyTemperatureMax, null) && !allPawnKindDefs[i].defName.Contains("GR_"))
+                    if (outdoorTemp > allPawnKindDefs[i].race.GetStatValueAbstract(StatDefOf.ComfyTemperatureMin, null) && outdoorTemp < allPawnKindDefs[i].race.GetStatValueAbstract(StatDefOf.ComfyTemperatureMax, null) &&
+                        !allPawnKindDefs[i].defName.Contains("GR_") && !StaticCollectionsClass.questDisabledAnimals.Contains(allPawnKindDefs[i])
+                        && (allPawnKindDefs[i].race.tradeTags == null || !allPawnKindDefs[i].race.tradeTags.Contains("VEE_Exclude"))
+                        
+                        )
                     {
                         Allanimals.Add(allPawnKindDefs[i]);
                     }

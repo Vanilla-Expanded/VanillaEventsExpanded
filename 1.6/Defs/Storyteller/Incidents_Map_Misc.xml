@@ -184,11 +184,16 @@
 		<defName>VEE_CaravanAnimalsWanderIn</defName>
 		<label>caravan animals wander in</label>
 		<category>Misc</category>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<canOccurOnAllPlanetLayers>false</canOccurOnAllPlanetLayers>
+		<earliestDay>10</earliestDay>
+		<minGreatestPopulation>0</minGreatestPopulation>
 		<targetTags>
 			<li>Map_PlayerHome</li>
 		</targetTags>
 		<workerClass>VEE.RegularEvents.CaravanAnimalWI</workerClass>
-		<baseChance>0.8</baseChance>
+		<baseChance>0.3</baseChance>
+		<minRefireDays>25</minRefireDays>
 	</IncidentDef>
 	<IncidentDef>
 		<defName>VEE_BattleAnimalsWanderIn</defName>
