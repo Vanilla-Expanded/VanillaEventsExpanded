@@ -42,6 +42,7 @@ namespace VEE
         public static ThingDef VEE_ShuttleChunkIncoming_Heavy;
         public static ThingDef VEE_EarthquakeEpicenter;
         public static ThingDef SlagIncoming;
+        public static ThingDef Gun_Autopistol;
 
         /* IncidentDefOf */
         public static IncidentDef RaidEnemyPurple;
