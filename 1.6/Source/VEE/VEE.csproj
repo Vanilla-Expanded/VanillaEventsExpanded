@@ -62,7 +62,7 @@
     <Compile Include="QuestNodes\QuestNode_Root_WandererJoinTraitor_WalkIn.cs" />
     <Compile Include="IncidentWorker\AnimalTransportPodCrash.cs" />
     <Compile Include="IncidentWorker\ApparelPod.cs" />
-    <Compile Include="IncidentWorker\battleAnimal.cs" />
+    <Compile Include="IncidentWorker\BattleAnimal.cs" />
     <Compile Include="IncidentWorker\CaravanAnimalWI.cs" />
     <Compile Include="IncidentWorker\Cropsprout.cs" />
     <Compile Include="IncidentWorker\Drought.cs" />

@@ -44,9 +44,7 @@ You can capture {PAWN_objective} for recruitment or slavery purposes.</Traitor>
    
     <!-- Battle animals wander in -->
     <BAWILabel>Battle animals wander in</BAWILabel>
-    <BAWI>A group of {0}, abandoned or lost, wanders in.
-
-They seem accustomed to human contact and are joining the colony.</BAWI>
+    <BAWI>A small pack of {0} has wandered into the area from the wilderness.\n\nThey appear to be accustomed to human presence, and have immediately bonded with the colony. \n\nGiven their natural combat capabilities, they will make excellent defensive pets if you assign a handler to train them. Alternatively, if you cannot afford to feed them, they can be slaughtered for food.</BAWI>
 
     <!-- wild men wander in -->
     <WMWILabel>Wild men wander in</WMWILabel>

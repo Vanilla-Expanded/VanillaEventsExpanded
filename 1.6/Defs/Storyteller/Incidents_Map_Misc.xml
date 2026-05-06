@@ -199,11 +199,16 @@
 		<defName>VEE_BattleAnimalsWanderIn</defName>
 		<label>battle animals wander in</label>
 		<category>Misc</category>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<canOccurOnAllPlanetLayers>false</canOccurOnAllPlanetLayers>
+		<earliestDay>15</earliestDay>
+		<minGreatestPopulation>0</minGreatestPopulation>
 		<targetTags>
 			<li>Map_PlayerHome</li>
 		</targetTags>
-		<workerClass>VEE.RegularEvents.battleAnimal</workerClass>
-		<baseChance>0.25</baseChance>
+		<workerClass>VEE.RegularEvents.BattleAnimal</workerClass>
+		<baseChance>0.3</baseChance>
+		<minRefireDays>30</minRefireDays>
 	</IncidentDef>
 	<IncidentDef>
 		<defName>VEE_WildMenWanderIn</defName>
