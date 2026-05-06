@@ -32,9 +32,7 @@ You can capture {PAWN_objective} for recruitment or slavery purposes.</Traitor>
 
     <!-- Cargo pods (apparel) -->
     <CPALabel>Cargo pods (apparel)</CPALabel>
-    <CPA>You have detected a cluster of cargo pods crashing nearby.
-
-Perhaps you'll find something useful in the wreckage.</CPA>
+    <CPA>You have detected a cluster of cargo pods landing nearby!\n\nThey seem to contain random apparel, which you can retrieve from the wreckage.</CPA>
 
     <!-- Caravan animals wander in -->
     <CAWILabel>Caravan animals wander in</CAWILabel>
