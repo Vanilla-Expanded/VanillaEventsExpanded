@@ -19,7 +19,7 @@ namespace VEE.RegularEvents
         {
             RCellFinder.TryFindRandomPawnEntryCell(out IntVec3 reach, SingleMap, 1f, false, c => c.Walkable(SingleMap));
             RCellFinder.TryFindRandomCellOutsideColonyNearTheCenterOfTheMap(reach, SingleMap, 50f, out aroundThis);
-            Find.LetterStack.ReceiveLetter(LetterMaker.MakeLetter("SpaceBattleLabel".Translate(), "SpaceBattle".Translate(), LetterDefOf.NegativeEvent, new LookTargets(aroundThis, SingleMap)));
+            Find.LetterStack.ReceiveLetter(LetterMaker.MakeLetter("SpaceBattleLabel".Translate(), "SpaceBattle".Translate(), LetterDefOf.ThreatBig, new LookTargets(aroundThis, SingleMap)));
         }
 
         public override void ExposeData()
@@ -48,29 +48,31 @@ namespace VEE.RegularEvents
         public override void GameConditionTick()
         {
             Map map = SingleMap;
-            System.Random r = new System.Random();
+            
             delay++;
 
             if (delay % 500 == 0)
             {
-                for (int i = 0; i < r.Next(1, 2); i++)
+                int randomInstances = new IntRange(1, 2).RandomInRange;
+                for (int i = 0; i < randomInstances; i++)
                 {
                     IntVec3 pos = new IntVec3();
-                    VEETryFindSkyfallerCell(VEE_DefOf.SlagIncoming, aroundThis, map, 50, out pos);
+                    VEETryFindSkyfallerCell(VEE_DefOf.SlagIncoming, aroundThis, map, 30, out pos);
                     Skyfaller sk1 = SkyfallerMaker.SpawnSkyfaller(VEE_DefOf.SlagIncoming, ThingDefOf.ChunkSlagSteel, pos, map);
                 }
             }
             if (delay % 1200 == 0)
             {
-                for (int i = 0; i < r.Next(1, 2); i++)
+                int randomInstances = new IntRange(1, 2).RandomInRange;
+                for (int i = 0; i < randomInstances; i++)
                 {
                     IntVec3 intVec = new IntVec3();
-                    VEETryFindSkyfallerCell(ThingDefOf.DropPodIncoming, aroundThis, map, 60, out intVec);
+                    VEETryFindSkyfallerCell(ThingDefOf.DropPodIncoming, aroundThis, map, 30, out intVec);
                     PawnGenerationRequest request = new PawnGenerationRequest(PawnKindDefOf.SpaceRefugee, null);
                     Pawn pawn = PawnGenerator.GeneratePawn(request);
                     DamageInfo damageInfo = new DamageInfo(DamageDefOf.Bullet, 1);
-                    System.Random random = new System.Random();
-                    if (random.Next(0, 101) > 25)
+                   
+                    if (Rand.Chance(0.9f))
                     {
                         pawn.Kill(damageInfo);
                     }

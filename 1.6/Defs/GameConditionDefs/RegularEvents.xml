@@ -24,11 +24,9 @@
 	<GameConditionDef>
 		<defName>SpaceBattle</defName>
 		<conditionClass>VEE.RegularEvents.SpaceBattle</conditionClass>
-		<label>Space battle</label>
-		<description>A space battle is raging in the sky, may last up to half a day.</description>
-		<endMessage>The space battle is ending.</endMessage>
-		<letterText>Several massive spaceships have engaged in combat in the planet’s orbit. Missed shots and debris can impact the ground in the area. This can lead to massive fires.</letterText>
-		<letterDef>NegativeEvent</letterDef>
+		<label>orbital ship crash</label>
+		<description>A massive orbital ship has suffered a catastrophic structural failure in orbit directly above your region!</description>
+		<endMessage>The orbital ship crash is ending.</endMessage>
 		<canBePermanent>false</canBePermanent>
 	</GameConditionDef>
 </Defs>

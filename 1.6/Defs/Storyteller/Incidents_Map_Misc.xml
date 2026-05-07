@@ -38,21 +38,22 @@
 	</IncidentDef>
 	<IncidentDef>
 		<defName>VEE_SpaceBattle</defName>
-		<label>space battle</label>
+		<label>orbital ship crash</label>
 		<category>Misc</category>
 		<targetTags>
 			<li>Map_PlayerHome</li>
 		</targetTags>
 		<workerClass>VEE.IncidentWorker_MakeGameConditionNoLetter</workerClass>
 		<gameCondition>SpaceBattle</gameCondition>
-		<letterLabel>Space Battle</letterLabel>
-		<letterText>Several massive spaceships have engaged in combat in the planet’s orbit. Missed shots and debris can impact the ground in the area. This can lead to massive fires.</letterText>
-		<letterDef>NegativeEvent</letterDef>
-		<baseChance>0.3</baseChance>
-		<minRefireDays>40</minRefireDays>
+		<baseChance>0.2</baseChance>		
+		<minRefireDays>120</minRefireDays>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<canOccurOnAllPlanetLayers>true</canOccurOnAllPlanetLayers>
+		<earliestDay>45</earliestDay>
+		<minGreatestPopulation>0</minGreatestPopulation>
 		<durationDays>
-			<min>0.2</min>
-			<max>0.5</max>
+			<min>0.166</min>
+			<max>0.33</max>
 		</durationDays>
 	</IncidentDef>
 	<!-- ========== Regular events ========== -->
