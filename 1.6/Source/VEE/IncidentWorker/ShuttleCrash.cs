@@ -18,10 +18,15 @@ namespace VEE.RegularEvents
             string text = "ShuttleCrash".Translate();
 
             var chosenShuttle = shuttleTypes.RandomElement();
-            CellFinderLoose.TryFindSkyfallerCell(chosenShuttle.Item2, map, TerrainAffordanceDefOf.Walkable, out IntVec3 pos);
-            SkyfallerMaker.SpawnSkyfaller(chosenShuttle.Item2, chosenShuttle.Item1, pos, map);
-            Find.LetterStack.ReceiveLetter(label, text, LetterDefOf.NeutralEvent, new TargetInfo(pos, map, false), null, null);
-            return true;
+            CellFinderLoose.TryFindSkyfallerCell(chosenShuttle.Item2, map, TerrainAffordanceDefOf.Walkable, out IntVec3 pos,extraValidator:(x => !x.GetTerrain(map).IsWater));
+            if (pos.IsValid)
+            {
+                SkyfallerMaker.SpawnSkyfaller(chosenShuttle.Item2, chosenShuttle.Item1, pos, map);
+                Find.LetterStack.ReceiveLetter(label, text, LetterDefOf.NeutralEvent, new TargetInfo(pos, map, false), null, null);
+                return true;
+            }
+          
+            return false;
         }
     }
 }

@@ -229,11 +229,16 @@
 	<IncidentDef>
 		<defName>VEE_HuntingParty</defName>
 		<label>hunting party</label>
-		<category>Misc</category>
+		<category>FactionArrival</category>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<canOccurOnAllPlanetLayers>false</canOccurOnAllPlanetLayers>
+		<earliestDay>5</earliestDay>
+		<minGreatestPopulation>0</minGreatestPopulation>
 		<targetTags>
 			<li>Map_PlayerHome</li>
 		</targetTags>
 		<workerClass>VEE.HuntingParty</workerClass>
-		<baseChance>0.45</baseChance>
+		<baseChance>3</baseChance>
+		<minRefireDays>15</minRefireDays>
 	</IncidentDef>
 </Defs>

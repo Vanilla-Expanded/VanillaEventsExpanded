@@ -57,7 +57,7 @@
 			<li>Neolithic</li>
 		</apparelTags>
 		<weaponTags>
-			<li>NeolithicRangedDecent</li>
+			<li>VEE_HunterNeolithicWeapon</li>
 		</weaponTags>
 	</PawnKindDef>
 	<!-- Industrial Hunter -->
@@ -69,10 +69,9 @@
 			<li>IndustrialMilitaryBasic</li>
 			<li>IndustrialMilitaryAdvanced</li>
 		</apparelTags>
-		<weaponMoney>600~950</weaponMoney>
+		<weaponMoney>9999~9999</weaponMoney>
 		<weaponTags>
-			<li>SniperRifle</li>
-			<li>Gun</li>
+			<li>VEE_HunterIndustrialWeapon</li>
 		</weaponTags>
 		<inventoryOptions>
 			<skipChance>0.9</skipChance>

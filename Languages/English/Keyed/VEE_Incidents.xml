@@ -52,7 +52,7 @@ You can capture {PAWN_objective} for recruitment or slavery purposes.</Traitor>
 
     <!-- Hunting party -->
     <HPLabel>Hunting party</HPLabel>
-    <HP>A group of hunters from {0} are passing through the area. They will hunt here for a few hours and then move on.</HP>
+    <HPDesc>A small hunting party from {0} has entered the area.\n\nThey have come to hunt the local wildlife for meat and leather. They are peaceful and will not attack your colonists, but they may deplete the local game. Once each hunter bags an animal, they will pack up their kills and leave.</HPDesc>
 
     <VEE_Decay>Decaying due to drought.</VEE_Decay>
     <VEE_DroughtGui>Adjusted fertility due to drought: {0}</VEE_DroughtGui>

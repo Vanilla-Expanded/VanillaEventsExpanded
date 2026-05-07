@@ -66,6 +66,9 @@ namespace VEE
         [MayRequireIdeology]
         public static MemeDef AnimalPersonhood;
 
+        [MayRequireBiotech]
+        public static FactionDef OutlanderRoughPig;
+
         public static ThingSetMakerDef VEE_MeteoriteShowerMaker;
         public static ThingSetMakerDef VEE_ShuttleCrash_Resources;
 
