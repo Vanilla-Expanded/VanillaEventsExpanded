@@ -30,7 +30,8 @@ namespace VEE.RegularEvents
             {
                 return false;
             }
-            for (int i = 0; i < 3; i++)
+            int amountOfWildMen = new IntRange(3, 6).RandomInRange;
+            for (int i = 0; i < amountOfWildMen; i++)
             {
                 Pawn pawn = PawnGenerator.GeneratePawn(PawnKindDefOf.WildMan, faction);
                 pawn.SetFaction(null, null);

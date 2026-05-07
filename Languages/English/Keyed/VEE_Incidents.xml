@@ -48,7 +48,7 @@ You can capture {PAWN_objective} for recruitment or slavery purposes.</Traitor>
 
     <!-- wild men wander in -->
     <WMWILabel>Wild men wander in</WMWILabel>
-    <WMWI>A small, pre-neolithic tribe of wild men wanders in. You can attempt to tame them.</WMWI>
+    <WMWI>A small tribe of humans living among wild animals has wandered into the area.\n\nThey are primitive and hungry, and will actively forage for food, which includes eating your crops or raiding unsecured food stockpiles.\n\nYou can attempt to tame them one by one to add them to your colony, arrest them, or deal with them by force if they become too much of a nuisance.</WMWI>
 
     <!-- Hunting party -->
     <HPLabel>Hunting party</HPLabel>

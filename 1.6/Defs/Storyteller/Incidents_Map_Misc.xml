@@ -213,13 +213,18 @@
 	<IncidentDef>
 		<defName>VEE_WildMenWanderIn</defName>
 		<label>wild men wander in</label>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<canOccurOnAllPlanetLayers>false</canOccurOnAllPlanetLayers>
+		<earliestDay>30</earliestDay>
+		<minGreatestPopulation>0</minGreatestPopulation>
 		<category>Misc</category>
 		<targetTags>
 			<li>Map_PlayerHome</li>
 		</targetTags>
 		<workerClass>VEE.RegularEvents.WildMenWanderIn</workerClass>
 		<populationEffect>IncreaseMedium</populationEffect>
-		<baseChance>0.50</baseChance>
+		<baseChance>0.6</baseChance>
+		<minRefireDays>30</minRefireDays>
 	</IncidentDef>
 	<IncidentDef>
 		<defName>VEE_HuntingParty</defName>
