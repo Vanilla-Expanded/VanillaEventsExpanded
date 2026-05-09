@@ -16,7 +16,7 @@ You can capture {PAWN_objective} for recruitment or slavery purposes.</Traitor>
 
     <!-- Orbital ship crash -->
     <SpaceBattleLabel>Orbital ship crash</SpaceBattleLabel>
-    <SpaceBattle>A massive orbital ship has suffered a catastrophic structural failure in orbit directly above your region!\n\nFor the next several hours, massive chunks of hull, volatile engine components, cargo bays, and escape pods will rain down across the area.\n\nKeep your colonists under roofs or carefully dodge the falling debris. Once the shower ends, there will be a lot of resources to salvage, and likely survivors to rescue from the wreckage.</SpaceBattle>
+    <SpaceBattle>A massive orbital ship from {0} has suffered a catastrophic structural failure in orbit directly above your region!\n\nFor the next several hours, massive chunks of hull, volatile engine components, cargo bays, and escape pods will rain down across the area.\n\nKeep your colonists under roofs or carefully dodge the falling debris. Once the shower ends, there will be a lot of resources to salvage, and likely survivors to rescue from the wreckage.</SpaceBattle>
 	
     <!-- Shuttle Crash -->
     <ShuttleCrashLabel>Shuttle crash</ShuttleCrashLabel>

@@ -6,4 +6,6 @@
 		<tickerType>Normal</tickerType>
 		<thingClass>VEE.EarthquakeEpicenter</thingClass>
 	</ThingDef>
+	
+	
 </Defs>

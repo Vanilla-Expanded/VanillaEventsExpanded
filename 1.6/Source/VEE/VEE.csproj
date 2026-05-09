@@ -34,7 +34,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Building and Thing\CargoChunkSpawner.cs" />
     <Compile Include="Building and Thing\EarthquakeEpicenter.cs" />
+    <Compile Include="Building and Thing\VolatileChunkSpawner.cs" />
     <Compile Include="Defs\CropSproutCandidatesDef.cs" />
     <Compile Include="Harmony\HarmonyInit.cs" />
     <Compile Include="Harmony\Fire_SpreadInterval.cs" />

@@ -33,7 +33,7 @@ namespace VEE
         public static PawnKindDef VEE_TribalHunter;
 
         /* ThingDefOf */
-        public static ThingDef VEE_ShipChunkHuman;
+        
         public static ThingDef VEE_Shuttle;
         public static ThingDef ShuttleChunkIncoming;
         public static ThingDef VEE_Shuttle_Combat;
@@ -43,6 +43,13 @@ namespace VEE
         public static ThingDef VEE_EarthquakeEpicenter;
         public static ThingDef SlagIncoming;
         public static ThingDef Gun_Autopistol;
+        public static ThingDef VEE_ShipChunkHumanIncoming;
+        public static ThingDef VEE_ShipChunkHuman;
+        public static ThingDef VEE_ShipChunkHumanIncoming_Volatile;
+        public static ThingDef VEE_ShipChunkHuman_Volatile_Spawner;
+        public static ThingDef VEE_ShipChunkHumanIncoming_Cargo;
+        public static ThingDef VEE_ShipChunkHuman_Cargo_Spawner;
+
 
         /* IncidentDefOf */
         public static IncidentDef RaidEnemyPurple;
