@@ -56,6 +56,7 @@ namespace VEE.RegularEvents
             float wealth = (float)Math.Min(map.wealthWatcher.WealthTotal * 0.02, 2000);
             parms.totalMarketValueRange = new FloatRange(wealth, wealth);
             parms.maxTotalMass = (pawnKind.RaceProps.baseBodySize * 35f) * num;
+         
 
             List<Thing> wares = ThingSetMakerDefOf.TraderStock.root.Generate(parms).ToList<Thing>();
             wares.RemoveAll(t => t is Pawn || t.MarketValue > 190 || t.TryGetComp<CompRottable>() != null || (t is MinifiedThing tm && tm != null));

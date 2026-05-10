@@ -13,6 +13,11 @@ namespace VEE.RegularEvents
     {
         private IntVec3 aroundThis = new IntVec3();
         private int delay = 0;
+        public TradeShip tradeShip;
+
+        public static List<(ThingDef,ThingDef)> possibleChunks = new List<(ThingDef,ThingDef)>() { (VEE_DefOf.VEE_ShipChunkHumanIncoming,VEE_DefOf.VEE_ShipChunkHuman),
+        (VEE_DefOf.VEE_ShipChunkHumanIncoming_Volatile,VEE_DefOf.VEE_ShipChunkHuman_Volatile_Spawner),
+        (VEE_DefOf.VEE_ShipChunkHumanIncoming_Cargo,VEE_DefOf.VEE_ShipChunkHuman_Cargo)};
 
         public override bool AllowEnjoyableOutsideNow(Map map) => false;
 
@@ -21,7 +26,7 @@ namespace VEE.RegularEvents
             TraderKindDef traderKind = DefDatabase<TraderKindDef>.AllDefs.Where((TraderKindDef x) => CanSpawn(SingleMap, x))?.RandomElementByWeight((TraderKindDef traderDef) => traderDef.CalculatedCommonality);
             if (traderKind != null)
             {
-                TradeShip tradeShip = new TradeShip(traderKind, GetFaction(traderKind));
+                tradeShip = new TradeShip(traderKind, GetFaction(traderKind));
 
                 RCellFinder.TryFindRandomPawnEntryCell(out IntVec3 reach, SingleMap, 1f, false, c => c.Walkable(SingleMap));
                 RCellFinder.TryFindRandomCellOutsideColonyNearTheCenterOfTheMap(reach, SingleMap, 50f, out aroundThis);
@@ -72,8 +77,8 @@ namespace VEE.RegularEvents
         {
             base.ExposeData();
             Scribe_Values.Look(ref aroundThis, "aroundThis");
+            Scribe_Deep.Look(ref tradeShip, "tradeShip");
 
-          
         }
 
        
@@ -88,45 +93,23 @@ namespace VEE.RegularEvents
                 int randomInstances = new IntRange(1, 2).RandomInRange;
                 for (int i = 0; i < randomInstances; i++)
                 {
+                    (ThingDef, ThingDef) randomChunk = possibleChunks.RandomElement();
                     IntVec3 pos = new IntVec3();
-                    VEETryFindSkyfallerCell(VEE_DefOf.VEE_ShipChunkHumanIncoming_Volatile, aroundThis, map, 30, out pos);
-                    Skyfaller sk1 = SkyfallerMaker.SpawnSkyfaller(VEE_DefOf.VEE_ShipChunkHumanIncoming_Volatile, VEE_DefOf.VEE_ShipChunkHuman_Volatile_Spawner, pos, map);
-                }
-            }
-            /*if (delay % 1200 == 0)
-            {
-                int randomInstances = new IntRange(1, 2).RandomInRange;
-                for (int i = 0; i < randomInstances; i++)
-                {
-                    IntVec3 intVec = new IntVec3();
-                    VEETryFindSkyfallerCell(ThingDefOf.DropPodIncoming, aroundThis, map, 30, out intVec);
-                    PawnGenerationRequest request = new PawnGenerationRequest(PawnKindDefOf.SpaceRefugee, null);
-                    Pawn pawn = PawnGenerator.GeneratePawn(request);
-                    DamageInfo damageInfo = new DamageInfo(DamageDefOf.Bullet, 1);
-                   
-                    if (Rand.Chance(0.9f))
+                    VEETryFindSkyfallerCell(randomChunk.Item1, aroundThis, map, 30, out pos);
+                    if (randomChunk.Item1 == VEE_DefOf.VEE_ShipChunkHumanIncoming_Cargo)
                     {
-                        pawn.Kill(damageInfo);
+                        CargoChunkSpawner cargoPod = ThingMaker.MakeThing(VEE_DefOf.VEE_ShipChunkHuman_Cargo) as CargoChunkSpawner;
+                        cargoPod.tradeship = tradeShip;
+                        Skyfaller sk1 = SkyfallerMaker.SpawnSkyfaller(randomChunk.Item1, cargoPod, pos, map);
                     }
                     else
-                    {
-                        HealthUtility.DamageUntilDowned(pawn, true);
+                    {                       
+                        Skyfaller sk1 = SkyfallerMaker.SpawnSkyfaller(randomChunk.Item1, randomChunk.Item2, pos, map);
                     }
-                    pawn.apparel.WornApparel.RemoveAll((Apparel a) => a.MarketValue > 400);
-                    List<Thing> list = new List<Thing>
-                    {
-                        pawn
-                    };
-                    ChangeDeadPawnsToTheirCorpses(list);
-                    DropPodUtility.DropThingsNear(intVec, map, list, 1, false, true, true);
+                    
                 }
-            }*/
-            if (delay % 2000 == 0)
-            {
-                IntVec3 pos = new IntVec3();
-                VEETryFindSkyfallerCell(ThingDefOf.ShipChunkIncoming, aroundThis, map, 35, out pos);
-                Skyfaller sk2 = SkyfallerMaker.SpawnSkyfaller(ThingDefOf.ShipChunkIncoming, VEE_DefOf.VEE_ShipChunkHuman, pos, map);
             }
+           
 
          
         }

@@ -232,6 +232,7 @@
 		<blockWind>true</blockWind>
 		<passability>PassThroughOnly</passability>
 		<fillPercent>0.50</fillPercent>
+		<terrainAffordanceNeeded IsNull="True" />
 		<size>(2,2)</size>
 		<statBases>
 			<MaxHitPoints>300</MaxHitPoints>
@@ -267,7 +268,7 @@
 		<thingClass>VEE.VolatileChunkSpawner</thingClass>
 	</ThingDef>
 	<ThingDef ParentName="VEE_ShipChunkHumanBase">
-		<defName>VEE_ShipChunkHuman_Cargo_Spawner</defName>
+		<defName>VEE_ShipChunkHuman_Cargo</defName>
 		<label>orbital ship chunk</label>
 		<graphicData>
 			<texPath>Things/Buildings_Exotic/CrashedShipChunk_Cargo</texPath>
@@ -275,6 +276,12 @@
 		</graphicData>
 		<tickerType>Normal</tickerType>
 		<thingClass>VEE.CargoChunkSpawner</thingClass>
+		<killedLeavings>
+			<ChunkSlagSteel>2</ChunkSlagSteel>
+		</killedLeavings>
+		<costList>
+			<Steel>20</Steel>
+		</costList>
 	</ThingDef>
 	
 	
