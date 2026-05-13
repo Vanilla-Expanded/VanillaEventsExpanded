@@ -30,7 +30,7 @@ namespace VEE
 
                     var map = pawn.Map;
                     LordMaker.MakeNewLord(faction, new LordJob_AssaultColony(faction, true, false, false, true, true, false, true), map, new List<Pawn> { pawn });
-                    Find.LetterStack.ReceiveLetter("TraitorLabel".Translate(), "Traitor".Translate(pawn.Named("PAWN")).AdjustedFor(pawn), LetterDefOf.ThreatBig, new TargetInfo(pawn.Position, map, false));
+                    Find.LetterStack.ReceiveLetter("VEE_TraitorLabel".Translate(pawn.Named("PAWN")).AdjustedFor(pawn), "VEE_TraitorDesc".Translate(pawn.Named("PAWN")).AdjustedFor(pawn), LetterDefOf.ThreatSmall, new TargetInfo(pawn.Position, map, false));
 
                     parent.pawn.health.hediffSet.hediffs.Remove(parent);
                 }

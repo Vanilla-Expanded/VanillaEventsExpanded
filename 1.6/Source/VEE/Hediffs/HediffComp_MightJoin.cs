@@ -15,11 +15,11 @@ namespace VEE
                 if (Rand.Chance(0.6f))
                 {
                     pawn.SetFaction(Faction.OfPlayer, null);
-                    Find.LetterStack.ReceiveLetter("AJLabel".Translate(), "AJLetter".Translate(), LetterDefOf.NeutralEvent, null, null, null);
+                    Find.LetterStack.ReceiveLetter("VEE_AnimalPodCrashLabel_AceptedJoining".Translate(), "VEE_AnimalPodCrashDesc_AceptedJoining".Translate(), LetterDefOf.NeutralEvent, null, null, null);
                 }
                 else
                 {
-                    Find.LetterStack.ReceiveLetter("ADJLabel".Translate(), "ADJLetter".Translate(), LetterDefOf.NeutralEvent, null, null, null);
+                    Find.LetterStack.ReceiveLetter("VEE_AnimalPodCrashLabel_RefusedJoining".Translate(), "VEE_AnimalPodCrashDesc_RefusedJoining".Translate(), LetterDefOf.NeutralEvent, null, null, null);
                 }
                 pawn.health.RemoveHediff(parent);
             }

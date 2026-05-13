@@ -18,7 +18,7 @@ namespace VEE.RegularEvents
             HealthUtility.DamageUntilDowned(pawn);
 
             var intVec = DropCellFinder.RandomDropSpot(map);
-            Find.LetterStack.ReceiveLetter("LetterLabelAnimalPodCrash".Translate(), "AnimalPodCrash".Translate(pawn.Named("PAWN")).AdjustedFor(pawn), LetterDefOf.NeutralEvent, new TargetInfo(intVec, map));
+            Find.LetterStack.ReceiveLetter("VEE_AnimalPodCrashLabel".Translate(), "VEE_AnimalPodCrashDesc".Translate(pawn.Named("PAWN")).AdjustedFor(pawn), LetterDefOf.NeutralEvent, new TargetInfo(intVec, map));
             var pod = new ActiveTransporterInfo()
             {
                 openDelay = 180,

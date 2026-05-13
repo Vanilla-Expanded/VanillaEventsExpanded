@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
     <!-- Animal transport pod crash -->
-    <LetterLabelAnimalPodCrash>Animal pod crash</LetterLabelAnimalPodCrash>
-    <AnimalPodCrash>A transport pod carrying a {PAWN_kind} called {PAWN_nameDef} is crashing nearby. If it survives the crash, it will be badly wounded.\n\nIf you tend to its wounds, it may decide to stick around.</AnimalPodCrash>
-    <AJLabel>Rescued animal joined</AJLabel>
-    <AJLetter>The animal you rescued is joining the colony</AJLetter>
-    <ADJLabel>Rescued animal didn't join</ADJLabel>
-    <ADJLetter>The animal you rescued isn't joining the colony</ADJLetter>
+    <VEE_AnimalPodCrashLabel>Animal pod crash</VEE_AnimalPodCrashLabel>
+    <VEE_AnimalPodCrashDesc>A transport pod carrying a {PAWN_kind} called {PAWN_nameDef} is crashing nearby. If it survives the crash, it will be badly wounded.\n\nIf you tend to its wounds, it may decide to stick around.</VEE_AnimalPodCrashDesc>
+    <VEE_AnimalPodCrashLabel_AceptedJoining>Rescued animal joined</VEE_AnimalPodCrashLabel_AceptedJoining>
+    <VEE_AnimalPodCrashDesc_AceptedJoining>The animal you rescued is joining the colony</VEE_AnimalPodCrashDesc_AceptedJoining>
+    <VEE_AnimalPodCrashLabel_RefusedJoining>Rescued animal didn't join</VEE_AnimalPodCrashLabel_RefusedJoining>
+    <VEE_AnimalPodCrashDesc_RefusedJoining>The animal you rescued isn't joining the colony</VEE_AnimalPodCrashDesc_RefusedJoining>
 	
     <!-- Traitor -->
-    <TraitorLabel>Traitor!</TraitorLabel>
-    <Traitor>A colonist named {PAWN_nameDef}, which you have accepted into your ranks, turns out to be an enemy agent from {PAWN_factionName}.
-
-You can capture {PAWN_objective} for recruitment or slavery purposes.</Traitor>
+    <VEE_TraitorLabel>Traitor: {PAWN_nameDef}</VEE_TraitorLabel>
+    <VEE_TraitorDesc>{PAWN_nameDef} has revealed {PAWN_possessive} true colors!\n\n{PAWN_pronoun} was an agent of {Hostile_FactionName} sent to infiltrate your colony. {PAWN_pronoun} has violently turned against you and is now attacking your settlement from the inside. You can subdue or kill {PAWN_objective}!</VEE_TraitorDesc>
 
     <!-- Orbital ship crash -->
     <SpaceBattleLabel>Orbital ship crash</SpaceBattleLabel>
