@@ -133,8 +133,6 @@
 		</graphicData>
 	</ThingDef>
 	<!-- ========== Orbital ship crash ========== -->
-	
-	
 	<ThingDef ParentName="SkyfallerBase" Name="VEE_ShipChunkHumanIncomingBase">
 		<defName>VEE_ShipChunkHumanIncoming</defName>
 		<label>orbital ship chunk (incoming)</label>
@@ -185,7 +183,6 @@
 					<li>(0.95,0.55)</li>
 				</points>
 			</speedCurve>
-			
 			<cameraShake>1</cameraShake>
 		</skyfaller>
 	</ThingDef>
@@ -194,7 +191,6 @@
 		<label>orbital ship chunk (incoming)</label>
 		<graphicData>
 			<texPath>Things/Buildings_Exotic/CrashedShipChunk_Volatile</texPath>
-			
 		</graphicData>
 		<skyfaller>
 			<explosionDamage>Flame</explosionDamage>
@@ -206,11 +202,18 @@
 		<label>orbital ship chunk (incoming)</label>
 		<graphicData>
 			<texPath>Things/Buildings_Exotic/CrashedShipChunk_Cargo</texPath>
-			
 		</graphicData>
-		
 	</ThingDef>
-	
+	<ThingDef ParentName="VEE_ShipChunkHumanIncomingBase">
+		<defName>VEE_ShipChunkHumanIncoming_DropPod</defName>
+		<label>orbital ship chunk (incoming)</label>
+		<graphicData>
+			<texPath>Things/Special/DropPod</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutFlying</shaderType>
+			<drawSize>1.9</drawSize>
+		</graphicData>
+	</ThingDef>
 	<ThingDef ParentName="BuildingBase" Name="VEE_ShipChunkHumanBase">
 		<defName>VEE_ShipChunkHuman</defName>
 		<graphicData>
@@ -232,7 +235,7 @@
 		<blockWind>true</blockWind>
 		<passability>PassThroughOnly</passability>
 		<fillPercent>0.50</fillPercent>
-		<terrainAffordanceNeeded IsNull="True" />
+		<terrainAffordanceNeeded IsNull="True"/>
 		<size>(2,2)</size>
 		<statBases>
 			<MaxHitPoints>300</MaxHitPoints>
@@ -262,7 +265,6 @@
 		<label>orbital ship chunk</label>
 		<graphicData>
 			<texPath>Things/Buildings_Exotic/CrashedShipChunk_Volatile</texPath>
-			
 		</graphicData>
 		<tickerType>Normal</tickerType>
 		<thingClass>VEE.VolatileChunkSpawner</thingClass>
@@ -272,7 +274,6 @@
 		<label>orbital ship chunk</label>
 		<graphicData>
 			<texPath>Things/Buildings_Exotic/CrashedShipChunk_Cargo</texPath>
-			
 		</graphicData>
 		<tickerType>Normal</tickerType>
 		<thingClass>VEE.CargoChunkSpawner</thingClass>
@@ -283,10 +284,22 @@
 			<Steel>20</Steel>
 		</costList>
 	</ThingDef>
-	
-	
+	<ThingDef ParentName="VEE_ShipChunkHumanBase">
+		<defName>VEE_ShipChunkHuman_DropPod_Spawner</defName>
+		<label>orbital ship chunk</label>
+		<graphicData>
+			<texPath>Things/Special/DropPod</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutFlying</shaderType>
+			<drawSize>1.9</drawSize>
+		</graphicData>
+		<tickerType>Normal</tickerType>
+		<thingClass>VEE.DropPodSpawner</thingClass>
+	</ThingDef>
+	<!--This one is now unused, keeping it for compat -->
 	<ThingDef ParentName="SkyfallerBase">
-		<defName>SlagIncoming</defName> <!--This one is now unused, keeping it for compat -->
+		<defName>SlagIncoming</defName>
+		
 		<label>slag (incoming)</label>
 		<size>(1, 1)</size>
 		<skyfaller>

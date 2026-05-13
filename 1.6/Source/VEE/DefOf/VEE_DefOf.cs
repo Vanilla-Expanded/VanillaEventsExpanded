@@ -49,6 +49,8 @@ namespace VEE
         public static ThingDef VEE_ShipChunkHuman_Volatile_Spawner;
         public static ThingDef VEE_ShipChunkHumanIncoming_Cargo;
         public static ThingDef VEE_ShipChunkHuman_Cargo;
+        public static ThingDef VEE_ShipChunkHumanIncoming_DropPod;
+        public static ThingDef VEE_ShipChunkHuman_DropPod_Spawner;
 
 
         /* IncidentDefOf */

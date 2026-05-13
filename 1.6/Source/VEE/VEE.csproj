@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Building and Thing\CargoChunkSpawner.cs" />
+    <Compile Include="Building and Thing\DropPodSpawner.cs" />
     <Compile Include="Building and Thing\EarthquakeEpicenter.cs" />
     <Compile Include="Building and Thing\VolatileChunkSpawner.cs" />
     <Compile Include="Defs\CropSproutCandidatesDef.cs" />

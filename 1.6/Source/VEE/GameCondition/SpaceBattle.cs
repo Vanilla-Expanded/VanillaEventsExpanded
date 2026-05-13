@@ -15,9 +15,10 @@ namespace VEE.RegularEvents
         private int delay = 0;
         public TradeShip tradeShip;
 
-        public static List<(ThingDef,ThingDef)> possibleChunks = new List<(ThingDef,ThingDef)>() { (VEE_DefOf.VEE_ShipChunkHumanIncoming,VEE_DefOf.VEE_ShipChunkHuman),
-        (VEE_DefOf.VEE_ShipChunkHumanIncoming_Volatile,VEE_DefOf.VEE_ShipChunkHuman_Volatile_Spawner),
-        (VEE_DefOf.VEE_ShipChunkHumanIncoming_Cargo,VEE_DefOf.VEE_ShipChunkHuman_Cargo)};
+        public static List<(ThingDef,ThingDef, int)> possibleChunks = new List<(ThingDef,ThingDef, int)>() { (VEE_DefOf.VEE_ShipChunkHumanIncoming,VEE_DefOf.VEE_ShipChunkHuman,4),
+        (VEE_DefOf.VEE_ShipChunkHumanIncoming_Volatile,VEE_DefOf.VEE_ShipChunkHuman_Volatile_Spawner,2),
+        (VEE_DefOf.VEE_ShipChunkHumanIncoming_Cargo,VEE_DefOf.VEE_ShipChunkHuman_Cargo,1),
+        (VEE_DefOf.VEE_ShipChunkHumanIncoming_DropPod,VEE_DefOf.VEE_ShipChunkHuman_DropPod_Spawner,1)};
 
         public override bool AllowEnjoyableOutsideNow(Map map) => false;
 
@@ -93,7 +94,7 @@ namespace VEE.RegularEvents
                 int randomInstances = new IntRange(1, 2).RandomInRange;
                 for (int i = 0; i < randomInstances; i++)
                 {
-                    (ThingDef, ThingDef) randomChunk = possibleChunks.RandomElement();
+                    (ThingDef, ThingDef, int) randomChunk = possibleChunks.RandomElementByWeight(x => x.Item3);
                     IntVec3 pos = new IntVec3();
                     VEETryFindSkyfallerCell(randomChunk.Item1, aroundThis, map, 30, out pos);
                     if (randomChunk.Item1 == VEE_DefOf.VEE_ShipChunkHumanIncoming_Cargo)

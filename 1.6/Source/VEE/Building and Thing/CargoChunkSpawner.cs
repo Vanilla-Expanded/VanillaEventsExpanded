@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using VEF.Genes;
 using Verse;
 using Verse.Noise;
@@ -17,44 +18,75 @@ namespace VEE
         public override void Destroy(DestroyMode mode)
         {
             Map map = base.Map;
-            
-            ThingSetMakerParams parms = default(ThingSetMakerParams);
+
+            ThingSetMakerParams parms = default;
             parms.traderDef = tradeship.TraderKind;
             parms.makingFaction = tradeship.Faction;
             parms.tile = map.Tile;
-           
             parms.minSingleItemMarketValuePct = 0.05f;
 
-            float totalMarketValueRange;
+            float targetMarketValue;
+
             if (mode == DestroyMode.KillFinalize)
             {
-                totalMarketValueRange = new FloatRange(30, 60).RandomInRange;
+                targetMarketValue = new FloatRange(30f, 60f).RandomInRange;
             }
             else if (mode == DestroyMode.Vanish)
             {
-                totalMarketValueRange = new FloatRange(300, 600).RandomInRange;
+                targetMarketValue = new FloatRange(300f, 600f).RandomInRange;
             }
-
-            List<Thing> wares = ThingSetMakerDefOf.TraderStock.root.Generate(parms).ToList<Thing>();
-            wares.RemoveAll(t => t is Pawn || (t is MinifiedThing tm && tm != null));
-
-            int count = new IntRange(2, 6).RandomInRange;
-            while (wares.Count > count)
+            else
             {
-                wares.Shuffle();
-                wares.RemoveLast();
+                targetMarketValue = 100f;
             }
 
-            if (wares.Count > 0) { 
-                foreach (Thing thing in wares)
-                {       
-                    GenPlace.TryPlaceThing(thing, this.Position, map, ThingPlaceMode.Near);
-                }
+            List<Thing> pool = ThingSetMakerDefOf.TraderStock.root.Generate(parms).ToList();
+
+            pool.RemoveAll(t =>
+                t is Pawn ||
+                t is MinifiedThing);
+
+            pool.Shuffle();
+
+            List<Thing> wares = new List<Thing>();
+
+            float currentValue = 0f;
+            int maxItems = 6;
+
+            foreach (Thing t in pool)
+            {
+                if (wares.Count >= maxItems)
+                    break;
+
+                float value = t.MarketValue * t.stackCount;
+          
+                if (currentValue + value > targetMarketValue * 1.15f)
+                    continue;
+
+                wares.Add(t);
+                currentValue += value;
+
+                if (currentValue >= targetMarketValue)
+                    break;
             }
+    
+            if (wares.Count == 0 && pool.Count > 0)
+            {
+                Thing fallback = pool.MinBy(t => t.MarketValue * t.stackCount);
+                wares.Add(fallback);
+            }
+
+            foreach (Thing thing in wares)
+            {
+                GenPlace.TryPlaceThing(
+                    thing,
+                    Position,
+                    map,
+                    ThingPlaceMode.Near);
+            }
+
             base.Destroy(mode);
-
         }
-
 
 
     }
