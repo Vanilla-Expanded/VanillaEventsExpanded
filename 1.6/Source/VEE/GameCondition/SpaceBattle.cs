@@ -31,7 +31,7 @@ namespace VEE.RegularEvents
 
                 RCellFinder.TryFindRandomPawnEntryCell(out IntVec3 reach, SingleMap, 1f, false, c => c.Walkable(SingleMap));
                 RCellFinder.TryFindRandomCellOutsideColonyNearTheCenterOfTheMap(reach, SingleMap, 50f, out aroundThis);
-                Find.LetterStack.ReceiveLetter(LetterMaker.MakeLetter("SpaceBattleLabel".Translate(), "SpaceBattle".Translate(tradeShip.name), LetterDefOf.ThreatBig, new LookTargets(aroundThis, SingleMap)));
+                Find.LetterStack.ReceiveLetter(LetterMaker.MakeLetter("VEE_OrbitalCrashLabel".Translate(), "VEE_OrbitalCrashDesc".Translate(tradeShip.name), LetterDefOf.ThreatBig, new LookTargets(aroundThis, SingleMap)));
 
             }
         }

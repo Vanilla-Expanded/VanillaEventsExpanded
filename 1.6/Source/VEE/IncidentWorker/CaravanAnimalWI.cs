@@ -34,7 +34,7 @@ namespace VEE.RegularEvents
                 pawn = p;
             }
 
-            Find.LetterStack.ReceiveLetter("CAWILabel".Translate(), "CAWI".Translate(pawn.GetKindLabelPlural()), LetterDefOf.PositiveEvent, pawn, null, null);
+            Find.LetterStack.ReceiveLetter("VEE_CaravanAnimalsWanderLabel".Translate(), "VEE_CaravanAnimalsWanderDesc".Translate(pawn.GetKindLabelPlural()), LetterDefOf.PositiveEvent, pawn, null, null);
             return true;
         }
 
@@ -96,7 +96,7 @@ namespace VEE.RegularEvents
                 {
                     float outdoorTemp = map.mapTemperature.OutdoorTemp;
                     if (outdoorTemp > allPawnKindDefs[i].race.GetStatValueAbstract(StatDefOf.ComfyTemperatureMin, null) && outdoorTemp < allPawnKindDefs[i].race.GetStatValueAbstract(StatDefOf.ComfyTemperatureMax, null) &&
-                        !allPawnKindDefs[i].defName.Contains("GR_") && !StaticCollectionsClass.questDisabledAnimals.Contains(allPawnKindDefs[i])
+                        allPawnKindDefs[i].RaceProps.Animal && !allPawnKindDefs[i].defName.Contains("GR_") && !StaticCollectionsClass.questDisabledAnimals.Contains(allPawnKindDefs[i])
                         && (allPawnKindDefs[i].race.tradeTags == null || !allPawnKindDefs[i].race.tradeTags.Contains("VEE_Exclude"))
                         
                         )

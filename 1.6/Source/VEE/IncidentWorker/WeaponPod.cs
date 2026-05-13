@@ -22,7 +22,7 @@ namespace VEE.RegularEvents
             
             DropPodUtility.DropThingsNear(intVec, map, list, 110, false, true, true);
 
-            Find.LetterStack.ReceiveLetter("CPWLabel".Translate(), "CPW".Translate(), LetterDefOf.PositiveEvent, new TargetInfo(intVec, map, false), null, null);
+            Find.LetterStack.ReceiveLetter("VEE_WeaponCargoPodLabel".Translate(), "VEE_WeaponCargoPodDesc".Translate(), LetterDefOf.PositiveEvent, new TargetInfo(intVec, map, false), null, null);
             return true;
         }
 

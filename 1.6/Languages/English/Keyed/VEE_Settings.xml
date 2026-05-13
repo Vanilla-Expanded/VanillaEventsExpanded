@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+    <SCat>Vanilla Event Expanded</SCat>
+    <BReset>Reset Settings</BReset>
+    <GCWReset>Stop all world conditions</GCWReset>
+    <GCMReset>Stop all map conditions</GCMReset>
+    <NeedToBeIngame>You need to be ingame to end game conditions</NeedToBeIngame>
+    <CEBC>&lt;color=cyan&gt;&lt;b&gt;Change events base chance (set to 0 to disable) :&lt;/b&gt;&lt;/color&gt;</CEBC>
+    <BCS>Open events base chance settings</BCS>
+    <MinTPE>Minimum days before refire :</MinTPE>
+    <ETPE>Minimum days before fire :</ETPE>
+    <PES>&lt;color=cyan&gt;&lt;b&gt;Purple events settings :&lt;/b&gt;&lt;/color&gt;</PES>
+
+    <IABaseC>Ice age</IABaseC>
+    <GWBaseC>Global warming</GWBaseC>
+    <PRBaseC>Psychic rain</PRBaseC>
+    <LNBaseC>Long night</LNBaseC>
+    <PBBaseC>Psychic Bloom</PBBaseC>
+
+    <HSBaseC>Hail storm</HSBaseC>
+    <MSBaseC>Meteorite shower</MSBaseC>
+    <APCBaseC>Animal pod crash</APCBaseC>
+    <WJTBaseC>Wanderer join traitor</WJTBaseC>
+    <SPBaseC>Space battle</SPBaseC>
+    <SCBaseC>Shuttle crash</SCBaseC>
+    <EBaseC>Earthquake</EBaseC>
+    <CPWBaseC>Cargo pods weapons</CPWBaseC>
+    <CPABaseC>Cargo pods apparels</CPABaseC>
+    <CAWIBaseC>Caravan animals wander in</CAWIBaseC>
+    <CSBaseC>Crop sprout</CSBaseC>
+    <BAWIBaseC>Battle animals wander in</BAWIBaseC>
+    <DBaseC>Drought</DBaseC>
+    <WMWIBaseC>Wild men wander in</WMWIBaseC>
+    <HPBaseC>Hunting party</HPBaseC>
+
+    <GCWResetOBO>Stop world condition...</GCWResetOBO>
+    <GCMResetOBO>Stop map condition...</GCMResetOBO>
+
+    <VEE_DaysBetweenPurpleEvents>Number of day(s) in-between purple events:</VEE_DaysBetweenPurpleEvents>
+</LanguageData>

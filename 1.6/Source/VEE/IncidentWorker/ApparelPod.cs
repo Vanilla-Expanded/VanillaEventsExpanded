@@ -37,7 +37,7 @@ namespace VEE.RegularEvents
             }
             DropPodUtility.DropThingsNear(intVec, map, list, 110, false, true, true);
 
-            Find.LetterStack.ReceiveLetter("CPALabel".Translate(), "CPA".Translate(), LetterDefOf.PositiveEvent, new TargetInfo(intVec, map, false), null, null);
+            Find.LetterStack.ReceiveLetter("VEE_ApparelCargoPodLabel".Translate(), "VEE_ApparelCargoPodDesc".Translate(), LetterDefOf.PositiveEvent, new TargetInfo(intVec, map, false), null, null);
             return true;
         }
     }

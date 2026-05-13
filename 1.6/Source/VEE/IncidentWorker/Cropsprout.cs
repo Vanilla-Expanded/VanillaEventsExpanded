@@ -41,7 +41,7 @@ namespace VEE.RegularEvents
                 }
             }
 
-            Find.LetterStack.ReceiveLetter("CSLabel".Translate(plantChoosen.label), "CSLetterContent".Translate(plantChoosen.label), LetterDefOf.PositiveEvent, new TargetInfo(cell, map), hyperlinkThingDefs: new List<ThingDef> { plantChoosen });
+            Find.LetterStack.ReceiveLetter("VEE_CropSproutLabel".Translate(plantChoosen.label), "VEE_CropSproutDesc".Translate(plantChoosen.label), LetterDefOf.PositiveEvent, new TargetInfo(cell, map), hyperlinkThingDefs: new List<ThingDef> { plantChoosen });
             return true;
         }
 

@@ -37,7 +37,7 @@ namespace VEE.RegularEvents
                 pawn.SetFaction(null, null);
                 GenSpawn.Spawn(pawn, loc, map, WipeMode.Vanish);
             }
-            Find.LetterStack.ReceiveLetter("WMWILabel".Translate(), "WMWI".Translate(), LetterDefOf.NeutralEvent, new LookTargets(loc, map), null, null);
+            Find.LetterStack.ReceiveLetter("VEE_WildMenWanderLabel".Translate(), "VEE_WildMenWanderDesc".Translate(), LetterDefOf.NeutralEvent, new LookTargets(loc, map), null, null);
             return true;
         }
 

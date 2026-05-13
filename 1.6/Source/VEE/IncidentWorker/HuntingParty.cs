@@ -47,7 +47,7 @@ namespace VEE
             LordMaker.MakeNewLord(faction, new LordJob_HuntingParty(faction, huntTargets.Cast<Thing>().ToList()), map, lordPawns);
 
             // Send letter
-            Find.LetterStack.ReceiveLetter("HPLabel".Translate(), "HPDesc".Translate(faction), LetterDefOf.NeutralEvent, new LookTargets(entryCell, map), faction);
+            Find.LetterStack.ReceiveLetter("VEE_HuntingPartyLabel".Translate(), "VEE_HuntingPartyDesc".Translate(faction), LetterDefOf.NeutralEvent, new LookTargets(entryCell, map), faction);
 
             return true;
         }

@@ -259,4 +259,24 @@
 		<minRefireDays>60</minRefireDays>
 		<populationEffect>IncreaseEasy</populationEffect>
 	</IncidentDef>
+	<IncidentDef>
+		<defName>VEE_ManhunterSingleArrival</defName>
+		<label>manhunter animal</label>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>VEE.RegularEvents.ManhunterSingleArrival</workerClass>
+		<baseChance>4.0</baseChance>
+		<minRefireDays>3</minRefireDays>
+		<category>ThreatSmall</category>
+		<pointsScaleable>true</pointsScaleable>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<canOccurOnAllPlanetLayers>false</canOccurOnAllPlanetLayers>
+		<earliestDay>5</earliestDay>
+		<minGreatestPopulation>0</minGreatestPopulation>
+		<tale>ManhunterPack</tale>
+		<letterHyperlinkHediffDefs>
+			<li>Scaria</li>
+		</letterHyperlinkHediffDefs>
+	</IncidentDef>
 </Defs>

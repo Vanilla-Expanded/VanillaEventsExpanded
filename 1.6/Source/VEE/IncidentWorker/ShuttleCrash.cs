@@ -14,8 +14,8 @@ namespace VEE.RegularEvents
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
             Map map = (Map)parms.target;
-            string label = "ShuttleCrashLabel".Translate();
-            string text = "ShuttleCrash".Translate();
+            string label = "VEE_ShuttleCrashLabel".Translate();
+            string text = "VEE_ShuttleCrashDesc".Translate();
 
             var chosenShuttle = shuttleTypes.RandomElement();
             CellFinderLoose.TryFindSkyfallerCell(chosenShuttle.Item2, map, TerrainAffordanceDefOf.Walkable, out IntVec3 pos,extraValidator:(x => !x.GetTerrain(map).IsWater));

@@ -75,8 +75,8 @@ namespace VEE.RegularEvents
             earthquakeItem.earthquakeRadius = earthquakeRadius;
             earthquakeItem.earthquakeDuration = earthquakeDuration;
 
-            string label = "EarthquakeLabel".Translate(earthquakeScale);
-            string text = "EarthquakeDesc".Translate(earthquakeScale);
+            string label = "VEE_EarthquakeLabel".Translate(earthquakeScale);
+            string text = "VEE_EarthquakeDesc".Translate(earthquakeScale);
             Find.LetterStack.ReceiveLetter(label, text, LetterDefOf.ThreatBig, new TargetInfo(epicenter, map, false), null, null);
             return true;
         }
