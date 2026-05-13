@@ -56,19 +56,24 @@ namespace VEE
 
                     IntVec3 cell = Position+GenRadial.RadialPatternInRadius(earthquakeRadius).RandomElement();
 
-                    sustainedFx = VEE_DefOf.VEE_EmergencePointSustained8X8.Spawn(cell, base.Map);
-                    sustainedFx?.EffectTick(this, this);
-
-                    List<Thing> thingsHere = Map.thingGrid.ThingsListAtFast(cell).ToList();
-                    foreach (Thing thing in thingsHere)
+                    if (cell.InBounds(Map))
                     {
-                        if(!(thing is Pawn))
+                        sustainedFx = VEE_DefOf.VEE_EmergencePointSustained8X8.Spawn(cell, base.Map);
+                        sustainedFx?.EffectTick(this, this);
+
+                        List<Thing> thingsHere = Map.thingGrid.ThingsListAtFast(cell).ToList();
+                        foreach (Thing thing in thingsHere)
                         {
-                            DamageInfo damageInfo = new DamageInfo(DamageDefOf.Crush, 50);
-                            thing.TakeDamage(damageInfo);
+                            if (!(thing is Pawn))
+                            {
+                                DamageInfo damageInfo = new DamageInfo(DamageDefOf.Crush, 50);
+                                thing.TakeDamage(damageInfo);
+                            }
+
                         }
-                        
                     }
+
+                    
 
                 }
 

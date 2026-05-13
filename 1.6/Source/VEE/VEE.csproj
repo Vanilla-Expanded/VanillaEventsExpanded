@@ -46,6 +46,7 @@
     <Compile Include="Hediffs\HediffCompProperties\HediffCompPropreties_MightJoin.cs" />
     <Compile Include="Hediffs\HediffComp_MightJoin.cs" />
     <Compile Include="IncidentWorker\IncidentWorker_MakeGameConditionNoLetter.cs" />
+    <Compile Include="IncidentWorker\ManhunterSingleArrival.cs" />
     <Compile Include="Jobs\JobDriver_HuntAndLeave.cs" />
     <Compile Include="Hediffs\HediffCompProperties\HediffCompPropreties_Traitor.cs" />
     <Compile Include="Hediffs\HediffComp_Traitor.cs" />
