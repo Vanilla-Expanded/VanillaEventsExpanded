@@ -4,9 +4,9 @@
     <VEE_AnimalPodCrashLabel>Animal pod crash</VEE_AnimalPodCrashLabel>
     <VEE_AnimalPodCrashDesc>A transport pod carrying a {PAWN_kind} called {PAWN_nameDef} is crashing nearby. If it survives the crash, it will be badly wounded.\n\nIf you tend to its wounds, it may decide to stick around.</VEE_AnimalPodCrashDesc>
     <VEE_AnimalPodCrashLabel_AceptedJoining>Rescued animal joined</VEE_AnimalPodCrashLabel_AceptedJoining>
-    <VEE_AnimalPodCrashDesc_AceptedJoining>The animal you rescued is joining the colony</VEE_AnimalPodCrashDesc_AceptedJoining>
+    <VEE_AnimalPodCrashDesc_AceptedJoining>The animal you rescued is joining the colony.</VEE_AnimalPodCrashDesc_AceptedJoining>
     <VEE_AnimalPodCrashLabel_RefusedJoining>Rescued animal didn't join</VEE_AnimalPodCrashLabel_RefusedJoining>
-    <VEE_AnimalPodCrashDesc_RefusedJoining>The animal you rescued isn't joining the colony</VEE_AnimalPodCrashDesc_RefusedJoining>
+    <VEE_AnimalPodCrashDesc_RefusedJoining>The animal you rescued isn't joining the colony.</VEE_AnimalPodCrashDesc_RefusedJoining>
 	
     <!-- Traitor -->
     <VEE_TraitorLabel>Traitor: {PAWN_nameDef}</VEE_TraitorLabel>
