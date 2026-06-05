@@ -48,4 +48,8 @@
 			</options>
 		</root>
 	</ThingSetMakerDef>
+	<ThingSetMakerDef>
+		<defName>VEE_CrashlandedColonists</defName>
+		<root Class="VEE.ThingSetMaker_CrashlandedColonists"/>
+	</ThingSetMakerDef>
 </Defs>

@@ -80,6 +80,7 @@ namespace VEE
 
         public static ThingSetMakerDef VEE_MeteoriteShowerMaker;
         public static ThingSetMakerDef VEE_ShuttleCrash_Resources;
+        public static ThingSetMakerDef VEE_CrashlandedColonists;
 
         public static EffecterDef VEE_EmergencePointSustained8X8;
     }

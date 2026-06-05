@@ -279,4 +279,20 @@
 			<li>Scaria</li>
 		</letterHyperlinkHediffDefs>
 	</IncidentDef>
+	<IncidentDef>
+		<defName>VEE_Crashlanded</defName>
+		<label>crashlanded survivors</label>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<canOccurOnAllPlanetLayers>true</canOccurOnAllPlanetLayers>
+		<earliestDay>10</earliestDay>
+		<minGreatestPopulation>0</minGreatestPopulation>
+		<category>FactionArrival</category>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>VEE.RegularEvents.Crashlanded</workerClass>
+		<populationEffect>IncreaseMedium</populationEffect>
+		<baseChance>0.35</baseChance>
+		<minRefireDays>120</minRefireDays>
+	</IncidentDef>
 </Defs>

@@ -58,4 +58,8 @@
 	<!--Single manhunter-->
 	<VEE_ManhunterSingleArrivalLabel>Manhunter: {0}</VEE_ManhunterSingleArrivalLabel>
 	<VEE_ManhunterSingleArrivalDesc>A lone, scaria-infected {0} has entered the area from the wilderness.\n\nIt is entirely rabid and will aggressively attack any human it sees. Keep your colonists inside or draft them to deal with the threat.\n\nBecause of the disease, it will likely die on its own in a few days.</VEE_ManhunterSingleArrivalDesc>
+	
+	<!--Crashlanded-->
+	<VEE_CrashlandedLabel>Crashlanded</VEE_CrashlandedLabel>
+	<VEE_CrashlandedDesc> Three escape pods have slammed into the ground nearby. \n\nThree survivors have emerged from the wreckage, looking dazed and lost. They appear to have barely escaped a ship being torn apart in orbit. They will likely rest here to recover from cryptosleep sickness before moving on.</VEE_CrashlandedDesc>
 </LanguageData>
