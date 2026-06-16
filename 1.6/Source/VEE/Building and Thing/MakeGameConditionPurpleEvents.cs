@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Verse;
@@ -13,7 +13,7 @@ namespace VEE.Others
             GameConditionManager gameConditionManager = parms.target.GameConditionManager;
             if (gameConditionManager == null)
             {
-                Log.ErrorOnce(string.Format("Couldn't find condition manager for incident target {0}", parms.target), 70849667, false);
+                Log.ErrorOnce(string.Format("Couldn't find condition manager for incident target {0}", parms.target), 70849667);
                 return false;
             }
             if (gameConditionManager.ConditionIsActive(this.def.gameCondition))

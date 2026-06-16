@@ -1,22 +1,102 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
+
+	<VEF.DefMigrationDef>
+		<defName>VEE_PurpleEventNameMigration</defName>
+		<migratedDefs>
+			<GameConditionDef>
+				<IceAge>
+					<replacement>VEE_Whiteout</replacement>
+				</IceAge>
+			</GameConditionDef>
+		</migratedDefs>
+	</VEF.DefMigrationDef>
+
 	<GameConditionDef>
-		<defName>IceAge</defName>
-		<conditionClass>VEE.PurpleEvents.IceAge</conditionClass>
-		<label>Ice Age</label>
-		<description>Atmospheric composition of the planet drastically changed resulting in a significant drop in temperature.
-
-Flora and Fauna is suffering from these changes as biomes shift into their colder counterparts. Resources become scarce, forcing factions into conflict.
-
-It will last anywhere between a season to several years.</description>
-		<endMessage>The ice age is ending</endMessage>
+		<defName>VEE_Whiteout</defName>
+		<conditionClass>VEE.GameCondition_MultiStage</conditionClass>
+		<label>whiteout</label>
+		<description>A catastrophic deep freeze is approaching, eventually leading to a complete whiteout.</description>
+		<endMessage>The whiteout is ending.</endMessage>
 		<canBePermanent>false</canBePermanent>
+		<allowUnderground>False</allowUnderground>
 		<exclusiveConditions>
 			<li>GlobalWarming</li>
 			<li>PsychicRain</li>
 			<li>LongNight</li>
 			<li>PsychicBloom</li>
 		</exclusiveConditions>
+		<modExtensions>
+			<li Class="VEE.ConditionExtension_MultiStage">
+				<stages>
+					<li>
+						<durationDays>10~15</durationDays>
+						<targetTempOffset>-30</targetTempOffset>
+						<tempLerpDays>-1</tempLerpDays>
+						<letterLabel>the frost</letterLabel>
+						<letterText>Atmospheric temperatures are steadily dropping across the planet.\n\nThis is not a standard cold snap. You predict a catastrophic deep freeze is approaching, eventually leading to a complete whiteout. You have a short window to stockpile fuel, harvest your remaining crops, and build heaters before the true cold sets in.</letterText>
+						<letterDef>PurpleEvent</letterDef>
+						<weatherWeights>
+							<li>
+								<weather>SnowGentle</weather>
+								<weight>1</weight>
+							</li>
+							<li>
+								<weather>Fog</weather>
+								<weight>1</weight>
+							</li>
+						</weatherWeights>
+					</li>
+					<li>
+						<durationDays>10~20</durationDays>
+						<targetTempOffset>-55</targetTempOffset>
+						<tempLerpDays>-1</tempLerpDays>
+						<letterLabel>the deep freeze</letterLabel>
+						<letterText>The cold has deepened drastically.\n\nWildlife is fleeing the region, and the flora is dying off. Ensure your colony stays indoors and that your power grid can handle the immense strain of constant heating. The worst is still yet to come.</letterText>
+						<letterDef>PurpleEvent</letterDef>
+						<weatherWeights>
+							<li>
+								<weather>SnowHard</weather>
+								<weight>1</weight>
+							</li>
+							<li>
+								<weather>Clear</weather>
+								<weight>1</weight>
+							</li>
+						</weatherWeights>
+						<disableWildAnimalSpawns>true</disableWildAnimalSpawns>
+					</li>
+					<li>
+						<durationDays>15~30</durationDays>
+						<targetTempOffset>-100</targetTempOffset>
+						<tempLerpDays>5</tempLerpDays>
+						<letterLabel>the whiteout</letterLabel>
+						<letterText>The whiteout has arrived.\n\nTemperatures have plummeted to unsurvivable levels. Human travel across the planet is now entirely unadvised; you will receive no trade caravans or human raids. However, the bitter cold does not bother mechanoids.\n\nIf you persevere, the freeze will eventually break.</letterText>
+						<letterDef>PurpleEvent</letterDef>
+						<forcedWeather>VEE_Whiteout</forcedWeather>
+						<humanIncidentsFactor>0</humanIncidentsFactor>
+						<mechanoidsOnly>true</mechanoidsOnly>
+						<disableWildAnimalSpawns>true</disableWildAnimalSpawns>
+						<incidentChances>
+							<li>
+								<def>VEE_WhiteoutRefugees</def>
+								<chance>0.6</chance>
+							</li>
+						</incidentChances>
+						<spawnDeepSnow>true</spawnDeepSnow>
+					</li>
+					<li>
+						<durationDays>10~15</durationDays>
+						<targetTempOffset>0</targetTempOffset>
+						<tempLerpDays>-1</tempLerpDays>
+						<letterLabel>the thaw</letterLabel>
+						<letterText>The skies are finally clearing and the bitter cold is beginning to recede.\n\nThe whiteout is ending. Temperatures will slowly return to normal over the next quadrum, and life will eventually return.</letterText>
+						<letterDef>PositiveEvent</letterDef>
+						<humanIncidentsFactor>0.5</humanIncidentsFactor>
+					</li>
+				</stages>
+			</li>
+		</modExtensions>
 	</GameConditionDef>
 	<GameConditionDef>
 		<defName>GlobalWarming</defName>
@@ -30,7 +110,7 @@ It will last anywhere between a season to several years.</description>
 		<endMessage>The global warming is ending</endMessage>
 		<canBePermanent>false</canBePermanent>
 		<exclusiveConditions>
-			<li>IceAge</li>
+			<li>VEE_Whiteout</li>
 			<li>PsychicRain</li>
 			<li>LongNight</li>
 			<li>PsychicBloom</li>
@@ -49,7 +129,7 @@ It will last anywhere between a season to several years.</description>
 		<canBePermanent>true</canBePermanent>
 		<exclusiveConditions>
 			<li>GlobalWarming</li>
-			<li>IceAge</li>
+			<li>VEE_Whiteout</li>
 			<li>LongNight</li>
 			<li>PsychicBloom</li>
 			<li>VEE_Drought</li>
@@ -69,7 +149,7 @@ It will last anywhere between a season to several years.</description>
 		<exclusiveConditions>
 			<li>GlobalWarming</li>
 			<li>PsychicRain</li>
-			<li>IceAge</li>
+			<li>VEE_Whiteout</li>
 			<li>PsychicBloom</li>
 			<li>Eclipse</li>
 		</exclusiveConditions>
@@ -89,7 +169,7 @@ It will last anywhere between a few days to a season.</description>
 			<li>GlobalWarming</li>
 			<li>PsychicRain</li>
 			<li>LongNight</li>
-			<li>IceAge</li>
+			<li>VEE_Whiteout</li>
 		</exclusiveConditions>
 	</GameConditionDef>
 </Defs>

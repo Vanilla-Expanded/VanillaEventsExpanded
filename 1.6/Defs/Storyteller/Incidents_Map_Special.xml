@@ -7,7 +7,7 @@
   <!--================= Purple event attracted events ================-->
   <IncidentDef>
     <defName>RaidEnemyPurple</defName>
-    <label>enemy raid ice age</label>
+    <label>enemy raid whiteout</label>
     <targetTags>
       <li>Map_Dummy</li>
     </targetTags>
@@ -43,5 +43,18 @@
     <minRefireDays>1</minRefireDays>
     <category>ThreatBig</category>
     <pointsScaleable>true</pointsScaleable>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>VEE_WhiteoutRefugees</defName>
+    <label>desperate refugees</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>VEE.IncidentWorker_WhiteoutRefugees</workerClass>
+    <baseChance>0</baseChance>
+    <minRefireDays>10</minRefireDays>
+    <earliestDay>180</earliestDay>
   </IncidentDef>
 </Defs>

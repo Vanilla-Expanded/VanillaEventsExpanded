@@ -62,4 +62,8 @@
 	<!--Crashlanded-->
 	<VEE_CrashlandedLabel>Crashlanded</VEE_CrashlandedLabel>
 	<VEE_CrashlandedDesc> Three escape pods have slammed into the ground nearby. \n\nThree survivors have emerged from the wreckage, looking dazed and lost. They appear to have barely escaped a ship being torn apart in orbit. They will likely rest here to recover from cryptosleep sickness before moving on.</VEE_CrashlandedDesc>
+
+    <!-- Whiteout Refugees -->
+    <VEE_WhiteoutRefugees>Desperate refugees</VEE_WhiteoutRefugees>
+    <VEE_WhiteoutRefugeesText>A small group of {0} freezing survivors has appeared at the edge of your settlement.\n\nThey are severely hypothermic and starving due to the ongoing whiteout. They are begging you to open your doors and share your warmth and food.\n\nBe warned: they have the wild look of desperate people. If you turn them away to freeze in the snow, they will likely try to take your shelter by force.\n\nWill you accept them?</VEE_WhiteoutRefugeesText>
 </LanguageData>

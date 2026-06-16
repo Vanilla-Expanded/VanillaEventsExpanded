@@ -7,4 +7,13 @@
     <flashInterval>90</flashInterval>
     <arriveSound>LetterArrive</arriveSound>
   </LetterDef>
+
+  <LetterDef>
+    <defName>VEE_WhiteoutRefugeesLetter</defName>
+    <letterClass>VEE.ChoiceLetter_WhiteoutRefugees</letterClass>
+    <color>(147,112,219)</color>
+    <flashColor>(147,112,219)</flashColor>
+    <flashInterval>90</flashInterval>
+    <arriveSound>LetterArrive</arriveSound>
+  </LetterDef>
 </Defs>

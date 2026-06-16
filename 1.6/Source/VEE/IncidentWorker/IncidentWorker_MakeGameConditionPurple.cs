@@ -1,4 +1,4 @@
-﻿using RimWorld;
+using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -22,7 +22,10 @@ namespace VEE
 
             parms.target.GameConditionManager.RegisterCondition(gameCondition);
             parms.letterHyperlinkThingDefs = gameCondition.def.letterHyperlinks;
-            SendStandardLetter(def.letterLabel, def.letterText, def.letterDef, parms, LookTargets.Invalid);
+            if (def.letterLabel.NullOrEmpty() is false)
+            {
+                SendStandardLetter(def.letterLabel, def.letterText, def.letterDef, parms, LookTargets.Invalid);
+            }
 
             if (Find.World.GetComponent<WorldComp_Purple>() is WorldComp_Purple comp)
                 comp.tickLast = Find.TickManager.TicksGame;

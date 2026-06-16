@@ -1,4 +1,4 @@
-﻿using RimWorld;
+using RimWorld;
 using Verse;
 using Verse.AI;
 
@@ -33,13 +33,14 @@ namespace VEE
         public static PawnKindDef VEE_TribalHunter;
 
         /* ThingDefOf */
-        
+
         public static ThingDef VEE_Shuttle;
         public static ThingDef ShuttleChunkIncoming;
         public static ThingDef VEE_Shuttle_Combat;
         public static ThingDef VEE_ShuttleChunkIncoming_Combat;
         public static ThingDef VEE_Shuttle_Heavy;
         public static ThingDef VEE_ShuttleChunkIncoming_Heavy;
+        public static ThingDef VEE_DeepSnow;
         public static ThingDef VEE_EarthquakeEpicenter;
         public static ThingDef SlagIncoming;
         public static ThingDef Gun_Autopistol;
@@ -57,9 +58,12 @@ namespace VEE
         public static IncidentDef RaidEnemyPurple;
         public static IncidentDef ManhunterPackPurple;
         public static IncidentDef AnimalInsanityMassPurple;
+        public static IncidentDef VEE_WhiteoutRefugees;
+
+        public static LetterDef VEE_WhiteoutRefugeesLetter;
 
         /* GameConditionDefOf */
-        public static GameConditionDef IceAge;
+        public static GameConditionDef VEE_Whiteout;
         public static GameConditionDef GlobalWarming;
         public static GameConditionDef SpaceBattle;
         public static GameConditionDef PsychicRain;

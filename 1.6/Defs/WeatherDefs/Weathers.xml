@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<WeatherDef>
+		<defName>VEE_Whiteout</defName>
+		<label>whiteout</label>
+		<description>Heavy, chilling snow that severely reduces the accuracy of ranged weapons, extinguishes fire and slows people down.</description>
+		<temperatureRange>-999~-0.5</temperatureRange>
+		<snowRate>1.75</snowRate>
+		<windSpeedFactor>1.5</windSpeedFactor>
+		<windSpeedOffset>1.15</windSpeedOffset>
+		<rainRate>1</rainRate>
+		<accuracyMultiplier>0.5</accuracyMultiplier>
+		<moveSpeedMultiplier>0.5</moveSpeedMultiplier>
+		<maxRangeCap>29.9</maxRangeCap>
+		<preventsShuttleLaunch>true</preventsShuttleLaunch>
+		<ambientSounds>
+			<li>Ambient_Wind_Storm</li>
+		</ambientSounds>
+		<skyColorsDay>
+			<sky>(0.8,0.8,0.8)</sky>
+			<shadow>(0.92,0.92,0.92)</shadow>
+			<overlay>(0.7,0.7,0.7)</overlay>
+			<saturation>0.9</saturation>
+		</skyColorsDay>
+		<skyColorsDusk>
+			<sky>(1,1,1)</sky>
+			<shadow>(0.92,0.92,0.92)</shadow>
+			<overlay>(0.6,0.6,0.6)</overlay>
+			<saturation>0.9</saturation>
+		</skyColorsDusk>
+		<skyColorsNightEdge>
+			<sky>(0.35,0.40,0.45)</sky>
+			<shadow>(0.92,0.92,0.92)</shadow>
+			<overlay>(0.5,0.5,0.5)</overlay>
+			<saturation>0.9</saturation>
+		</skyColorsNightEdge>
+		<skyColorsNightMid>
+			<sky>(0.35,0.40,0.45)</sky>
+			<shadow>(0.92,0.92,0.92)</shadow>
+			<overlay>(0.5,0.5,0.5)</overlay>
+			<saturation>0.9</saturation>
+		</skyColorsNightMid>
+		<overlayClasses>
+			<li>VEF.Weathers.WeatherOverlay_Custom</li>
+		</overlayClasses>
+		<modExtensions>
+			<li Class="VEF.Weathers.WeatherOverlayExtension">
+				<overlayPath>Weather/WhiteoutOverlay</overlayPath>
+				<copyPropertiesFrom>Weather/RainOverlayWorld</copyPropertiesFrom>
+				<worldOverlayPanSpeed1>0.015</worldOverlayPanSpeed1>
+				<worldPanDir1>(-0.25, -1)</worldPanDir1>
+				<worldOverlayPanSpeed2>0.022</worldOverlayPanSpeed2>
+				<worldPanDir2>(-0.24, -1)</worldPanDir2>
+			</li>
+		</modExtensions>
+	</WeatherDef>
+</Defs>

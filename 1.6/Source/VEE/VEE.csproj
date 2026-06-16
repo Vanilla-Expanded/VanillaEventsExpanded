@@ -1,121 +1,45 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{662836BD-7735-4A71-B903-0798ED868AC1}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFramework>net48</TargetFramework>
     <RootNamespace>VEE</RootNamespace>
     <AssemblyName>VEE</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <LangVersion>latest</LangVersion>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>false</DebugSymbols>
-    <DebugType>none</DebugType>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <Optimize>false</Optimize>
     <OutputPath>..\..\Assemblies\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
+    <DebugType>none</DebugType>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\Assemblies\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
+    <DebugType>none</DebugType>
   </PropertyGroup>
+
   <ItemGroup>
-    <Compile Include="Building and Thing\CargoChunkSpawner.cs" />
-    <Compile Include="Building and Thing\DropPodSpawner.cs" />
-    <Compile Include="Building and Thing\EarthquakeEpicenter.cs" />
-    <Compile Include="Building and Thing\VolatileChunkSpawner.cs" />
-    <Compile Include="Defs\CropSproutCandidatesDef.cs" />
-    <Compile Include="Harmony\HarmonyInit.cs" />
-    <Compile Include="Harmony\Fire_SpreadInterval.cs" />
-    <Compile Include="Harmony\Plant_GrowthRate.cs" />
-    <Compile Include="Harmony\Plant_TickLong.cs" />
-    <Compile Include="Hediffs\HediffCompProperties\HediffCompPropreties_MightJoin.cs" />
-    <Compile Include="Hediffs\HediffComp_MightJoin.cs" />
-    <Compile Include="IncidentWorker\Crashlanded.cs" />
-    <Compile Include="IncidentWorker\IncidentWorker_MakeGameConditionNoLetter.cs" />
-    <Compile Include="IncidentWorker\ManhunterSingleArrival.cs" />
-    <Compile Include="Jobs\JobDriver_HuntAndLeave.cs" />
-    <Compile Include="Hediffs\HediffCompProperties\HediffCompPropreties_Traitor.cs" />
-    <Compile Include="Hediffs\HediffComp_Traitor.cs" />
-    <Compile Include="Jobs\JobGiver_AICarryDutyFocusAndExit.cs" />
-    <Compile Include="Jobs\LordJob_HuntingParty.cs" />
-    <Compile Include="Jobs\LordToil_Hunt.cs" />
-    <Compile Include="Skyfaller\IncomingSmoker.cs" />
-    <Compile Include="StaticCollections\StaticCollections.cs" />
-    <Compile Include="ThingSetMakers\ThingSetMaker_CrashlandedColonists.cs" />
-    <Compile Include="ThingSetMakers\ThingSetMaker_MeteoriteShower.cs" />
-    <Compile Include="WorldComponent\WorldComp_Purple.cs" />
-    <Compile Include="IncidentWorker\IncidentWorker_MakeGameConditionPurple.cs" />
-    <Compile Include="GameCondition\GlobalWarming.cs" />
-    <Compile Include="GameCondition\LongNight.cs" />
-    <Compile Include="GameCondition\PlanetEvent.cs" />
-    <Compile Include="GameCondition\PsychicBloom.cs" />
-    <Compile Include="GameCondition\PsychicRain.cs" />
-    <Compile Include="QuestNodes\QuestNode_Root_WandererJoinTraitor_WalkIn.cs" />
-    <Compile Include="IncidentWorker\AnimalTransportPodCrash.cs" />
-    <Compile Include="IncidentWorker\ApparelPod.cs" />
-    <Compile Include="IncidentWorker\BattleAnimal.cs" />
-    <Compile Include="IncidentWorker\CaravanAnimalWI.cs" />
-    <Compile Include="IncidentWorker\Cropsprout.cs" />
-    <Compile Include="IncidentWorker\Drought.cs" />
-    <Compile Include="IncidentWorker\EarthQuake.cs" />
-    <Compile Include="IncidentWorker\HuntingParty.cs" />
-    <Compile Include="IncidentWorker\MeteoriteShower.cs" />
-    <Compile Include="IncidentWorker\ShuttleCrash.cs" />
-    <Compile Include="GameCondition\SpaceBattle.cs" />
-    <Compile Include="IncidentWorker\WandererJoinTraitor.cs" />
-    <Compile Include="Building and Thing\Shuttle.cs" />
-    <Compile Include="IncidentWorker\WeaponPod.cs" />
-    <Compile Include="IncidentWorker\WildMenWanderIn.cs" />
-    <Compile Include="Settings\DefsAlterer.cs" />
-    <Compile Include="Settings\VEEMod.cs" />
-    <Compile Include="Settings\VEESettings.cs" />
-    <Compile Include="DefOf\VEE_DefOf.cs" />
-    <Compile Include="GameCondition\IceAge.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Lib.Harmony" ExcludeAssets="runtime">
-      <Version>2.4.2</Version>
+    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.*-*" />
+    <PackageReference Include="Lib.Harmony" Version="2.*">
+      <ExcludeAssets>runtime</ExcludeAssets>
       <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
+
   <ItemGroup>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>..\..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.TextRenderingModule">
-      <HintPath>..\..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="VEF">
       <HintPath>..\..\..\..\VanillaExpandedFramework\1.6\Assemblies\VEF.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
+  <PropertyGroup>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
 </Project>

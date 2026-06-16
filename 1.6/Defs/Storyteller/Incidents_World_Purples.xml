@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
   <IncidentDef>
-    <defName>VEE_IceAge</defName>
-    <label>ice age</label>
+    <defName>VEE_Whiteout</defName>
+    <label>whiteout</label>
     <category>Misc</category>
     <targetTags>
       <li>World</li>
     </targetTags>
     <workerClass>VEE.IncidentWorker_MakeGameConditionPurple</workerClass>
-    <gameCondition>IceAge</gameCondition>
-    <letterLabel>Ice Age</letterLabel>
-    <letterText>Atmospheric composition of the planet drastically changed resulting in a significant drop in temperature.
-
-Flora and Fauna is suffering from these changes as biomes shift into their colder counterparts. Resources become scarce, forcing factions into conflict.
-
-It will last anywhere between a season to several years.</letterText>
+    <gameCondition>VEE_Whiteout</gameCondition>
     <letterDef>PurpleEvent</letterDef>
     <baseChance>0.04</baseChance>
     <earliestDay>180</earliestDay>
