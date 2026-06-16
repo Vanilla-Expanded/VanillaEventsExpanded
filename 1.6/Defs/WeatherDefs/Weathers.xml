@@ -46,7 +46,7 @@
 		<modExtensions>
 			<li Class="VEF.Weathers.WeatherOverlayExtension">
 				<overlayPath>Weather/WhiteoutOverlay</overlayPath>
-				<copyPropertiesFrom>Weather/RainOverlayWorld</copyPropertiesFrom>
+				<copyPropertiesFrom>Weather/SnowOverlayWorld</copyPropertiesFrom>
 				<worldOverlayPanSpeed1>0.015</worldOverlayPanSpeed1>
 				<worldPanDir1>(-0.25, -1)</worldPanDir1>
 				<worldOverlayPanSpeed2>0.022</worldOverlayPanSpeed2>
