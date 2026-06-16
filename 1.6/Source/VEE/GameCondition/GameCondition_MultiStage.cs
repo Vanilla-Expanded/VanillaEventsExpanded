@@ -82,7 +82,7 @@ namespace VEE
 
         public void EnterStage(int index)
         {
-            var currentOffset = TemperatureOffsetWorld();
+            var currentOffset = index == 0 ? 0f : TemperatureOffsetWorld();
             currentStageIndex = index;
             currentStageStartTick = Find.TickManager.TicksGame;
             prevTargetTempOffset = currentOffset;
