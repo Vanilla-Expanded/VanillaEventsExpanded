@@ -24,6 +24,7 @@ namespace VEE
                             GenSpawn.Spawn(p, spawnSpot, map);
                             p.SetFaction(Faction.OfPlayer);
                         }
+                        Messages.Message("VEE_WhiteoutRefugees_Accepted".Translate(), pawns, MessageTypeDefOf.PositiveEvent);
                         Find.LetterStack.RemoveLetter(this);
                     },
                     resolveTree = true
@@ -43,6 +44,7 @@ namespace VEE
                             p.SetFaction(hostile);
                         }
                         LordMaker.MakeNewLord(hostile, new LordJob_AssaultColony(hostile), map, pawns);
+                        Messages.Message("VEE_WhiteoutRefugees_Rejected".Translate(), pawns, MessageTypeDefOf.NegativeEvent);
                         Find.LetterStack.RemoveLetter(this);
                     },
                     resolveTree = true
