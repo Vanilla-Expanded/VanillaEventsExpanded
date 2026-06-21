@@ -52,6 +52,8 @@ namespace VEE
         public static ThingDef VEE_ShipChunkHuman_Cargo;
         public static ThingDef VEE_ShipChunkHumanIncoming_DropPod;
         public static ThingDef VEE_ShipChunkHuman_DropPod_Spawner;
+        public static ThingDef Gun_BoltActionRifle;
+
 
 
         /* IncidentDefOf */
@@ -60,7 +62,7 @@ namespace VEE
         public static IncidentDef AnimalInsanityMassPurple;
         public static IncidentDef VEE_WhiteoutRefugees;
 
-        public static LetterDef VEE_WhiteoutRefugeesLetter;
+        
 
         /* GameConditionDefOf */
         public static GameConditionDef VEE_Whiteout;
@@ -71,6 +73,8 @@ namespace VEE
 
         /* Letter def */
         public static LetterDef PurpleEvent;
+        public static LetterDef VEE_SurvivorsJoin;
+        public static LetterDef VEE_WhiteoutRefugeesLetter;
 
         public static DutyDef VEE_CarryAndLeave;
 

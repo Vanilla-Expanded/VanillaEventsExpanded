@@ -62,6 +62,9 @@
 	<!--Crashlanded-->
 	<VEE_CrashlandedLabel>Crashlanded</VEE_CrashlandedLabel>
 	<VEE_CrashlandedDesc> Three escape pods have slammed into the ground nearby. \n\nThree survivors have emerged from the wreckage, looking dazed and lost. They appear to have barely escaped a ship being torn apart in orbit. They will likely rest here to recover from cryptosleep sickness before moving on.</VEE_CrashlandedDesc>
+    <VEE_CrashlandedChoiceLabel>Survivors offer to join</VEE_CrashlandedChoiceLabel>
+    <VEE_CrashlandedChoiceText>The crashlanded survivors have noticed your colony's struggling numbers. Realizing that survival on the rim is nearly impossible alone, they have offered to join your settlement, bringing their pet and supplies with them.\n\nDo you accept their offer?</VEE_CrashlandedChoiceText>
+	<VEE_CrashlandedLeaving>Crashlanding survivors are packing their things and leaving.</VEE_CrashlandedLeaving>
 
     <!-- Whiteout Refugees -->
     <VEE_WhiteoutRefugees>Desperate refugees</VEE_WhiteoutRefugees>

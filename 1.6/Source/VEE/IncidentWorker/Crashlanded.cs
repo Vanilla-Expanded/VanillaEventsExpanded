@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Verse;
+using Verse.AI.Group;
 
 namespace VEE.RegularEvents
 {
@@ -37,6 +38,7 @@ namespace VEE.RegularEvents
             Find.FactionManager.Add(faction);
             ThingSetMakerParams pawnParms = new ThingSetMakerParams();
             pawnParms.makingFaction = faction;
+            List<Pawn> pawnsForDefendJob = new List<Pawn>();
 
             for (int i = 0; i < 3; i++)
             {
@@ -45,12 +47,28 @@ namespace VEE.RegularEvents
                 {
                     pawn.health.AddHediff(HediffDefOf.CryptosleepSickness);
                 }
-                pawn.SetFaction(faction);
+                if (i == 0)
+                {
+                    ThingWithComps rifle = (ThingWithComps)ThingMaker.MakeThing(VEE_DefOf.Gun_BoltActionRifle);
+                    pawn.equipment.AddEquipment(rifle);
+                }
+                if (i == 1)
+                {
+                    ThingWithComps gun = (ThingWithComps)ThingMaker.MakeThing(VEE_DefOf.Gun_Autopistol);
+                    pawn.equipment.AddEquipment(gun);
+                }
+                if (pawn.Faction != faction)
+                {
+                    pawn.SetFaction(faction);
+                }
+               
                 things.Add(pawn);
+                pawnsForDefendJob.Add(pawn);
             }
             PawnKindDef kindDef = PossiblePets().RandomElementByWeight((PawnKindDef td) => td.RaceProps.petness);
             Pawn animal = PawnGenerator.GeneratePawn(kindDef, faction);
             things.Add(animal);
+            pawnsForDefendJob.Add(animal);
 
             Thing silver = ThingMaker.MakeThing(ThingDefOf.Silver);
             silver.stackCount = 200;
@@ -67,8 +85,10 @@ namespace VEE.RegularEvents
             Thing medicine = ThingMaker.MakeThing(ThingDefOf.MedicineIndustrial);
             medicine.stackCount = 10;
             things.Add(medicine);
-
+            
+           
             IntVec3 intVec = DropCellFinder.RandomDropSpot(map);
+            LordMaker.MakeNewLord(faction, new LordJob_DefendPointForAWhile(intVec, pawnsForDefendJob,8, 8), map, pawnsForDefendJob);
             DropPodUtility.DropThingsNear(intVec, map, things, 110, canInstaDropDuringInit: false, leaveSlag: true);
   
             Find.LetterStack.ReceiveLetter(label, text, LetterDefOf.NeutralEvent, new TargetInfo(intVec, map, false), null, null);

@@ -10,7 +10,7 @@ namespace VEE
 
         protected override void Generate(ThingSetMakerParams parms, List<Thing> outThings)
         {
-            PawnGenerationRequest request = new PawnGenerationRequest(PawnKindDefOf.SpaceRefugee, parms.makingFaction, PawnGenerationContext.NonPlayer, null, forceGenerateNewPawn: false, allowDead: false, allowDowned: false, canGeneratePawnRelations: true, mustBeCapableOfViolence: false, 20f, forceAddFreeWarmLayerIfNeeded: false, allowGay: true, allowPregnant: true);
+            PawnGenerationRequest request = new PawnGenerationRequest(PawnKindDefOf.SpaceRefugee, parms.makingFaction, PawnGenerationContext.NonPlayer, null, forceGenerateNewPawn: false, allowDead: false, allowDowned: false, canGeneratePawnRelations: true, mustBeCapableOfViolence: true, 20f, forceAddFreeWarmLayerIfNeeded: false, allowGay: true, allowPregnant: true);
             int num = 0;
             Pawn pawn = null;
             while (num < 10 && (pawn == null || !pawn.Downed))
