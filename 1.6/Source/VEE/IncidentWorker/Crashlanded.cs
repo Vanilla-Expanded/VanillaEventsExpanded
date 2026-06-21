@@ -51,11 +51,24 @@ namespace VEE.RegularEvents
                 {
                     ThingWithComps rifle = (ThingWithComps)ThingMaker.MakeThing(VEE_DefOf.Gun_BoltActionRifle);
                     pawn.equipment.AddEquipment(rifle);
+                    Thing silver = ThingMaker.MakeThing(ThingDefOf.Silver);
+                    silver.stackCount = 200;
+                    pawn.inventory.TryAddAndUnforbid(silver);
                 }
                 if (i == 1)
                 {
                     ThingWithComps gun = (ThingWithComps)ThingMaker.MakeThing(VEE_DefOf.Gun_Autopistol);
                     pawn.equipment.AddEquipment(gun);
+                    Thing components = ThingMaker.MakeThing(ThingDefOf.ComponentIndustrial);
+                    components.stackCount = 10;
+                    pawn.inventory.TryAddAndUnforbid(components);
+                }
+                if (i == 2)
+                {
+                    Thing medicine = ThingMaker.MakeThing(ThingDefOf.MedicineIndustrial);
+                    medicine.stackCount = 10;
+                    pawn.inventory.TryAddAndUnforbid(medicine);
+
                 }
                 if (pawn.Faction != faction)
                 {
@@ -68,25 +81,12 @@ namespace VEE.RegularEvents
             PawnKindDef kindDef = PossiblePets().RandomElementByWeight((PawnKindDef td) => td.RaceProps.petness);
             Pawn animal = PawnGenerator.GeneratePawn(kindDef, faction);
             things.Add(animal);
-            pawnsForDefendJob.Add(animal);
-
-            Thing silver = ThingMaker.MakeThing(ThingDefOf.Silver);
-            silver.stackCount = 200;
-            things.Add(silver);
+            pawnsForDefendJob.Add(animal);   
 
             Thing meals = ThingMaker.MakeThing(ThingDefOf.MealSurvivalPack);
             meals.stackCount = 20;
             things.Add(meals);
-
-            Thing components = ThingMaker.MakeThing(ThingDefOf.ComponentIndustrial);
-            components.stackCount = 10;
-            things.Add(components);
-
-            Thing medicine = ThingMaker.MakeThing(ThingDefOf.MedicineIndustrial);
-            medicine.stackCount = 10;
-            things.Add(medicine);
-            
-           
+       
             IntVec3 intVec = DropCellFinder.RandomDropSpot(map);
             LordMaker.MakeNewLord(faction, new LordJob_DefendPointForAWhile(intVec, pawnsForDefendJob,8, 8), map, pawnsForDefendJob);
             DropPodUtility.DropThingsNear(intVec, map, things, 110, canInstaDropDuringInit: false, leaveSlag: true);
