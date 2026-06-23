@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<VEF.DefMigrationDef>
+		<defName>VEE_PurpleEventNameMigration</defName>
+		<migratedDefs>
+			<GameConditionDef>
+				<IceAge>
+					<replacement>VEE_Whiteout</replacement>
+				</IceAge>
+			</GameConditionDef>
+		</migratedDefs>
+	</VEF.DefMigrationDef>
+	<VEF.DefMigrationDef>
+		<defName>VEE_ScorchNameMigration</defName>
+		<migratedDefs>
+			<GameConditionDef>
+				<GlobalWarming>
+					<replacement>VEE_Scorch</replacement>
+				</GlobalWarming>
+			</GameConditionDef>
+		</migratedDefs>
+	</VEF.DefMigrationDef>
+</Defs>

@@ -20,20 +20,14 @@
   </IncidentDef>
 
   <IncidentDef>
-    <defName>VEE_GlobalWarming</defName>
-    <label>global warming</label>
+    <defName>VEE_Scorch</defName>
+    <label>scorch</label>
     <category>Misc</category>
     <targetTags>
       <li>World</li>
     </targetTags>
     <workerClass>VEE.IncidentWorker_MakeGameConditionPurple</workerClass>
-    <gameCondition>GlobalWarming</gameCondition>
-    <letterLabel>Global Warming</letterLabel>
-    <letterText>Global temperatures have suddenly risen to dangerous levels.
-
-Flora and Fauna is suffering from these changes as biomes shift into their warmer counterparts. Resources become scarce, forcing factions into conflict.
-
-It will last anywhere between a season to several years.</letterText>
+    <gameCondition>VEE_Scorch</gameCondition>
     <letterDef>PurpleEvent</letterDef>
     <baseChance>0.04</baseChance>
     <earliestDay>180</earliestDay>

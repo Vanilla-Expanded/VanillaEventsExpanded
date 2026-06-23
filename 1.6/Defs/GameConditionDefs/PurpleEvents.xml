@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
-	<VEF.DefMigrationDef>
-		<defName>VEE_PurpleEventNameMigration</defName>
-		<migratedDefs>
-			<GameConditionDef>
-				<IceAge>
-					<replacement>VEE_Whiteout</replacement>
-				</IceAge>
-			</GameConditionDef>
-		</migratedDefs>
-	</VEF.DefMigrationDef>
-
 	<GameConditionDef>
 		<defName>VEE_Whiteout</defName>
 		<conditionClass>VEE.GameCondition_MultiStage</conditionClass>
@@ -99,23 +87,71 @@
 		</modExtensions>
 	</GameConditionDef>
 	<GameConditionDef>
-		<defName>GlobalWarming</defName>
-		<conditionClass>VEE.PurpleEvents.GlobalWarming</conditionClass>
-		<label>Global Warming</label>
-		<description>Global temperatures have suddenly risen to dangerous levels.
-
-Flora and Fauna is suffering from these changes as biomes shift into their warmer counterparts. Resources become scarce, forcing factions into conflict.
-
-It will last anywhere between a season to several years.</description>
-		<endMessage>The global warming is ending</endMessage>
+		<defName>VEE_Scorch</defName>
+		<conditionClass>VEE.GameCondition_MultiStage</conditionClass>
+		<label>Scorch</label>
+		<description>Scorch</description>
+		<endMessage>The scorch ending</endMessage>
 		<canBePermanent>false</canBePermanent>
+		<allowUnderground>False</allowUnderground>
 		<exclusiveConditions>
 			<li>VEE_Whiteout</li>
 			<li>PsychicRain</li>
 			<li>LongNight</li>
 			<li>PsychicBloom</li>
 		</exclusiveConditions>
+		<modExtensions>
+			<li Class="VEE.ConditionExtension_MultiStage">
+				<stages>
+					<li>
+						<durationDays>6~10</durationDays>
+						<targetTempOffset>15</targetTempOffset>
+						<tempLerpDays>6</tempLerpDays>
+						<letterLabel>the swelter</letterLabel>
+						<letterText>The planet's atmosphere is beginning to trap immense amounts of solar radiation, bathing the region in an unnatural, oppressive heat.\n\nTravellers warn that this is just the beginning of a massive thermal event. Temperatures will continue to rise drastically. You have a short window to secure your food supply, build coolers, and tailor protective headgear for your colonists before the sun becomes deadly.</letterText>
+						<forcedWeather>VEE_Swelter</forcedWeather>
+					</li>
+					<li>
+						<durationDays>15~30</durationDays>
+						<targetTempOffset>35</targetTempOffset>
+						<tempLerpDays>15</tempLerpDays>
+						<letterLabel>the scorch</letterLabel>
+						<letterText>The heat has reached dangerous levels, and rain clouds have vanished completely.\n\nOutdoor crops are struggling to grow in the baked earth. Furthermore, the intense UV radiation is causing sun sickness for anyone caught outside without a hat. This sickness makes victims extremely susceptible to heatstroke. Keep your colonists under roofs or ensure they are wearing headgear.</letterText>
+						<letterDef>PurpleEvent</letterDef>
+						
+					</li>
+					<li>
+						<durationDays>15~30</durationDays>
+						<targetTempOffset>60</targetTempOffset>
+						<tempLerpDays>5</tempLerpDays>
+						<letterLabel>the inferno</letterLabel>
+						<letterText>The heat has peaked into a catastrophic inferno. \n\nA thick, sweltering haze has settled over the area, and outdoor plant growth has completely halted. Worse yet, the superheated atmosphere is generating massive dry thunderstorms. Expect frequent lightning strikes and devastating wildfires.\n\nStay indoors, keep the coolers running, and wait for the rain to come back.</letterText>
+						<letterDef>PurpleEvent</letterDef>
+						
+					</li>
+					<li>
+						<durationDays>3~5</durationDays>
+						<targetTempOffset>0</targetTempOffset>
+						<tempLerpDays>3</tempLerpDays>
+						<letterLabel>the relief</letterLabel>
+						<letterText>The oppressive haze is finally lifting, and the sun's glare seems less deadly today.\n\nThe scorch is ending. Temperatures will slowly return to normal over the coming days, and rain clouds will soon return.</letterText>
+						<letterDef>PurpleEvent</letterDef>
+						
+					</li>
+				
+				</stages>
+			</li>
+		</modExtensions>
 	</GameConditionDef>
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	<GameConditionDef>
 		<defName>PsychicRain</defName>
 		<conditionClass>VEE.PurpleEvents.PsychicRain</conditionClass>
