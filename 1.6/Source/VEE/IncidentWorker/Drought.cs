@@ -25,5 +25,15 @@ namespace VEE.RegularEvents
             }
             return 0f;
         }
+        public override void PostMake()
+        {
+            base.PostMake();
+            StaticCollections.cachedPlantGrowthMultiplier = 0.1f;
+        }
+        public override void End()
+        {
+            base.End();
+            StaticCollections.cachedPlantGrowthMultiplier = 1f;
+        }
     }
 }

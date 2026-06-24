@@ -1,6 +1,8 @@
 using HarmonyLib;
 using RimWorld;
+using System.Linq;
 using Verse;
+using Verse.Noise;
 
 namespace VEE
 {
@@ -9,9 +11,20 @@ namespace VEE
     {
         public static void Postfix(ref float __result, WeatherDef weather)
         {
+            var multistageCondition = Find.World.gameConditionManager.ActiveConditions.Where(x => x is GameCondition_MultiStage);
+            if (multistageCondition.Any()) {
+                foreach (GameCondition_MultiStage condition in multistageCondition)
+                {
+                    if (weather.rainRate > 0.1f && condition.CurrentStage.preventRain)
+                    {
+                        __result= 0f;
+                    }
+                }
+            }
+
             var cond = Find.World.gameConditionManager.GetActiveCondition(VEE_DefOf.VEE_Whiteout) as GameCondition_MultiStage;
-            if (cond is null) return;
-            if (cond.CurrentStage.weatherWeights != null)
+            
+            if (cond?.CurrentStage.weatherWeights != null)
             {
                 var w = cond.CurrentStage.weatherWeights.FirstOrDefault(x => x.weather == weather);
                 if (w != null)

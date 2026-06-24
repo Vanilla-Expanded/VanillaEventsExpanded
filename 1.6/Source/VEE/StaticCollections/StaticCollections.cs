@@ -13,6 +13,7 @@ namespace VEE
 
         public static List<ThingDef> nonSmoothedMineables = new List<ThingDef>();
         public static List<ThingDef> cropSproutCandidates = new List<ThingDef>();
+        public static float cachedPlantGrowthMultiplier = 1;
 
         static StaticCollections()
         {

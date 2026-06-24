@@ -24,6 +24,11 @@ namespace VEE
         public List<IncidentChanceRecord> incidentChances;
         public float humanIncidentsFactor = 1f;
         public bool spawnDeepSnow;
+        public bool preventRain = false;
+        public float plantGrowthMultiplier = 1;
+        public bool changeSkyColours = false;
+        public int changeSkyColoursTicks;
+        public SkyColorSet skyColors;
     }
 
     public class IncidentChanceRecord

@@ -59,6 +59,10 @@ namespace VEE
             {
                 SpawnDeepSnow();
             }
+            if (CurrentStage.plantGrowthMultiplier!=1 && TicksPassed % 2000 == 0)
+            {
+                StaticCollections.cachedPlantGrowthMultiplier = CurrentStage.plantGrowthMultiplier;
+            }
         }
         public float TemperatureOffsetWorld()
         {
@@ -80,6 +84,19 @@ namespace VEE
             return base.ForcedWeather();
         }
 
+        public override SkyTarget? SkyTarget(Map map)
+        {           
+            if (CurrentStage.changeSkyColours)
+                return new SkyTarget(1, CurrentStage.skyColors, 1, 1);
+            return base.SkyTarget(map);
+        }
+        public override float SkyTargetLerpFactor(Map map)
+        {
+            if (CurrentStage.changeSkyColours)
+                return GameConditionUtility.LerpInOutValue(this, CurrentStage.changeSkyColoursTicks, 0.5f);
+            return 0;
+        }
+
         public void EnterStage(int index)
         {
             var currentOffset = index == 0 ? 0f : TemperatureOffsetWorld();
@@ -87,6 +104,7 @@ namespace VEE
             currentStageStartTick = Find.TickManager.TicksGame;
             prevTargetTempOffset = currentOffset;
             var stage = CurrentStage;
+            StaticCollections.cachedPlantGrowthMultiplier = CurrentStage.plantGrowthMultiplier;
             currentStageDurationTicks = Mathf.RoundToInt(stage.durationDays.RandomInRange * 60000f);
             Find.LetterStack.ReceiveLetter(stage.letterLabel.CapitalizeFirst(), stage.letterText, stage.letterDef);
         }

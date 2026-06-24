@@ -33,23 +33,25 @@ namespace VEE
 
         public static void Postfix(ref float __result, Plant __instance)
         {
-            if (__instance.Map != null && __instance.Map.GameConditionManager.ConditionIsActive(VEE_DefOf.VEE_Drought))
-            {
-                List<Thing> thingList = __instance.Map.thingGrid.ThingsListAtFast(__instance.Position);
-                bool tagFound =false;
-                foreach(Thing thing in thingList){
-                    if(thing.def.building?.sowTag == "Hydroponic")
+            if (__instance.Map != null)
+            {         
+                if (StaticCollections.cachedPlantGrowthMultiplier != 1 && !__instance.Map.roofGrid.Roofed(__instance.Position))
+                {
+                    List<Thing> thingList = __instance.Map.thingGrid.ThingsListAtFast(__instance.Position);
+                    bool tagFound = false;
+                    foreach (Thing thing in thingList)
                     {
-                        tagFound = true;
+                        if (thing.def.building?.sowTag == "Hydroponic")
+                        {
+                            tagFound = true;
+                        }
+                    }
+                    if (!tagFound)
+                    {
+                        __result *= StaticCollections.cachedPlantGrowthMultiplier;
                     }
                 }
-                if (!tagFound)
-                {
-                    __result *= 0.1f;
-                }
-                
             }
-            
         }
     }
 }

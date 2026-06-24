@@ -66,7 +66,7 @@ namespace VEE
 
         /* GameConditionDefOf */
         public static GameConditionDef VEE_Whiteout;
-        public static GameConditionDef GlobalWarming;
+        public static GameConditionDef VEE_Scorch;
         public static GameConditionDef SpaceBattle;
         public static GameConditionDef PsychicRain;
         public static GameConditionDef VEE_Drought;
