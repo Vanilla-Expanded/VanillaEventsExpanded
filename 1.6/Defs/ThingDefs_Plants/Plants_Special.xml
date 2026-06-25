@@ -202,8 +202,9 @@
 			<pollution>Any</pollution>
 			<harvestWork>450</harvestWork>
 			<growDays>4</growDays>
+			<maxMeshCount>4</maxMeshCount>
 			<wildOrder>2</wildOrder>
-			<visualSizeRange>1~1.8</visualSizeRange>
+			<visualSizeRange>0.5~0.8</visualSizeRange>
 			<topWindExposure>0.1</topWindExposure>
 			<purpose>Food</purpose>
 			<allowAutoCut>false</allowAutoCut>
@@ -264,7 +265,6 @@
 		<graphicData>
 			<texPath>Things/Plants/PsychicPlants/PhoraxTree/PhoraxTree</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
-			<drawSize>2.5</drawSize>
 			<shadowData>
 				<volume>(0.2, 0.35, 0.13)</volume>
 				<offset>(0,0,-0.42)</offset>
@@ -294,7 +294,18 @@
 			<topWindExposure>0.25</topWindExposure>
 			<purpose>Food</purpose>
 			<allowAutoCut>false</allowAutoCut>
+			<harvestedThingDef>WoodLog</harvestedThingDef>
+			<harvestYield>4</harvestYield>
+			<harvestTag>Wood</harvestTag>
+			<harvestMinGrowth>0.40</harvestMinGrowth>
+			<harvestFailable>false</harvestFailable>
 		</plant>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>5.9</glowRadius>
+				<glowColor>(130,162,189,0)</glowColor>
+			</li>
+		</comps>
 	</ThingDef>
 	<ThingDef ParentName="PlantBase">
 		<defName>VEE_Plant_XyrilTree</defName>
@@ -310,7 +321,6 @@
 		<graphicData>
 			<texPath>Things/Plants/PsychicPlants/XyrilTree/XyrilTree</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
-			<drawSize>2.5</drawSize>
 			<shadowData>
 				<volume>(0.2, 0.35, 0.13)</volume>
 				<offset>(0,0,-0.42)</offset>
@@ -340,7 +350,18 @@
 			<topWindExposure>0.25</topWindExposure>
 			<purpose>Food</purpose>
 			<allowAutoCut>false</allowAutoCut>
+			<harvestedThingDef>WoodLog</harvestedThingDef>
+			<harvestYield>4</harvestYield>
+			<harvestTag>Wood</harvestTag>
+			<harvestMinGrowth>0.40</harvestMinGrowth>
+			<harvestFailable>false</harvestFailable>
 		</plant>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>5.9</glowRadius>
+				<glowColor>(130,189,187,0)</glowColor>
+			</li>
+		</comps>
 	</ThingDef>
 	<ThingDef ParentName="PlantBase">
 		<defName>VEE_Plant_MyrloxTree</defName>
@@ -356,7 +377,6 @@
 		<graphicData>
 			<texPath>Things/Plants/PsychicPlants/MyrloxTree/MyrloxTree</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
-			<drawSize>2.5</drawSize>
 			<shadowData>
 				<volume>(0.2, 0.35, 0.13)</volume>
 				<offset>(0,0,-0.42)</offset>
@@ -386,6 +406,17 @@
 			<topWindExposure>0.25</topWindExposure>
 			<purpose>Food</purpose>
 			<allowAutoCut>false</allowAutoCut>
+			<harvestedThingDef>WoodLog</harvestedThingDef>
+			<harvestYield>4</harvestYield>
+			<harvestTag>Wood</harvestTag>
+			<harvestMinGrowth>0.40</harvestMinGrowth>
+			<harvestFailable>false</harvestFailable>
 		</plant>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>5.9</glowRadius>
+				<glowColor>(189,130,181,0)</glowColor>
+			</li>
+		</comps>
 	</ThingDef>
 </Defs>

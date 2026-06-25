@@ -41,16 +41,25 @@ namespace VEE
                 }, Map, 1000, out IntVec3 cell))
                 {
                     Plant plant = cell.GetPlant(Map);
-                    if (plant!= null && !StaticCollections.plantArray.Any(x => x.plant == plant.def))
+                    if (plant != null && !StaticCollections.plantArray.Any(x => x.plant == plant.def))
                     {                     
                         plant.Kill();
+                        SpawnNewPlant(cell);
                     }
-                    ThingDef newPlant = StaticCollections.plantArray.RandomElementByWeight(x => x.weight).plant;
-                    Log.Message(newPlant);
-                    GenSpawn.Spawn(newPlant, cell, Map, WipeMode.Vanish);
+                    if (plant is null) { 
+                        SpawnNewPlant(cell); 
+                    }
+                    
                 }
 
             }
+        }
+
+        public void SpawnNewPlant(IntVec3 cell)
+        {
+            ThingDef newPlant = StaticCollections.plantArray.RandomElementByWeight(x => x.weight).plant;
+            Log.Message(newPlant);
+            GenSpawn.Spawn(newPlant, cell, Map, WipeMode.Vanish);
         }
 
 
