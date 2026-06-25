@@ -30,6 +30,12 @@ namespace VEE
         public int changeSkyColoursTicks;
         public SkyColorSet skyColors;
         public float globalLightLevelsMultiplier = 1;
+        public HediffDef hediffForOrganicPawns = null;
+        public bool triggerPurpleAurora = false;
+        public List<ThingDef> scatterPlants = new List<ThingDef>();
+        public int scatterPlantsInterval = 0;
+        public List<PlantSwap> swapPlants = new List<PlantSwap>();
+        public float psychicLotusRadius = 0f;
     }
 
     public class IncidentChanceRecord
@@ -42,5 +48,11 @@ namespace VEE
     {
         public WeatherDef weather;
         public float weight;
+    }
+
+    public class PlantSwap
+    {
+        public ThingDef plantToSwap;
+        public ThingDef swappedPlant;
     }
 }

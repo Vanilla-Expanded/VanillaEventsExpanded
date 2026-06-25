@@ -20,4 +20,24 @@
 			</GameConditionDef>
 		</migratedDefs>
 	</VEF.DefMigrationDef>
+	<VEF.DefMigrationDef>
+		<defName>VEE_LongnightNameMigration</defName>
+		<migratedDefs>
+			<GameConditionDef>
+				<LongNight>
+					<replacement>VEE_LongNight</replacement>
+				</LongNight>
+			</GameConditionDef>
+		</migratedDefs>
+	</VEF.DefMigrationDef>
+	<VEF.DefMigrationDef>
+		<defName>VEE_BloomNameMigration</defName>
+		<migratedDefs>
+			<GameConditionDef>
+				<PsychicBloom>
+					<replacement>VEE_PsychicBloom</replacement>
+				</PsychicBloom>
+			</GameConditionDef>
+		</migratedDefs>
+	</VEF.DefMigrationDef>
 </Defs>

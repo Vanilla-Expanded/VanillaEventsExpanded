@@ -12,7 +12,7 @@
 		<weatherDef>Clear</weatherDef> <!-- Initial -->
 		<exclusiveConditions>
 			<li>PsychicRain</li>
-			<li>PsychicBloom</li>
+			<li>VEE_PsychicBloom</li>
 		</exclusiveConditions>
 		<modExtensions>
 			<li Class="VEF.Maps.MapConditionExtension">

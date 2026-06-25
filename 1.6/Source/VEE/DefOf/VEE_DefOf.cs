@@ -27,7 +27,7 @@ namespace VEE
         public static HediffDef Traitor;
         public static HediffDef MightJoin;
         public static HediffDef VEE_SunSickness;
-
+      
         /* PawnKindDefOf */
         public static PawnKindDef StrangerInBlack;
         public static PawnKindDef VEE_Hunter;
@@ -53,6 +53,14 @@ namespace VEE
         public static ThingDef VEE_ShipChunkHumanIncoming_DropPod;
         public static ThingDef VEE_ShipChunkHuman_DropPod_Spawner;
         public static ThingDef Gun_BoltActionRifle;
+        public static ThingDef VEE_Plant_PsychicLotus;
+        public static ThingDef VEE_Plant_PinkGrass;
+        public static ThingDef VEE_Plant_TallPinkGrass;
+        public static ThingDef VEE_Plant_VyspStrands;
+        public static ThingDef VEE_Plant_CyllenCluster;
+        public static ThingDef VEE_Plant_PhoraxTree;
+        public static ThingDef VEE_Plant_XyrilTree;
+        public static ThingDef VEE_Plant_MyrloxTree;
 
         /* IncidentDefOf */
         public static IncidentDef RaidEnemyPurple;
@@ -69,6 +77,7 @@ namespace VEE
         public static GameConditionDef SpaceBattle;
         public static GameConditionDef PsychicRain;
         public static GameConditionDef VEE_Drought;
+        public static GameConditionDef VEE_PsychicBloom;
 
         /* Letter def */
         public static LetterDef PurpleEvent;

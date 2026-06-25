@@ -4,7 +4,7 @@
     <xpath>Defs/GameConditionDef[defName="Eclipse"]</xpath>
     <value>
       <exclusiveConditions>
-        <li>LongNight</li>
+        <li>VEE_LongNight</li>
       </exclusiveConditions>
     </value>
   </Operation>

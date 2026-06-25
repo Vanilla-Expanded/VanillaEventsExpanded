@@ -11,8 +11,8 @@
 		<exclusiveConditions>
 			<li>VEE_Scorch</li>
 			<li>PsychicRain</li>
-			<li>LongNight</li>
-			<li>PsychicBloom</li>
+			<li>VEE_LongNight</li>
+			<li>VEE_PsychicBloom</li>
 		</exclusiveConditions>
 		<modExtensions>
 			<li Class="VEE.ConditionExtension_MultiStage">
@@ -97,8 +97,8 @@
 		<exclusiveConditions>
 			<li>VEE_Whiteout</li>
 			<li>PsychicRain</li>
-			<li>LongNight</li>
-			<li>PsychicBloom</li>
+			<li>VEE_LongNight</li>
+			<li>VEE_PsychicBloom</li>
 		</exclusiveConditions>
 		<modExtensions>
 			<li Class="VEE.ConditionExtension_MultiStage">
@@ -184,6 +184,151 @@
 		</modExtensions>
 	</GameConditionDef>
 	<GameConditionDef>
+		<defName>VEE_LongNight</defName>
+		<conditionClass>VEE.GameCondition_MultiStage</conditionClass>
+		<label>long night</label>
+		<description>A catastrophic celestial eclipse that blankets the world in an endless, freezing twilight, forcing the world to adapt to artificial light and increased psychic sensitivity as nocturnal predators and subterranean threats emerge in the darkness.</description>
+		<endMessage>The long night is ending</endMessage>
+		<canBePermanent>true</canBePermanent>
+		<allowUnderground>False</allowUnderground>
+		<exclusiveConditions>
+			<li>VEE_Scorch</li>
+			<li>PsychicRain</li>
+			<li>VEE_Whiteout</li>
+			<li>VEE_PsychicBloom</li>
+			<li>Eclipse</li>
+		</exclusiveConditions>
+		<modExtensions>
+			<li Class="VEE.ConditionExtension_MultiStage">
+				<stages>
+					<li>
+						<durationDays>10~15</durationDays>
+						<targetTempOffset>-5</targetTempOffset>
+						<tempLerpDays>10</tempLerpDays>
+						<letterLabel>the penumbra</letterLabel>
+						<letterText>A space entity of unimaginable size has made first contact with a local star, resulting in the beginning of a long lasting eclipse.\n\nThe daylight is beginning to dim, casting a vast penumbra over the planet. Solar output and temperatures will continue to drop as the eclipse deepens. Prepare your power grids and indoor agriculture before the true darkness arrives.</letterText>
+						<letterDef>PurpleEvent</letterDef>
+						<globalLightLevelsMultiplier>0.75</globalLightLevelsMultiplier>
+					</li>
+					<li>
+						<durationDays>5~10</durationDays>
+						<targetTempOffset>-15</targetTempOffset>
+						<tempLerpDays>5</tempLerpDays>
+						<letterLabel>the umbra</letterLabel>
+						<letterText>The celestial entity has begun to cross the center of the sun.\n\nThe planet has been plunged into a deep, freezing twilight. Solar generators are now struggling to produce power, and surface flora is dying. Rely on artificial lights and indoor heating to survive the coming black.</letterText>
+						<letterDef>PurpleEvent</letterDef>
+						<globalLightLevelsMultiplier>0.25</globalLightLevelsMultiplier>
+					</li>
+					<li>
+						<durationDays>15~30</durationDays>
+						<targetTempOffset>-20</targetTempOffset>
+						<tempLerpDays>2</tempLerpDays>
+						<letterLabel>the totality</letterLabel>
+						<letterText>The sun has been completely blotted out. \n\nTotality has been achieved, and an endless, freezing night has fallen across the world. The celestial entity is emitting a heavy cosmic resonance. Your colonists will tire much faster than normal, and their psychic sensitivity has been dangerously amplified.\n\nThe animals became a lot more aggressive. Guard your brightly lit base against the nocturnal predators and subterranean insectoids.</letterText>
+						<letterDef>PurpleEvent</letterDef>
+						<globalLightLevelsMultiplier>0</globalLightLevelsMultiplier>
+						<hediffForOrganicPawns>VEE_LongNight</hediffForOrganicPawns>
+						<humanIncidentsFactor>0.75</humanIncidentsFactor>
+						<incidentChances>
+							<li>
+								<def>ManhunterPackPurple</def>
+								<chance>3.5</chance>
+							</li>
+							<li>
+								<def>InfestationPurple</def>
+								<chance>3.5</chance>
+							</li>
+						</incidentChances>
+					</li>
+					<li>
+						<durationDays>5~10</durationDays>
+						<targetTempOffset>-15</targetTempOffset>
+						<tempLerpDays>5</tempLerpDays>
+						<letterLabel>the emergence</letterLabel>
+						<letterText>A brilliant flash of light has pierced the horizon!\n\nThe cosmic entity is finally shifting away from the sun's center. Totality has ended. The absolute darkness has broken into twilight. Your solar panels will begin generating power once again, and plants will resume growth as the temperature increases.</letterText>
+						<letterDef>PurpleEvent</letterDef>
+						<globalLightLevelsMultiplier>0.25</globalLightLevelsMultiplier>
+					</li>
+					<li>
+						<durationDays>10~15</durationDays>
+						<letterLabel>the restoration</letterLabel>
+						<letterText>The celestial object is making its final pass across the sun.\n\nThe long night is ending. Over the coming days, the remaining shadows will clear, temperatures will normalize, and the planet will fully awaken from the dark.</letterText>
+						<letterDef>PurpleEvent</letterDef>
+						<globalLightLevelsMultiplier>0.75</globalLightLevelsMultiplier>
+					</li>
+				</stages>
+			</li>
+		</modExtensions>
+	</GameConditionDef>
+	
+	<GameConditionDef>
+		<defName>VEE_PsychicBloom</defName>
+		<conditionClass>VEE.GameCondition_MultiStage</conditionClass>
+		<label>psychic bloom</label>
+		<description>A dimensional rift tears through the sky, blanketing the world in a perpetual purple aurora while alien seedlings sprout and mutate local flora into psychic lotuses, forcing the world to manage rapidly growing, otherworldly vegetation and intensifying psychic pressure.</description>
+		<endMessage>The psychic bloom is ending</endMessage>
+		<canBePermanent>true</canBePermanent>
+		<allowUnderground>False</allowUnderground>
+		<exclusiveConditions>
+			<li>VEE_Scorch</li>
+			<li>PsychicRain</li>
+			<li>VEE_LongNight</li>
+			<li>VEE_Whiteout</li>
+		</exclusiveConditions>
+		<modExtensions>
+			<li Class="VEE.ConditionExtension_MultiStage">
+				<stages>
+					<li>
+						<durationDays>10~15</durationDays>					
+						<letterLabel>the seeding</letterLabel>
+						<letterText>The veil between our reality and somewhere else is wearing dangerously thin.\n\nA tear in the dimensional fabric has ignited a permanent, unnatural purple aurora across the sky. Where the psychic energy bleeds through to the surface, bizarre, alien seedlings are manifesting in the soil. While they are harmless for now, they do not belong in this dimension. You may want to uproot them before they anchor themselves to our reality.</letterText>
+						<letterDef>PurpleEvent</letterDef>
+						<triggerPurpleAurora>true</triggerPurpleAurora>
+						<scatterPlants><li>VEE_Plant_PsychicLotusSeedling</li></scatterPlants>
+						<scatterPlantsInterval>15000</scatterPlantsInterval>
+					</li>
+					<li>
+						<durationDays>30~45</durationDays>						
+						<letterLabel>the bloom</letterLabel>
+						<letterText>The dimensional overlap is widening. The seedlings have matured into psychic lotuses, and they are actively terraforming our world to match their own.\n\nThe lotuses are mutating nearby flora into vibrant, otherworldly variants, and the ambient psychic sensitivity of everyone in the region has doubled.\n\nBeware the weather, as clouds from the other side are bleeding through. Psychic rain can have devastating effects on anyone caught outside, as time behaves differently in its home dimension.</letterText>
+						<letterDef>PurpleEvent</letterDef>
+						<plantGrowthMultiplier>3.6</plantGrowthMultiplier>
+						<disableWildAnimalSpawns>true</disableWildAnimalSpawns>
+						<triggerPurpleAurora>true</triggerPurpleAurora>
+						<swapPlants>
+							<li>
+								<plantToSwap>VEE_Plant_PsychicLotusSeedling</plantToSwap>
+								<swappedPlant>VEE_Plant_PsychicLotus</swappedPlant>
+							</li>
+						</swapPlants>
+						<scatterPlants><li>VEE_Plant_PsychicLotus</li></scatterPlants>
+						<scatterPlantsInterval>30000</scatterPlantsInterval>
+						<hediffForOrganicPawns>VEE_BloomPsychicSensitivity</hediffForOrganicPawns>
+						<psychicLotusRadius>12.9</psychicLotusRadius>
+					</li>
+					<li>
+						<durationDays>3~7</durationDays>						
+						<letterLabel>the superbloom</letterLabel>
+						<letterText>The boundary between realities has completely collapsed!\n\nThe otherworldly flora has entered a catastrophic superbloom, spreading at an uncontrollable rate. Worse, the psychic lotuses are acting as conduits for the crushing psychic weight of an entirely different universe. The intensity of this maddening drone is directly tied to how many lotuses are anchoring the rift to your map.\n\nYou must sever their connection by cutting down the lotuses immediately, or the sheer psychic pressure of another dimension will drive your colonists insane.</letterText>
+						<letterDef>PurpleEvent</letterDef>
+						<psychicLotusRadius>24.9</psychicLotusRadius>
+						
+					</li>
+					<li>
+						<durationDays>15~30</durationDays>					
+						<letterLabel>the withering</letterLabel>
+						<letterText>Reality has violently reasserted itself.\n\nThe dimensional rift has snapped shut. Cut off from the psychic energy of their home universe, the superbloom has instantly collapsed into a hideous, withered wasteland. The maddening drone is gone, but the dead flora will take years to decay naturally. You will need to burn or chop away these wilted plants to make room for your crops to return.\n\nPsychic Rain remains a lingering threat until the sky fully heals and the aurora dissipates.</letterText>
+						<letterDef>PurpleEvent</letterDef>
+						
+					</li>
+					
+				</stages>
+			</li>
+		</modExtensions>
+	</GameConditionDef>
+	
+	
+	<GameConditionDef>
 		<defName>PsychicRain</defName>
 		<conditionClass>VEE.PurpleEvents.PsychicRain</conditionClass>
 		<label>Psychic Rain</label>
@@ -197,46 +342,9 @@ It will last anywhere between a season to several years.</description>
 		<exclusiveConditions>
 			<li>VEE_Scorch</li>
 			<li>VEE_Whiteout</li>
-			<li>LongNight</li>
-			<li>PsychicBloom</li>
+			<li>VEE_LongNight</li>
+			<li>VEE_PsychicBloom</li>
 			<li>VEE_Drought</li>
-		</exclusiveConditions>
-	</GameConditionDef>
-	<GameConditionDef>
-		<defName>LongNight</defName>
-		<conditionClass>VEE.PurpleEvents.LongNight</conditionClass>
-		<label>Long Night</label>
-		<description>A space entity of unimaginable size has covered a local star, resulting in a long lasting eclipse.
-
-Terrified of this supernatural phenomenon, other factions will use this time to wage war and conflict across the surface.
-
-It will last anywhere between a season to several years.</description>
-		<endMessage>The long night is ending</endMessage>
-		<canBePermanent>true</canBePermanent>
-		<exclusiveConditions>
-			<li>VEE_Scorch</li>
-			<li>PsychicRain</li>
-			<li>VEE_Whiteout</li>
-			<li>PsychicBloom</li>
-			<li>Eclipse</li>
-		</exclusiveConditions>
-	</GameConditionDef>
-	<GameConditionDef>
-		<defName>PsychicBloom</defName>
-		<conditionClass>VEE.PurpleEvents.PsychicBloom</conditionClass>
-		<label>Psychic Bloom</label>
-		<description>A strong psychic pulse emitted by a long forgotten entity changed the very genetical structure of local flora. Whilst the sky filled with a seemingly endless auroras, colourful flowers started sprouting everywhere. 
-
-All pawns will gain a positive mood buff for the time of the event. The rapidly spreading flowers will overgrow everything, including your fields. 
-
-It will last anywhere between a few days to a season.</description>
-		<endMessage>The psychic bloom is ending</endMessage>
-		<canBePermanent>true</canBePermanent>
-		<exclusiveConditions>
-			<li>VEE_Scorch</li>
-			<li>PsychicRain</li>
-			<li>LongNight</li>
-			<li>VEE_Whiteout</li>
 		</exclusiveConditions>
 	</GameConditionDef>
 </Defs>

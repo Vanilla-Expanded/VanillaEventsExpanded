@@ -45,6 +45,7 @@
 		<description>Severe cellular damage and blistering caused by unprotected exposure to solar radiation. Recovery is incredibly slow and leaves the skin highly sensitive for days.</description>
 		<defaultLabelColor>(0.8, 0.8, 0.35)</defaultLabelColor>
 		<hediffClass>HediffWithComps</hediffClass>
+		<allowMothballIfLowPriorityWorldPawn>true</allowMothballIfLowPriorityWorldPawn>
 		<canApplyDodChanceForCapacityChanges>true</canApplyDodChanceForCapacityChanges>
 		<comps>
 			<li Class="HediffCompProperties_SeverityPerDay">
@@ -86,6 +87,50 @@
 				<painOffset>0.3</painOffset>
 				<statFactors>
 					<VEF_HeatstrokeBuildupMultiplier>4</VEF_HeatstrokeBuildupMultiplier>
+				</statFactors>
+			</li>
+		</stages>
+	</HediffDef>
+	<HediffDef>
+		<defName>VEE_LongNight</defName>
+		<label>long night</label>
+		<description>The celestial entity is emitting a heavy cosmic resonance. Organic beings will tire much faster than normal, and their psychic sensitivity will be dangerously amplified.</description>
+		<defaultLabelColor>(0.8, 0.8, 0.35)</defaultLabelColor>
+		<hediffClass>HediffWithComps</hediffClass>
+		<maxSeverity>1</maxSeverity>
+		<allowMothballIfLowPriorityWorldPawn>true</allowMothballIfLowPriorityWorldPawn>
+		<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-2</severityPerDay>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<restFallFactor>1.25</restFallFactor>
+				<statFactors>
+					<PsychicSensitivity>1.25</PsychicSensitivity>
+				</statFactors>
+			</li>
+		</stages>
+	</HediffDef>
+	<HediffDef>
+		<defName>VEE_BloomPsychicSensitivity</defName>
+		<label>psychic bloom</label>
+		<description>The psychic lotuses are mutating nearby flora into vibrant, otherworldly variants, and the ambient psychic sensitivity of everyone in the region has doubled.</description>
+		<defaultLabelColor>(0.8, 0.8, 0.35)</defaultLabelColor>
+		<hediffClass>HediffWithComps</hediffClass>
+		<maxSeverity>1</maxSeverity>
+		<allowMothballIfLowPriorityWorldPawn>true</allowMothballIfLowPriorityWorldPawn>
+		<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-2</severityPerDay>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				
+				<statFactors>
+					<PsychicSensitivity>2</PsychicSensitivity>
 				</statFactors>
 			</li>
 		</stages>
