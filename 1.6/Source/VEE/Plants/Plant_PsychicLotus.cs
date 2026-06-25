@@ -38,7 +38,7 @@ namespace VEE
                     if (!c.InBounds(Map) || !c.Standable(Map) || c.GetFirstBuilding(Map) != null || c.DistanceTo(this.Position)>GetCondition.CurrentStage.psychicLotusRadius)
                         return false;
                     return true;
-                }, Map, 1000, out IntVec3 cell))
+                }, Map, 10, out IntVec3 cell))
                 {
                     Plant plant = cell.GetPlant(Map);
                     if (plant != null && !StaticCollections.plantArray.Any(x => x.plant == plant.def))
