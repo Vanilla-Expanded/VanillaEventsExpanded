@@ -26,6 +26,7 @@ namespace VEE
         /* Hediff */
         public static HediffDef Traitor;
         public static HediffDef MightJoin;
+        public static HediffDef VEE_SunSickness;
 
         /* PawnKindDefOf */
         public static PawnKindDef StrangerInBlack;
@@ -33,7 +34,6 @@ namespace VEE
         public static PawnKindDef VEE_TribalHunter;
 
         /* ThingDefOf */
-
         public static ThingDef VEE_Shuttle;
         public static ThingDef ShuttleChunkIncoming;
         public static ThingDef VEE_Shuttle_Combat;
@@ -54,15 +54,14 @@ namespace VEE
         public static ThingDef VEE_ShipChunkHuman_DropPod_Spawner;
         public static ThingDef Gun_BoltActionRifle;
 
-
-
         /* IncidentDefOf */
         public static IncidentDef RaidEnemyPurple;
         public static IncidentDef ManhunterPackPurple;
         public static IncidentDef AnimalInsanityMassPurple;
         public static IncidentDef VEE_WhiteoutRefugees;
 
-        
+        /* Stat def */
+        public static StatDef VEF_SunSicknessBuildupMultiplier;
 
         /* GameConditionDefOf */
         public static GameConditionDef VEE_Whiteout;
@@ -76,20 +75,23 @@ namespace VEE
         public static LetterDef VEE_SurvivorsJoin;
         public static LetterDef VEE_WhiteoutRefugeesLetter;
 
+        /* Duty def */
         public static DutyDef VEE_CarryAndLeave;
 
         /* Meme def */
-
         [MayRequireIdeology]
         public static MemeDef AnimalPersonhood;
 
+        /* Faction def */
         [MayRequireBiotech]
         public static FactionDef OutlanderRoughPig;
 
+        /* ThingSetMaker def */
         public static ThingSetMakerDef VEE_MeteoriteShowerMaker;
         public static ThingSetMakerDef VEE_ShuttleCrash_Resources;
         public static ThingSetMakerDef VEE_CrashlandedColonists;
 
+        /* Effecter def */
         public static EffecterDef VEE_EmergencePointSustained8X8;
     }
 }
