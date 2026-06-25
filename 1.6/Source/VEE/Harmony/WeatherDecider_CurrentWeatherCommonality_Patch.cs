@@ -7,7 +7,7 @@ using Verse.Noise;
 namespace VEE
 {
     [HarmonyPatch(typeof(WeatherDecider), "CurrentWeatherCommonality")]
-    public static class WeatherDecider_CurrentWeatherCommonality_Patch
+    public static class VEE_WeatherDecider_CurrentWeatherCommonality_Patch
     {
         public static void Postfix(ref float __result, WeatherDef weather)
         {

@@ -12,7 +12,7 @@ namespace VEE
 
     [HarmonyPatch(typeof(Plant))]
     [HarmonyPatch("TickLong", MethodType.Normal)]
-    public class Plant_TickLong_Patch
+    public class VEE_Plant_TickLong_Patch
     {
         [HarmonyPostfix]
         public static void Postfix(ref Plant __instance, ref int ___madeLeaflessTick)

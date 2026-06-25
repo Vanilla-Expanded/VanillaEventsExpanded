@@ -5,7 +5,7 @@ using Verse;
 namespace VEE
 {
     [HarmonyPatch(typeof(IncidentWorker_RaidEnemy), "FactionCanBeGroupSource")]
-    public static class IncidentWorker_RaidEnemy_FactionCanBeGroupSource_Patch
+    public static class VEE_IncidentWorker_RaidEnemy_FactionCanBeGroupSource_Patch
     {
         public static void Postfix(Faction f, ref bool __result)
         {

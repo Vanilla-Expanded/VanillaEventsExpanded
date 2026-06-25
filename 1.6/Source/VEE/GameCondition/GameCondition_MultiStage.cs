@@ -63,6 +63,10 @@ namespace VEE
             {
                 StaticCollections.cachedPlantGrowthMultiplier = CurrentStage.plantGrowthMultiplier;
             }
+            if (CurrentStage.globalLightLevelsMultiplier != 1 && TicksPassed % 2000 == 0)
+            {
+                StaticCollections.cachedGlobalLightLevelsMultiplier = CurrentStage.globalLightLevelsMultiplier;
+            }
         }
         public float TemperatureOffsetWorld()
         {
@@ -105,6 +109,7 @@ namespace VEE
             prevTargetTempOffset = currentOffset;
             var stage = CurrentStage;
             StaticCollections.cachedPlantGrowthMultiplier = CurrentStage.plantGrowthMultiplier;
+            StaticCollections.cachedGlobalLightLevelsMultiplier = CurrentStage.globalLightLevelsMultiplier;
             currentStageDurationTicks = Mathf.RoundToInt(stage.durationDays.RandomInRange * 60000f);
             Find.LetterStack.ReceiveLetter(stage.letterLabel.CapitalizeFirst(), stage.letterText, stage.letterDef);
         }
@@ -127,6 +132,13 @@ namespace VEE
                     }
                 }
             }
+        }
+
+        public override void End()
+        {
+            StaticCollections.cachedPlantGrowthMultiplier = 1;
+            StaticCollections.cachedGlobalLightLevelsMultiplier = 1;
+            base.End();
         }
 
         public override void ExposeData()

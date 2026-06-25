@@ -5,7 +5,7 @@ using Verse;
 namespace VEE
 {
     [HarmonyPatch(typeof(IncidentWorker), "BaseChanceThisGame", MethodType.Getter)]
-    public static class IncidentWorker_BaseChanceThisGame_Patch
+    public static class VEE_IncidentWorker_BaseChanceThisGame_Patch
     {
         public static void Postfix(IncidentWorker __instance, ref float __result)
         {

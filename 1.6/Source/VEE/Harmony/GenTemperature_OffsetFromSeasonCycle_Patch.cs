@@ -7,7 +7,7 @@ using Verse;
 namespace VEE
 {
     [HarmonyPatch(typeof(GenTemperature), "OffsetFromSeasonCycle")]
-    public static class GenTemperature_OffsetFromSeasonCycle_Patch
+    public static class VEE_GenTemperature_OffsetFromSeasonCycle_Patch
     {
         public static void Postfix(ref float __result, PlanetTile tile)
         {

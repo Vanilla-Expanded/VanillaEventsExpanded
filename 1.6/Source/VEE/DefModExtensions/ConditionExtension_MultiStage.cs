@@ -29,6 +29,7 @@ namespace VEE
         public bool changeSkyColours = false;
         public int changeSkyColoursTicks;
         public SkyColorSet skyColors;
+        public float globalLightLevelsMultiplier = 1;
     }
 
     public class IncidentChanceRecord

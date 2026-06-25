@@ -5,7 +5,7 @@ using Verse;
 namespace VEE
 {
     [HarmonyPatch(typeof(WildAnimalSpawner), "SpawnRandomWildAnimalAt")]
-    public static class WildAnimalSpawner_SpawnRandomWildAnimalAt_Patch
+    public static class VEE_WildAnimalSpawner_SpawnRandomWildAnimalAt_Patch
     {
         public static bool Prefix()
         {
