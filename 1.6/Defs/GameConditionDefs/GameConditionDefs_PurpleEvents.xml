@@ -342,6 +342,8 @@
 							<li>
 								<plantToSwap>VEE_Plant_PsychicLotus</plantToSwap>
 								<swappedPlant>VEE_Plant_PsychicLotus_Wilted</swappedPlant>
+								<effecter>VEE_PlantWilting</effecter>
+								<effecterChance>0.2</effecterChance>
 							</li>
 							<li>
 								<plantToSwap>VEE_Plant_PsychicLotusSeedling</plantToSwap>
@@ -358,22 +360,32 @@
 							<li>
 								<plantToSwap>VEE_Plant_VyspStrands</plantToSwap>
 								<swappedPlant>VEE_Plant_VyspStrands_Wilted</swappedPlant>
+								<effecter>VEE_PlantWilting</effecter>
+								<effecterChance>0.2</effecterChance>
 							</li>
 							<li>
 								<plantToSwap>VEE_Plant_CyllenCluster</plantToSwap>
 								<swappedPlant>VEE_Plant_CyllenCluster_Wilted</swappedPlant>
+								<effecter>VEE_PlantWilting</effecter>
+								<effecterChance>0.2</effecterChance>
 							</li>
 							<li>
 								<plantToSwap>VEE_Plant_PhoraxTree</plantToSwap>
 								<swappedPlant>VEE_Plant_PhoraxTree_Wilted</swappedPlant>
+								<effecter>VEE_PlantWilting</effecter>
+								<effecterChance>0.2</effecterChance>
 							</li>
 							<li>
 								<plantToSwap>VEE_Plant_XyrilTree</plantToSwap>
 								<swappedPlant>VEE_Plant_XyrilTree_Wilted</swappedPlant>
+								<effecter>VEE_PlantWilting</effecter>
+								<effecterChance>0.2</effecterChance>
 							</li>
 							<li>
 								<plantToSwap>VEE_Plant_MyrloxTree</plantToSwap>
 								<swappedPlant>VEE_Plant_MyrloxTree_Wilted</swappedPlant>
+								<effecter>VEE_PlantWilting</effecter>
+								<effecterChance>0.2</effecterChance>
 							</li>
 						</swapPlants>
 					</li>

@@ -227,7 +227,12 @@ namespace VEE
                             float growth = plant.Growth;
                             Plant newPlant = (Plant)GenSpawn.Spawn(plantSwap.swappedPlant, plant.Position, m, WipeMode.Vanish);
                             newPlant.Growth = growth;
-                        }                       
+                        } 
+                        if(plantSwap.effecter!=null && Rand.Chance(plantSwap.effecterChance))
+                        {
+                            Effecter eff = plantSwap.effecter.Spawn(plantThing.Position, plantThing.Map, Vector3.zero);
+                            plantThing.Map.effecterMaintainer.AddEffecterToMaintain(eff, plantThing.Position, 45);
+                        }
                         plantThing.Destroy();
                     }
                 }             

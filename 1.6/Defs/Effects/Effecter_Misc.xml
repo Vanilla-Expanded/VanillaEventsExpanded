@@ -149,4 +149,36 @@
 			</shaderParameters>
 		</graphicData>
 	</FleckDef>
+	<EffecterDef>
+		<defName>VEE_PlantWilting</defName>
+		<children>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+				<positionRadius>0.2</positionRadius>
+				<positionOffset>(0, 0, 0.12)</positionOffset>
+				<fleckDef>VEE_PlantWilting</fleckDef>
+				<chancePerTick>0.16</chancePerTick>
+				<scale>0.8~1.2</scale>
+				<spawnLocType>OnSource</spawnLocType>
+			</li>
+		</children>
+	</EffecterDef>
+	<FleckDef ParentName="FleckBase_Thrown">
+		<defName>VEE_PlantWilting</defName>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0.1</fadeInTime>
+		<solidTime>0.2</solidTime>
+		<fadeOutTime>0.65</fadeOutTime>
+		<graphicData>
+			<graphicClass>Graphic_Fleck</graphicClass>
+			<shaderType>TransparentAnimated</shaderType>
+			<texPath>Things/Mote/VEE_PlantWilting</texPath>
+			<shaderParameters>
+				<_NumFrames>5</_NumFrames>
+				<_FramesPerSec>5</_FramesPerSec>
+			</shaderParameters>
+			<drawSize>1.5</drawSize>
+		</graphicData>
+		<acceleration>(0, 0, 6)</acceleration>
+	</FleckDef>
 </Defs>

@@ -57,5 +57,7 @@ namespace VEE
         public ThingDef plantToSwap;
         public ThingDef swappedPlant;
         public bool justDestroy = false;
+        public EffecterDef effecter;
+        public float effecterChance;
     }
 }
