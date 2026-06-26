@@ -221,9 +221,12 @@ namespace VEE
                     List<Thing> plants = m.listerThings.ThingsOfDef(plantSwap.plantToSwap).ToList();
                     foreach (Thing plantThing in plants)
                     {
-                        Plant plant = plantThing as Plant;
-                        float growth = plant.Growth;
-                        GenSpawn.Spawn(plantSwap.swappedPlant, plant.Position, m, WipeMode.Vanish);
+                        if (!plantSwap.justDestroy)
+                        {
+                            Plant plant = plantThing as Plant;
+                            float growth = plant.Growth;
+                            GenSpawn.Spawn(plantSwap.swappedPlant, plant.Position, m, WipeMode.Vanish);
+                        }                       
                         plantThing.Destroy();
                     }
                 }             

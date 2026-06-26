@@ -330,7 +330,50 @@
 						<letterLabel>the withering</letterLabel>
 						<letterText>Reality has violently reasserted itself.\n\nThe dimensional rift has snapped shut. Cut off from the psychic energy of their home universe, the superbloom has instantly collapsed into a hideous, withered wasteland. The maddening drone is gone, but the dead flora will take years to decay naturally. You will need to burn or chop away these wilted plants to make room for your crops to return.\n\nPsychic Rain remains a lingering threat until the sky fully heals and the aurora dissipates.</letterText>
 						<letterDef>PurpleEvent</letterDef>
-						
+						<weatherWeights>
+							<li>
+								<weather>VEE_PsychicRain</weather>
+								<weight>1</weight>
+							</li>						
+						</weatherWeights>
+						<swapPlants>
+							<li>
+								<plantToSwap>VEE_Plant_PsychicLotus</plantToSwap>
+								<swappedPlant>VEE_Plant_PsychicLotus_Wilted</swappedPlant>
+							</li>
+							<li>
+								<plantToSwap>VEE_Plant_PsychicLotusSeedling</plantToSwap>
+								<justDestroy>true</justDestroy>
+							</li>
+							<li>
+								<plantToSwap>VEE_Plant_PinkGrass</plantToSwap>
+								<justDestroy>true</justDestroy>
+							</li>
+							<li>
+								<plantToSwap>VEE_Plant_TallPinkGrass</plantToSwap>
+								<justDestroy>true</justDestroy>
+							</li>
+							<li>
+								<plantToSwap>VEE_Plant_VyspStrands</plantToSwap>
+								<swappedPlant>VEE_Plant_VyspStrands_Wilted</swappedPlant>
+							</li>
+							<li>
+								<plantToSwap>VEE_Plant_CyllenCluster</plantToSwap>
+								<swappedPlant>VEE_Plant_CyllenCluster_Wilted</swappedPlant>
+							</li>
+							<li>
+								<plantToSwap>VEE_Plant_PhoraxTree</plantToSwap>
+								<swappedPlant>VEE_Plant_PhoraxTree_Wilted</swappedPlant>
+							</li>
+							<li>
+								<plantToSwap>VEE_Plant_XyrilTree</plantToSwap>
+								<swappedPlant>VEE_Plant_XyrilTree_Wilted</swappedPlant>
+							</li>
+							<li>
+								<plantToSwap>VEE_Plant_MyrloxTree</plantToSwap>
+								<swappedPlant>VEE_Plant_MyrloxTree_Wilted</swappedPlant>
+							</li>
+						</swapPlants>
 					</li>
 					
 				</stages>

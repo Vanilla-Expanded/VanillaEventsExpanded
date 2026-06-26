@@ -56,5 +56,6 @@ namespace VEE
     {
         public ThingDef plantToSwap;
         public ThingDef swappedPlant;
+        public bool justDestroy = false;
     }
 }
