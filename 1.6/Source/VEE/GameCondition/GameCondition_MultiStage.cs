@@ -225,7 +225,8 @@ namespace VEE
                         {
                             Plant plant = plantThing as Plant;
                             float growth = plant.Growth;
-                            GenSpawn.Spawn(plantSwap.swappedPlant, plant.Position, m, WipeMode.Vanish);
+                            Plant newPlant = (Plant)GenSpawn.Spawn(plantSwap.swappedPlant, plant.Position, m, WipeMode.Vanish);
+                            newPlant.Growth = growth;
                         }                       
                         plantThing.Destroy();
                     }
