@@ -71,4 +71,7 @@
     <VEE_WhiteoutRefugeesText>A small group of {0} freezing survivors has appeared at the edge of your settlement.\n\nThey are severely hypothermic and starving due to the ongoing whiteout. They are begging you to open your doors and share your warmth and food.\n\nBe warned: they have the wild look of desperate people. If you turn them away to freeze in the snow, they will likely try to take your shelter by force.\n\nWill you accept them?</VEE_WhiteoutRefugeesText>
     <VEE_WhiteoutRefugees_Accepted>The refugees are grateful for your mercy and have joined the colony to recover from their ordeal.</VEE_WhiteoutRefugees_Accepted>
     <VEE_WhiteoutRefugees_Rejected>The refugees have turned on you! Betrayed and desperate, they have sworn to take your shelter by force.\n\nThey are attacking immediately.</VEE_WhiteoutRefugees_Rejected>
+	
+	<!-- Psychic Bloom -->
+	<VEE_CurrentStage>Current stage: {0}</VEE_CurrentStage>
 </LanguageData>
