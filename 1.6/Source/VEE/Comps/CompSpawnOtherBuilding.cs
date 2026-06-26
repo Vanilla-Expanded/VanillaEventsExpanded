@@ -26,19 +26,7 @@ namespace VEE
         }
 
 
-        public override void PostSpawnSetup(bool respawningAfterLoad)
-        {
-            base.PostSpawnSetup(respawningAfterLoad);
-
-            if (newBuilding != null && parent.Map != null)
-            {
-                if (!newBuilding.Destroyed)
-                {
-                    newBuilding.Destroy(DestroyMode.Vanish);
-                }
-
-            }
-        }
+      
 
         //On despawn, destroy the building
 

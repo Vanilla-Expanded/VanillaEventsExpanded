@@ -140,8 +140,10 @@
 		<defName>VEE_PsychicRain</defName>
 		<label>psychic rain</label>
 		<description>A seemingly supernatural rain that alters the very composition of time. Any person or creature not under a roof will age significantly faster.</description>
+		<overlayClasses>
+			<li>VEF.Weathers.WeatherOverlay_Custom</li>
+		</overlayClasses>
 		<windSpeedFactor>1.5</windSpeedFactor>
-		<workerClass>VEE.WeatherWorker_PsychicRain</workerClass>
 		<accuracyMultiplier>0.8</accuracyMultiplier>
 		<favorability>VeryBad</favorability>
 		<perceivePriority>1</perceivePriority>
@@ -152,9 +154,16 @@
 		<ambientSounds>
 			<li>Ambient_Rain</li>
 		</ambientSounds>
-		<overlayClasses>
-			<li>WeatherOverlay_Rain</li>
-		</overlayClasses>
+		<modExtensions>
+			<li Class="VEF.Weathers.WeatherOverlayExtension">
+				<overlayPath>Weather/PsychicRainWorldOverlay</overlayPath>
+				<copyPropertiesFrom>Weather/RainOverlayWorld</copyPropertiesFrom>
+				<worldOverlayPanSpeed1>0.015</worldOverlayPanSpeed1>
+				<worldPanDir1>(-0.25, -1)</worldPanDir1>
+				<worldOverlayPanSpeed2>0.022</worldOverlayPanSpeed2>
+				<worldPanDir2>(-0.24, -1)</worldPanDir2>
+			</li>
+		</modExtensions>
 		<commonalityRainfallFactor>
 			<points>
 				<li>(0, 0)</li>

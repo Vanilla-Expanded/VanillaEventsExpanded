@@ -80,7 +80,7 @@ namespace VEE
             plants = new WeightedPlants
             {
                 plant = VEE_DefOf.VEE_Plant_PsychicLotus,
-                weight = 0.1f
+                weight = 0.01f
             };
             plantArray[7] = plants;
 

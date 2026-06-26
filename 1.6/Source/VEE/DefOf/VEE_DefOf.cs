@@ -14,6 +14,7 @@ namespace VEE
         public static WeatherDef SnowHard;
         public static WeatherDef Rain;
         public static WeatherDef DryThunderstorm;
+        public static WeatherDef VEE_PsychicRain;
 
         /* Biome DEF */
         public static BiomeDef TemperateSwamp;
@@ -100,7 +101,8 @@ namespace VEE
         public static ThingSetMakerDef VEE_ShuttleCrash_Resources;
         public static ThingSetMakerDef VEE_CrashlandedColonists;
 
-        /* Effecter def */
+        /* Effecter and Fleck def */
         public static EffecterDef VEE_EmergencePointSustained8X8;
+        public static FleckDef PsycastPsychicEffect;
     }
 }
