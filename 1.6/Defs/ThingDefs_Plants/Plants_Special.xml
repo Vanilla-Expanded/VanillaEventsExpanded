@@ -93,6 +93,11 @@
 				<glowRadius>5.9</glowRadius>
 				<glowColor>(110,116,145,0)</glowColor>
 			</li>
+			
+			<li Class="VEE.CompProperties_SpawnOtherBuilding">
+				<defOfBuildingToSpawn>VEE_LotusEffecter</defOfBuildingToSpawn>
+			</li>
+		
 		</comps>
 	</ThingDef>
 	<ThingDef ParentName="PlantBase">

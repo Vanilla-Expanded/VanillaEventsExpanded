@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-  <ThoughtDef>
-    <defName>VEE_Aurora</defName>
-    <workerClass>ThoughtWorker_Aurora</workerClass>
-    <gameCondition>VEE_PsychicBloom</gameCondition>
-    <stages>
-      <li>
-        <label>psychic aurora</label>
-        <description>The view is amazing.</description>
-        <baseMoodEffect>14</baseMoodEffect>
-      </li>
-    </stages>
-  </ThoughtDef>
+	<ThoughtDef>
+		<defName>VEE_Aurora</defName>
+		<workerClass>ThoughtWorker_Aurora</workerClass>
+		<gameCondition>VEE_PsychicBloom</gameCondition>
+		<stages>
+			<li>
+				<label>psychic aurora</label>
+				<description>The view is amazing.</description>
+				<baseMoodEffect>14</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+	<ThoughtDef>
+		<defName>VEE_SuperbloomPsychicDrone</defName>
+		<workerClass>VEE.ThoughtWorker_SuperbloomPsychicDrone</workerClass>
+		<validWhileDespawned>true</validWhileDespawned>
+		<developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+		<stages>
+			<li>
+				<label>superbloom psychic drone</label>
+				<description>My heart pounds and I'm sweating. All I can think of is hurting and suffering and all these enemies around me. They're my nightmare, my nightmare, my nightmare...</description>
+				<baseMoodEffect>-1</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
 </Defs>

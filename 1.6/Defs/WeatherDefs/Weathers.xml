@@ -136,4 +136,55 @@
 			<saturation>0.95</saturation>
 		</skyColorsNightMid>
 	</WeatherDef>
+	<WeatherDef>
+		<defName>VEE_PsychicRain</defName>
+		<label>psychic rain</label>
+		<description>A seemingly supernatural rain that alters the very composition of time. Any person or creature not under a roof will age significantly faster.</description>
+		<windSpeedFactor>1.5</windSpeedFactor>
+		<workerClass>VEE.WeatherWorker_PsychicRain</workerClass>
+		<accuracyMultiplier>0.8</accuracyMultiplier>
+		<favorability>VeryBad</favorability>
+		<perceivePriority>1</perceivePriority>
+		<weatherThought>SoakingWet</weatherThought>
+		<rainRate>1</rainRate>
+		<preventSkygaze>true</preventSkygaze>
+		<moveSpeedMultiplier>0.9</moveSpeedMultiplier>
+		<ambientSounds>
+			<li>Ambient_Rain</li>
+		</ambientSounds>
+		<overlayClasses>
+			<li>WeatherOverlay_Rain</li>
+		</overlayClasses>
+		<commonalityRainfallFactor>
+			<points>
+				<li>(0, 0)</li>
+				<li>(1300, 1)</li>
+				<li>(4000, 3.0)</li>
+			</points>
+		</commonalityRainfallFactor>
+		<skyColorsDay>
+			<sky>(0.84,0.78,0.90)</sky>
+			<shadow>(0.94,0.90,0.96)</shadow>
+			<overlay>(0.74,0.66,0.80)</overlay>
+			<saturation>0.9</saturation>
+		</skyColorsDay>
+		<skyColorsDusk>
+			<sky>(1.00,0.96,1.00)</sky>
+			<shadow>(0.95,0.90,0.97)</shadow>
+			<overlay>(0.68,0.58,0.74)</overlay>
+			<saturation>0.9</saturation>
+		</skyColorsDusk>
+		<skyColorsNightEdge>
+			<sky>(0.40,0.33,0.50)</sky>
+			<shadow>(0.94,0.90,0.96)</shadow>
+			<overlay>(0.54,0.45,0.60)</overlay>
+			<saturation>0.9</saturation>
+		</skyColorsNightEdge>
+		<skyColorsNightMid>
+			<sky>(0.32,0.25,0.42)</sky>
+			<shadow>(0.94,0.90,0.96)</shadow>
+			<overlay>(0.46,0.38,0.54)</overlay>
+			<saturation>0.9</saturation>
+		</skyColorsNightMid>
+	</WeatherDef>
 </Defs>

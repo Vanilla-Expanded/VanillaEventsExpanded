@@ -238,7 +238,7 @@ namespace VEE
                 IReadOnlyList<Pawn> allPawnsSpawned = affectedMaps[i].mapPawns.AllPawnsSpawned;
                 for (int j = 0; j < allPawnsSpawned.Count; j++)
                 {
-                    if (!allPawnsSpawned[j].RaceProps.IsMechanoid)
+                    if (allPawnsSpawned[j].RaceProps.IsFlesh)
                     {
                         HealthUtility.AdjustSeverity(allPawnsSpawned[j], CurrentStage.hediffForOrganicPawns, 1);
                     }

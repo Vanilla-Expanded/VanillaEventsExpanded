@@ -305,6 +305,13 @@
 						<scatterPlantsInterval>30000</scatterPlantsInterval>
 						<hediffForOrganicPawns>VEE_BloomPsychicSensitivity</hediffForOrganicPawns>
 						<psychicLotusRadius>12.9</psychicLotusRadius>
+						<psychicLotusSpawnAmount>1</psychicLotusSpawnAmount>
+						<weatherWeights>
+							<li>
+								<weather>VEE_PsychicRain</weather>
+								<weight>1</weight>
+							</li>						
+						</weatherWeights>
 					</li>
 					<li>
 						<durationDays>3~7</durationDays>						
@@ -312,7 +319,11 @@
 						<letterText>The boundary between realities has completely collapsed!\n\nThe otherworldly flora has entered a catastrophic superbloom, spreading at an uncontrollable rate. Worse, the psychic lotuses are acting as conduits for the crushing psychic weight of an entirely different universe. The intensity of this maddening drone is directly tied to how many lotuses are anchoring the rift to your map.\n\nYou must sever their connection by cutting down the lotuses immediately, or the sheer psychic pressure of another dimension will drive your colonists insane.</letterText>
 						<letterDef>PurpleEvent</letterDef>
 						<psychicLotusRadius>24.9</psychicLotusRadius>
-						
+						<psychicLotusSpawnAmount>5</psychicLotusSpawnAmount>
+						<hediffForOrganicPawns>VEE_BloomPsychicSensitivity</hediffForOrganicPawns>
+						<forcedWeather>VEE_PsychicRain</forcedWeather>
+						<plantGrowthMultiplier>5.4</plantGrowthMultiplier>
+						<triggerSuperbloomDrone>true</triggerSuperbloomDrone>
 					</li>
 					<li>
 						<durationDays>15~30</durationDays>					

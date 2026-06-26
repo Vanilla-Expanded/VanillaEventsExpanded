@@ -32,36 +32,25 @@ namespace VEE
 
             if (Map?.gameConditionManager.ConditionIsActive(VEE_DefOf.VEE_PsychicBloom)==true)
             {
-
-                if (CellFinderLoose.TryGetRandomCellWith(c =>
+                ThingDef newPlant = StaticCollections.plantArray.RandomElementByWeight(x => x.weight).plant;
+                for(int i = 0;i< GetCondition.CurrentStage.psychicLotusSpawnAmount; i++)
                 {
-                    if (!c.InBounds(Map) || !c.Standable(Map) || c.GetFirstBuilding(Map) != null || c.DistanceTo(this.Position)>GetCondition.CurrentStage.psychicLotusRadius)
-                        return false;
-                    return true;
-                }, Map, 10, out IntVec3 cell))
-                {
-                    Plant plant = cell.GetPlant(Map);
-                    if (plant != null && !StaticCollections.plantArray.Any(x => x.plant == plant.def))
-                    {                     
-                        plant.Kill();
-                        SpawnNewPlant(cell);
+                    if (CellFinderLoose.TryGetRandomCellWith(c =>
+                    {
+                        if (!c.InBounds(Map) || !c.Standable(Map) || c.GetFirstBuilding(Map) != null || c.DistanceTo(this.Position) > GetCondition.CurrentStage.psychicLotusRadius)
+                            return false;
+                        return true;
+                    }, Map, 10, out IntVec3 cell))
+                    {
+                        Plant plant = cell.GetPlant(Map);
+                        if (plant == null || !StaticCollections.plantArray.Any(x => x.plant == plant.def))
+                        {
+                            plant?.Kill();
+                            GenSpawn.Spawn(plant, cell, Map, WipeMode.Vanish);
+                        }
                     }
-                    if (plant is null) { 
-                        SpawnNewPlant(cell); 
-                    }
-                    
-                }
-
+                }         
             }
         }
-
-        public void SpawnNewPlant(IntVec3 cell)
-        {
-            ThingDef newPlant = StaticCollections.plantArray.RandomElementByWeight(x => x.weight).plant;
-            Log.Message(newPlant);
-            GenSpawn.Spawn(newPlant, cell, Map, WipeMode.Vanish);
-        }
-
-
     }
 }

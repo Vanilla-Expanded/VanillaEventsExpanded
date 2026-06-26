@@ -36,6 +36,8 @@ namespace VEE
         public int scatterPlantsInterval = 0;
         public List<PlantSwap> swapPlants = new List<PlantSwap>();
         public float psychicLotusRadius = 0f;
+        public float psychicLotusSpawnAmount = 0f;
+        public bool triggerSuperbloomDrone = false;
     }
 
     public class IncidentChanceRecord

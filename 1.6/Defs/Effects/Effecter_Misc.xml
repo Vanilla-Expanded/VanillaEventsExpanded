@@ -116,4 +116,37 @@
 			<graphicClass>Graphic_Mote</graphicClass>
 		</graphicData>
 	</ThingDef>
+	<EffecterDef>
+		<defName>VEE_LotusEffecter</defName>
+		<children>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerContinuous</subEffecterClass>
+				<fleckDef>VEE_LotusFleck</fleckDef>
+				<spawnLocType>OnSource</spawnLocType>
+				<scale>0.5</scale>
+				<positionOffset>(0,0,0.1)</positionOffset>
+				<ticksBetweenMotes>143</ticksBetweenMotes>
+				<speed>0.2305</speed>
+				<angle>-10~10</angle>
+				<fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+			</li>
+		</children>
+	</EffecterDef>
+	<FleckDef ParentName="FleckBase_Thrown">
+		<defName>VEE_LotusFleck</defName>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>1.2667</fadeInTime>
+		<solidTime>12.325</solidTime>
+		<fadeOutTime>0.1583</fadeOutTime>
+		<growthRate>0.3158</growthRate>
+		<graphicData>
+			<graphicClass>Graphic_FleckPulse</graphicClass>
+			<texPath>Things/Mote/BrightFlash</texPath>
+			<color>(0.45, 0.45, 0.85, 0.6)</color>
+			<shaderType>MoteGlowPulse</shaderType>
+			<shaderParameters>
+				<_Interval>0.475</_Interval>
+			</shaderParameters>
+		</graphicData>
+	</FleckDef>
 </Defs>
