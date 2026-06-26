@@ -252,6 +252,8 @@
 					<li>
 						<durationDays>10~15</durationDays>
 						<letterLabel>the restoration</letterLabel>
+						<targetTempOffset>0</targetTempOffset>
+						<tempLerpDays>10</tempLerpDays>
 						<letterText>The celestial object is making its final pass across the sun.\n\nThe long night is ending. Over the coming days, the remaining shadows will clear, temperatures will normalize, and the planet will fully awaken from the dark.</letterText>
 						<letterDef>PurpleEvent</letterDef>
 						<globalLightLevelsMultiplier>0.75</globalLightLevelsMultiplier>
