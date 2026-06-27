@@ -44,6 +44,7 @@ namespace VEE.PurpleEvents
 
         public override void GameConditionTick()
         {
+            End();
             List<Map> affectedMaps = base.AffectedMaps;
             foreach (Map map in affectedMaps)
             {

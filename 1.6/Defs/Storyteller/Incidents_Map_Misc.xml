@@ -33,7 +33,7 @@
     <letterLabel>Space Battle</letterLabel>
     <letterText>Several massive spaceships have engaged in combat in the planet’s orbit. Missed shots and debris can impact the ground in the area. This can lead to massive fires.</letterText>
     <letterDef>NegativeEvent</letterDef>
-    <baseChance>0.3</baseChance>
+    <baseChance>0</baseChance>
     <minRefireDays>40</minRefireDays>
     <durationDays>
       <min>0.2</min>

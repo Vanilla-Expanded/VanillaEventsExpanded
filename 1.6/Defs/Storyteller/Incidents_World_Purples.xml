@@ -16,7 +16,7 @@ Flora and Fauna is suffering from these changes as biomes shift into their colde
 
 It will last anywhere between a season to several years.</letterText>
     <letterDef>PurpleEvent</letterDef>
-    <baseChance>0.04</baseChance>
+    <baseChance>0</baseChance>
     <earliestDay>180</earliestDay>
     <minRefireDays>300</minRefireDays>
     <durationDays>
@@ -41,7 +41,7 @@ Flora and Fauna is suffering from these changes as biomes shift into their warme
 
 It will last anywhere between a season to several years.</letterText>
     <letterDef>PurpleEvent</letterDef>
-    <baseChance>0.04</baseChance>
+    <baseChance>0</baseChance>
     <earliestDay>180</earliestDay>
     <minRefireDays>300</minRefireDays>
     <durationDays>
@@ -66,7 +66,7 @@ A seemingly endless supernatural rain has begun, altering the very composition o
 
 It will last anywhere between a season to several years.</letterText>
     <letterDef>PurpleEvent</letterDef>
-    <baseChance>0.04</baseChance>
+    <baseChance>0</baseChance>
     <earliestDay>180</earliestDay>
     <minRefireDays>300</minRefireDays>
     <durationDays>
@@ -91,7 +91,7 @@ Terrified of this supernatural phenomenon, other factions will use this time to 
 
 It will last anywhere between a season to several years.</letterText>
     <letterDef>PurpleEvent</letterDef>
-    <baseChance>0.04</baseChance>
+    <baseChance>0</baseChance>
     <earliestDay>180</earliestDay>
     <minRefireDays>300</minRefireDays>
     <durationDays>
@@ -116,7 +116,7 @@ All pawns will gain a positive mood buff for the time of the event. The rapidly 
 
 It will last anywhere between a few days to a season.</letterText>
     <letterDef>PurpleEvent</letterDef>
-    <baseChance>0.04</baseChance>
+    <baseChance>0</baseChance>
     <earliestDay>180</earliestDay>
     <minRefireDays>300</minRefireDays>
     <durationDays>

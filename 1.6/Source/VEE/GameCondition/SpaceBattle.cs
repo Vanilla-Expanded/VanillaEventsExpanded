@@ -47,6 +47,7 @@ namespace VEE.RegularEvents
 
         public override void GameConditionTick()
         {
+            End();
             Map map = SingleMap;
             System.Random r = new System.Random();
             delay++;
