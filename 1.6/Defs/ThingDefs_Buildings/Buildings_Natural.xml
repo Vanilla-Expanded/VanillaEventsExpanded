@@ -15,6 +15,7 @@
 			</linkFlags>
 			
 		</graphicData>
+		<filthLeaving>Filth_Water</filthLeaving>
 		<fillPercent>0.9</fillPercent>
 		<holdsRoof>false</holdsRoof>
 		<blockLight>false</blockLight>

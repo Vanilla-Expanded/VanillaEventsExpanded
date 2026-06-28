@@ -33,13 +33,13 @@ namespace VEE
             float value = Rand.Value;
             if (value < 0.8f)
             {
-                return StaticCollections.nonSmoothedMineables.Where((ThingDef x) => !x.building.isResourceRock).RandomElement();
+                return StaticCollections.nonSmoothedMineables.Where((ThingDef x) => !x.building.isResourceRock && !x.building.mineablePreventMeteorite).RandomElement();
             }
             if (value < 0.95f)
             {
-                return StaticCollections.nonSmoothedMineables.Where((ThingDef x) => x.building.isResourceRock && x.building.mineableThing.BaseMarketValue < PreciousMineableMarketValue).RandomElement();
+                return StaticCollections.nonSmoothedMineables.Where((ThingDef x) => x.building.isResourceRock && !x.building.mineablePreventMeteorite&&x.building.mineableThing.BaseMarketValue < PreciousMineableMarketValue).RandomElement();
             }
-            return StaticCollections.nonSmoothedMineables.Where((ThingDef x) => x.building.isResourceRock && x.building.mineableThing.BaseMarketValue >= PreciousMineableMarketValue).RandomElement();
+            return StaticCollections.nonSmoothedMineables.Where((ThingDef x) => x.building.isResourceRock && !x.building.mineablePreventMeteorite&& x.building.mineableThing.BaseMarketValue >= PreciousMineableMarketValue).RandomElement();
         }
 
         protected override IEnumerable<ThingDef> AllGeneratableThingsDebugSub(ThingSetMakerParams parms)
