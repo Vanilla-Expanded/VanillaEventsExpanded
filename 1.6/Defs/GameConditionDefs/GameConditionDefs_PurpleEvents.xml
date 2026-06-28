@@ -13,6 +13,7 @@
 			<li>PsychicRain</li>
 			<li>VEE_LongNight</li>
 			<li>VEE_PsychicBloom</li>
+			<li>ColdSnap</li>
 		</exclusiveConditions>
 		<modExtensions>
 			<li Class="VEE.ConditionExtension_MultiStage">
@@ -99,6 +100,7 @@
 			<li>PsychicRain</li>
 			<li>VEE_LongNight</li>
 			<li>VEE_PsychicBloom</li>
+			<li>HeatWave</li>
 		</exclusiveConditions>
 		<modExtensions>
 			<li Class="VEE.ConditionExtension_MultiStage">
