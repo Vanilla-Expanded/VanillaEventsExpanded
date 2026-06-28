@@ -73,5 +73,5 @@
     <VEE_WhiteoutRefugees_Rejected>The refugees have turned on you! Betrayed and desperate, they have sworn to take your shelter by force.\n\nThey are attacking immediately.</VEE_WhiteoutRefugees_Rejected>
 	
 	<!-- Psychic Bloom -->
-	<VEE_CurrentStage>Current stage: {0}</VEE_CurrentStage>
+	<VEE_CurrentStage>Current stage: {0}. Stage has been active for {1}</VEE_CurrentStage>
 </LanguageData>
