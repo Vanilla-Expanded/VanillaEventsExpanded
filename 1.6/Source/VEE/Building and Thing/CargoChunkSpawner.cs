@@ -78,6 +78,7 @@ namespace VEE
 
             foreach (Thing thing in wares)
             {
+                thing.SetForbidden(true);
                 GenPlace.TryPlaceThing(
                     thing,
                     Position,

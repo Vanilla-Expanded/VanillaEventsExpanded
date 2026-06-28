@@ -157,8 +157,8 @@
 			<anticipationSound>VEE_Ship_CrashLanding</anticipationSound>
 			<anticipationSoundTicks>250</anticipationSoundTicks>
 			<ticksToImpactRange>380~550</ticksToImpactRange>
-		 <rotateGraphicTowardsDirection>true</rotateGraphicTowardsDirection>
-      <speed>0.85</speed>
+			<rotateGraphicTowardsDirection>true</rotateGraphicTowardsDirection>
+			<speed>0.85</speed>
 			<cameraShake>1</cameraShake>
 		</skyfaller>
 	</ThingDef>
@@ -235,6 +235,11 @@
 		<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
 		<drawerType>MapMeshOnly</drawerType>
 		<repairEffect>ConstructMetal</repairEffect>
+		<comps>
+			<li Class="CompProperties_InspectString">
+				<inspectString>Deconstruct for valuable resources.</inspectString>
+			</li>
+		</comps>
 	</ThingDef>
 	<ThingDef ParentName="VEE_ShipChunkHumanBase">
 		<defName>VEE_ShipChunkHuman_Volatile_Spawner</defName>
@@ -275,7 +280,6 @@
 	<!--This one is now unused, keeping it for compat -->
 	<ThingDef ParentName="SkyfallerBase">
 		<defName>SlagIncoming</defName>
-		
 		<label>slag (incoming)</label>
 		<size>(1, 1)</size>
 		<skyfaller>

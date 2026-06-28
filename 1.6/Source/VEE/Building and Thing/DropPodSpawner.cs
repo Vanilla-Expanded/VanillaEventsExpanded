@@ -34,7 +34,12 @@ namespace VEE
                     }
 
                     RCellFinder.TryFindRandomCellNearWith(Position, c => c.Walkable(Map), Map, out IntVec3 intVec);
-                    if (pawn.Dead) GenPlace.TryPlaceThing(pawn.Corpse, intVec, Map, ThingPlaceMode.Near);
+                    if (pawn.Dead)
+                    {
+                        Corpse corpse = pawn.Corpse;
+                        corpse.SetForbidden(true);
+                        GenPlace.TryPlaceThing(corpse, intVec, Map, ThingPlaceMode.Near);
+                    }
                     else GenPlace.TryPlaceThing(pawn, intVec, Map, ThingPlaceMode.Near);
                 }
 
