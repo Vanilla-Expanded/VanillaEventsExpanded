@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 1943821400
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: haze_win
+      Dependencies: {}

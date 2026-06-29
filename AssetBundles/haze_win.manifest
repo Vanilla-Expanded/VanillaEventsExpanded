@@ -1,0 +1,25 @@
+ManifestFileVersion: 0
+CRC: 799801661
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: bc84763e8b37ea63531fa7d818d54362
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: b4f2efbdb85a500017afd875df75d980
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: bc84763e8b37ea63531fa7d818d54362
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Data/Haze/Materials/Map/HazeFullscreen.shader
+- Assets/Data/Haze/Textures/Weather/HazeNoiseA.png
+- Assets/Data/Haze/Textures/Weather/HazeNoiseB.png
+- Assets/Data/Haze/Textures/Weather/HazeMask.png
+Dependencies: []
