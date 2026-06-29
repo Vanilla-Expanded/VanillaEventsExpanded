@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<Defs>
-
-  <ShaderTypeDef>
-    <defName>VEE_Haze</defName>
-    <shaderPath>Map/Haze</shaderPath>
-  </ShaderTypeDef>
-
-</Defs>
