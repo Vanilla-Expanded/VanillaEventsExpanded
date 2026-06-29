@@ -104,5 +104,9 @@ namespace VEE
         /* Effecter and Fleck def */
         public static EffecterDef VEE_EmergencePointSustained8X8;
         public static FleckDef PsycastPsychicEffect;
+        
+        /* Shader def */
+        public static ShaderTypeDef VEE_Haze;
+        public static ShaderTypeDef VEE_HazeFullscreen;
     }
 }

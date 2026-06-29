@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <ShaderTypeDef>
+        <defName>VEE_Haze</defName>
+        <shaderPath>Haze</shaderPath>
+    </ShaderTypeDef>
+
+    <ShaderTypeDef>
+        <defName>VEE_HazeFullscreen</defName>
+        <shaderPath>HazeFullscreen</shaderPath>
+    </ShaderTypeDef>
+
+</Defs>

@@ -1,8 +1,8 @@
-﻿using UnityEngine;
-using RimWorld.Planet;
+﻿using RimWorld.Planet;
+using UnityEngine;
 using Verse;
 
-namespace VEE
+namespace VEE.World_and_Map_Components
 {
     [StaticConstructorOnStartup]
     public static class HazeFullscreenPass
@@ -10,15 +10,15 @@ namespace VEE
         public static bool Enabled = true;
 
         private const int RenderQueue = 3599;
-        private const string ShaderPath = "Map/HazeFullscreen";
-        private const string ShaderName = "Haze/HazeFullscreen";
+        //private const string ShaderPath = "Map/HazeFullscreen";
+        //private const string ShaderName = "Haze/HazeFullscreen";
         private const string NoiseTexAPath = "Weather/HazeNoiseA";
         private const string NoiseTexBPath = "Weather/HazeNoiseB";
         private const string MaskTexPath = "Weather/HazeMask";
 
-        private static Material material;
-        private static bool triedInit;
-        private static bool warnedMissingShader;
+        private static Material _material;
+        private static bool _triedInit;
+        //private static bool _warnedMissingShader;
         private static readonly int NoiseTexA = Shader.PropertyToID("_NoiseTexA");
         private static readonly int NoiseTexB = Shader.PropertyToID("_NoiseTexB");
         private static readonly int MaskTex = Shader.PropertyToID("_MaskTex");
@@ -49,24 +49,24 @@ namespace VEE
                 return;
 
             passMaterial.SetFloat(IntensityProperty, intensity);
-            SkyOverlay.DrawScreenOverlay(passMaterial, Altitudes.AltitudeFor(AltitudeLayer.MoteOverheadLow) - Altitudes.AltInc, 0, camera);
+            SkyOverlay.DrawScreenOverlay(passMaterial, AltitudeLayer.MoteOverheadLow.AltitudeFor() - Altitudes.AltInc, 0, camera);
         }
 
         private static Material PassMaterial
         {
             get
             {
-                if (!triedInit)
+                if (!_triedInit)
                     Init();
 
-                return material;
+                return _material;
             }
         }
 
         private static void Init()
         {
-            triedInit = true;
-            Shader shader = Resources.Load<Shader>("Materials/" + ShaderPath) ?? ContentFinder<Shader>.TryFindAssetInModBundles(ShaderPath) ?? Shader.Find(ShaderName);
+            _triedInit = true;
+            /*Shader shader = Resources.Load<Shader>("Materials/" + ShaderPath) ?? ContentFinder<Shader>.TryFindAssetInModBundles(ShaderPath) ?? Shader.Find(ShaderName);
             if (shader == null)
             {
                 if (!warnedMissingShader)
@@ -75,27 +75,37 @@ namespace VEE
                     Log.Warning("Haze could not find fullscreen shader " + ShaderName + ". Build the mod asset bundle or use the native Assets/Resources copy.");
                 }
                 return;
+            }*/
+
+            Shader shader = VEE_DefOf.VEE_HazeFullscreen.Shader;
+
+            if (shader == null)
+            {
+                // just a quick n dirty log message, have better handling later lol
+                Log.Warning("Haze shader NOT found. Ruh roh raggy!");
             }
 
-            material = new Material(shader);
-            material.name = "HazeFullscreenPass";
-            material.renderQueue = RenderQueue;
-            material.SetTexture(NoiseTexA, ContentFinder<Texture2D>.Get(NoiseTexAPath, false) ?? Texture2D.blackTexture);
-            material.SetTexture(NoiseTexB, ContentFinder<Texture2D>.Get(NoiseTexBPath, false) ?? Texture2D.grayTexture);
-            material.SetTexture(MaskTex, ContentFinder<Texture2D>.Get(MaskTexPath, false) ?? Texture2D.grayTexture);
-            material.SetColor(ColorProperty, Color.white);
-            material.SetFloat(NoiseScaleA, 0.171f);
-            material.SetFloat(NoiseScaleB, 0.075f);
-            material.SetVector(NoiseSpeedA, new Vector4(0.08f, 0.03f, 0f, 0f));
-            material.SetVector(NoiseSpeedB, new Vector4(-0.02f, 0.03f, 0f, 0f));
-            material.SetVector(NoiseSpeedB, new Vector4(-0.02f, 0.03f, 0f, 0f));
-            material.SetFloat(MaskScale, 0.075f);
-            material.SetVector(MaskSpeed, new Vector4(0.02f, -0.03f, 0f, 0f));
-            material.SetFloat(DistortionIntensity, 0.035f);
-            material.SetFloat(RippleIntensity, 1f);
-            material.SetFloat(HazeIntensity, 0.4f);
-            material.SetFloat(BrightnessMultiplier, 1f);
-            material.SetFloat(IntensityProperty, 0f);
+            _material = new Material(shader)
+            {
+                name = "HazeFullscreenPass",
+                renderQueue = RenderQueue
+            };
+            _material.SetTexture(NoiseTexA, ContentFinder<Texture2D>.Get(NoiseTexAPath, false) ?? Texture2D.blackTexture);
+            _material.SetTexture(NoiseTexB, ContentFinder<Texture2D>.Get(NoiseTexBPath, false) ?? Texture2D.grayTexture);
+            _material.SetTexture(MaskTex, ContentFinder<Texture2D>.Get(MaskTexPath, false) ?? Texture2D.grayTexture);
+            _material.SetColor(ColorProperty, Color.white);
+            _material.SetFloat(NoiseScaleA, 0.171f);
+            _material.SetFloat(NoiseScaleB, 0.075f);
+            _material.SetVector(NoiseSpeedA, new Vector4(0.08f, 0.03f, 0f, 0f));
+            _material.SetVector(NoiseSpeedB, new Vector4(-0.02f, 0.03f, 0f, 0f));
+            _material.SetVector(NoiseSpeedB, new Vector4(-0.02f, 0.03f, 0f, 0f));
+            _material.SetFloat(MaskScale, 0.075f);
+            _material.SetVector(MaskSpeed, new Vector4(0.02f, -0.03f, 0f, 0f));
+            _material.SetFloat(DistortionIntensity, 0.035f);
+            _material.SetFloat(RippleIntensity, 1f);
+            _material.SetFloat(HazeIntensity, 0.4f);
+            _material.SetFloat(BrightnessMultiplier, 1f);
+            _material.SetFloat(IntensityProperty, 0f);
         }
     }
 
