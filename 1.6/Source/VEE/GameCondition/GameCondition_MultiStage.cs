@@ -44,7 +44,7 @@ namespace VEE
             {
                 var sb = new StringBuilder(base.TooltipString);
                 sb.AppendInNewLine("\n");
-                sb.AppendInNewLine("VEE_CurrentStage".Translate(CurrentStage.letterLabel.CapitalizeFirst(), currentStageDurationTicks.ToStringTicksToPeriod()));
+                sb.AppendInNewLine("VEE_CurrentStage".Translate(CurrentStage.letterLabel.CapitalizeFirst(), (Find.TickManager.TicksGame - currentStageStartTick).ToStringTicksToPeriod()));
                 if (DebugSettings.ShowDevGizmos)
                 {
                     var ticksRemaining = (currentStageStartTick + currentStageDurationTicks) - Find.TickManager.TicksGame;

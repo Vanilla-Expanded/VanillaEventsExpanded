@@ -18,9 +18,13 @@ namespace VEE
 
         public override void MapComponentUpdate()
         {
-            float targetIntensity = map.mapTemperature.OutdoorTemp > TemperatureThreshold ? 1f : 0f;
-            hazeIntensity = Mathf.MoveTowards(hazeIntensity, targetIntensity, Time.deltaTime / FadeSeconds);
-            HazeFullscreenPass.Draw(map, hazeIntensity);
+            if (map.gameConditionManager.ConditionIsActive(VEE_DefOf.VEE_Scorch))
+            {
+                float targetIntensity = map.mapTemperature.OutdoorTemp > TemperatureThreshold ? 1f : 0f;
+                hazeIntensity = Mathf.MoveTowards(hazeIntensity, targetIntensity, Time.deltaTime / FadeSeconds);
+                HazeFullscreenPass.Draw(map, hazeIntensity);
+            }
+            
         }
     }
 

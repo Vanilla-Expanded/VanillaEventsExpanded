@@ -39,9 +39,9 @@
 			<ChunkSlagSteel>1</ChunkSlagSteel>
 		</killedLeavings>
 		<costList>
-			<Plasteel>35</Plasteel>
-			<ComponentIndustrial>6</ComponentIndustrial>
-			<Steel>20</Steel>
+			<Plasteel>70</Plasteel>
+			<ComponentIndustrial>12</ComponentIndustrial>
+			<Steel>40</Steel>
 			<ShuttleEngine MayRequire="Ludeon.RimWorld.Odyssey">1</ShuttleEngine>
 		</costList>
 		<building>
@@ -224,8 +224,8 @@
 			<ChunkSlagSteel>2</ChunkSlagSteel>
 		</killedLeavings>
 		<costList>
-			<ComponentIndustrial>3</ComponentIndustrial>
-			<Steel>20</Steel>
+			<ComponentIndustrial>6</ComponentIndustrial>
+			<Steel>40</Steel>
 		</costList>
 		<building>
 			<claimable>false</claimable>
@@ -262,7 +262,7 @@
 			<ChunkSlagSteel>2</ChunkSlagSteel>
 		</killedLeavings>
 		<costList>
-			<Steel>20</Steel>
+			<Steel>40</Steel>
 		</costList>
 	</ThingDef>
 	<ThingDef ParentName="VEE_ShipChunkHumanBase">
