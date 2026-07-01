@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-	
 	<ThingDef ParentName="RockBase">
 		<defName>VEE_DeepSnow</defName>
 		<label>deep snow</label>
@@ -11,9 +10,7 @@
 			<texPath>Things/Building/Linked/VEE_Snow_Atlas</texPath>
 			<linkFlags Inherit="false">
 				<li>Custom5</li>
-				
 			</linkFlags>
-			
 		</graphicData>
 		<filthLeaving>Filth_Water</filthLeaving>
 		<fillPercent>0.9</fillPercent>
@@ -25,13 +22,12 @@
 			<MaxHitPoints>185</MaxHitPoints>
 		</statBases>
 		<building>
-		 <isAirtight>false</isAirtight>
-		  <mineableYieldWasteable>false</mineableYieldWasteable>
-		  <biomeSpecific>true</biomeSpecific>
-		  <mineableScatterLumpSizeRange>12~32</mineableScatterLumpSizeRange>
-		  <mineablePreventMeteorite>true</mineablePreventMeteorite>
-		 
+			<isAirtight>false</isAirtight>
+			<mineableYieldWasteable>false</mineableYieldWasteable>
+			<biomeSpecific>true</biomeSpecific>
+			<mineableScatterLumpSizeRange>12~32</mineableScatterLumpSizeRange>
+			<mineablePreventMeteorite>true</mineablePreventMeteorite>
+			<isNaturalRock>false</isNaturalRock>
 		</building>
-		
 	</ThingDef>
 </Defs>
