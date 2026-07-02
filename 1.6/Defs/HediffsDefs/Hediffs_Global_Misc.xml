@@ -156,4 +156,25 @@
 			</li>
 		</stages>
 	</HediffDef>
+	<HediffDef>
+		<defName>VEE_PsychicOverdriveHediff</defName>
+		<label>psychic overdrive</label>
+		<description>A wave of psychic energy has washed over the colony, resonating specifically with the minds of some of your colonists!</description>
+		<defaultLabelColor>(0.8, 0.8, 0.35)</defaultLabelColor>
+		<hediffClass>HediffWithComps</hediffClass>
+		<maxSeverity>1</maxSeverity>
+		<allowMothballIfLowPriorityWorldPawn>true</allowMothballIfLowPriorityWorldPawn>
+		<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-12</severityPerDay>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<statOffsets>
+					<WorkSpeedGlobal>0.2</WorkSpeedGlobal>
+				</statOffsets>
+			</li>
+		</stages>
+	</HediffDef>
 </Defs>

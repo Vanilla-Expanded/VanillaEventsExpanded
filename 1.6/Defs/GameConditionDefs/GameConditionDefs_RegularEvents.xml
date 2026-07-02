@@ -41,6 +41,24 @@
 		<exclusiveConditions>
 			<li>PsychicSoothe</li>
 			<li>PsychicDrone</li>
+			<li>VEE_PsychicOverdrive</li>
+		</exclusiveConditions>
+		<canBePermanent>true</canBePermanent>
+		<natural>false</natural>
+		<canAffectAllPlanetLayers>true</canAffectAllPlanetLayers>
+	</GameConditionDef>
+	<GameConditionDef>
+		<defName>VEE_PsychicOverdrive</defName>
+		<conditionClass>VEE.GameCondition_PsychicOverdrive</conditionClass>
+		<label>psychic overdrive</label>
+		<description>A wave of psychic energy has washed over the colony, resonating specifically with the minds of some of your colonists!</description>		
+		<endMessage>The psychic overdrive is ending.</endMessage>
+		<letterText>Every {0} colonist focuses much more on their work!\n\nA wave of psychic energy has washed over the colony, resonating specifically with the minds of some of your colonists!\n\nTheir thoughts are racing, and their bodies are moving with newfound efficiency. For the next few days, their work speed will be significantly boosted by this psychic overcharge.</letterText>
+		<letterDef>PositiveEvent</letterDef>
+		<exclusiveConditions>
+			<li>PsychicSoothe</li>
+			<li>PsychicDrone</li>
+			<li>VEE_PsychicStimulation</li>
 		</exclusiveConditions>
 		<canBePermanent>true</canBePermanent>
 		<natural>false</natural>

@@ -10,7 +10,8 @@ namespace VEE
         public static void Postfix(ref bool __result, IncidentParms parms)
         {
             Map map = (Map)parms.target;
-            if (map.gameConditionManager.ConditionIsActive(VEE_DefOf.VEE_PsychicStimulation))
+            if (map.gameConditionManager.ConditionIsActive(VEE_DefOf.VEE_PsychicStimulation)||
+                map.gameConditionManager.ConditionIsActive(VEE_DefOf.VEE_PsychicOverdrive))
             {
                 __result= false;
             }

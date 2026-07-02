@@ -77,6 +77,11 @@
 	<VEE_Young>Young</VEE_Young>
 	<VEE_Elder>Elder</VEE_Elder>
 	
+	<!-- Psychic overdrive -->
+	
+	<VEE_Male>Male</VEE_Male>
+	<VEE_Female>Female</VEE_Female>
+	
 	<!-- All stage incidents -->
 	<VEE_CurrentStage>Current stage: {0}. Stage has been active for {1}</VEE_CurrentStage>
 </LanguageData>

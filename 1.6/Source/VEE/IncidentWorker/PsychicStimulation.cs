@@ -19,7 +19,8 @@ namespace VEE.RegularEvents
         protected override bool CanFireNowSub(IncidentParms parms)
         {
             Map map = (Map)parms.target;
-            if (map.gameConditionManager.ConditionIsActive(GameConditionDefOf.PsychicDrone) || map.gameConditionManager.ConditionIsActive(GameConditionDefOf.PsychicSoothe))
+            if (map.gameConditionManager.ConditionIsActive(GameConditionDefOf.PsychicDrone) || map.gameConditionManager.ConditionIsActive(GameConditionDefOf.PsychicSoothe)||
+                map.gameConditionManager.ConditionIsActive(VEE_DefOf.VEE_PsychicOverdrive))
             {
                 return false;
             }

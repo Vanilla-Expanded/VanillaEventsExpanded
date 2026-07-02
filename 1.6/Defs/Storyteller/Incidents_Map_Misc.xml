@@ -312,4 +312,21 @@
 		<minRefireDays>15</minRefireDays>
 		<durationDays>1.5~3</durationDays>
 	</IncidentDef>
+	<IncidentDef>
+		<defName>VEE_PsychicOverdrive</defName>
+		<label>psychic overdrive</label>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<canOccurOnAllPlanetLayers>true</canOccurOnAllPlanetLayers>
+		<earliestDay>20</earliestDay>
+		<minGreatestPopulation>0</minGreatestPopulation>
+		<category>Misc</category>
+		<gameCondition>VEE_PsychicOverdrive</gameCondition>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>VEE.RegularEvents.PsychicOverdrive</workerClass>		
+		<baseChance>0.8</baseChance>
+		<minRefireDays>15</minRefireDays>
+		<durationDays>1.5~3</durationDays>
+	</IncidentDef>
 </Defs>
