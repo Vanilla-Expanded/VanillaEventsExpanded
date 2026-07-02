@@ -28,7 +28,8 @@ namespace VEE
         public static HediffDef Traitor;
         public static HediffDef MightJoin;
         public static HediffDef VEE_SunSickness;
-      
+        public static HediffDef VEE_PsychicRelaxationHediff;
+
         /* PawnKindDefOf */
         public static PawnKindDef StrangerInBlack;
         public static PawnKindDef VEE_Hunter;
@@ -79,6 +80,7 @@ namespace VEE
         public static GameConditionDef PsychicRain;
         public static GameConditionDef VEE_Drought;
         public static GameConditionDef VEE_PsychicBloom;
+        public static GameConditionDef VEE_PsychicStimulation;
 
         /* Letter def */
         public static LetterDef PurpleEvent;
@@ -108,5 +110,11 @@ namespace VEE
         /* Shader def */
         public static ShaderTypeDef VEE_Haze;
         public static ShaderTypeDef VEE_HazeFullscreen;
+
+        /* Sound def */
+        public static SoundDef VEE_PsychicStimulationSound;
+
+        /* Joy kind def */
+        public static JoyKindDef VEE_PsychicRelaxation;
     }
 }

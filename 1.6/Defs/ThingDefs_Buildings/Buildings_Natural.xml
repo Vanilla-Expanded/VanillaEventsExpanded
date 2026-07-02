@@ -28,6 +28,7 @@
 			<mineableScatterLumpSizeRange>12~32</mineableScatterLumpSizeRange>
 			<mineablePreventMeteorite>true</mineablePreventMeteorite>
 			<isNaturalRock>false</isNaturalRock>
+			<claimable>false</claimable>
 		</building>
 	</ThingDef>
 </Defs>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<JoyKindDef>
+		<defName>VEE_PsychicRelaxation</defName>
+		<label>psychic relaxation</label>
+	</JoyKindDef>
+</Defs>

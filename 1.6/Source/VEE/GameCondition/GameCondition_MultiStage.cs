@@ -179,19 +179,23 @@ namespace VEE
         {
             foreach (var m in AffectedMaps)
             {
-                for (int i = 0; i < Rand.RangeInclusive(4, 6); i++)
+                if(m.Tile.LayerDef == PlanetLayerDefOf.Surface)
                 {
-                    if (CellFinderLoose.TryGetRandomCellWith(c =>
+                    for (int i = 0; i < Rand.RangeInclusive(4, 6); i++)
                     {
-                        if (!c.InBounds(m) || c.Roofed(m) || !c.Standable(m) || c.GetFirstBuilding(m) != null)
-                            return false;
-                        return GenAdj.CellsAdjacent8Way(c, Rot4.North, new IntVec2(1, 1))
-                            .Any(adj => adj.InBounds(m) && adj.GetFirstBuilding(m)?.def.fillPercent >= 0.9f);
-                    }, m, 1000, out IntVec3 cell))
-                    {
-                        GenSpawn.Spawn(VEE_DefOf.VEE_DeepSnow, cell, m);
+                        if (CellFinderLoose.TryGetRandomCellWith(c =>
+                        {
+                            if (!c.InBounds(m) || c.Roofed(m) || !c.Standable(m) || c.GetFirstBuilding(m) != null)
+                                return false;
+                            return GenAdj.CellsAdjacent8Way(c, Rot4.North, new IntVec2(1, 1))
+                                .Any(adj => adj.InBounds(m) && adj.GetFirstBuilding(m)?.def.fillPercent >= 0.9f);
+                        }, m, 1000, out IntVec3 cell))
+                        {
+                            GenSpawn.Spawn(VEE_DefOf.VEE_DeepSnow, cell, m);
+                        }
                     }
                 }
+                
             }
         }
 
@@ -199,18 +203,21 @@ namespace VEE
         {
             foreach (var m in AffectedMaps)
             {
-                foreach(ThingDef plant in CurrentStage.scatterPlants)
+                if (m.Tile.LayerDef == PlanetLayerDefOf.Surface)
                 {
-                    if (CellFinderLoose.TryGetRandomCellWith(c =>
+                    foreach (ThingDef plant in CurrentStage.scatterPlants)
                     {
-                        if (!c.InBounds(m) || c.Roofed(m) || !c.Standable(m) || c.GetFirstBuilding(m) != null)
-                            return false;
-                        return true;
-                    }, m, 1000, out IntVec3 cell))
-                    {
-                        GenSpawn.Spawn(plant, cell, m, WipeMode.Vanish);                  
+                        if (CellFinderLoose.TryGetRandomCellWith(c =>
+                        {
+                            if (!c.InBounds(m) || c.Roofed(m) || !c.Standable(m) || c.GetFirstBuilding(m) != null)
+                                return false;
+                            return true;
+                        }, m, 1000, out IntVec3 cell))
+                        {
+                            GenSpawn.Spawn(plant, cell, m, WipeMode.Vanish);
+                        }
                     }
-                }               
+                }
             }
         }
 

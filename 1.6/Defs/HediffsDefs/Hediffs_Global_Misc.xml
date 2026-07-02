@@ -128,10 +128,31 @@
 		</comps>
 		<stages>
 			<li>
-				
 				<statFactors>
 					<PsychicSensitivity>2</PsychicSensitivity>
 				</statFactors>
+			</li>
+		</stages>
+	</HediffDef>
+	<HediffDef>
+		<defName>VEE_PsychicRelaxationHediff</defName>
+		<label>psychic relaxation</label>
+		<description>Some distant engine of joy sent psychic vibrations that washed over the region, specifically resonating with the minds of a particular demographic.</description>
+		<defaultLabelColor>(0.8, 0.8, 0.35)</defaultLabelColor>
+		<hediffClass>HediffWithComps</hediffClass>
+		<maxSeverity>1</maxSeverity>
+		<allowMothballIfLowPriorityWorldPawn>true</allowMothballIfLowPriorityWorldPawn>
+		<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-12</severityPerDay>
+			</li>
+			<li Class="VEE.HediffCompProperties_PsychicRelaxation">
+				
+			</li>
+		</comps>
+		<stages>
+			<li>
+				
 			</li>
 		</stages>
 	</HediffDef>

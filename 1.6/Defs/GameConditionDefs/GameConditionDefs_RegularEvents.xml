@@ -9,7 +9,8 @@
 		<letterText>An extreme drought has set over the area. Rain clouds have vanished, and the sun is baking the earth.\n\nOutdoor crops and wild plants will suffer heavily from the lack of moisture, almost halting their growth and eventually dying off. The fires will spread much quicker.\n\nPlants sown in hydroponics systems are not affected.</letterText>
 		<letterDef>ThreatSmall</letterDef>
 		<canBePermanent>true</canBePermanent>
-		<weatherDef>Clear</weatherDef> <!-- Initial -->
+		<weatherDef>Clear</weatherDef>
+		<!-- Initial -->
 		<exclusiveConditions>
 			<li>PsychicRain</li>
 			<li>VEE_PsychicBloom</li>
@@ -28,5 +29,21 @@
 		<description>A massive orbital ship has suffered a catastrophic structural failure in orbit directly above your region!</description>
 		<endMessage>The orbital ship crash is ending.</endMessage>
 		<canBePermanent>false</canBePermanent>
+	</GameConditionDef>
+	<GameConditionDef>
+		<defName>VEE_PsychicStimulation</defName>
+		<conditionClass>VEE.GameCondition_PsychicStimulation</conditionClass>
+		<label>psychic stimulation</label>
+		<description>Some distant engine of joy sent psychic vibrations that washed over the region, specifically resonating with the minds of a particular demographic.</description>		
+		<endMessage>The psychic stimulation is ending.</endMessage>
+		<letterText>Every {0} colonist seems more joyful!\n\nSome distant engine of joy sent psychic vibrations that washed over the region, specifically resonating with the minds of a particular demographic. Your colonists feel a deep, soothing calm as their minds are stimulated by the ethereal energy. They are finding great relaxation in this mental state. For a few days, their recreation will be completely satisfied.</letterText>
+		<letterDef>PositiveEvent</letterDef>
+		<exclusiveConditions>
+			<li>PsychicSoothe</li>
+			<li>PsychicDrone</li>
+		</exclusiveConditions>
+		<canBePermanent>true</canBePermanent>
+		<natural>false</natural>
+		<canAffectAllPlanetLayers>true</canAffectAllPlanetLayers>
 	</GameConditionDef>
 </Defs>

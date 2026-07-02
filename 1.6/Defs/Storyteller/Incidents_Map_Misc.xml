@@ -295,4 +295,21 @@
 		<baseChance>0.35</baseChance>
 		<minRefireDays>120</minRefireDays>
 	</IncidentDef>
+	<IncidentDef>
+		<defName>VEE_PsychicStimulation</defName>
+		<label>psychic stimulation</label>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<canOccurOnAllPlanetLayers>true</canOccurOnAllPlanetLayers>
+		<earliestDay>20</earliestDay>
+		<minGreatestPopulation>0</minGreatestPopulation>
+		<category>Misc</category>
+		<gameCondition>VEE_PsychicStimulation</gameCondition>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>VEE.RegularEvents.PsychicStimulation</workerClass>		
+		<baseChance>0.8</baseChance>
+		<minRefireDays>15</minRefireDays>
+		<durationDays>1.5~3</durationDays>
+	</IncidentDef>
 </Defs>

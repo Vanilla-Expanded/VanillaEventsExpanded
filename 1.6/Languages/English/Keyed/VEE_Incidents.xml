@@ -72,6 +72,11 @@
     <VEE_WhiteoutRefugees_Accepted>The refugees are grateful for your mercy and have joined the colony to recover from their ordeal.</VEE_WhiteoutRefugees_Accepted>
     <VEE_WhiteoutRefugees_Rejected>The refugees have turned on you! Betrayed and desperate, they have sworn to take your shelter by force.\n\nThey are attacking immediately.</VEE_WhiteoutRefugees_Rejected>
 	
-	<!-- Psychic Bloom -->
+	<!-- Psychic stimulation -->
+	
+	<VEE_Young>Young</VEE_Young>
+	<VEE_Elder>Elder</VEE_Elder>
+	
+	<!-- All stage incidents -->
 	<VEE_CurrentStage>Current stage: {0}. Stage has been active for {1}</VEE_CurrentStage>
 </LanguageData>
