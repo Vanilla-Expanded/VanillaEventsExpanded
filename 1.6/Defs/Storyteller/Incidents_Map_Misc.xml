@@ -307,7 +307,7 @@
 		<targetTags>
 			<li>Map_PlayerHome</li>
 		</targetTags>
-		<workerClass>VEE.RegularEvents.PsychicStimulation</workerClass>		
+		<workerClass>VEE.RegularEvents.PsychicStimulation</workerClass>
 		<baseChance>0.8</baseChance>
 		<minRefireDays>15</minRefireDays>
 		<durationDays>1.5~3</durationDays>
@@ -324,7 +324,7 @@
 		<targetTags>
 			<li>Map_PlayerHome</li>
 		</targetTags>
-		<workerClass>VEE.RegularEvents.PsychicOverdrive</workerClass>		
+		<workerClass>VEE.RegularEvents.PsychicOverdrive</workerClass>
 		<baseChance>0.8</baseChance>
 		<minRefireDays>15</minRefireDays>
 		<durationDays>1.5~3</durationDays>
@@ -341,9 +341,24 @@
 		<targetTags>
 			<li>Map_PlayerHome</li>
 		</targetTags>
-		<workerClass>VEE.RegularEvents.PsychicHum</workerClass>		
+		<workerClass>VEE.RegularEvents.PsychicHum</workerClass>
 		<baseChance>0.5</baseChance>
 		<minRefireDays>15</minRefireDays>
 		<durationDays>1.5~3</durationDays>
+	</IncidentDef>
+	<IncidentDef>
+		<defName>VEE_VisitorGroupRaid</defName>
+		<label>visitor group</label>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>VEE.RegularEvents.VisitorGroupRaid</workerClass>
+		<category>FactionArrival</category>
+		<baseChance>0.55</baseChance>
+		<minRefireDays>15</minRefireDays>
+		<minGreatestPopulation>0</minGreatestPopulation>
+		<earliestDay>30</earliestDay>
+		<pointsScaleable>true</pointsScaleable>
+		<requireColonistsPresent>True</requireColonistsPresent>
 	</IncidentDef>
 </Defs>

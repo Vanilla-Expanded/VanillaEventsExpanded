@@ -11,6 +11,8 @@
     <!-- Traitor -->
     <VEE_TraitorLabel>Traitor: {PAWN_nameDef}</VEE_TraitorLabel>
     <VEE_TraitorDesc>{PAWN_nameDef} has revealed {PAWN_possessive} true colors!\n\n{PAWN_pronoun} was an agent of {Hostile_FactionName} sent to infiltrate your colony. {PAWN_pronoun} has violently turned against you and is now attacking your settlement from the inside. You can subdue or kill {PAWN_objective}!</VEE_TraitorDesc>
+	<VEE_TraitorGroupLabel>Raid (Visitors)</VEE_TraitorGroupLabel>
+	<VEE_TraitorGroupDesc>The visitors turned out to be a deceptive raid from {0}. They are attacking immediately.</VEE_TraitorGroupDesc>
 
     <!-- Orbital ship crash -->
     <VEE_OrbitalCrashLabel>Orbital ship crash</VEE_OrbitalCrashLabel>

@@ -38,6 +38,7 @@ namespace VEE
         public float psychicLotusRadius = 0f;
         public float psychicLotusSpawnAmount = 0f;
         public bool triggerSuperbloomDrone = false;
+        public bool displayHazeEffect = false;
     }
 
     public class IncidentChanceRecord

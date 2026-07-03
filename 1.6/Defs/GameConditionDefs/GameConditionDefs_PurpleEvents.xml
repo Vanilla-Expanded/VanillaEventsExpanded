@@ -140,6 +140,7 @@
 							<overlay>(1.00,0.45,0.00)</overlay>
 							<saturation>10</saturation>
 						</skyColors>
+						<displayHazeEffect>true</displayHazeEffect>
 					</li>
 					<li>
 						<durationDays>15~30</durationDays>
@@ -156,6 +157,7 @@
 						<disableWildAnimalSpawns>true</disableWildAnimalSpawns>
 						<changeSkyColours>true</changeSkyColours>
 						<changeSkyColoursTicks>5000</changeSkyColoursTicks>
+						<displayHazeEffect>true</displayHazeEffect>
 						<skyColors>
 							<sky>(0.961, 0.541, 0.122)</sky>
 							<shadow>(1.00,0.55,0.15)</shadow>
