@@ -46,6 +46,11 @@ namespace VEE
                         LordMaker.MakeNewLord(hostile, new LordJob_AssaultColony(hostile), map, pawns);
                         Messages.Message("VEE_WhiteoutRefugees_Rejected".Translate(), pawns, MessageTypeDefOf.NegativeEvent);
                         Find.LetterStack.RemoveLetter(this);
+                        if (ModsConfig.IdeologyActive)
+                        {
+                            Find.HistoryEventsManager.RecordEvent(new HistoryEvent(HistoryEventDefOf.CharityRefused_Beggars));
+
+                        }
                     },
                     resolveTree = true
                 };
