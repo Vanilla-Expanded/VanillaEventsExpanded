@@ -177,4 +177,26 @@
 			</li>
 		</stages>
 	</HediffDef>
+	<HediffDef>
+		<defName>VEE_PsychicHumHediff</defName>
+		<label>psychic hum</label>
+		<description>A weird, discordant psychic hum is vibrating through the minds of some people, seemingly chosen at random.</description>
+		<defaultLabelColor>(0.8, 0.8, 0.35)</defaultLabelColor>
+		<hediffClass>HediffWithComps</hediffClass>
+		<maxSeverity>1</maxSeverity>
+		<allowMothballIfLowPriorityWorldPawn>true</allowMothballIfLowPriorityWorldPawn>
+		<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-12</severityPerDay>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<statFactors>
+					<JoyFallRateFactor>3</JoyFallRateFactor>
+					<RestRateMultiplier>0.35</RestRateMultiplier>
+				</statFactors>
+			</li>
+		</stages>
+	</HediffDef>
 </Defs>

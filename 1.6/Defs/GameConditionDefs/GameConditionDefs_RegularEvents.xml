@@ -42,6 +42,7 @@
 			<li>PsychicSoothe</li>
 			<li>PsychicDrone</li>
 			<li>VEE_PsychicOverdrive</li>
+			<li>VEE_PsychicHum</li>
 		</exclusiveConditions>
 		<canBePermanent>true</canBePermanent>
 		<natural>false</natural>
@@ -59,6 +60,25 @@
 			<li>PsychicSoothe</li>
 			<li>PsychicDrone</li>
 			<li>VEE_PsychicStimulation</li>
+			<li>VEE_PsychicHum</li>
+		</exclusiveConditions>
+		<canBePermanent>true</canBePermanent>
+		<natural>false</natural>
+		<canAffectAllPlanetLayers>true</canAffectAllPlanetLayers>
+	</GameConditionDef>
+	<GameConditionDef>
+		<defName>VEE_PsychicHum</defName>
+		<conditionClass>VEE.GameCondition_PsychicHum</conditionClass>
+		<label>psychic hum</label>
+		<description>A weird, discordant psychic hum is vibrating through the minds of some people, seemingly chosen at random.</description>		
+		<endMessage>The psychic hum is ending.</endMessage>
+		<letterText>A weird, discordant psychic hum is vibrating through the minds of some people, seemingly chosen at random.\n\nThey are unable to rest or find any relief, and their mental state is rapidly deteriorating as their exhaustion and need for recreation skyrocket.\n\nColonists affected:\n\n{0}.</letterText>
+		<letterDef>NegativeEvent</letterDef>
+		<exclusiveConditions>
+			<li>PsychicSoothe</li>
+			<li>PsychicDrone</li>
+			<li>VEE_PsychicStimulation</li>
+			<li>VEE_PsychicOverdrive</li>
 		</exclusiveConditions>
 		<canBePermanent>true</canBePermanent>
 		<natural>false</natural>

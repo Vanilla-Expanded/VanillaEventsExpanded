@@ -50,4 +50,29 @@
 			</li>
 		</subSounds>
 	</SoundDef>
+	<SoundDef>
+		<defName>VEE_PsychicHumSound</defName>
+		<context>MapOnly</context>
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>Things/Special/Psychic_Hum_Pulse_01a</clipPath>
+					</li>
+				</grains>
+				<volumeRange>9.705886~9.705877</volumeRange>
+				<pitchRange>0.8529412~1.321177</pitchRange>
+				<filters>
+					<li Class="SoundFilterEcho">
+						<delay>1112.654</delay>
+						<decayRatio>0.5433328</decayRatio>
+						<wetMix>0.1333435</wetMix>
+						<dryMix>1</dryMix>
+					</li>
+				</filters>
+				<sustainLoop>False</sustainLoop>
+			</li>
+		</subSounds>
+	</SoundDef>
 </Defs>

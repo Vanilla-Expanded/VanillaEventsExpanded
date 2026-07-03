@@ -11,7 +11,8 @@ namespace VEE
         {
             Map map = (Map)parms.target;
             if (map.gameConditionManager.ConditionIsActive(VEE_DefOf.VEE_PsychicStimulation)||
-                map.gameConditionManager.ConditionIsActive(VEE_DefOf.VEE_PsychicOverdrive))
+                map.gameConditionManager.ConditionIsActive(VEE_DefOf.VEE_PsychicOverdrive) ||
+                map.gameConditionManager.ConditionIsActive(VEE_DefOf.VEE_PsychicHum))
             {
                 __result= false;
             }

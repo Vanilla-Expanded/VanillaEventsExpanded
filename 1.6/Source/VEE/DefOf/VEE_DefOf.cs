@@ -30,6 +30,7 @@ namespace VEE
         public static HediffDef VEE_SunSickness;
         public static HediffDef VEE_PsychicRelaxationHediff;
         public static HediffDef VEE_PsychicOverdriveHediff;
+        public static HediffDef VEE_PsychicHumHediff;
 
         /* PawnKindDefOf */
         public static PawnKindDef StrangerInBlack;
@@ -83,6 +84,7 @@ namespace VEE
         public static GameConditionDef VEE_PsychicBloom;
         public static GameConditionDef VEE_PsychicStimulation;
         public static GameConditionDef VEE_PsychicOverdrive;
+        public static GameConditionDef VEE_PsychicHum;
 
         /* Letter def */
         public static LetterDef PurpleEvent;
@@ -116,6 +118,7 @@ namespace VEE
         /* Sound def */
         public static SoundDef VEE_PsychicStimulationSound;
         public static SoundDef VEE_PsychicOverdriveSound;
+        public static SoundDef VEE_PsychicHumSound;
 
         /* Joy kind def */
         public static JoyKindDef VEE_PsychicRelaxation;

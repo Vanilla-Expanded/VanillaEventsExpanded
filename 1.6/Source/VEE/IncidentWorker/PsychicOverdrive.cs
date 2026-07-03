@@ -15,7 +15,8 @@ namespace VEE.RegularEvents
         {
             Map map = (Map)parms.target;
             if (map.gameConditionManager.ConditionIsActive(GameConditionDefOf.PsychicDrone) || map.gameConditionManager.ConditionIsActive(GameConditionDefOf.PsychicSoothe) ||
-                map.gameConditionManager.ConditionIsActive(VEE_DefOf.VEE_PsychicStimulation))
+                map.gameConditionManager.ConditionIsActive(VEE_DefOf.VEE_PsychicStimulation) ||
+                map.gameConditionManager.ConditionIsActive(VEE_DefOf.VEE_PsychicHum))
             {
                 return false;
             }
