@@ -45,7 +45,7 @@
 	<ThingDef ParentName="VEE_StumpBase">
 		<defName>VEE_Plant_PsychicLotus_Wilted</defName>
 		<label>wilted psychic lotus</label>
-		<description>todo.</description>
+		<description>A wilted, ethereal bloom that acted as a dimensional anchor. Now dead and withering.</description>
 		<statBases>
 			<Beauty>-12</Beauty>
 			<BeautyOutdoors>-12</BeautyOutdoors>
@@ -67,7 +67,7 @@
 	<ThingDef ParentName="VEE_StumpBase">
 		<defName>VEE_Plant_VyspStrands_Wilted</defName>
 		<label>wilted vysp strands</label>
-		<description>todo.</description>
+		<description>Bizarre, thread-like growths that hummed faintly when approached. Now dead and withering.</description>
 		<statBases>
 			<Beauty>-2</Beauty>
 			<BeautyOutdoors>-2</BeautyOutdoors>
@@ -89,7 +89,7 @@
 	<ThingDef ParentName="VEE_StumpBase">
 		<defName>VEE_Plant_CyllenCluster_Wilted</defName>
 		<label>wilted cyllen cluster</label>
-		<description>todo.</description>
+		<description>A dense grouping of bulbous alien foliage that pulsed with a slow, heartbeat-like rhythm. Now dead and withering.</description>
 		<statBases>
 			<Beauty>-3</Beauty>
 			<BeautyOutdoors>-3</BeautyOutdoors>
@@ -110,7 +110,7 @@
 	<ThingDef ParentName="VEE_StumpBase">
 		<defName>VEE_Plant_PhoraxTree_Wilted</defName>
 		<label>wilted phorax tree</label>
-		<description>todo.</description>
+		<description>A towering, bizarre formation barely resembling a giant mushroom. Now dead and withering.</description>
 		<statBases>
 			<Beauty>-6</Beauty>
 			<BeautyOutdoors>-6</BeautyOutdoors>
@@ -138,7 +138,7 @@
 	<ThingDef ParentName="VEE_StumpBase">
 		<defName>VEE_Plant_XyrilTree_Wilted</defName>
 		<label>wilted xyril tree</label>
-		<description>todo.</description>
+		<description>A wilted, tree-like structure that refracted light in impossible colors. Now dead and withering.</description>
 		<statBases>
 			<Beauty>-12</Beauty>
 			<BeautyOutdoors>-12</BeautyOutdoors>
@@ -166,7 +166,7 @@
 	<ThingDef ParentName="VEE_StumpBase">
 		<defName>VEE_Plant_MyrloxTree_Wilted</defName>
 		<label>wilted myrlox tree</label>
-		<description>todo.</description>
+		<description>A robust, twisted growth that resembles petrified muscle more than wood. Now dead and withering.</description>
 		<statBases>
 			<Beauty>-8</Beauty>
 			<BeautyOutdoors>-8</BeautyOutdoors>

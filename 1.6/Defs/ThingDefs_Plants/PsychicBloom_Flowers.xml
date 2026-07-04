@@ -3,7 +3,7 @@
 	<ThingDef ParentName="PlantBase">
 		<defName>VEE_Plant_PsychicLotusSeedling</defName>
 		<label>psychic lotus seedling</label>
-		<description>todo.</description>
+		<description>An unnatural, faintly glowing sprout that seems to root itself in reality rather than soil. While harmless, it is the beginning of a highly dangerous bloom and should be uprooted before it matures.</description>
 		<statBases>
 			<MaxHitPoints>100</MaxHitPoints>
 			<Beauty>6</Beauty>
@@ -50,7 +50,7 @@
 	<ThingDef ParentName="PlantBase">
 		<defName>VEE_Plant_PsychicLotus</defName>
 		<label>psychic lotus</label>
-		<description>todo.</description>
+		<description>A mesmerizing, ethereal bloom that acts as a dimensional anchor, emitting floating, firefly-like flecks of light. It actively terraforms the area by continuously spawning alien flora around it. Destroying it may trigger a final, rapid burst of otherworldly growth.</description>
 		<thingClass>VEE.Plant_PsychicLotus</thingClass>
 		<statBases>
 			<MaxHitPoints>250</MaxHitPoints>
@@ -103,7 +103,7 @@
 	<ThingDef ParentName="PlantBase">
 		<defName>VEE_Plant_PinkGrass</defName>
 		<label>pink grass</label>
-		<description>todo.</description>
+		<description>A vibrant, otherworldly groundcover that feels unsettlingly smooth to the touch. It appears to feed on ambient psychic energy rather than soil or sunlight.</description>
 		<statBases>
 			<MaxHitPoints>100</MaxHitPoints>
 			<Flammability>0.5</Flammability>
@@ -139,7 +139,7 @@
 	<ThingDef ParentName="PlantBase">
 		<defName>VEE_Plant_TallPinkGrass</defName>
 		<label>tall pink grass</label>
-		<description>todo.</description>
+		<description>Overgrown stalks of alien grass. Its long, vibrant blades sway rhythmically, completely ignoring the direction of the local wind.</description>
 		<statBases>
 			<MaxHitPoints>100</MaxHitPoints>
 			<Flammability>0.5</Flammability>
@@ -176,7 +176,7 @@
 	<ThingDef ParentName="PlantBase">
 		<defName>VEE_Plant_VyspStrands</defName>
 		<label>vysp strands</label>
-		<description>todo.</description>
+		<description>Bizarre, thread-like growths that hum faintly when approached. The strands vibrate constantly, potentially echoing the psychic pressure of their home dimension.</description>
 		<statBases>
 			<MaxHitPoints>200</MaxHitPoints>
 			<Beauty>2</Beauty>
@@ -218,7 +218,7 @@
 	<ThingDef ParentName="PlantBase">
 		<defName>VEE_Plant_CyllenCluster</defName>
 		<label>cyllen cluster</label>
-		<description>todo.</description>
+		<description>A dense grouping of bulbous alien foliage that pulses with a slow, heartbeat-like rhythm. Standing near it leaves observers with the uneasy, creeping sensation of being watched by a thousand eyes.</description>
 		<statBases>
 			<MaxHitPoints>250</MaxHitPoints>
 			<Beauty>3</Beauty>
@@ -259,7 +259,7 @@
 	<ThingDef ParentName="PlantBase">
 		<defName>VEE_Plant_PhoraxTree</defName>
 		<label>phorax tree</label>
-		<description>todo.</description>
+		<description>A towering, bizarre formation barely resembling a giant mushroom. Touching its trunk leaves a lingering, static-like tingling sensation in the mind.</description>
 		<statBases>
 			<MaxHitPoints>350</MaxHitPoints>
 			<Beauty>6</Beauty>
@@ -315,7 +315,7 @@
 	<ThingDef ParentName="PlantBase">
 		<defName>VEE_Plant_XyrilTree</defName>
 		<label>xyril tree</label>
-		<description>todo.</description>
+		<description>A hauntingly beautiful, tree-like structure that refracts light in impossible colors. It appears almost crystalline and fragile, despite piercing the earth to anchor itself.</description>
 		<statBases>
 			<MaxHitPoints>100</MaxHitPoints>
 			<Beauty>12</Beauty>
@@ -371,7 +371,7 @@
 	<ThingDef ParentName="PlantBase">
 		<defName>VEE_Plant_MyrloxTree</defName>
 		<label>myrlox tree</label>
-		<description>todo.</description>
+		<description>A robust, twisted growth that resembles petrified muscle more than wood. It radiates a barely felt, unnatural warmth and smells sharply of ozone and burning copper.</description>
 		<statBases>
 			<MaxHitPoints>400</MaxHitPoints>
 			<Beauty>8</Beauty>

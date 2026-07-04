@@ -209,7 +209,7 @@ namespace VEE
                     {
                         if (CellFinderLoose.TryGetRandomCellWith(c =>
                         {
-                            if (!c.InBounds(m) || c.Roofed(m) || !c.Standable(m) || c.GetFirstBuilding(m) != null)
+                            if (!c.InBounds(m) || c.Roofed(m) || !c.Standable(m) || c.GetFirstBuilding(m) != null || !c.GetTerrain(m).natural)
                                 return false;
                             return true;
                         }, m, 1000, out IntVec3 cell))
