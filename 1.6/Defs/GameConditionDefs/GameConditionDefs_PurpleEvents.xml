@@ -201,6 +201,8 @@
 			<li>VEE_Whiteout</li>
 			<li>VEE_PsychicBloom</li>
 			<li>Eclipse</li>
+			<li>SolarFlare</li>
+			<li MayRequire="vanillaexpanded.gravship">VGE_SpaceSolarFlare</li>
 		</exclusiveConditions>
 		<modExtensions>
 			<li Class="VEE.ConditionExtension_MultiStage">

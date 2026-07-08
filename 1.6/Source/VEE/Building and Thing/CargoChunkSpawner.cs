@@ -23,7 +23,7 @@ namespace VEE
             parms.traderDef = tradeship.TraderKind;
             parms.makingFaction = tradeship.Faction;
             parms.tile = map.Tile;
-            parms.minSingleItemMarketValuePct = 0.05f;
+            parms.minSingleItemMarketValuePct = 0.15f;
 
             float targetMarketValue;
 
@@ -79,11 +79,7 @@ namespace VEE
             foreach (Thing thing in wares)
             {
                 thing.SetForbidden(true);
-                GenPlace.TryPlaceThing(
-                    thing,
-                    Position,
-                    map,
-                    ThingPlaceMode.Near);
+                GenPlace.TryPlaceThing(thing,Position,map,ThingPlaceMode.Near);
             }
 
             base.Destroy(mode);

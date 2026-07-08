@@ -12,6 +12,7 @@
 				<li>Custom5</li>
 			</linkFlags>
 		</graphicData>
+		<tickerType>Long</tickerType>
 		<filthLeaving>Filth_Water</filthLeaving>
 		<fillPercent>0.9</fillPercent>
 		<holdsRoof>false</holdsRoof>
@@ -29,6 +30,7 @@
 			<mineablePreventMeteorite>true</mineablePreventMeteorite>
 			<isNaturalRock>false</isNaturalRock>
 			<claimable>false</claimable>
+			<repairable>false</repairable>
 		</building>
 	</ThingDef>
 </Defs>
