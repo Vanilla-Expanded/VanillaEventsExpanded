@@ -40,7 +40,18 @@ namespace VEE
                         corpse.SetForbidden(true);
                         GenPlace.TryPlaceThing(corpse, intVec, Map, ThingPlaceMode.Near);
                     }
-                    else GenPlace.TryPlaceThing(pawn, intVec, Map, ThingPlaceMode.Near);
+                    else {
+                        if (Map.Biome.inVacuum && Rand.Chance(0.2f))
+                        {
+                            Apparel apparelArmor = (Apparel)ThingMaker.MakeThing(ThingDefOf.Apparel_Vacsuit);
+                            Apparel apparelHelmet = (Apparel)ThingMaker.MakeThing(ThingDefOf.Apparel_VacsuitHelmet);
+                            
+                            pawn.apparel.Wear(apparelArmor, dropReplacedApparel: false);
+                            pawn.apparel.Wear(apparelHelmet, dropReplacedApparel: false);
+                        }
+                        GenPlace.TryPlaceThing(pawn, intVec, Map, ThingPlaceMode.Near); 
+                    
+                    }
                 }
 
                 

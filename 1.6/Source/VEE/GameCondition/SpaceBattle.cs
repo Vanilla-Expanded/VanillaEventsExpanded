@@ -132,7 +132,7 @@ namespace VEE.RegularEvents
 
         public bool VEETryFindSkyfallerCell(ThingDef skyfaller, IntVec3 nearLoc, Map map, int maxDist, out IntVec3 pos)
         {
-            return CellFinderLoose.TryFindSkyfallerCell(skyfaller, map,TerrainAffordanceDefOf.Walkable, out pos, 10, nearLoc, maxDist, false, true, true, true, false, false, c => c.InBounds(map) && !c.Fogged(map) && c.Walkable(map));
+            return CellFinderLoose.TryFindSkyfallerCell(skyfaller, map,TerrainAffordanceDefOf.Walkable, out pos, 10, nearLoc, maxDist, false, true, true, true, false, false, c => c.InBounds(map) && !c.Fogged(map) && c.Walkable(map) && c.GetTerrain(map) != TerrainDefOf.Space);
         }
 
        
