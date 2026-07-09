@@ -15,6 +15,14 @@ namespace VEE
 
         public TradeShip tradeship;
 
+        public override void ExposeData()
+        {
+            base.ExposeData();
+          
+            Scribe_Deep.Look(ref tradeship, "tradeship");
+
+        }
+
         public override void Destroy(DestroyMode mode)
         {
             Map map = base.Map;
