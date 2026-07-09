@@ -20,7 +20,7 @@ namespace VEE
         public static void DimLights(ref Map map, ref float __result)
         {
            
-                __result = __result * StaticCollections.cachedGlobalLightLevelsMultiplier;
+                __result = __result * WorldComp_Purple.Instance.cachedGlobalLightLevelsMultiplier;
 
         }
     }

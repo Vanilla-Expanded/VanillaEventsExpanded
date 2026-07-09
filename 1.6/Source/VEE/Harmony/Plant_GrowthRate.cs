@@ -35,7 +35,7 @@ namespace VEE
         {
             if (__instance.Map != null)
             {         
-                if (StaticCollections.cachedPlantGrowthMultiplier != 1 && !__instance.Map.roofGrid.Roofed(__instance.Position))
+                if (WorldComp_Purple.Instance.cachedPlantGrowthMultiplier != 1 && !__instance.Map.roofGrid.Roofed(__instance.Position))
                 {
                     List<Thing> thingList = __instance.Map.thingGrid.ThingsListAtFast(__instance.Position);
                     bool tagFound = false;
@@ -48,7 +48,7 @@ namespace VEE
                     }
                     if (!tagFound)
                     {
-                        __result *= StaticCollections.cachedPlantGrowthMultiplier;
+                        __result *= WorldComp_Purple.Instance.cachedPlantGrowthMultiplier;
                     }
                 }
             }

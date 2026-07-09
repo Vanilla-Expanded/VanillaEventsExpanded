@@ -28,12 +28,12 @@ namespace VEE.RegularEvents
         public override void PostMake()
         {
             base.PostMake();
-            StaticCollections.cachedPlantGrowthMultiplier = 0.1f;
+            WorldComp_Purple.Instance.cachedPlantGrowthMultiplier = 0.1f;
         }
         public override void End()
         {
             base.End();
-            StaticCollections.cachedPlantGrowthMultiplier = 1f;
+            WorldComp_Purple.Instance.cachedPlantGrowthMultiplier = 1f;
         }
     }
 }

@@ -88,11 +88,11 @@ namespace VEE
                 }
                 if (CurrentStage.plantGrowthMultiplier != 1)
                 {
-                    StaticCollections.cachedPlantGrowthMultiplier = CurrentStage.plantGrowthMultiplier;
+                    WorldComp_Purple.Instance.cachedPlantGrowthMultiplier = CurrentStage.plantGrowthMultiplier;
                 }
                 if (CurrentStage.globalLightLevelsMultiplier != 1)
                 {
-                    StaticCollections.cachedGlobalLightLevelsMultiplier = CurrentStage.globalLightLevelsMultiplier;
+                    WorldComp_Purple.Instance.cachedGlobalLightLevelsMultiplier = CurrentStage.globalLightLevelsMultiplier;
                 }
                 if (CurrentStage.hediffForOrganicPawns != null)
                 {
@@ -165,8 +165,8 @@ namespace VEE
             currentStageStartTick = Find.TickManager.TicksGame;
             prevTargetTempOffset = currentOffset;
             var stage = CurrentStage;
-            StaticCollections.cachedPlantGrowthMultiplier = CurrentStage.plantGrowthMultiplier;
-            StaticCollections.cachedGlobalLightLevelsMultiplier = CurrentStage.globalLightLevelsMultiplier;
+            WorldComp_Purple.Instance.cachedPlantGrowthMultiplier = CurrentStage.plantGrowthMultiplier;
+            WorldComp_Purple.Instance.cachedGlobalLightLevelsMultiplier = CurrentStage.globalLightLevelsMultiplier;
             currentStageDurationTicks = Mathf.RoundToInt(stage.durationDays.RandomInRange * 60000f);
             Find.LetterStack.ReceiveLetter(stage.letterLabel.CapitalizeFirst(), stage.letterText, stage.letterDef);
             if (!CurrentStage.swapPlants.NullOrEmpty())
@@ -266,8 +266,8 @@ namespace VEE
 
         public override void End()
         {
-            StaticCollections.cachedPlantGrowthMultiplier = 1;
-            StaticCollections.cachedGlobalLightLevelsMultiplier = 1;
+            WorldComp_Purple.Instance.cachedPlantGrowthMultiplier = 1;
+            WorldComp_Purple.Instance.cachedGlobalLightLevelsMultiplier = 1;
             base.End();
         }
 
