@@ -215,6 +215,7 @@
 						<letterText>A space entity of unimaginable size has made first contact with a local star, resulting in the beginning of a long lasting eclipse.\n\nThe daylight is beginning to dim, casting a vast penumbra over the planet. Solar output and temperatures will continue to drop as the eclipse deepens. Prepare your power grids and indoor agriculture before the true darkness arrives.</letterText>
 						<letterDef>PurpleEvent</letterDef>
 						<globalLightLevelsMultiplier>0.75</globalLightLevelsMultiplier>
+						
 					</li>
 					<li>
 						<durationDays>5~10</durationDays>
@@ -224,6 +225,7 @@
 						<letterText>The celestial entity has begun to cross the center of the sun.\n\nThe planet has been plunged into a deep, freezing twilight. Solar generators are now struggling to produce power, and surface flora is dying. Rely on artificial lights and indoor heating to survive the coming black.</letterText>
 						<letterDef>PurpleEvent</letterDef>
 						<globalLightLevelsMultiplier>0.25</globalLightLevelsMultiplier>
+						<forcedWeather>VEE_LongNight</forcedWeather>
 					</li>
 					<li>
 						<durationDays>15~30</durationDays>
@@ -235,6 +237,7 @@
 						<globalLightLevelsMultiplier>0</globalLightLevelsMultiplier>
 						<hediffForOrganicPawns>VEE_LongNight</hediffForOrganicPawns>
 						<humanIncidentsFactor>0.75</humanIncidentsFactor>
+						<forcedWeather>VEE_LongNight</forcedWeather>
 						<incidentChances>
 							<li>
 								<def>ManhunterPackPurple</def>
@@ -253,6 +256,7 @@
 						<letterLabel>the emergence</letterLabel>
 						<letterText>A brilliant flash of light has pierced the horizon!\n\nThe cosmic entity is finally shifting away from the sun's center. Totality has ended. The absolute darkness has broken into twilight. Your solar panels will begin generating power once again, and plants will resume growth as the temperature increases.</letterText>
 						<letterDef>PurpleEvent</letterDef>
+						
 						<globalLightLevelsMultiplier>0.25</globalLightLevelsMultiplier>
 					</li>
 					<li>

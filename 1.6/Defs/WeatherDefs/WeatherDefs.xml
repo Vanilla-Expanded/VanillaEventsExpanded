@@ -196,4 +196,39 @@
 			<saturation>0.9</saturation>
 		</skyColorsNightMid>
 	</WeatherDef>
+	<WeatherDef>
+		<defName>VEE_LongNight</defName>
+		<label>long night</label>
+		<description>A catastrophic celestial eclipse that blankets the world in an endless, freezing twilight, forcing the world to adapt to artificial light and increased psychic sensitivity as nocturnal predators and subterranean threats emerge in the darkness.</description>
+		
+		<repeatable>true</repeatable>
+		<favorability>VeryBad</favorability>
+		<perceivePriority>0</perceivePriority>
+		
+		<!-- Colors are Super Dark -->
+		<skyColorsDay>
+			<sky>(0.45,0.50,0.55)</sky>
+			<shadow>(0.92,0.92,0.92)</shadow>
+			<overlay>(0.5,0.5,0.5)</overlay>
+			<saturation>0.9</saturation>
+		</skyColorsDay>
+		<skyColorsDusk>
+			<sky>(0.35,0.40,0.45)</sky>
+			<shadow>(0.92,0.92,0.92)</shadow>
+			<overlay>(0.5,0.5,0.5)</overlay>
+			<saturation>0.9</saturation>
+		</skyColorsDusk>
+		<skyColorsNightEdge>
+			<sky>(0.1,0.1,0.1)</sky>
+			<shadow>(0.92,0.92,0.92)</shadow>
+			<overlay>(0.5,0.5,0.5)</overlay>
+			<saturation>0.6</saturation>
+		</skyColorsNightEdge>
+		<skyColorsNightMid>
+			<sky>(0.01,0.01,0.01)</sky>
+			<shadow>(0.92,0.92,0.92)</shadow>
+			<overlay>(0.5,0.5,0.5)</overlay>
+			<saturation>0.6</saturation>
+		</skyColorsNightMid>
+	</WeatherDef>
 </Defs>
