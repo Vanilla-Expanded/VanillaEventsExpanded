@@ -225,7 +225,7 @@
 						<letterText>The celestial entity has begun to cross the center of the sun.\n\nThe planet has been plunged into a deep, freezing twilight. Solar generators are now struggling to produce power, and surface flora is dying. Rely on artificial lights and indoor heating to survive the coming black.</letterText>
 						<letterDef>PurpleEvent</letterDef>
 						<globalLightLevelsMultiplier>0.25</globalLightLevelsMultiplier>
-						<forcedWeather>VEE_LongNight</forcedWeather>
+						
 					</li>
 					<li>
 						<durationDays>15~30</durationDays>
