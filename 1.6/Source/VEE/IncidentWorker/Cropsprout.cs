@@ -15,6 +15,11 @@ namespace VEE.RegularEvents
 
             if (!base.CanFireNowSub(parms)) return false;
 
+            if (map.gameConditionManager.ConditionIsActive(VEE_DefOf.VEE_Scorch))
+            {
+                return false;
+            }
+
             plantChoosen = StaticCollections.cropSproutCandidates.RandomElement();
 
             if (!PlantUtility.GrowthSeasonNow(map, plantChoosen))
