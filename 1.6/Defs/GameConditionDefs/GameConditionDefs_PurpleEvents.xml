@@ -195,6 +195,7 @@
 		<endMessage>The long night is ending</endMessage>
 		<canBePermanent>true</canBePermanent>
 		<allowUnderground>False</allowUnderground>
+		<canAffectAllPlanetLayers>true</canAffectAllPlanetLayers>
 		<exclusiveConditions>
 			<li>VEE_Scorch</li>
 			<li>PsychicRain</li>
