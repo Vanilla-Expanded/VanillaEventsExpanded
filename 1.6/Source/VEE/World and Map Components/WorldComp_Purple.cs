@@ -23,8 +23,8 @@ namespace VEE
         public override void ExposeData()
         {
             Scribe_Values.Look(ref tickLast, "tickLast");
-            Scribe_Values.Look(ref cachedPlantGrowthMultiplier, "cachedPlantGrowthMultiplier");
-            Scribe_Values.Look(ref cachedGlobalLightLevelsMultiplier, "cachedGlobalLightLevelsMultiplier");
+            Scribe_Values.Look(ref cachedPlantGrowthMultiplier, "cachedPlantGrowthMultiplier",1);
+            Scribe_Values.Look(ref cachedGlobalLightLevelsMultiplier, "cachedGlobalLightLevelsMultiplier",1);
 
         }
 
