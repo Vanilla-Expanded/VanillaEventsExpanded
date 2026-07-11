@@ -65,6 +65,8 @@ namespace VEE
         public static ThingDef VEE_Plant_PhoraxTree;
         public static ThingDef VEE_Plant_XyrilTree;
         public static ThingDef VEE_Plant_MyrloxTree;
+        [MayRequireIdeology]
+        public static ThingDef Apparel_Burka;
 
         /* IncidentDefOf */
         public static IncidentDef RaidEnemyPurple;

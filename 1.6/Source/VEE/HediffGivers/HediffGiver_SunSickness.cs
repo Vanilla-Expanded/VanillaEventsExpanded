@@ -32,9 +32,8 @@ namespace VEE
             {
                 foreach (Apparel item in pawn.apparel.WornApparel)
                 {
-                    if (item.def.apparel.layers.Contains(ApparelLayerDefOf.Overhead))
-                    {
-                     
+                    if (item.def.apparel.layers.Contains(ApparelLayerDefOf.Overhead) || item.def == VEE_DefOf.Apparel_Burka)
+                    {                    
                         return;
                     }
                 }
