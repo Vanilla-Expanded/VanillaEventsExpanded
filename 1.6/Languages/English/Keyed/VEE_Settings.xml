@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+    <VEE_ResetSettings>Reset Settings</VEE_ResetSettings>
+    <VEE_NeedToBeIngame>You need to be ingame to end game conditions</VEE_NeedToBeIngame>
+    <VEE_StopWorldCondition>Stop world condition...</VEE_StopWorldCondition>
+    <VEE_StopMapCondition>Stop map condition...</VEE_StopMapCondition>
+    <VEE_DaysBetweenPurpleEvents>Number of day(s) in-between purple events:</VEE_DaysBetweenPurpleEvents>
+</LanguageData>

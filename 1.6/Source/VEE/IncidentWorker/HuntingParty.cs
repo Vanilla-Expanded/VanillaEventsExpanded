@@ -10,35 +10,30 @@ namespace VEE
 {
     public class HuntingParty : IncidentWorker
     {
-        private IntVec3 entryCell;
-        private Faction faction;
-        private List<Pawn> huntTargets;
+       
 
         protected override bool CanFireNowSub(IncidentParms parms)
         {
-            Map map = (Map)parms.target;
-            entryCell = IntVec3.Invalid;
-            faction = null;
-            return base.CanFireNowSub(parms)
-                   && !map.GameConditionManager.ConditionIsActive(GameConditionDefOf.ToxicFallout)
-                   && TryFindEntryCell(map, out entryCell)
-                   && TryFindFaction(out faction)
-                   && FindHuntPrey(map, faction, entryCell, out huntTargets);
+            if (!base.CanFireNowSub(parms))
+            {
+                return false;
+            }
+            Map map = (Map)parms.target;           
+            return !map.GameConditionManager.ConditionIsActive(GameConditionDefOf.ToxicFallout) && TryFindEntryCell(map, out IntVec3 intVec);
         }
 
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
-            if (faction is null || entryCell.IsValid is false) return false;
             var map = (Map)parms.target;
+            TryFindEntryCell(map, out IntVec3 entryCell);
+            Faction faction = TryFindFaction();
+            List<Pawn> huntTargets = FindHuntPrey(map, faction, entryCell);
+            if (faction is null || entryCell.IsValid is false || huntTargets.Empty()) return false;
+            
             // Spawn hunters
             var lordPawns = new List<Pawn>();
-            var pawnNumber = Math.Min(Rand.RangeInclusive(4, 7), huntTargets.Count);
-            if (pawnNumber == 0)
-            {
-                // Prevent an NRE if the event is triggered by force when CanFireNowSub returns false.
-                return false;
-            }
-
+            var pawnNumber = new IntRange(2,3).RandomInRange;
+           
             var pawnKind = faction.def.techLevel >= TechLevel.Industrial ? VEE_DefOf.VEE_Hunter : VEE_DefOf.VEE_TribalHunter;
 
             for (int i = 0; i < pawnNumber; i++)
@@ -52,14 +47,14 @@ namespace VEE
             LordMaker.MakeNewLord(faction, new LordJob_HuntingParty(faction, huntTargets.Cast<Thing>().ToList()), map, lordPawns);
 
             // Send letter
-            Find.LetterStack.ReceiveLetter("HPLabel".Translate(), "HP".Translate(faction), LetterDefOf.NeutralEvent, new LookTargets(entryCell, map), faction);
+            Find.LetterStack.ReceiveLetter("VEE_HuntingPartyLabel".Translate(), "VEE_HuntingPartyDesc".Translate(faction), LetterDefOf.NeutralEvent, new LookTargets(entryCell, map), faction);
 
             return true;
         }
 
-        private bool FindHuntPrey(Map map, Faction faction, IntVec3 entryCell, out List<Pawn> huntTargets)
+        private List<Pawn> FindHuntPrey(Map map, Faction faction, IntVec3 entryCell)
         {
-            huntTargets = new List<Pawn>();
+            List<Pawn> huntTargets = new List<Pawn>();
             var allPawns = map.mapPawns.AllPawns.ToList();
 
             for (int i = 0; i < allPawns.Count; i++)
@@ -76,22 +71,27 @@ namespace VEE
             }
             huntTargets = huntTargets.OrderByDescending(p => p.RaceProps.baseBodySize).ToList();
 
-            return huntTargets.Count > 0;
+            return huntTargets;
         }
 
         private bool TryFindEntryCell(Map map, out IntVec3 cell)
         {
-            return CellFinder.TryFindRandomEdgeCellWith((IntVec3 c) => map.reachability.CanReachColony(c), map, CellFinder.EdgeRoadChance_Ignore, out cell);
+            bool entryCell = CellFinder.TryFindRandomEdgeCellWith((IntVec3 c) => map.reachability.CanReachColony(c), map, CellFinder.EdgeRoadChance_Ignore, out cell);
+
+            return entryCell;
         }
 
-        private bool TryFindFaction(out Faction faction)
+        private Faction TryFindFaction()
         {
-            List<Faction> factions = Find.FactionManager.AllFactions.ToList().FindAll(f => f != Faction.OfPlayer && !f.HostileTo(Faction.OfPlayer) && !f.Hidden && !f.defeated && f.def.techLevel >= TechLevel.Neolithic);
+            List<Faction> factions = Find.FactionManager.AllFactions.ToList().FindAll(f => f != Faction.OfPlayer 
+            && !f.HostileTo(Faction.OfPlayer) && !f.Hidden && !f.defeated 
+            && f.def.techLevel >= TechLevel.Neolithic && f.def!=VEE_DefOf.OutlanderRoughPig);
             if (ModLister.IdeologyInstalled && ModsConfig.IdeologyActive) factions.RemoveAll(f => f.ideos != null && f.ideos.HasAnyIdeoWithMeme(VEE_DefOf.AnimalPersonhood));
-            faction = factions.RandomElement();
-
-            if (faction != null) return true;
-            return false;
+            if (!factions.NullOrEmpty())
+            {
+                return factions.RandomElement();
+            }          
+            return null;
         }
     }
 }

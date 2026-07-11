@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
 using UnityEngine;
@@ -31,7 +31,7 @@ namespace VEE.Settings
             float y = startPos;
             // Reset everything
             Rect resetRect = new Rect(inRect.x, y, inRect.width, sLineHeight);
-            if (Widgets.ButtonText(resetRect, "BReset".Translate()))
+            if (Widgets.ButtonText(resetRect, "VEE_ResetSettings".Translate()))
             {
                 for (int num = 0; num < incidentsStatus.Count; num++)
                 {
@@ -57,7 +57,7 @@ namespace VEE.Settings
             }
             else
             {
-                CenteredLabel(fullRect, "NeedToBeIngame".Translate());
+                CenteredLabel(fullRect, "VEE_NeedToBeIngame".Translate());
                 y += offset + sLineHeight;
             }
             // Days between purple events
@@ -121,7 +121,7 @@ namespace VEE.Settings
 
         private void ResetWorldCondButton(Rect leftRect)
         {
-            if (Widgets.ButtonText(leftRect, "GCWResetOBO".Translate()) && Find.World != null)
+            if (Widgets.ButtonText(leftRect, "VEE_StopWorldCondition".Translate()) && Find.World != null)
             {
                 var floatMenuOptions = new List<FloatMenuOption>();
                 if (Find.World.GameConditionManager != null && !Find.World.GameConditionManager.ActiveConditions.NullOrEmpty())
@@ -144,7 +144,7 @@ namespace VEE.Settings
 
         private void ResetMapCondButton(Rect rightRect)
         {
-            if (Widgets.ButtonText(rightRect, "GCMResetOBO".Translate()) && Find.CurrentMap != null)
+            if (Widgets.ButtonText(rightRect, "VEE_StopMapCondition".Translate()) && Find.CurrentMap != null)
             {
                 var floatMenuOptions = new List<FloatMenuOption>();
                 if (Find.CurrentMap.GameConditionManager != null && !Find.CurrentMap.GameConditionManager.ActiveConditions.NullOrEmpty())

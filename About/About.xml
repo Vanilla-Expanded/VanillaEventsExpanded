@@ -9,7 +9,11 @@
 	</supportedVersions>
 	<modIconPath IgnoreIfNoMatchingField="True">UI/VELogo</modIconPath>
 	<packageId>VanillaExpanded.VEE</packageId>
-	<description>Vanilla Events Expanded adds several new events to the game, all in line with vanilla events - nothing too drastic. A new tier of events is added - Purple events. Instead of having strict negative or positive effects, purple events force players to adapt as they last significantly longer than events like Toxic Fallout or Volcanic Winter.
+	<description>Vanilla Events Expanded 2 is a comprehensive remake designed to breathe new life into events you can encounter in your game. It remains simple at it’s core, as it’s what kept the mod popular for years, while enhancing existing events to offer a more fleshed-out and immersive experience. Rather than adding overwhelming complexity, this version focuses on adding depth and refinement to familiar events, ensuring they still feel familiar, while also being polished and of the highest quality.
+
+Purple events have been overhauled to be event chains instead, giving you a rough idea how long until the event ends. Events that were broken or behaved weird before have been completely changed. We have also brought the storytelling more in-line with the base game - space battles have been replaced with orbital trader ship crashes, for example.
+
+Several new events have also been added, enhancing the variety you are offered. I’m pretty proud of this remake and I hope you don’t find it too disruptive. I think we have improved the mod across the board.
 	</description>
 	<modDependencies>
 		<li>

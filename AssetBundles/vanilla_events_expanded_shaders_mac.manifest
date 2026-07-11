@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 1180732590
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 44c99a31528a1e12a84ea9f820f56a17
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 0df1dec30b5d061d422d3e6493d27647
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 44c99a31528a1e12a84ea9f820f56a17
+HashAppended: 0
+ClassTypes:
+- Class: 48
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Data/VanillaExpanded.VEE/Materials/HazeFullscreen.shader
+- Assets/Data/VanillaExpanded.VEE/Materials/Haze.shader
+Dependencies: []

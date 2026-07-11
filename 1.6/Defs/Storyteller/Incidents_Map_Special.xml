@@ -1,47 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-  <IncidentTargetTagDef>
-    <defName>Map_Dummy</defName>
-  </IncidentTargetTagDef>
-
-  <!--================= Purple event attracted events ================-->
-  <IncidentDef>
-    <defName>RaidEnemyPurple</defName>
-    <label>enemy raid ice age</label>
-    <targetTags>
-      <li>Map_Dummy</li>
-    </targetTags>
-    <workerClass>IncidentWorker_RaidEnemy</workerClass>
-    <baseChance>3.5</baseChance>
-    <category>ThreatBig</category>
-    <pointsScaleable>true</pointsScaleable>
-    <tale>Raid</tale>
-  </IncidentDef>
-
-  <IncidentDef>
-    <defName>ManhunterPackPurple</defName>
-    <label>manhunter pack</label>
-    <targetTags>
-      <li>Map_Dummy</li>
-    </targetTags>
-    <workerClass>IncidentWorker_AggressiveAnimals</workerClass>
-    <baseChance>4.5</baseChance>
-    <category>ThreatBig</category>
-    <minRefireDays>8</minRefireDays>
-    <pointsScaleable>true</pointsScaleable>
-    <tale>ManhunterPack</tale>
-  </IncidentDef>
-
-  <IncidentDef>
-    <defName>AnimalInsanityMassPurple</defName>
-    <label>mass animal insanity</label>
-    <targetTags>
-      <li>Map_Dummy</li>
-    </targetTags>
-    <workerClass>IncidentWorker_AnimalInsanityMass</workerClass>
-    <baseChance>3.3</baseChance>
-    <minRefireDays>1</minRefireDays>
-    <category>ThreatBig</category>
-    <pointsScaleable>true</pointsScaleable>
-  </IncidentDef>
+	<IncidentTargetTagDef>
+		<defName>Map_Dummy</defName>
+	</IncidentTargetTagDef>
+	<!--================= Purple event attracted events ================-->
+	<IncidentDef>
+		<defName>RaidEnemyPurple</defName>
+		<label>enemy raid whiteout</label>
+		<targetTags>
+			<li>Map_Dummy</li>
+		</targetTags>
+		<workerClass>IncidentWorker_RaidEnemy</workerClass>
+		<baseChance>3.5</baseChance>
+		<category>ThreatBig</category>
+		<pointsScaleable>true</pointsScaleable>
+		<tale>Raid</tale>
+	</IncidentDef>
+	<IncidentDef>
+		<defName>ManhunterPackPurple</defName>
+		<label>manhunter pack</label>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>IncidentWorker_AggressiveAnimals</workerClass>
+		<baseChance>0</baseChance>
+		<category>ThreatBig</category>
+		<minRefireDays>8</minRefireDays>
+		<pointsScaleable>true</pointsScaleable>
+		<tale>ManhunterPack</tale>
+	</IncidentDef>
+	<IncidentDef>
+		<defName>InfestationPurple</defName>
+		<label>infestation</label>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>IncidentWorker_Infestation</workerClass>
+		<letterLabel>Infestation</letterLabel>
+		<letterText>Giant insects are tunneling towards you! They will break through in a few seconds and plant hives.\n\nThe hives will spawn more insects and more hives.\n\nIf you don't want the insects to infest the whole area, destroy the hives. But beware - the bugs will defend their home.</letterText>
+		<letterDef>ThreatBig</letterDef>
+		<baseChance>0</baseChance>
+		<minRefireDays>20</minRefireDays>
+		<category>ThreatBig</category>
+		<pointsScaleable>true</pointsScaleable>
+		<minThreatPoints>400</minThreatPoints>
+		<tale>Infestation</tale>
+	</IncidentDef>
+	<IncidentDef>
+		<defName>AnimalInsanityMassPurple</defName>
+		<label>mass animal insanity</label>
+		<targetTags>
+			<li>Map_Dummy</li>
+		</targetTags>
+		<workerClass>IncidentWorker_AnimalInsanityMass</workerClass>
+		<baseChance>3.3</baseChance>
+		<minRefireDays>1</minRefireDays>
+		<category>ThreatBig</category>
+		<pointsScaleable>true</pointsScaleable>
+	</IncidentDef>
+	<IncidentDef>
+		<defName>VEE_WhiteoutRefugees</defName>
+		<label>desperate refugees</label>
+		<category>Misc</category>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>VEE.IncidentWorker_WhiteoutRefugees</workerClass>
+		<baseChance>0</baseChance>
+		<minRefireDays>10</minRefireDays>
+		<earliestDay>180</earliestDay>
+	</IncidentDef>
 </Defs>

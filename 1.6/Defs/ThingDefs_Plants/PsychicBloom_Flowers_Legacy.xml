@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef Name="VEE_Flower" ParentName="PlantBase" Abstract="True">
+    <statBases>
+      <MaxHitPoints>85</MaxHitPoints>
+      <Nutrition>0.05</Nutrition>
+    </statBases>
+    <graphicData>
+      <graphicClass>Graphic_Random</graphicClass>
+    </graphicData>
+    <altitudeLayer>Item</altitudeLayer>
+    <selectable>true</selectable>
+    <ingestible>
+      <canAutoSelectAsFoodForCaravan>false</canAutoSelectAsFoodForCaravan>
+    </ingestible>
+    <plant>
+      <dieIfLeafless>true</dieIfLeafless>
+      <harvestTag>Standard</harvestTag>
+      <sowTags>
+        <li>Ground</li>
+        <li>Decorative</li>
+      </sowTags>
+      <growMinGlow>0.3</growMinGlow>
+      <topWindExposure>0.1</topWindExposure>
+      <visualSizeRange>0.3~1.05</visualSizeRange>
+      <wildOrder>1</wildOrder>
+      <purpose>Beauty</purpose>
+    </plant>
+  </ThingDef>
+
+  <ThingDef ParentName="VEE_Flower">
+    <defName>VEE_Plant_Bluebell</defName>
+    <label>bluebell</label>
+    <description>A garden flower with a violet–blue teint, with strongly recurved petals. Bluebells are very beautiful, and last long.</description>
+    <statBases>
+      <Beauty>16</Beauty>
+      <BeautyOutdoors>16</BeautyOutdoors>
+    </statBases>
+    <graphicData>
+      <texPath>Things/Plants/Bluebells</texPath>
+    </graphicData>
+    <plant>
+      <sowWork>950</sowWork>
+      <growDays>3</growDays>
+      <lifespanDaysPerGrowDays>6</lifespanDaysPerGrowDays>
+    </plant>
+  </ThingDef>
+
+  <ThingDef ParentName="VEE_Flower">
+    <defName>VEE_Plant_Gardenia</defName>
+    <label>gardenia</label>
+    <description>A flower with large petals. Gardenias are very beautiful.</description>
+    <statBases>
+      <Beauty>19</Beauty>
+      <BeautyOutdoors>19</BeautyOutdoors>
+    </statBases>
+    <graphicData>
+      <texPath>Things/Plants/Gardenia</texPath>
+    </graphicData>
+    <plant>
+      <sowWork>790</sowWork>
+      <growDays>1.8</growDays>
+      <lifespanDaysPerGrowDays>4</lifespanDaysPerGrowDays>
+    </plant>
+  </ThingDef>
+
+  <ThingDef ParentName="VEE_Flower">
+    <defName>VEE_Plant_Gentian</defName>
+    <label>gentian</label>
+    <description>A large cultivated flower with inimitable blue petals. Gentians are very beautiful.</description>
+    <statBases>
+      <Beauty>21</Beauty>
+      <BeautyOutdoors>21</BeautyOutdoors>
+    </statBases>
+    <graphicData>
+      <texPath>Things/Plants/Gentians</texPath>
+    </graphicData>
+    <plant>
+      <sowWork>790</sowWork>
+      <growDays>2.2</growDays>
+      <lifespanDaysPerGrowDays>3</lifespanDaysPerGrowDays>
+    </plant>
+  </ThingDef>
+
+  <ThingDef ParentName="VEE_Flower">
+    <defName>VEE_Plant_Petunia</defName>
+    <label>petunia</label>
+    <description>A long lasting flower with purple petals. Petunias are very beautiful.</description>
+    <statBases>
+      <Beauty>18</Beauty>
+      <BeautyOutdoors>18</BeautyOutdoors>
+    </statBases>
+    <graphicData>
+      <texPath>Things/Plants/Petunias</texPath>
+    </graphicData>
+    <plant>
+      <sowWork>790</sowWork>
+      <growDays>1.8</growDays>
+      <lifespanDaysPerGrowDays>4</lifespanDaysPerGrowDays>
+    </plant>
+  </ThingDef>
+</Defs>

@@ -6,7 +6,6 @@ namespace VEE.RegularEvents
 {
     public class Cropsprout : IncidentWorker
     {
-        private readonly List<string> excludedPlant = new List<string> { "Plant_TreeGauranlen", "Plant_MossGauranlen", "Plant_PodGauranlen", "Plant_TreeAnima", "Plant_GrassAnima" };
         private ThingDef plantChoosen;
         private IntVec3 cell;
 
@@ -15,17 +14,18 @@ namespace VEE.RegularEvents
             Map map = (Map)parms.target;
 
             if (!base.CanFireNowSub(parms)) return false;
-           
 
-            plantChoosen = ThingStuffPair.AllWith(p =>
-                p.plant != null &&
-                p.plant.harvestTag == "Standard" &&
-                p.plant.harvestYield != 0 &&
-                p.plant.harvestedThingDef != null &&
-                !p.plant.cavePlant &&
-                !p.defName.Contains("RB_") &&
-                !p.defName.Contains("AB_") &&
-                !excludedPlant.Contains(p.defName)).InRandomOrder().RandomElement().thing;
+            if (map.gameConditionManager.ConditionIsActive(VEE_DefOf.VEE_Scorch))
+            {
+                return false;
+            }
+
+            plantChoosen = StaticCollections.cropSproutCandidates.RandomElement();
+
+            if (!PlantUtility.GrowthSeasonNow(map, plantChoosen))
+            {
+                return false;
+            }
 
             return TryFindRootCell(map, out cell, plantChoosen);
         }
@@ -33,34 +33,31 @@ namespace VEE.RegularEvents
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
             Map map = (Map)parms.target;
-            int pNumber = Rand.RangeInclusive(10, 20);
+            int pNumber = Rand.RangeInclusive(15, 30);
 
             for (int i = 0; i < pNumber; i++)
             {
-                if (CellFinder.TryRandomClosewalkCellNear(cell, map, 6, out IntVec3 intVec, x => CanSpawnAt(x, map, plantChoosen)))
+                if (CellFinder.TryRandomClosewalkCellNear(cell, map, 8, out IntVec3 intVec, x => CanSpawnAt(x, map, plantChoosen)))
                 {
-                    Plant p = intVec.GetPlant(map);
-                    if (p == null || !excludedPlant.Contains(p.def.defName))
-                    {
-                        p?.DeSpawn();
-                        Plant crop = GenSpawn.Spawn(plantChoosen, intVec, map, WipeMode.Vanish) as Plant;
-                        crop.Growth = 0.5f;
-                    }
+                    intVec.GetPlant(map)?.Destroy();
+                    Plant crop = GenSpawn.Spawn(plantChoosen, intVec, map, WipeMode.Vanish) as Plant;
+                    crop.Growth = new FloatRange(0.05f, 0.15f).RandomInRange;
+                    
                 }
             }
 
-            Find.LetterStack.ReceiveLetter("CSLabel".Translate(), $"{"CS1".Translate()} {plantChoosen.label} {"CS2".Translate()}", LetterDefOf.PositiveEvent, new TargetInfo(cell, map), hyperlinkThingDefs: new List<ThingDef> { plantChoosen });
+            Find.LetterStack.ReceiveLetter("VEE_CropSproutLabel".Translate(plantChoosen.label), "VEE_CropSproutDesc".Translate(plantChoosen.label), LetterDefOf.PositiveEvent, new TargetInfo(cell, map), hyperlinkThingDefs: new List<ThingDef> { plantChoosen });
             return true;
         }
 
         private bool TryFindRootCell(Map map, out IntVec3 cell, ThingDef plant)
         {
-            return CellFinderLoose.TryFindRandomNotEdgeCellWith(10, (IntVec3 x) => CanSpawnAt(x, map, plant), map, out cell);
+            return CellFinderLoose.TryFindRandomNotEdgeCellWith(10, (IntVec3 x) => CanSpawnAt(x, map, plant) && x.GetRoom(map).CellCount >= 64, map, out cell);
         }
 
         private bool CanSpawnAt(IntVec3 c, Map map, ThingDef plantC)
         {
-            if (!c.Standable(map) || c.Fogged(map) || map.fertilityGrid.FertilityAt(c) < plantC.plant.fertilityMin || c.GetEdifice(map) != null )
+            if (!c.Standable(map) || c.Fogged(map) || map.fertilityGrid.FertilityAt(c) < plantC.plant.fertilityMin || !c.GetRoom(map).PsychologicallyOutdoors || c.GetEdifice(map) != null || !PlantUtility.GrowthSeasonNow(c, map, plantC))
             {
                 return false;
             }

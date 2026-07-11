@@ -106,7 +106,6 @@ namespace VEE.PurpleEvents
 
         public override void GameConditionTick()
         {
-            End();
             curColorTransition += 1f / TransitionDurationTicks;
             if (curColorTransition >= 1f)
             {

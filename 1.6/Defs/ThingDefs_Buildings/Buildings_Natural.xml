@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThingDef ParentName="RockBase">
+		<defName>VEE_DeepSnow</defName>
+		<label>deep snow</label>
+		<thingClass>VEE.DeepSnow</thingClass>
+		<description>A heavy, compacted layer of snow that resists movement and muffles sound. Can be mined to remove it.</description>
+		<uiIconPath>Things/Building/Linked/VEE_DeepSnowWall_MenuIcon</uiIconPath>
+		<graphicData>
+			<texPath>Things/Building/Linked/VEE_Snow_Atlas</texPath>
+			<linkFlags Inherit="false">
+				<li>Custom5</li>
+			</linkFlags>
+		</graphicData>
+		<tickerType>Long</tickerType>
+		<filthLeaving>Filth_Water</filthLeaving>
+		<fillPercent>0.9</fillPercent>
+		<holdsRoof>false</holdsRoof>
+		<blockLight>false</blockLight>
+		<statBases>
+			<Flammability>0</Flammability>
+			<Beauty>0</Beauty>
+			<MaxHitPoints>185</MaxHitPoints>
+		</statBases>
+		<building>
+			<isAirtight>false</isAirtight>
+			<mineableYieldWasteable>false</mineableYieldWasteable>
+			<biomeSpecific>true</biomeSpecific>
+			<mineableScatterLumpSizeRange>12~32</mineableScatterLumpSizeRange>
+			<mineablePreventMeteorite>true</mineablePreventMeteorite>
+			<isNaturalRock>false</isNaturalRock>
+			<claimable>false</claimable>
+			<repairable>false</repairable>
+		</building>
+	</ThingDef>
+</Defs>

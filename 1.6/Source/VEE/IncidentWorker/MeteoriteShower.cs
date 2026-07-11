@@ -23,7 +23,7 @@ namespace VEE.RegularEvents
 
             System.Random r = new System.Random();
             int n = r.Next(3, 8);
-            int radius = r.Next(10, 25);
+            int radius = r.Next(10, 30);
             List<Thing> list = new List<Thing>();
 
             IntVec3 intVec = intVecb;
@@ -35,7 +35,7 @@ namespace VEE.RegularEvents
                 {
                     intVec += (Rand.InsideUnitCircleVec3 * radius).ToIntVec3();
                 }
-                list = ThingSetMakerDefOf.Meteorite.root.Generate();
+                list = VEE_DefOf.VEE_MeteoriteShowerMaker.root.Generate();
                 SkyfallerMaker.SpawnSkyfaller(ThingDefOf.MeteoriteIncoming, list, intVec, map);
                 intVec = intVecb;
             }
@@ -47,7 +47,7 @@ namespace VEE.RegularEvents
 
         private bool TryFindCell(out IntVec3 cell, Map map)
         {
-            int maxMineables = ThingSetMaker_Meteorite.MineablesCountRange.max;
+            int maxMineables = ThingSetMaker_MeteoriteShower.MineablesCountRange.max;
             return CellFinderLoose.TryFindSkyfallerCell(ThingDefOf.MeteoriteIncoming, map, TerrainAffordanceDefOf.Walkable, out cell, 10, default(IntVec3), -1, true, false, false, false, true, true, delegate (IntVec3 x)
             {
                 int num = Mathf.CeilToInt(Mathf.Sqrt(maxMineables)) + 2;

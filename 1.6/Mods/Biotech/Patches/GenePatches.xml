@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/GeneDef[defName="FireResistant"]/statFactors</xpath>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>Defs/GeneDef[defName="FireResistant"]</xpath>
+			<value>
+				<statFactors/>
+			</value>
+		</nomatch>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/GeneDef[defName="FireResistant"]/statFactors</xpath>
+		<value>
+			<VEF_SunSicknessBuildupMultiplier>0.35</VEF_SunSicknessBuildupMultiplier>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/GeneDef[defName="UVSensitivity_Mild"]/statFactors</xpath>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>Defs/GeneDef[defName="UVSensitivity_Mild"]</xpath>
+			<value>
+				<statFactors/>
+			</value>
+		</nomatch>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/GeneDef[defName="UVSensitivity_Mild"]/statFactors</xpath>
+		<value>
+			<VEF_SunSicknessBuildupMultiplier>1.2</VEF_SunSicknessBuildupMultiplier>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/GeneDef[defName="UVSensitivity_Intense"]/statFactors</xpath>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>Defs/GeneDef[defName="UVSensitivity_Intense"]</xpath>
+			<value>
+				<statFactors/>
+			</value>
+		</nomatch>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/GeneDef[defName="UVSensitivity_Intense"]/statFactors</xpath>
+		<value>
+			<VEF_SunSicknessBuildupMultiplier>1.5</VEF_SunSicknessBuildupMultiplier>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/GeneDef[defName="FireWeakness"]/statFactors</xpath>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>Defs/GeneDef[defName="FireWeakness"]</xpath>
+			<value>
+				<statFactors/>
+			</value>
+		</nomatch>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/GeneDef[defName="FireWeakness"]/statFactors</xpath>
+		<value>
+			<VEF_SunSicknessBuildupMultiplier>1.25</VEF_SunSicknessBuildupMultiplier>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Races Expanded - Sanguophage</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/GeneDef[defName="VRE_Sensitivity_Dangerous"]/statFactors</xpath>
+					<nomatch Class="PatchOperationAdd">
+						<xpath>Defs/GeneDef[defName="VRE_Sensitivity_Dangerous"]</xpath>
+						<value>
+							<statFactors/>
+						</value>
+					</nomatch>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/GeneDef[defName="VRE_Sensitivity_Dangerous"]/statFactors</xpath>
+					<value>
+						<VEF_SunSicknessBuildupMultiplier>2</VEF_SunSicknessBuildupMultiplier>
+					</value>
+				</li>
+			</operations>
+		</match>
+	</Operation>
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Alpha Genes</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/GeneDef[defName="AG_UVSensitivity_Minor"]/statFactors</xpath>
+					<nomatch Class="PatchOperationAdd">
+						<xpath>Defs/GeneDef[defName="AG_UVSensitivity_Minor"]</xpath>
+						<value>
+							<statFactors/>
+						</value>
+					</nomatch>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/GeneDef[defName="AG_UVSensitivity_Minor"]/statFactors</xpath>
+					<value>
+						<VEF_SunSicknessBuildupMultiplier>1.1</VEF_SunSicknessBuildupMultiplier>
+					</value>
+				</li>
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/GeneDef[defName="AG_Sensitivity_Vicious"]/statFactors</xpath>
+					<nomatch Class="PatchOperationAdd">
+						<xpath>Defs/GeneDef[defName="AG_Sensitivity_Vicious"]</xpath>
+						<value>
+							<statFactors/>
+						</value>
+					</nomatch>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/GeneDef[defName="AG_Sensitivity_Vicious"]/statFactors</xpath>
+					<value>
+						<VEF_SunSicknessBuildupMultiplier>3</VEF_SunSicknessBuildupMultiplier>
+					</value>
+				</li>
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/GeneDef[defName="AG_Sensitivity_Lethal"]/statFactors</xpath>
+					<nomatch Class="PatchOperationAdd">
+						<xpath>Defs/GeneDef[defName="AG_Sensitivity_Lethal"]</xpath>
+						<value>
+							<statFactors/>
+						</value>
+					</nomatch>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/GeneDef[defName="AG_Sensitivity_Lethal"]/statFactors</xpath>
+					<value>
+						<VEF_SunSicknessBuildupMultiplier>5</VEF_SunSicknessBuildupMultiplier>
+					</value>
+				</li>
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/GeneDef[defName="AG_UVPowered_Mild"]/statFactors</xpath>
+					<nomatch Class="PatchOperationAdd">
+						<xpath>Defs/GeneDef[defName="AG_UVPowered_Mild"]</xpath>
+						<value>
+							<statFactors/>
+						</value>
+					</nomatch>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/GeneDef[defName="AG_UVPowered_Mild"]/statFactors</xpath>
+					<value>
+						<VEF_SunSicknessBuildupMultiplier>0.5</VEF_SunSicknessBuildupMultiplier>
+					</value>
+				</li>
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/GeneDef[defName="AG_UVPowered_Major"]/statFactors</xpath>
+					<nomatch Class="PatchOperationAdd">
+						<xpath>Defs/GeneDef[defName="AG_UVPowered_Major"]</xpath>
+						<value>
+							<statFactors/>
+						</value>
+					</nomatch>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/GeneDef[defName="AG_UVPowered_Major"]/statFactors</xpath>
+					<value>
+						<VEF_SunSicknessBuildupMultiplier>0.1</VEF_SunSicknessBuildupMultiplier>
+					</value>
+				</li>
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/GeneDef[defName="AG_HeatImmunity"]/statFactors</xpath>
+					<nomatch Class="PatchOperationAdd">
+						<xpath>Defs/GeneDef[defName="AG_HeatImmunity"]</xpath>
+						<value>
+							<statFactors/>
+						</value>
+					</nomatch>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/GeneDef[defName="AG_HeatImmunity"]/statFactors</xpath>
+					<value>
+						<VEF_SunSicknessBuildupMultiplier>0.01</VEF_SunSicknessBuildupMultiplier>
+					</value>
+				</li>
+			</operations>
+		</match>
+	</Operation>
+</Patch>

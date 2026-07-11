@@ -3,6 +3,7 @@ using System.Linq;
 using RimWorld;
 using UnityEngine;
 using Verse;
+using Verse.Noise;
 using Verse.Sound;
 
 namespace VEE.RegularEvents
@@ -12,136 +13,111 @@ namespace VEE.RegularEvents
     {
         private IntVec3 aroundThis = new IntVec3();
         private int delay = 0;
+        public TradeShip tradeShip;
+
+        public static List<(ThingDef,ThingDef, int)> possibleChunks = new List<(ThingDef,ThingDef, int)>() { (VEE_DefOf.VEE_ShipChunkHumanIncoming,VEE_DefOf.VEE_ShipChunkHuman,4),
+        (VEE_DefOf.VEE_ShipChunkHumanIncoming_Volatile,VEE_DefOf.VEE_ShipChunkHuman_Volatile_Spawner,2),
+        (VEE_DefOf.VEE_ShipChunkHumanIncoming_Cargo,VEE_DefOf.VEE_ShipChunkHuman_Cargo,1),
+        (VEE_DefOf.VEE_ShipChunkHumanIncoming_DropPod,VEE_DefOf.VEE_ShipChunkHuman_DropPod_Spawner,1)};
 
         public override bool AllowEnjoyableOutsideNow(Map map) => false;
 
         public override void Init()
         {
-            RCellFinder.TryFindRandomPawnEntryCell(out IntVec3 reach, SingleMap, 1f, false, c => c.Walkable(SingleMap));
-            RCellFinder.TryFindRandomCellOutsideColonyNearTheCenterOfTheMap(reach, SingleMap, 50f, out aroundThis);
-            Find.LetterStack.ReceiveLetter(LetterMaker.MakeLetter("SpaceBattleLabel".Translate(), "SpaceBattle".Translate(), LetterDefOf.NegativeEvent, new LookTargets(aroundThis, SingleMap)));
+            TraderKindDef traderKind = DefDatabase<TraderKindDef>.AllDefs.Where((TraderKindDef x) => CanSpawn(SingleMap, x))?.RandomElementByWeight((TraderKindDef traderDef) => traderDef.CalculatedCommonality);
+            if (traderKind != null)
+            {
+                tradeShip = new TradeShip(traderKind, GetFaction(traderKind));
+
+                RCellFinder.TryFindRandomPawnEntryCell(out IntVec3 reach, SingleMap, 1f, false, c => c.Walkable(SingleMap));
+                RCellFinder.TryFindRandomCellOutsideColonyNearTheCenterOfTheMap(reach, SingleMap, 50f, out aroundThis);
+                Find.LetterStack.ReceiveLetter(LetterMaker.MakeLetter("VEE_OrbitalCrashLabel".Translate(), "VEE_OrbitalCrashDesc".Translate(tradeShip.name), LetterDefOf.ThreatBig, new LookTargets(aroundThis, SingleMap)));
+
+            }
+        }
+
+        private bool CanSpawn(Map map, TraderKindDef trader)
+        {
+            if (!trader.orbital)
+            {
+                return false;
+            }
+            if (trader.faction == null)
+            {
+                return true;
+            }
+            Faction faction = GetFaction(trader);
+            if (faction == null)
+            {
+                return false;
+            }
+            foreach (Pawn freeColonist in map.mapPawns.FreeColonists)
+            {
+                if (freeColonist.CanTradeWith(faction, trader).Accepted)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private Faction GetFaction(TraderKindDef trader)
+        {
+            if (trader.faction == null)
+            {
+                return null;
+            }
+            if (!Find.FactionManager.AllFactions.Where((Faction f) => f.def == trader.faction).TryRandomElement(out var result))
+            {
+                return null;
+            }
+            return result;
         }
 
         public override void ExposeData()
         {
             base.ExposeData();
             Scribe_Values.Look(ref aroundThis, "aroundThis");
+            Scribe_Deep.Look(ref tradeShip, "tradeShip");
 
-            if (Scribe.mode == LoadSaveMode.PostLoadInit)
-            {
-                if (!nextExplosionCell.IsValid)
-                {
-                    GetNextExplosionCell();
-                }
-                if (projectiles == null)
-                {
-                    projectiles = new List<Bombardment.BombardmentProjectile>();
-                }
-            }
         }
 
-        private readonly int bombIntervalTicks = 1500;
-        private int ticksToNextEffect;
-        private IntVec3 nextExplosionCell = new IntVec3();
-        private List<Bombardment.BombardmentProjectile> projectiles = new List<Bombardment.BombardmentProjectile>();
-
+       
         public override void GameConditionTick()
         {
-            End();
             Map map = SingleMap;
-            System.Random r = new System.Random();
+            
             delay++;
 
             if (delay % 500 == 0)
             {
-                for (int i = 0; i < r.Next(1, 2); i++)
+                int randomInstances = new IntRange(1, 2).RandomInRange;
+                for (int i = 0; i < randomInstances; i++)
                 {
+                    (ThingDef, ThingDef, int) randomChunk = possibleChunks.RandomElementByWeight(x => x.Item3);
                     IntVec3 pos = new IntVec3();
-                    VEETryFindSkyfallerCell(VEE_DefOf.SlagIncoming, aroundThis, map, 50, out pos);
-                    Skyfaller sk1 = SkyfallerMaker.SpawnSkyfaller(VEE_DefOf.SlagIncoming, ThingDefOf.ChunkSlagSteel, pos, map);
-                }
-            }
-            if (delay % 1200 == 0)
-            {
-                for (int i = 0; i < r.Next(1, 2); i++)
-                {
-                    IntVec3 intVec = new IntVec3();
-                    VEETryFindSkyfallerCell(ThingDefOf.DropPodIncoming, aroundThis, map, 60, out intVec);
-                    PawnGenerationRequest request = new PawnGenerationRequest(PawnKindDefOf.SpaceRefugee, null);
-                    Pawn pawn = PawnGenerator.GeneratePawn(request);
-                    DamageInfo damageInfo = new DamageInfo(DamageDefOf.Bullet, 1);
-                    System.Random random = new System.Random();
-                    if (random.Next(0, 101) > 25)
+                    VEETryFindSkyfallerCell(randomChunk.Item1, aroundThis, map, 30, out pos);
+                    if (randomChunk.Item1 == VEE_DefOf.VEE_ShipChunkHumanIncoming_Cargo)
                     {
-                        pawn.Kill(damageInfo);
+                        CargoChunkSpawner cargoPod = ThingMaker.MakeThing(VEE_DefOf.VEE_ShipChunkHuman_Cargo) as CargoChunkSpawner;
+                        cargoPod.tradeship = tradeShip;
+                        Skyfaller sk1 = SkyfallerMaker.SpawnSkyfaller(randomChunk.Item1, cargoPod, pos, map);
                     }
                     else
-                    {
-                        HealthUtility.DamageUntilDowned(pawn, true);
+                    {                       
+                        Skyfaller sk1 = SkyfallerMaker.SpawnSkyfaller(randomChunk.Item1, randomChunk.Item2, pos, map);
                     }
-                    pawn.apparel.WornApparel.RemoveAll((Apparel a) => a.MarketValue > 400);
-                    List<Thing> list = new List<Thing>
-                    {
-                        pawn
-                    };
-                    ChangeDeadPawnsToTheirCorpses(list);
-                    DropPodUtility.DropThingsNear(intVec, map, list, 1, false, true, true);
+                    
                 }
             }
-            if (delay % 2000 == 0)
-            {
-                IntVec3 pos = new IntVec3();
-                VEETryFindSkyfallerCell(ThingDefOf.ShipChunkIncoming, aroundThis, map, 35, out pos);
-                Skyfaller sk2 = SkyfallerMaker.SpawnSkyfaller(ThingDefOf.ShipChunkIncoming, VEE_DefOf.VEE_ShipChunkHuman, pos, map);
-            }
+           
 
-            // Explosion handle
-
-            if (!nextExplosionCell.IsValid)
-            {
-                ticksToNextEffect = bombIntervalTicks;
-                GetNextExplosionCell();
-            }
-            ticksToNextEffect--;
-            if (ticksToNextEffect <= 0 && base.TicksLeft >= bombIntervalTicks)
-            {
-                SoundDefOf.Bombardment_PreImpact.PlayOneShot(new TargetInfo(nextExplosionCell, map, false));
-                projectiles.Add(new Bombardment.BombardmentProjectile(200, nextExplosionCell));
-                ticksToNextEffect = bombIntervalTicks;
-                GetNextExplosionCell();
-            }
-            for (int i = projectiles.Count - 1; i >= 0; i--)
-            {
-                projectiles[i].Tick();
-                Draw();
-                if (projectiles[i].LifeTime <= 0)
-                {
-                    IntVec3 targetCell = projectiles[i].targetCell;
-                    DamageDef bomb = Rand.Range(1, 10) > 2 ? DamageDefOf.Bomb : DamageDefOf.Flame;
-                    GenExplosion.DoExplosion(targetCell, map, Rand.Range(3f, 6f), bomb, null);
-                    projectiles.RemoveAt(i);
-                }
-            }
+         
         }
 
-        private void Draw()
-        {
-            if (projectiles.NullOrEmpty())
-            {
-                return;
-            }
-            for (int i = 0; i < projectiles.Count; i++)
-            {
-                projectiles[i].Draw(ProjectileMaterial);
-            }
-        }
+      
 
-        private void GetNextExplosionCell()
-        {
-            nextExplosionCell = (from x in GenRadial.RadialCellsAround(aroundThis, 30, true)
-                                 where x.InBounds(SingleMap) && !x.Fogged(SingleMap) && !x.Roofed(SingleMap)
-                                 select x).RandomElementByWeight((IntVec3 x) => Bombardment.DistanceChanceFactor.Evaluate(x.DistanceTo(aroundThis)));
-        }
+       
 
         private void ChangeDeadPawnsToTheirCorpses(List<Thing> things)
         {
@@ -156,29 +132,9 @@ namespace VEE.RegularEvents
 
         public bool VEETryFindSkyfallerCell(ThingDef skyfaller, IntVec3 nearLoc, Map map, int maxDist, out IntVec3 pos)
         {
-            return CellFinderLoose.TryFindSkyfallerCell(skyfaller, map,TerrainAffordanceDefOf.Walkable, out pos, 10, nearLoc, maxDist, false, false, false, true, true, true, c => c.InBounds(map) && !c.Fogged(map) && c.Walkable(map));
+            return CellFinderLoose.TryFindSkyfallerCell(skyfaller, map,TerrainAffordanceDefOf.Walkable, out pos, 10, nearLoc, maxDist, false, true, true, true, false, false, c => c.InBounds(map) && !c.Fogged(map) && c.Walkable(map) && c.GetTerrain(map) != TerrainDefOf.Space);
         }
 
-        public void StartRandomFire(IntVec3 pos, Map map)
-        {
-            IntVec3 c = (from x in GenRadial.RadialCellsAround(pos, 25f, true)
-                         where x.InBounds(map)
-                         select x).RandomElementByWeight((IntVec3 x) => SpaceBattle.DistanceChanceFactor.Evaluate(x.DistanceTo(pos)));
-            FireUtility.TryStartFireIn(c, map, Rand.Range(0.1f, 0.925f),null);
-        }
-
-        public static readonly SimpleCurve DistanceChanceFactor = new SimpleCurve
-        {
-            {
-                new CurvePoint(0f, 1f),
-                true
-            },
-            {
-                new CurvePoint(15f, 0.1f),
-                true
-            }
-        };
-
-        private static readonly Material ProjectileMaterial = MaterialPool.MatFrom("Things/Projectile/Bullet_Big", ShaderDatabase.Transparent, Color.white);
+       
     }
 }

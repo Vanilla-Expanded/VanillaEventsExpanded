@@ -1,0 +1,104 @@
+﻿using RimWorld;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Verse;
+using Verse.AI.Group;
+
+namespace VEE.RegularEvents
+{
+    public class Crashlanded : IncidentWorker
+    {
+
+       
+        protected override bool TryExecuteWorker(IncidentParms parms)
+        {
+            Map map = (Map)parms.target;
+            string label = "VEE_CrashlandedLabel".Translate();
+            string text = "VEE_CrashlandedDesc".Translate();
+
+            List<Thing> things = new List<Thing>();
+
+            List<FactionRelation> list = new List<FactionRelation>();
+            foreach (Faction item in Find.FactionManager.AllFactionsListForReading)
+            {
+                if (!item.def.PermanentlyHostileTo(FactionDefOf.Beggars))
+                {
+                    list.Add(new FactionRelation
+                    {
+                        other = item,
+                        kind = FactionRelationKind.Neutral
+                    });
+                }
+            }
+
+            Faction faction = FactionGenerator.NewGeneratedFactionWithRelations(FactionDefOf.Beggars, list, hidden: true);
+            faction.temporary = true;
+            faction.def.apparelStuffFilter = FactionDefOf.PlayerColony.apparelStuffFilter;
+            Find.FactionManager.Add(faction);
+            ThingSetMakerParams pawnParms = new ThingSetMakerParams();
+            pawnParms.makingFaction = faction;
+            List<Pawn> pawnsForDefendJob = new List<Pawn>();
+
+            for (int i = 0; i < 3; i++)
+            {
+                Pawn pawn = ThingUtility.FindPawn(VEE_DefOf.VEE_CrashlandedColonists.root.Generate(pawnParms));
+                if (Rand.Chance(0.5f))
+                {
+                    pawn.health.AddHediff(HediffDefOf.CryptosleepSickness);
+                }
+                if (i == 0)
+                {
+                    ThingWithComps rifle = (ThingWithComps)ThingMaker.MakeThing(VEE_DefOf.Gun_BoltActionRifle);
+                    pawn.equipment.AddEquipment(rifle);
+                    Thing silver = ThingMaker.MakeThing(ThingDefOf.Silver);
+                    silver.stackCount = 200;
+                    pawn.inventory.TryAddAndUnforbid(silver);
+                }
+                if (i == 1)
+                {
+                    ThingWithComps gun = (ThingWithComps)ThingMaker.MakeThing(VEE_DefOf.Gun_Autopistol);
+                    pawn.equipment.AddEquipment(gun);
+                    Thing components = ThingMaker.MakeThing(ThingDefOf.ComponentIndustrial);
+                    components.stackCount = 10;
+                    pawn.inventory.TryAddAndUnforbid(components);
+                }
+                if (i == 2)
+                {
+                    Thing medicine = ThingMaker.MakeThing(ThingDefOf.MedicineIndustrial);
+                    medicine.stackCount = 10;
+                    pawn.inventory.TryAddAndUnforbid(medicine);
+
+                }
+                if (pawn.Faction != faction)
+                {
+                    pawn.SetFaction(faction);
+                }
+               
+                things.Add(pawn);
+                pawnsForDefendJob.Add(pawn);
+            }
+            PawnKindDef kindDef = PossiblePets().RandomElementByWeight((PawnKindDef td) => td.RaceProps.petness);
+            Pawn animal = PawnGenerator.GeneratePawn(kindDef, faction);
+            things.Add(animal);
+            pawnsForDefendJob.Add(animal);   
+
+            Thing meals = ThingMaker.MakeThing(ThingDefOf.MealSurvivalPack);
+            meals.stackCount = 20;
+            things.Add(meals);
+       
+            IntVec3 intVec = DropCellFinder.RandomDropSpot(map);
+            LordMaker.MakeNewLord(faction, new LordJob_DefendPointForAWhile(intVec, pawnsForDefendJob,8, 8), map, pawnsForDefendJob);
+            DropPodUtility.DropThingsNear(intVec, map, things, 110, canInstaDropDuringInit: false, leaveSlag: true);
+  
+            Find.LetterStack.ReceiveLetter(label, text, LetterDefOf.NeutralEvent, new TargetInfo(intVec, map, false), null, null);
+            return true;
+
+        }
+
+        private IEnumerable<PawnKindDef> PossiblePets()
+        {
+            return DefDatabase<PawnKindDef>.AllDefs.Where((PawnKindDef td) => td.RaceProps.Animal && td.RaceProps.petness>0);
+        }
+    }
+}

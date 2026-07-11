@@ -1,11 +1,12 @@
 ﻿using System.Linq;
 using RimWorld;
 using UnityEngine;
+using VEF.AnimalBehaviours;
 using Verse;
 
 namespace VEE.RegularEvents
 {
-    public class battleAnimal : IncidentWorker
+    public class BattleAnimal : IncidentWorker
     {
         protected override bool CanFireNowSub(IncidentParms parms)
         {
@@ -28,8 +29,8 @@ namespace VEE.RegularEvents
             {
                 return false;
             }
-            //Log.Message(pawnKindDef.ToString());
-            int num = Mathf.Clamp(GenMath.RoundRandom(2.5f / pawnKindDef.RaceProps.baseBodySize), 2, 10);
+           
+            int num = new IntRange(2,4).RandomInRange;
             for (int i = 0; i < num; i++)
             {
                 IntVec3 loc = CellFinder.RandomClosewalkCellNear(intVec, map, 12, null);
@@ -37,7 +38,7 @@ namespace VEE.RegularEvents
                 GenSpawn.Spawn(pawn, loc, map, Rot4.Random, WipeMode.Vanish, false);
                 pawn.SetFaction(Faction.OfPlayer, null);
             }
-            Find.LetterStack.ReceiveLetter("BAWILabel".Translate(pawnKindDef.GetLabelPlural(-1)).CapitalizeFirst(), "BAWI".Translate(pawnKindDef.GetLabelPlural(-1)), LetterDefOf.PositiveEvent, new TargetInfo(intVec, map, false), null, null);
+            Find.LetterStack.ReceiveLetter("VEE_BattleAnimalsWanderLabel".Translate(pawnKindDef.GetLabelPlural(-1)).CapitalizeFirst(), "VEE_BattleAnimalsWanderDesc".Translate(pawnKindDef.GetLabelPlural(-1)), LetterDefOf.PositiveEvent, new TargetInfo(intVec, map, false), null, null);
             return true;
         }
 
@@ -45,6 +46,9 @@ namespace VEE.RegularEvents
         {
             return (from x in DefDatabase<PawnKindDef>.AllDefs
                     where x.RaceProps.Animal && map.mapTemperature.SeasonAndOutdoorTemperatureAcceptableFor(x.race) && x.race.tradeTags != null && x.race.tradeTags.Contains("AnimalFighter")
+                    && !x.defName.Contains("GR_") && !StaticCollectionsClass.questDisabledAnimals.Contains(x)
+                        && !x.race.tradeTags.Contains("VEE_Exclude")
+
                     select x).TryRandomElementByWeight((PawnKindDef k) => k.race.GetStatValueAbstract(StatDefOf.Wildness), out kind);
         }
 

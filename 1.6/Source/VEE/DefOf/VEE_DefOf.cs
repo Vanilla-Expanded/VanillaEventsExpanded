@@ -1,0 +1,128 @@
+using RimWorld;
+using Verse;
+using Verse.AI;
+
+namespace VEE
+{
+    [DefOf]
+    public static class VEE_DefOf
+    {
+        /* Job DEF */
+        public static JobDef HuntAndLeave;
+
+        /* Weather DEF */
+        public static WeatherDef SnowHard;
+        public static WeatherDef Rain;
+        public static WeatherDef DryThunderstorm;
+        public static WeatherDef VEE_PsychicRain;
+
+        /* Biome DEF */
+        public static BiomeDef TemperateSwamp;
+        public static BiomeDef ColdBog;
+        public static BiomeDef TropicalSwamp;
+        public static BiomeDef ExtremeDesert;
+        public static BiomeDef AridShrubland;
+        public static BiomeDef TropicalRainforest;
+
+        /* Hediff */
+        public static HediffDef Traitor;
+        public static HediffDef MightJoin;
+        public static HediffDef VEE_SunSickness;
+        public static HediffDef VEE_PsychicRelaxationHediff;
+        public static HediffDef VEE_PsychicOverdriveHediff;
+        public static HediffDef VEE_PsychicHumHediff;
+
+        /* PawnKindDefOf */
+        public static PawnKindDef StrangerInBlack;
+        public static PawnKindDef VEE_Hunter;
+        public static PawnKindDef VEE_TribalHunter;
+
+        /* ThingDefOf */
+        public static ThingDef VEE_Shuttle;
+        public static ThingDef ShuttleChunkIncoming;
+        public static ThingDef VEE_Shuttle_Combat;
+        public static ThingDef VEE_ShuttleChunkIncoming_Combat;
+        public static ThingDef VEE_Shuttle_Heavy;
+        public static ThingDef VEE_ShuttleChunkIncoming_Heavy;
+        public static ThingDef VEE_DeepSnow;
+        public static ThingDef VEE_EarthquakeEpicenter;
+        public static ThingDef SlagIncoming;
+        public static ThingDef Gun_Autopistol;
+        public static ThingDef VEE_ShipChunkHumanIncoming;
+        public static ThingDef VEE_ShipChunkHuman;
+        public static ThingDef VEE_ShipChunkHumanIncoming_Volatile;
+        public static ThingDef VEE_ShipChunkHuman_Volatile_Spawner;
+        public static ThingDef VEE_ShipChunkHumanIncoming_Cargo;
+        public static ThingDef VEE_ShipChunkHuman_Cargo;
+        public static ThingDef VEE_ShipChunkHumanIncoming_DropPod;
+        public static ThingDef VEE_ShipChunkHuman_DropPod_Spawner;
+        public static ThingDef Gun_BoltActionRifle;
+        public static ThingDef VEE_Plant_PsychicLotus;
+        public static ThingDef VEE_Plant_PinkGrass;
+        public static ThingDef VEE_Plant_TallPinkGrass;
+        public static ThingDef VEE_Plant_VyspStrands;
+        public static ThingDef VEE_Plant_CyllenCluster;
+        public static ThingDef VEE_Plant_PhoraxTree;
+        public static ThingDef VEE_Plant_XyrilTree;
+        public static ThingDef VEE_Plant_MyrloxTree;
+        [MayRequireIdeology]
+        public static ThingDef Apparel_Burka;
+
+        /* IncidentDefOf */
+        public static IncidentDef RaidEnemyPurple;
+        public static IncidentDef ManhunterPackPurple;
+        public static IncidentDef AnimalInsanityMassPurple;
+        public static IncidentDef VEE_WhiteoutRefugees;
+
+        /* Stat def */
+        public static StatDef VEF_SunSicknessBuildupMultiplier;
+
+        /* GameConditionDefOf */
+        public static GameConditionDef VEE_Whiteout;
+        public static GameConditionDef VEE_Scorch;
+        public static GameConditionDef SpaceBattle;
+        public static GameConditionDef PsychicRain;
+        public static GameConditionDef VEE_Drought;
+        public static GameConditionDef VEE_PsychicBloom;
+        public static GameConditionDef VEE_PsychicStimulation;
+        public static GameConditionDef VEE_PsychicOverdrive;
+        public static GameConditionDef VEE_PsychicHum;
+
+        /* Letter def */
+        public static LetterDef PurpleEvent;
+        public static LetterDef VEE_SurvivorsJoin;
+        public static LetterDef VEE_WhiteoutRefugeesLetter;
+
+        /* Duty def */
+        public static DutyDef VEE_CarryAndLeave;
+
+        /* Meme def */
+        [MayRequireIdeology]
+        public static MemeDef AnimalPersonhood;
+
+        /* Faction def */
+        [MayRequireBiotech]
+        public static FactionDef OutlanderRoughPig;
+
+        /* ThingSetMaker def */
+        public static ThingSetMakerDef VEE_MeteoriteShowerMaker;
+        public static ThingSetMakerDef VEE_ShuttleCrash_Resources;
+        public static ThingSetMakerDef VEE_CrashlandedColonists;
+
+        /* Effecter and Fleck def */
+        public static EffecterDef VEE_EmergencePointSustained8X8;
+        public static FleckDef PsycastPsychicEffect;
+        
+        /* Shader def */
+        public static ShaderTypeDef VEE_Haze;
+        public static ShaderTypeDef VEE_HazeFullscreen;
+
+        /* Sound def */
+        public static SoundDef VEE_PsychicStimulationSound;
+        public static SoundDef VEE_PsychicOverdriveSound;
+        public static SoundDef VEE_PsychicHumSound;
+
+        /* Joy kind def */
+        public static JoyKindDef VEE_PsychicRelaxation;
+    }
+}

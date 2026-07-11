@@ -1,169 +1,364 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-  <!-- ========== Condition events ========== -->
-  <IncidentDef>
-    <defName>VEE_Drought</defName>
-    <label>drought</label>
-    <category>Misc</category>
-    <targetTags>
-      <li>Map_PlayerHome</li>
-    </targetTags>
-    <workerClass>IncidentWorker_MakeGameCondition</workerClass>
-    <gameCondition>Drought</gameCondition>
-    <letterLabel>Drought</letterLabel>
-    <letterText>An unusual drought has set in.\n\nDrought is devastating for plant life and will quickly prevent all the crops not planted in hydroponics or high fertility soil to grow.</letterText>
-    <letterDef>NegativeEvent</letterDef>
-    <baseChance>0.15</baseChance>
-    <minRefireDays>40</minRefireDays>
-    <durationDays>
-      <min>6</min>
-      <max>10</max>
-    </durationDays>
-  </IncidentDef>
-
-  <IncidentDef>
-    <defName>VEE_SpaceBattle</defName>
-    <label>space battle</label>
-    <category>Misc</category>
-    <targetTags>
-      <li>Map_PlayerHome</li>
-    </targetTags>
-    <workerClass>VEE.IncidentWorker_MakeGameConditionNoLetter</workerClass>
-    <gameCondition>SpaceBattle</gameCondition>
-    <letterLabel>Space Battle</letterLabel>
-    <letterText>Several massive spaceships have engaged in combat in the planet’s orbit. Missed shots and debris can impact the ground in the area. This can lead to massive fires.</letterText>
-    <letterDef>NegativeEvent</letterDef>
-    <baseChance>0</baseChance>
-    <minRefireDays>40</minRefireDays>
-    <durationDays>
-      <min>0.2</min>
-      <max>0.5</max>
-    </durationDays>
-  </IncidentDef>
-
-  <!-- ========== Regular events ========== -->
-  <IncidentDef>
-    <defName>VEE_MeteoriteShower</defName>
-    <label>meteorite shower</label>
-    <category>Misc</category>
-    <targetTags>
-      <li>Map_PlayerHome</li>
-    </targetTags>
-    <workerClass>VEE.RegularEvents.MeteoriteShower</workerClass>
-    <baseChance>0.4</baseChance>
-    <letterLabel>Meteorite Shower</letterLabel>
-    <letterText>Several large meteorites have struck ground in the area. They left behind large lumps of resources.</letterText>
-  </IncidentDef>
-
-  <IncidentDef>
-    <defName>VEE_AnimalPodCrash</defName>
-    <label>animal transport pod crash</label>
-    <category>Misc</category>
-    <targetTags>
-      <li>Map_PlayerHome</li>
-    </targetTags>
-    <workerClass>VEE.RegularEvents.AnimalTransportPodCrash</workerClass>
-    <baseChance>2</baseChance>
-  </IncidentDef>
-
-  <IncidentDef>
-    <defName>VEE_ShuttleCrash</defName>
-    <label>shuttle crash</label>
-    <category>Misc</category>
-    <targetTags>
-      <li>Map_PlayerHome</li>
-    </targetTags>
-    <workerClass>VEE.RegularEvents.ShuttleCrash</workerClass>
-    <baseChance>0.5</baseChance>
-  </IncidentDef>
-
-  <IncidentDef>
-    <defName>VEE_Earthquake</defName>
-    <label>earthquake</label>
-    <category>Misc</category>
-    <targetTags>
-      <li>Map_PlayerHome</li>
-    </targetTags>
-    <workerClass>VEE.RegularEvents.EarthQuake</workerClass>
-    <baseChance>0.3</baseChance>
-  </IncidentDef>
-
-  <IncidentDef>
-    <defName>VEE_Cargopodsweapons</defName>
-    <label>cargo pods (weapons)</label>
-    <category>Misc</category>
-    <targetTags>
-      <li>Map_PlayerHome</li>
-    </targetTags>
-    <workerClass>VEE.RegularEvents.WeaponPod</workerClass>
-    <baseChance>2</baseChance>
-  </IncidentDef>
-
-  <IncidentDef>
-    <defName>VEE_Cargopodsapparel</defName>
-    <label>cargo pods (apparel)</label>
-    <category>Misc</category>
-    <targetTags>
-      <li>Map_PlayerHome</li>
-    </targetTags>
-    <workerClass>VEE.RegularEvents.ApparelPod</workerClass>
-    <baseChance>2</baseChance>
-  </IncidentDef>
-
-  <IncidentDef>
-    <defName>VEE_CaravanAnimalsWanderIn</defName>
-    <label>caravan animals wander in</label>
-    <category>Misc</category>
-    <targetTags>
-      <li>Map_PlayerHome</li>
-    </targetTags>
-    <workerClass>VEE.RegularEvents.CaravanAnimalWI</workerClass>
-    <baseChance>0.8</baseChance>
-  </IncidentDef>
-
-  <IncidentDef>
-    <defName>VEE_CropSprout</defName>
-    <label>crop sprout</label>
-    <category>Misc</category>
-    <targetTags>
-      <li>Map_PlayerHome</li>
-    </targetTags>
-    <workerClass>VEE.RegularEvents.Cropsprout</workerClass>
-    <baseChance>0.35</baseChance>
-  </IncidentDef>
-
-  <IncidentDef>
-    <defName>VEE_BattleAnimalsWanderIn</defName>
-    <label>battle animals wander in</label>
-    <category>Misc</category>
-    <targetTags>
-      <li>Map_PlayerHome</li>
-    </targetTags>
-    <workerClass>VEE.RegularEvents.battleAnimal</workerClass>
-    <baseChance>0.25</baseChance>
-  </IncidentDef>
-
-  <IncidentDef>
-    <defName>VEE_WildMenWanderIn</defName>
-    <label>wild men wander in</label>
-    <category>Misc</category>
-    <targetTags>
-      <li>Map_PlayerHome</li>
-    </targetTags>
-    <workerClass>VEE.RegularEvents.WildMenWanderIn</workerClass>
-    <populationEffect>IncreaseMedium</populationEffect>
-    <baseChance>0.50</baseChance>
-  </IncidentDef>
-
-  <IncidentDef>
-    <defName>VEE_HuntingParty</defName>
-    <label>hunting party</label>
-    <category>Misc</category>
-    <targetTags>
-      <li>Map_PlayerHome</li>
-    </targetTags>
-    <workerClass>VEE.HuntingParty</workerClass>
-    <baseChance>0.45</baseChance>
-  </IncidentDef>
-
+	<!-- ========== Condition events ========== -->
+	<IncidentDef>
+		<defName>VEE_Drought</defName>
+		<label>drought</label>
+		<category>Misc</category>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>IncidentWorker_MakeGameCondition</workerClass>
+		<gameCondition>VEE_Drought</gameCondition>
+		<letterLabel>Drought</letterLabel>
+		<letterText>An extreme drought has set over the area. Rain clouds have vanished, and the sun is baking the earth.\n\nOutdoor crops and wild plants will suffer heavily from the lack of moisture, almost halting their growth and eventually dying off. The fires will spread much quicker.\n\nPlants sown in hydroponics systems are not affected.</letterText>
+		<letterDef>ThreatSmall</letterDef>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<baseChance>0.12</baseChance>
+		<minRefireDays>90</minRefireDays>
+		<earliestDay>60</earliestDay>
+		<minGreatestPopulation>0</minGreatestPopulation>
+		<durationDays>
+			<min>4.5</min>
+			<max>12.5</max>
+		</durationDays>
+		<disallowedBiomes>
+			<li>IceSheet</li>
+			<li>SeaIce</li>
+			<li>ExtremeDesert</li>
+			<li MayRequire="Ludeon.RimWorld.Odyssey">Grasslands</li>
+			<li MayRequire="sarg.alphabiomes">AB_RockyCrags</li>
+			<li MayRequire="sarg.alphabiomes">AB_IdyllicMeadows</li>
+			<li MayRequire="sarg.alphabiomes">AB_PropaneLakes</li>
+			<li MayRequire="sarg.alphabiomes">AB_MechanoidIntrusion</li>
+		</disallowedBiomes>
+		<disabledWhen>
+			<extremeWeatherIncidentsDisabled>true</extremeWeatherIncidentsDisabled>
+		</disabledWhen>
+	</IncidentDef>
+	<IncidentDef>
+		<defName>VEE_SpaceBattle</defName>
+		<label>orbital ship crash</label>
+		<category>Misc</category>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>VEE.IncidentWorker_MakeGameConditionNoLetter</workerClass>
+		<gameCondition>SpaceBattle</gameCondition>
+		<baseChance>0.2</baseChance>
+		<minRefireDays>120</minRefireDays>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<canOccurOnAllPlanetLayers>true</canOccurOnAllPlanetLayers>
+		<earliestDay>45</earliestDay>
+		<minGreatestPopulation>0</minGreatestPopulation>
+		<durationDays>
+			<min>0.166</min>
+			<max>0.33</max>
+		</durationDays>
+	</IncidentDef>
+	<!-- ========== Regular events ========== -->
+	<IncidentDef>
+		<defName>VEE_MeteoriteShower</defName>
+		<label>meteorite shower</label>
+		<category>Misc</category>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<canOccurOnAllPlanetLayers>true</canOccurOnAllPlanetLayers>
+		<earliestDay>15</earliestDay>
+		<minGreatestPopulation>0</minGreatestPopulation>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>VEE.RegularEvents.MeteoriteShower</workerClass>
+		<baseChance>0.2</baseChance>
+		<minRefireDays>45</minRefireDays>
+		<letterLabel>Meteorite Shower</letterLabel>
+		<letterText>A cluster of meteorites has entered the atmosphere and is breaking apart directly over your area! \n\nSeveral rocks will strike the ground in a localized area over the next few hours. They will obliterate anything they hit.\n\nMeteorites like that are likely to leave behind some resources.</letterText>
+		<letterDef>NeutralEvent</letterDef>
+		<tale>MeteoriteImpact</tale>
+	</IncidentDef>
+	<IncidentDef>
+		<defName>VEE_CropSprout</defName>
+		<label>crop sprout</label>
+		<category>Misc</category>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>VEE.RegularEvents.Cropsprout</workerClass>
+		<baseChance>1.2</baseChance>
+		<minRefireDays>15</minRefireDays>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<canOccurOnAllPlanetLayers>false</canOccurOnAllPlanetLayers>
+		<earliestDay>0</earliestDay>
+		<minGreatestPopulation>0</minGreatestPopulation>
+		<allowedBiomes>
+			<li>TemperateForest</li>
+			<li>BorealForest</li>
+			<li>TropicalRainforest</li>
+			<li>AridShrubland</li>
+			<li>TropicalSwamp</li>
+			<li>TemperateSwamp</li>
+			<li MayRequire="Ludeon.RimWorld.Odyssey">Grasslands</li>
+			<li MayRequire="sarg.alphabiomes">AB_IdyllicMeadows</li>
+			<li MayRequire="sarg.alphabiomes">AB_FeraliskInfestedJungle</li>
+			<li MayRequire="sarg.alphabiomes">AB_MiasmicMangrove</li>
+			<li MayRequire="sarg.alphabiomes">AB_MycoticJungle</li>
+			<li MayRequire="sarg.alphabiomes">AB_OcularForest</li>
+			<li MayRequire="sarg.alphabiomes">AB_TarPits</li>
+		</allowedBiomes>
+	</IncidentDef>
+	<IncidentDef>
+		<defName>VEE_AnimalPodCrash</defName>
+		<label>animal pod crash</label>
+		<category>Misc</category>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<canOccurOnAllPlanetLayers>true</canOccurOnAllPlanetLayers>
+		<earliestDay>0</earliestDay>
+		<minGreatestPopulation>0</minGreatestPopulation>
+		<workerClass>VEE.RegularEvents.AnimalTransportPodCrash</workerClass>
+		<baseChance>0.8</baseChance>
+		<minRefireDays>15</minRefireDays>
+	</IncidentDef>
+	<IncidentDef>
+		<defName>VEE_ShuttleCrash</defName>
+		<label>shuttle crash</label>
+		<category>Misc</category>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<canOccurOnAllPlanetLayers>true</canOccurOnAllPlanetLayers>
+		<earliestDay>15</earliestDay>
+		<minGreatestPopulation>0</minGreatestPopulation>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>VEE.RegularEvents.ShuttleCrash</workerClass>
+		<baseChance>0.35</baseChance>
+		<minRefireDays>30</minRefireDays>
+	</IncidentDef>
+	<IncidentDef>
+		<defName>VEE_Earthquake</defName>
+		<label>earthquake</label>
+		<category>ThreatBig</category>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<canOccurOnAllPlanetLayers>true</canOccurOnAllPlanetLayers>
+		<earliestDay>30</earliestDay>
+		<minGreatestPopulation>0</minGreatestPopulation>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>VEE.RegularEvents.EarthQuake</workerClass>
+		<baseChance>0.4</baseChance>
+		<minRefireDays>60</minRefireDays>
+	</IncidentDef>
+	<IncidentDef>
+		<defName>VEE_Cargopodsweapons</defName>
+		<label>cargo pods (weapon)</label>
+		<category>Misc</category>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<canOccurOnAllPlanetLayers>true</canOccurOnAllPlanetLayers>
+		<earliestDay>5</earliestDay>
+		<minGreatestPopulation>0</minGreatestPopulation>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>VEE.RegularEvents.WeaponPod</workerClass>
+		<baseChance>0.6</baseChance>
+		<minRefireDays>15</minRefireDays>
+	</IncidentDef>
+	<IncidentDef>
+		<defName>VEE_Cargopodsapparel</defName>
+		<label>cargo pods (apparel)</label>
+		<category>Misc</category>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<canOccurOnAllPlanetLayers>true</canOccurOnAllPlanetLayers>
+		<earliestDay>5</earliestDay>
+		<minGreatestPopulation>0</minGreatestPopulation>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>VEE.RegularEvents.ApparelPod</workerClass>
+		<baseChance>0.6</baseChance>
+		<minRefireDays>15</minRefireDays>
+	</IncidentDef>
+	<IncidentDef>
+		<defName>VEE_CaravanAnimalsWanderIn</defName>
+		<label>caravan animals wander in</label>
+		<category>Misc</category>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<canOccurOnAllPlanetLayers>false</canOccurOnAllPlanetLayers>
+		<earliestDay>10</earliestDay>
+		<minGreatestPopulation>0</minGreatestPopulation>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>VEE.RegularEvents.CaravanAnimalWI</workerClass>
+		<baseChance>0.3</baseChance>
+		<minRefireDays>25</minRefireDays>
+	</IncidentDef>
+	<IncidentDef>
+		<defName>VEE_BattleAnimalsWanderIn</defName>
+		<label>battle animals wander in</label>
+		<category>Misc</category>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<canOccurOnAllPlanetLayers>false</canOccurOnAllPlanetLayers>
+		<earliestDay>15</earliestDay>
+		<minGreatestPopulation>0</minGreatestPopulation>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>VEE.RegularEvents.BattleAnimal</workerClass>
+		<baseChance>0.3</baseChance>
+		<minRefireDays>30</minRefireDays>
+	</IncidentDef>
+	<IncidentDef>
+		<defName>VEE_WildMenWanderIn</defName>
+		<label>wild men wander in</label>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<canOccurOnAllPlanetLayers>false</canOccurOnAllPlanetLayers>
+		<earliestDay>30</earliestDay>
+		<minGreatestPopulation>0</minGreatestPopulation>
+		<category>Misc</category>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>VEE.RegularEvents.WildMenWanderIn</workerClass>
+		<populationEffect>IncreaseMedium</populationEffect>
+		<baseChance>0.6</baseChance>
+		<minRefireDays>30</minRefireDays>
+	</IncidentDef>
+	<IncidentDef>
+		<defName>VEE_HuntingParty</defName>
+		<label>hunting party</label>
+		<category>FactionArrival</category>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<canOccurOnAllPlanetLayers>false</canOccurOnAllPlanetLayers>
+		<earliestDay>5</earliestDay>
+		<minGreatestPopulation>0</minGreatestPopulation>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>VEE.HuntingParty</workerClass>
+		<baseChance>3</baseChance>
+		<minRefireDays>15</minRefireDays>
+	</IncidentDef>
+	<IncidentDef>
+		<defName>VEE_WandererJoinsTraitor</defName>
+		<label>wanderer join (traitor)</label>
+		<category>Misc</category>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<canOccurOnAllPlanetLayers>true</canOccurOnAllPlanetLayers>
+		<earliestDay>15</earliestDay>
+		<minGreatestPopulation>3</minGreatestPopulation>
+		<workerClass>IncidentWorker_GiveQuest</workerClass>
+		<questScriptDef>VEE_WandererJoinsTraitor</questScriptDef>
+		<baseChance>0.1</baseChance>
+		<minRefireDays>60</minRefireDays>
+		<populationEffect>IncreaseEasy</populationEffect>
+	</IncidentDef>
+	<IncidentDef>
+		<defName>VEE_ManhunterSingleArrival</defName>
+		<label>manhunter animal</label>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>VEE.RegularEvents.ManhunterSingleArrival</workerClass>
+		<baseChance>2.0</baseChance>
+		<minRefireDays>15</minRefireDays>
+		<category>ThreatSmall</category>
+		<pointsScaleable>true</pointsScaleable>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<canOccurOnAllPlanetLayers>false</canOccurOnAllPlanetLayers>
+		<earliestDay>5</earliestDay>
+		<minGreatestPopulation>0</minGreatestPopulation>
+		<tale>ManhunterPack</tale>
+		<letterHyperlinkHediffDefs>
+			<li>Scaria</li>
+		</letterHyperlinkHediffDefs>
+	</IncidentDef>
+	<IncidentDef>
+		<defName>VEE_Crashlanded</defName>
+		<label>crashlanded survivors</label>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<canOccurOnAllPlanetLayers>true</canOccurOnAllPlanetLayers>
+		<earliestDay>10</earliestDay>
+		<minGreatestPopulation>0</minGreatestPopulation>
+		<category>FactionArrival</category>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>VEE.RegularEvents.Crashlanded</workerClass>
+		<populationEffect>IncreaseMedium</populationEffect>
+		<baseChance>0.35</baseChance>
+		<minRefireDays>120</minRefireDays>
+	</IncidentDef>
+	<IncidentDef>
+		<defName>VEE_PsychicStimulation</defName>
+		<label>psychic stimulation</label>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<canOccurOnAllPlanetLayers>true</canOccurOnAllPlanetLayers>
+		<earliestDay>20</earliestDay>
+		<minGreatestPopulation>0</minGreatestPopulation>
+		<category>Misc</category>
+		<gameCondition>VEE_PsychicStimulation</gameCondition>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>VEE.RegularEvents.PsychicStimulation</workerClass>
+		<baseChance>0.8</baseChance>
+		<minRefireDays>15</minRefireDays>
+		<durationDays>1.5~3</durationDays>
+	</IncidentDef>
+	<IncidentDef>
+		<defName>VEE_PsychicOverdrive</defName>
+		<label>psychic overdrive</label>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<canOccurOnAllPlanetLayers>true</canOccurOnAllPlanetLayers>
+		<earliestDay>20</earliestDay>
+		<minGreatestPopulation>0</minGreatestPopulation>
+		<category>Misc</category>
+		<gameCondition>VEE_PsychicOverdrive</gameCondition>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>VEE.RegularEvents.PsychicOverdrive</workerClass>
+		<baseChance>0.8</baseChance>
+		<minRefireDays>15</minRefireDays>
+		<durationDays>1.5~3</durationDays>
+	</IncidentDef>
+	<IncidentDef>
+		<defName>VEE_PsychicHum</defName>
+		<label>psychic hum</label>
+		<requireColonistsPresent>true</requireColonistsPresent>
+		<canOccurOnAllPlanetLayers>true</canOccurOnAllPlanetLayers>
+		<earliestDay>20</earliestDay>
+		<minGreatestPopulation>0</minGreatestPopulation>
+		<category>Misc</category>
+		<gameCondition>VEE_PsychicHum</gameCondition>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>VEE.RegularEvents.PsychicHum</workerClass>
+		<baseChance>0.5</baseChance>
+		<minRefireDays>15</minRefireDays>
+		<durationDays>1.5~3</durationDays>
+	</IncidentDef>
+	<IncidentDef>
+		<defName>VEE_VisitorGroupRaid</defName>
+		<label>visitor group</label>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>VEE.RegularEvents.VisitorGroupRaid</workerClass>
+		<category>FactionArrival</category>
+		<baseChance>0.55</baseChance>
+		<minRefireDays>15</minRefireDays>
+		<minGreatestPopulation>0</minGreatestPopulation>
+		<earliestDay>30</earliestDay>
+		<pointsScaleable>true</pointsScaleable>
+		<requireColonistsPresent>True</requireColonistsPresent>
+	</IncidentDef>
 </Defs>

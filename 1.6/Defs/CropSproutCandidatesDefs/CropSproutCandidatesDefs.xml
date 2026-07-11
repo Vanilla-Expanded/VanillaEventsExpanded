@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<VEE.CropSproutCandidatesDef>
+		<defName>VEE_CropSproutCandidatesDef</defName>
+		<cropSproutCandidates>
+			<li>Plant_Rice</li>
+			<li>Plant_Potato</li>
+			<li>Plant_Corn</li>
+			<li>Plant_Cotton</li>
+			<li>Plant_Healroot</li>
+			<li>Plant_Smokeleaf</li>
+		</cropSproutCandidates>
+	</VEE.CropSproutCandidatesDef>
+</Defs>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using RimWorld;
+using VEF.Factions;
 using Verse;
 using Verse.AI.Group;
 
@@ -10,7 +11,11 @@ namespace VEE
     {
         public HediffCompPropreties_Traitor Props => (HediffCompPropreties_Traitor)props;
 
-        private int ticksToDisappear;
+        public int ticksToDisappear;
+
+        public Faction forcedFaction = null;
+
+        public bool isGroup = false;
 
         public override void CompPostMake()
         {
@@ -25,12 +30,28 @@ namespace VEE
                 ticksToDisappear -= 250;
                 if (ticksToDisappear <= 0)
                 {
-                    var faction = Find.FactionManager.RandomEnemyFaction(allowNonHumanlike: false);
+                    Faction faction;
+                    if (forcedFaction != null)
+                    {
+                        faction=forcedFaction;
+                    }
+                    else
+                    {
+                        faction = Find.FactionManager.RandomEnemyFaction(allowNonHumanlike: false);
+                    }
+                    
                     pawn.SetFaction(faction);
 
                     var map = pawn.Map;
                     LordMaker.MakeNewLord(faction, new LordJob_AssaultColony(faction, true, false, false, true, true, false, true), map, new List<Pawn> { pawn });
-                    Find.LetterStack.ReceiveLetter("TraitorLabel".Translate(), "Traitor".Translate(pawn.Named("PAWN")).AdjustedFor(pawn), LetterDefOf.ThreatBig, new TargetInfo(pawn.Position, map, false));
+                    if (isGroup)
+                    {
+                        Find.World.GetComponent<WorldComp_Purple>().Notify_TraitorGroup(faction);
+                    }
+                    else
+                    {
+                        Find.LetterStack.ReceiveLetter("VEE_TraitorLabel".Translate(pawn.Named("PAWN")).AdjustedFor(pawn), "VEE_TraitorDesc".Translate(pawn.Named("PAWN")).AdjustedFor(pawn), LetterDefOf.ThreatSmall, new TargetInfo(pawn.Position, map, false));
+                    }
 
                     parent.pawn.health.hediffSet.hediffs.Remove(parent);
                 }
@@ -47,6 +68,10 @@ namespace VEE
         public override void CompExposeData()
         {
             Scribe_Values.Look(ref ticksToDisappear, "ticksToDisappear");
+            Scribe_Values.Look(ref isGroup, "isGroup");
+
+            Scribe_References.Look(ref forcedFaction, "forcedFaction");
+
         }
 
         public override string CompDebugString()

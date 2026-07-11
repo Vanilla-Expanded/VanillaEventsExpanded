@@ -1,121 +1,292 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-  <ThingDef ParentName="BuildingBase">
-    <defName>VEE_ShipChunkHuman</defName>
-    <graphicData>
-      <texPath>Things/Buildings_Exotic/ShipChunkHuman</texPath>
-      <graphicClass>Graphic_Random</graphicClass>
-      <drawSize>(2,2)</drawSize>
-      <damageData>
-        <rect>(0.1,0.1,1.8,1.8)</rect>
-      </damageData>
-      <shadowData>
-        <volume>(1.39,0.5,1.25)</volume>
-      </shadowData>
-    </graphicData>
-    <label>ship chunk</label>
-    <description>A chunk of a spacecraft. Can be deconstructed to yield useful resources.</description>
-    <category>Building</category>
-    <altitudeLayer>Building</altitudeLayer>
-    <pathCost>35</pathCost>
-    <blockWind>true</blockWind>
-    <passability>PassThroughOnly</passability>
-    <fillPercent>0.50</fillPercent>
-    <size>(2,2)</size>
-    <statBases>
-      <MaxHitPoints>300</MaxHitPoints>
-      <Flammability>0</Flammability>
-      <Beauty>-20</Beauty>
-      <WorkToBuild>12000</WorkToBuild>
-    </statBases>
-    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
-    <killedLeavings>
-      <ChunkSlagSteel>2</ChunkSlagSteel>
-    </killedLeavings>
-    <costList>
-      <ComponentIndustrial>11</ComponentIndustrial>
-      <Steel>40</Steel>
-    </costList>
-    <building>
-      <claimable>false</claimable>
-      <alwaysDeconstructible>true</alwaysDeconstructible>
-    </building>
-    <selectable>true</selectable>
-    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
-    <drawerType>MapMeshOnly</drawerType>
-    <repairEffect>ConstructMetal</repairEffect>
-  </ThingDef>
-
-  <ThingDef ParentName="BuildingBase">
-    <defName>VEE_Shuttle</defName>
-    <thingClass>VEE.Shuttle</thingClass>
-    <tickerType>Normal</tickerType>
-    <graphicData>
-      <texPath>Things/Buildings_Exotic/ShipChunkShuttle</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(4,3)</drawSize>
-      <damageData>
-        <rect>(0.1,0.1,1.8,1.8)</rect>
-      </damageData>
-      <shadowData>
-        <volume>(1.39,0.5,1.25)</volume>
-      </shadowData>
-    </graphicData>
-    <label>shuttle chunk</label>
-    <description>A chunk of a shuttle. Can be deconstructed to yield useful resources.</description>
-    <category>Building</category>
-    <altitudeLayer>Building</altitudeLayer>
-    <pathCost>50</pathCost>
-    <blockWind>true</blockWind>
-    <passability>PassThroughOnly</passability>
-    <fillPercent>0.50</fillPercent>
-    <size>(4,3)</size>
-    <statBases>
-      <MaxHitPoints>300</MaxHitPoints>
-      <Flammability>0</Flammability>
-      <Beauty>-20</Beauty>
-      <WorkToBuild>12000</WorkToBuild>
-    </statBases>
-    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
-    <killedLeavings>
-      <ChunkSlagSteel>5</ChunkSlagSteel>
-    </killedLeavings>
-    <costList>
-      <ComponentIndustrial>11</ComponentIndustrial>
-      <Steel>100</Steel>
-    </costList>
-    <building>
-      <claimable>false</claimable>
-      <alwaysDeconstructible>true</alwaysDeconstructible>
-    </building>
-    <selectable>true</selectable>
-    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
-    <drawerType>MapMeshOnly</drawerType>
-    <repairEffect>ConstructMetal</repairEffect>
-  </ThingDef>
-
-  <ThingDef ParentName="SkyfallerBase">
-    <defName>ShuttleChunkIncoming</defName>
-    <label>shuttle chunk (incoming)</label>
-    <size>(4, 3)</size>
-    <skyfaller>
-      <shadowSize>(4.5, 3.5)</shadowSize>
-      <explosionRadius>4</explosionRadius>
-      <explosionDamage>Bomb</explosionDamage>
-      <explosionDamageFactor>0.8</explosionDamageFactor>
-    </skyfaller>
-  </ThingDef>
-
-  <!-- ========== Slag Incoming ========== -->
-  <ThingDef ParentName="SkyfallerBase">
-    <defName>SlagIncoming</defName>
-    <label>slag (incoming)</label>
-    <size>(1, 1)</size>
-    <skyfaller>
-      <shadowSize>(1.5, 1.5)</shadowSize>
-      <explosionRadius>3</explosionRadius>
-      <explosionDamage>Bomb</explosionDamage>
-      <explosionDamageFactor>0.4</explosionDamageFactor>
-    </skyfaller>
-  </ThingDef>
+	<!-- ========== Crashed shuttles ========== -->
+	<ThingDef ParentName="BuildingBase" Name="VEE_ShuttleBase">
+		<defName>VEE_Shuttle</defName>
+		<thingClass>VEE.Shuttle</thingClass>
+		<tickerType>Normal</tickerType>
+		<graphicData>
+			<texPath>Things/Buildings_Exotic/Shuttle_Crashed/Shuttle_Standard_Crashed</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(5,3)</drawSize>
+			<damageData>
+				<rect>(0.1,0.1,1.8,1.8)</rect>
+			</damageData>
+			<shadowData>
+				<volume>(1.39,0.5,1.25)</volume>
+			</shadowData>
+		</graphicData>
+		<label>crashed shuttle</label>
+		<description>A crashed, spacer-tech shuttle designed for transit between surface and orbit. Can be deconstructed to yield some valuable salvage.</description>
+		<category>Building</category>
+		<altitudeLayer>Building</altitudeLayer>
+		<pathCost>50</pathCost>
+		<blockWind>true</blockWind>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.75</fillPercent>
+		<size>(5,3)</size>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<Flammability>0</Flammability>
+			<Beauty>-20</Beauty>
+			<WorkToBuild>1440</WorkToBuild>
+		</statBases>
+		<killedLeavings>
+			<Plasteel>25</Plasteel>
+			<ComponentIndustrial>3</ComponentIndustrial>
+			<Steel>14</Steel>
+			<ShuttleEngine MayRequire="Ludeon.RimWorld.Odyssey">1</ShuttleEngine>
+			<ChunkSlagSteel>1</ChunkSlagSteel>
+		</killedLeavings>
+		<costList>
+			<Plasteel>70</Plasteel>
+			<ComponentIndustrial>12</ComponentIndustrial>
+			<Steel>40</Steel>
+			<ShuttleEngine MayRequire="Ludeon.RimWorld.Odyssey">1</ShuttleEngine>
+		</costList>
+		<building>
+			<claimable>false</claimable>
+			<alwaysDeconstructible>true</alwaysDeconstructible>
+		</building>
+		<selectable>true</selectable>
+		<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+		<drawerType>MapMeshOnly</drawerType>
+		<repairEffect>ConstructMetal</repairEffect>
+	</ThingDef>
+	<ThingDef ParentName="SkyfallerBase" Name="VEE_ShuttleIncomingBase">
+		<defName>ShuttleChunkIncoming</defName>
+		<label>crashed shuttle (incoming)</label>
+		<size>(5, 3)</size>
+		<thingClass>VEE.IncomingSmoker</thingClass>
+		<graphicData>
+			<texPath>Skyfallers/Shuttle_Standard_Skyfaller</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(5,3)</drawSize>
+			<damageData>
+				<rect>(0.1,0.1,1.8,1.8)</rect>
+			</damageData>
+			<shadowData>
+				<volume>(1.39,0.5,1.25)</volume>
+			</shadowData>
+		</graphicData>
+		<skyfaller>
+			<movementType>Decelerate</movementType>
+			<shadow>Things/Skyfaller/SkyfallerShadowRectangle</shadow>
+			<shadowSize>(5.5,3.5)</shadowSize>
+			<motesPerCell>1</motesPerCell>
+			<anticipationSound>VEE_Ship_CrashLanding</anticipationSound>
+			<anticipationSoundTicks>250</anticipationSoundTicks>
+			<ticksToImpactRange>380~550</ticksToImpactRange>
+			<angleCurve>
+				<points>
+					<li>(0,-60)</li>
+					<li>(1,-90)</li>
+				</points>
+			</angleCurve>
+			<rotationCurve>
+				<points>
+					<li>(0,30)</li>
+					<li>(0.5,5)</li>
+					<li>(0.9,-5)</li>
+					<li>(0.95,0)</li>
+				</points>
+			</rotationCurve>
+			<zPositionCurve>
+				<points>
+					<li>(0.95,0.75)</li>
+					<li>(1,0)</li>
+				</points>
+			</zPositionCurve>
+			<speedCurve>
+				<points>
+					<li>(0.6,0.6)</li>
+					<li>(0.95,0.55)</li>
+				</points>
+			</speedCurve>
+			<explosionDamage>Flame</explosionDamage>
+			<explosionRadius>6.9</explosionRadius>
+			<cameraShake>1</cameraShake>
+		</skyfaller>
+	</ThingDef>
+	<ThingDef ParentName="VEE_ShuttleBase">
+		<defName>VEE_Shuttle_Combat</defName>
+		<graphicData>
+			<texPath>Things/Buildings_Exotic/Shuttle_Crashed/Shuttle_Combat_Crashed</texPath>
+		</graphicData>
+	</ThingDef>
+	<ThingDef ParentName="VEE_ShuttleIncomingBase">
+		<defName>VEE_ShuttleChunkIncoming_Combat</defName>
+		<graphicData>
+			<texPath>Skyfallers/Shuttle_Combat_Skyfaller</texPath>
+		</graphicData>
+	</ThingDef>
+	<ThingDef ParentName="VEE_ShuttleBase">
+		<defName>VEE_Shuttle_Heavy</defName>
+		<graphicData>
+			<texPath>Things/Buildings_Exotic/Shuttle_Crashed/Shuttle_Heavy_Crashed</texPath>
+		</graphicData>
+	</ThingDef>
+	<ThingDef ParentName="VEE_ShuttleIncomingBase">
+		<defName>VEE_ShuttleChunkIncoming_Heavy</defName>
+		<graphicData>
+			<texPath>Skyfallers/Shuttle_Heavy_Skyfaller</texPath>
+		</graphicData>
+	</ThingDef>
+	<!-- ========== Orbital ship crash ========== -->
+	<ThingDef ParentName="SkyfallerBase" Name="VEE_ShipChunkHumanIncomingBase">
+		<defName>VEE_ShipChunkHumanIncoming</defName>
+		<label>orbital ship chunk (incoming)</label>
+		<size>(2, 2)</size>
+		<thingClass>VEE.IncomingSmoker</thingClass>
+		<graphicData>
+			<texPath>Things/Buildings_Exotic/CrashedShipChunk_Normal</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<drawSize>(2,2)</drawSize>
+			<damageData>
+				<rect>(0.1,0.1,1.8,1.8)</rect>
+			</damageData>
+			<shadowData>
+				<volume>(1.39,0.5,1.25)</volume>
+			</shadowData>
+		</graphicData>
+		<skyfaller>
+			<movementType>ConstantSpeed</movementType>
+			<shadow>Things/Skyfaller/SkyfallerShadowRectangle</shadow>
+			<shadowSize>(2,2)</shadowSize>
+			<motesPerCell>1</motesPerCell>
+			<anticipationSound>VEE_Ship_CrashLanding</anticipationSound>
+			<anticipationSoundTicks>250</anticipationSoundTicks>
+			<ticksToImpactRange>380~550</ticksToImpactRange>
+			<rotateGraphicTowardsDirection>true</rotateGraphicTowardsDirection>
+			<speed>0.85</speed>
+			<cameraShake>1</cameraShake>
+		</skyfaller>
+	</ThingDef>
+	<ThingDef ParentName="VEE_ShipChunkHumanIncomingBase">
+		<defName>VEE_ShipChunkHumanIncoming_Volatile</defName>
+		<label>orbital ship chunk (incoming)</label>
+		<graphicData>
+			<texPath>Things/Buildings_Exotic/CrashedShipChunk_Volatile</texPath>
+		</graphicData>
+		<skyfaller>
+			<explosionDamage>Flame</explosionDamage>
+			<explosionRadius>5.9</explosionRadius>
+		</skyfaller>
+	</ThingDef>
+	<ThingDef ParentName="VEE_ShipChunkHumanIncomingBase">
+		<defName>VEE_ShipChunkHumanIncoming_Cargo</defName>
+		<label>orbital ship chunk (incoming)</label>
+		<graphicData>
+			<texPath>Things/Buildings_Exotic/CrashedShipChunk_Cargo</texPath>
+		</graphicData>
+	</ThingDef>
+	<ThingDef ParentName="VEE_ShipChunkHumanIncomingBase">
+		<defName>VEE_ShipChunkHumanIncoming_DropPod</defName>
+		<label>orbital ship chunk (incoming)</label>
+		<graphicData>
+			<texPath>Things/Special/DropPod</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutFlying</shaderType>
+			<drawSize>1.9</drawSize>
+		</graphicData>
+	</ThingDef>
+	<ThingDef ParentName="BuildingBase" Name="VEE_ShipChunkHumanBase">
+		<defName>VEE_ShipChunkHuman</defName>
+		<graphicData>
+			<texPath>Things/Buildings_Exotic/CrashedShipChunk_Normal</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<drawSize>(2,2)</drawSize>
+			<damageData>
+				<rect>(0.1,0.1,1.8,1.8)</rect>
+			</damageData>
+			<shadowData>
+				<volume>(1.39,0.5,1.25)</volume>
+			</shadowData>
+		</graphicData>
+		<label>orbital ship chunk</label>
+		<description>A large chunk of an orbital ship, violently torn off during a catastrophic structural failure in high orbit. Having crashlanded not long ago, it still contains useful resources which you can acquire by deconstructing it.</description>
+		<category>Building</category>
+		<altitudeLayer>Building</altitudeLayer>
+		<pathCost>35</pathCost>
+		<blockWind>true</blockWind>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.50</fillPercent>
+		<terrainAffordanceNeeded IsNull="True"/>
+		<size>(2,2)</size>
+		<statBases>
+			<MaxHitPoints>300</MaxHitPoints>
+			<Flammability>0</Flammability>
+			<Beauty>-20</Beauty>
+			<WorkToBuild>12000</WorkToBuild>
+		</statBases>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<killedLeavings>
+			<ChunkSlagSteel>2</ChunkSlagSteel>
+		</killedLeavings>
+		<costList>
+			<ComponentIndustrial>6</ComponentIndustrial>
+			<Steel>40</Steel>
+		</costList>
+		<building>
+			<claimable>false</claimable>
+			<alwaysDeconstructible>true</alwaysDeconstructible>
+		</building>
+		<selectable>true</selectable>
+		<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+		<drawerType>MapMeshOnly</drawerType>
+		<repairEffect>ConstructMetal</repairEffect>
+		<comps>
+			<li Class="CompProperties_InspectString">
+				<inspectString>Deconstruct for valuable resources.</inspectString>
+			</li>
+		</comps>
+	</ThingDef>
+	<ThingDef ParentName="VEE_ShipChunkHumanBase">
+		<defName>VEE_ShipChunkHuman_Volatile_Spawner</defName>
+		<label>orbital ship chunk</label>
+		<graphicData>
+			<texPath>Things/Buildings_Exotic/CrashedShipChunk_Volatile</texPath>
+		</graphicData>
+		<tickerType>Normal</tickerType>
+		<thingClass>VEE.VolatileChunkSpawner</thingClass>
+	</ThingDef>
+	<ThingDef ParentName="VEE_ShipChunkHumanBase">
+		<defName>VEE_ShipChunkHuman_Cargo</defName>
+		<label>orbital ship chunk</label>
+		<graphicData>
+			<texPath>Things/Buildings_Exotic/CrashedShipChunk_Cargo</texPath>
+		</graphicData>
+		<tickerType>Normal</tickerType>
+		<thingClass>VEE.CargoChunkSpawner</thingClass>
+		<killedLeavings>
+			<ChunkSlagSteel>2</ChunkSlagSteel>
+		</killedLeavings>
+		<costList>
+			<Steel>40</Steel>
+		</costList>
+	</ThingDef>
+	<ThingDef ParentName="VEE_ShipChunkHumanBase">
+		<defName>VEE_ShipChunkHuman_DropPod_Spawner</defName>
+		<label>orbital ship chunk</label>
+		<graphicData>
+			<texPath>Things/Special/DropPod</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutFlying</shaderType>
+			<drawSize>1.9</drawSize>
+		</graphicData>
+		<tickerType>Normal</tickerType>
+		<thingClass>VEE.DropPodSpawner</thingClass>
+	</ThingDef>
+	<!--This one is now unused, keeping it for compat -->
+	<ThingDef ParentName="SkyfallerBase">
+		<defName>SlagIncoming</defName>
+		<label>slag (incoming)</label>
+		<size>(1, 1)</size>
+		<skyfaller>
+			<shadowSize>(1.5, 1.5)</shadowSize>
+			<explosionRadius>3</explosionRadius>
+			<explosionDamage>Bomb</explosionDamage>
+			<explosionDamageFactor>0.4</explosionDamageFactor>
+		</skyfaller>
+	</ThingDef>
 </Defs>

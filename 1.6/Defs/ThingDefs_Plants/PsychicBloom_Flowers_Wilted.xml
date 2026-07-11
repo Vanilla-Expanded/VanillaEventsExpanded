@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThingDef Name="VEE_StumpBase" Abstract="True">
+		<category>Plant</category>
+		<thingClass>DeadPlant</thingClass>
+		<altitudeLayer>Building</altitudeLayer>
+		<useHitPoints>True</useHitPoints>
+		<graphicData><shaderType>CutoutPlant</shaderType></graphicData>
+		<statBases>
+			<MaxHitPoints>120</MaxHitPoints>
+			<DeteriorationRate>4</DeteriorationRate>
+			<Nutrition>0</Nutrition>
+		</statBases>
+		<tickerType>Long</tickerType>
+		<selectable>true</selectable>
+		<neverMultiSelect>false</neverMultiSelect>
+		<drawerType>MapMeshOnly</drawerType>
+		<pathCostIgnoreRepeat>false</pathCostIgnoreRepeat>
+		<passability>PassThroughOnly</passability>
+		<pathCost>30</pathCost>
+		<fillPercent>0.2</fillPercent>
+		<ingestible>
+			<foodType>Plant</foodType>
+			<preferability>NeverForNutrition</preferability>
+		</ingestible>
+		<messageOnDeteriorateInStorage>false</messageOnDeteriorateInStorage>
+		<plant>
+			<allowAutoCut>false</allowAutoCut>
+			<fertilityMin>0</fertilityMin>
+			<fertilitySensitivity>0</fertilitySensitivity>
+			<soundHarvesting>Harvest_Tree</soundHarvesting>
+			<soundHarvestFinish>Harvest_Tree_Finish</soundHarvestFinish>
+			<topWindExposure>0.05</topWindExposure>
+			<blockAdjacentSow>true</blockAdjacentSow>
+			<growDays>30</growDays>
+			<growMinGlow>0</growMinGlow>
+			<lifespanDaysPerGrowDays>0</lifespanDaysPerGrowDays>
+			<treeLoversCareIfChopped>false</treeLoversCareIfChopped>
+			<canDeteriorate>true</canDeteriorate>
+			<isStump>true</isStump>
+			<neverBlightable>true</neverBlightable>
+			<pollution>Any</pollution>
+		</plant>
+	</ThingDef>
+	<ThingDef ParentName="VEE_StumpBase">
+		<defName>VEE_Plant_PsychicLotus_Wilted</defName>
+		<label>wilted psychic lotus</label>
+		<description>A wilted, ethereal bloom that acted as a dimensional anchor. Now dead and withering.</description>
+		<statBases>
+			<Beauty>-12</Beauty>
+			<BeautyOutdoors>-12</BeautyOutdoors>
+			<Flammability>0.5</Flammability>
+		</statBases>
+		<graphicData>
+			<texPath>Things/Plants/WiltedPsychicPlants/WiltedPsychicLotus</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shadowData>
+				<volume>(0.1, 0.2, 0.1)</volume>
+			</shadowData>
+		</graphicData>
+		<plant>
+			<harvestWork>1600</harvestWork>
+			<visualSizeRange>1~1.8</visualSizeRange>
+			<topWindExposure>0.1</topWindExposure>
+		</plant>
+	</ThingDef>
+	<ThingDef ParentName="VEE_StumpBase">
+		<defName>VEE_Plant_VyspStrands_Wilted</defName>
+		<label>wilted vysp strands</label>
+		<description>Bizarre, thread-like growths that hummed faintly when approached. Now dead and withering.</description>
+		<statBases>
+			<Beauty>-2</Beauty>
+			<BeautyOutdoors>-2</BeautyOutdoors>
+			<Flammability>0.5</Flammability>
+		</statBases>
+		<graphicData>
+			<texPath>Things/Plants/WiltedPsychicPlants/WiltedVyspStrand</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shadowData>
+				<volume>(0.1, 0.2, 0.1)</volume>
+			</shadowData>
+		</graphicData>
+		<plant>
+			<harvestWork>450</harvestWork>
+			<maxMeshCount>4</maxMeshCount>
+			<visualSizeRange>0.5~0.8</visualSizeRange>
+		</plant>
+	</ThingDef>
+	<ThingDef ParentName="VEE_StumpBase">
+		<defName>VEE_Plant_CyllenCluster_Wilted</defName>
+		<label>wilted cyllen cluster</label>
+		<description>A dense grouping of bulbous alien foliage that pulsed with a slow, heartbeat-like rhythm. Now dead and withering.</description>
+		<statBases>
+			<Beauty>-3</Beauty>
+			<BeautyOutdoors>-3</BeautyOutdoors>
+			<Flammability>0.5</Flammability>
+		</statBases>
+		<graphicData>
+			<texPath>Things/Plants/WiltedPsychicPlants/WiltedCyllenCluster</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shadowData>
+				<volume>(0.1, 0.2, 0.1)</volume>
+			</shadowData>
+		</graphicData>
+		<plant>
+			<harvestWork>500</harvestWork>
+			<visualSizeRange>1~1.8</visualSizeRange>
+		</plant>
+	</ThingDef>
+	<ThingDef ParentName="VEE_StumpBase">
+		<defName>VEE_Plant_PhoraxTree_Wilted</defName>
+		<label>wilted phorax tree</label>
+		<description>A towering, bizarre formation barely resembling a giant mushroom. Now dead and withering.</description>
+		<statBases>
+			<Beauty>-6</Beauty>
+			<BeautyOutdoors>-6</BeautyOutdoors>
+			<Flammability>0.3</Flammability>
+		</statBases>
+		<graphicData>
+			<texPath>Things/Plants/WiltedPsychicPlants/WiltedPhoraxTree</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shadowData>
+				<volume>(0.2, 0.35, 0.13)</volume>
+				<offset>(0,0,-0.42)</offset>
+			</shadowData>
+			<drawSize>1.5</drawSize>
+		</graphicData>
+		<pathCost>50</pathCost>
+		<passability>PassThroughOnly</passability>
+		<blockWind>true</blockWind>
+		<fillPercent>0.25</fillPercent>
+		<plant>
+			<harvestWork>3200</harvestWork>
+			<visualSizeRange>1.5~2.0</visualSizeRange>
+			<topWindExposure>0.25</topWindExposure>
+		</plant>
+	</ThingDef>
+	<ThingDef ParentName="VEE_StumpBase">
+		<defName>VEE_Plant_XyrilTree_Wilted</defName>
+		<label>wilted xyril tree</label>
+		<description>A wilted, tree-like structure that refracted light in impossible colors. Now dead and withering.</description>
+		<statBases>
+			<Beauty>-12</Beauty>
+			<BeautyOutdoors>-12</BeautyOutdoors>
+			<Flammability>0.3</Flammability>
+		</statBases>
+		<graphicData>
+			<texPath>Things/Plants/WiltedPsychicPlants/WiltedXyrilTree</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shadowData>
+				<volume>(0.2, 0.35, 0.13)</volume>
+				<offset>(0,0,-0.42)</offset>
+			</shadowData>
+			<drawSize>1.5</drawSize>
+		</graphicData>
+		<pathCost>50</pathCost>
+		<passability>PassThroughOnly</passability>
+		<blockWind>true</blockWind>
+		<fillPercent>0.25</fillPercent>
+		<plant>
+			<harvestWork>3200</harvestWork>
+			<visualSizeRange>1.5~2.0</visualSizeRange>
+			<topWindExposure>0.25</topWindExposure>
+		</plant>
+	</ThingDef>
+	<ThingDef ParentName="VEE_StumpBase">
+		<defName>VEE_Plant_MyrloxTree_Wilted</defName>
+		<label>wilted myrlox tree</label>
+		<description>A robust, twisted growth that resembles petrified muscle more than wood. Now dead and withering.</description>
+		<statBases>
+			<Beauty>-8</Beauty>
+			<BeautyOutdoors>-8</BeautyOutdoors>
+			<Flammability>0.3</Flammability>
+		</statBases>
+		<graphicData>
+			<texPath>Things/Plants/WiltedPsychicPlants/WiltedMyrloxTree</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shadowData>
+				<volume>(0.2, 0.35, 0.13)</volume>
+				<offset>(0,0,-0.42)</offset>
+			</shadowData>
+			<drawSize>1.5</drawSize>
+		</graphicData>
+		<pathCost>50</pathCost>
+		<passability>PassThroughOnly</passability>
+		<blockWind>true</blockWind>
+		<fillPercent>0.25</fillPercent>
+		<plant>
+			<harvestWork>3200</harvestWork>
+			<visualSizeRange>1.5~2.0</visualSizeRange>
+			<topWindExposure>0.25</topWindExposure>
+		</plant>
+	</ThingDef>
+</Defs>

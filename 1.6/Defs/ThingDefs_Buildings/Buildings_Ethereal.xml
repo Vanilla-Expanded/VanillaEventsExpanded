@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThingDef ParentName="BuildingBase">
+		<defName>VEE_LotusEffecter</defName>
+		<label>psychic lotus</label>
+		<description>Psychic lotus effecter.</description>
+		<graphicData>
+			<texPath>Things/Mote/Transparent</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<passability>Standable</passability>
+		<pathCost>0</pathCost>
+		<tickerType>Normal</tickerType>
+		<drawerType>MapMeshOnly</drawerType>
+		<selectable>false</selectable>
+		<building>
+			<artificialForMeditationPurposes>false</artificialForMeditationPurposes>
+			<isEdifice>false</isEdifice>
+			<isInert>true</isInert>
+			<isTargetable>false</isTargetable>
+		</building>
+		<castEdgeShadows>false</castEdgeShadows>
+		<useHitPoints>false</useHitPoints>
+		<fillPercent>0</fillPercent>
+		<clearBuildingArea>false</clearBuildingArea>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<comps>
+			<li Class="VEF.AnimalBehaviours.CompProperties_AttachEffecter">
+				<effecterDef>VEE_LotusEffecter</effecterDef>
+			</li>
+		</comps>
+	</ThingDef>
+</Defs>

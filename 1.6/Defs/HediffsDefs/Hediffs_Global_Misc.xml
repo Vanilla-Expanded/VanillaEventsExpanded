@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<HediffDef>
+		<defName>Traitor</defName>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(0.8, 0.8, 0.35)</defaultLabelColor>
+		<description>Oh you dirty cheater, stop peeking behind the curtain!</description>
+		<label>traitor</label>
+		<isBad>false</isBad>
+		<initialSeverity>1</initialSeverity>
+		<comps>
+			<li Class="VEE.HediffCompPropreties_Traitor">
+				<disappearsAfterTicks>
+					<min>180000</min>
+					<max>1800000</max>
+				</disappearsAfterTicks>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<becomeVisible>false</becomeVisible>
+			</li>
+		</stages>
+	</HediffDef>
+	<HediffDef>
+		<defName>MightJoin</defName>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(0.8, 0.8, 0.35)</defaultLabelColor>
+		<description>might join</description>
+		<label>might join</label>
+		<isBad>false</isBad>
+		<initialSeverity>1</initialSeverity>
+		<comps>
+			<li Class="VEE.HediffCompPropreties_MightJoin"/>
+		</comps>
+		<stages>
+			<li>
+				<becomeVisible>false</becomeVisible>
+			</li>
+		</stages>
+	</HediffDef>
+	<HediffDef>
+		<defName>VEE_SunSickness</defName>
+		<label>sun sickness</label>
+		<description>Severe cellular damage and blistering caused by unprotected exposure to solar radiation. Recovery is incredibly slow and leaves the skin highly sensitive for days.</description>
+		<defaultLabelColor>(0.8, 0.8, 0.35)</defaultLabelColor>
+		<hediffClass>HediffWithComps</hediffClass>
+		<allowMothballIfLowPriorityWorldPawn>true</allowMothballIfLowPriorityWorldPawn>
+		<canApplyDodChanceForCapacityChanges>true</canApplyDodChanceForCapacityChanges>
+		<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-0.2</severityPerDay>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<label>initial</label>
+				<becomeVisible>false</becomeVisible>
+			</li>
+			<li>
+				<label>minor</label>
+				<minSeverity>0.15</minSeverity>
+				<painOffset>0.05</painOffset>
+				<statFactors>
+					<VEF_HeatstrokeBuildupMultiplier>1.5</VEF_HeatstrokeBuildupMultiplier>
+				</statFactors>
+			</li>
+			<li>
+				<label>moderate</label>
+				<minSeverity>0.4</minSeverity>
+				<painOffset>0.1</painOffset>
+				<statFactors>
+					<VEF_HeatstrokeBuildupMultiplier>2</VEF_HeatstrokeBuildupMultiplier>
+				</statFactors>
+			</li>
+			<li>
+				<label>serious</label>
+				<minSeverity>0.65</minSeverity>
+				<painOffset>0.2</painOffset>
+				<statFactors>
+					<VEF_HeatstrokeBuildupMultiplier>3</VEF_HeatstrokeBuildupMultiplier>
+				</statFactors>
+			</li>
+			<li>
+				<label>extreme</label>
+				<minSeverity>0.85</minSeverity>
+				<painOffset>0.3</painOffset>
+				<statFactors>
+					<VEF_HeatstrokeBuildupMultiplier>4</VEF_HeatstrokeBuildupMultiplier>
+				</statFactors>
+			</li>
+		</stages>
+	</HediffDef>
+	<HediffDef>
+		<defName>VEE_LongNight</defName>
+		<label>long night</label>
+		<description>The celestial entity is emitting a heavy cosmic resonance. Organic beings will tire much faster than normal, and their psychic sensitivity will be dangerously amplified.</description>
+		<defaultLabelColor>(0.8, 0.8, 0.35)</defaultLabelColor>
+		<hediffClass>HediffWithComps</hediffClass>
+		<maxSeverity>1</maxSeverity>
+		<allowMothballIfLowPriorityWorldPawn>true</allowMothballIfLowPriorityWorldPawn>
+		<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-2</severityPerDay>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<restFallFactor>1.25</restFallFactor>
+				<statFactors>
+					<PsychicSensitivity>1.25</PsychicSensitivity>
+				</statFactors>
+			</li>
+		</stages>
+	</HediffDef>
+	<HediffDef>
+		<defName>VEE_BloomPsychicSensitivity</defName>
+		<label>psychic bloom</label>
+		<description>The psychic lotuses are mutating nearby flora into vibrant, otherworldly variants, and the ambient psychic sensitivity of everyone in the region has doubled.</description>
+		<defaultLabelColor>(0.8, 0.8, 0.35)</defaultLabelColor>
+		<hediffClass>HediffWithComps</hediffClass>
+		<maxSeverity>1</maxSeverity>
+		<allowMothballIfLowPriorityWorldPawn>true</allowMothballIfLowPriorityWorldPawn>
+		<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-2</severityPerDay>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<statFactors>
+					<PsychicSensitivity>2</PsychicSensitivity>
+				</statFactors>
+			</li>
+		</stages>
+	</HediffDef>
+	<HediffDef>
+		<defName>VEE_PsychicRelaxationHediff</defName>
+		<label>psychic relaxation</label>
+		<description>Some distant engine of joy sent psychic vibrations that washed over the region, specifically resonating with the minds of a particular demographic.</description>
+		<defaultLabelColor>(0.8, 0.8, 0.35)</defaultLabelColor>
+		<hediffClass>HediffWithComps</hediffClass>
+		<maxSeverity>1</maxSeverity>
+		<allowMothballIfLowPriorityWorldPawn>true</allowMothballIfLowPriorityWorldPawn>
+		<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-12</severityPerDay>
+			</li>
+			<li Class="VEE.HediffCompProperties_PsychicRelaxation">
+				
+			</li>
+		</comps>
+		<stages>
+			<li>
+				
+			</li>
+		</stages>
+	</HediffDef>
+	<HediffDef>
+		<defName>VEE_PsychicOverdriveHediff</defName>
+		<label>psychic overdrive</label>
+		<description>A wave of psychic energy has washed over the colony, resonating specifically with the minds of some of your colonists!</description>
+		<defaultLabelColor>(0.8, 0.8, 0.35)</defaultLabelColor>
+		<hediffClass>HediffWithComps</hediffClass>
+		<maxSeverity>1</maxSeverity>
+		<allowMothballIfLowPriorityWorldPawn>true</allowMothballIfLowPriorityWorldPawn>
+		<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-12</severityPerDay>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<statOffsets>
+					<WorkSpeedGlobal>0.2</WorkSpeedGlobal>
+				</statOffsets>
+			</li>
+		</stages>
+	</HediffDef>
+	<HediffDef>
+		<defName>VEE_PsychicHumHediff</defName>
+		<label>psychic hum</label>
+		<description>A weird, discordant psychic hum is vibrating through the minds of some people, seemingly chosen at random.</description>
+		<defaultLabelColor>(0.8, 0.8, 0.35)</defaultLabelColor>
+		<hediffClass>HediffWithComps</hediffClass>
+		<maxSeverity>1</maxSeverity>
+		<allowMothballIfLowPriorityWorldPawn>true</allowMothballIfLowPriorityWorldPawn>
+		<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-12</severityPerDay>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<statFactors>
+					<JoyFallRateFactor>3</JoyFallRateFactor>
+					<RestRateMultiplier>0.35</RestRateMultiplier>
+				</statFactors>
+			</li>
+		</stages>
+	</HediffDef>
+</Defs>

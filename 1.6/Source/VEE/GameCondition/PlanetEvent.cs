@@ -45,7 +45,6 @@ namespace VEE.PurpleEvents
 
         public override void GameConditionTick()
         {
-            End();
             if (Find.TickManager.TicksGame % 240000 == 0 && biomeTempChange < 5)
             {
                 Find.World.grid.Tiles.ToList().ForEach(t => t.temperature += ChangeTileTemp());
