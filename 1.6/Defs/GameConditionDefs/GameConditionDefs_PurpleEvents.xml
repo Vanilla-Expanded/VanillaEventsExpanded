@@ -143,7 +143,7 @@
 						<displayHazeEffect>true</displayHazeEffect>
 					</li>
 					<li>
-						<durationDays>15~30</durationDays>
+						<durationDays>5~7</durationDays>
 						<targetTempOffset>60</targetTempOffset>
 						<tempLerpDays>5</tempLerpDays>
 						<letterLabel>the inferno</letterLabel>
