@@ -29,6 +29,10 @@ namespace VEE
         int tickCounter = 0;
         int tickCounterMax = 30000;
 
+        public LordJob_DefendPointForAWhile()
+        {
+        }
+
         public override void LordJobTick()
         {
             base.LordJobTick();
@@ -72,6 +76,7 @@ namespace VEE
 
         public override void ExposeData()
         {
+            base.ExposeData();
             Scribe_Values.Look(ref point, "point");
             Scribe_Values.Look(ref wanderRadius, "wanderRadius");
             Scribe_Values.Look(ref defendRadius, "defendRadius");
