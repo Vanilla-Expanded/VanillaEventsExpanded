@@ -11,7 +11,11 @@ namespace VEE
             if (Find.World.GetComponent<WorldComp_Purple>() is WorldComp_Purple comp)
             {
                 bool enoughDaysPassed = comp.tickLast == 0 || Find.TickManager.TicksGame - comp.tickLast > 60000 * Settings.VEEMod.settings.daysBetweenPurpleEvent;
-                return base.CanFireNowSub(parms) && enoughDaysPassed;
+                bool colonyOldEnough = Find.TickManager.TicksGame >= 60000 * 180;
+
+                return base.CanFireNowSub(parms)
+                    && enoughDaysPassed
+                    && colonyOldEnough;
             }
             return false;
         }
