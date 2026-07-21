@@ -39,7 +39,7 @@ namespace VEE
                 {
                     if (CellFinderLoose.TryGetRandomCellWith(c =>
                     {
-                        if (!c.InBounds(Map) || !c.Standable(Map) || c.GetFirstBuilding(Map) != null || c.DistanceTo(this.Position) > GetCondition.CurrentStage.psychicLotusRadius)
+                        if (!c.InBounds(Map) || !c.Standable(Map) || c.GetFirstBuilding(Map) != null || !c.GetTerrain(Map).natural || c.DistanceTo(this.Position) > GetCondition.CurrentStage.psychicLotusRadius)
                             return false;
                         return true;
                     }, Map, 1000, out IntVec3 cell))
