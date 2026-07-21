@@ -34,6 +34,8 @@ namespace VEE.RegularEvents
             {
                 return false;
             }
+            Find.World.GetComponent<WorldComp_Purple>().traitorLetterTickCounter=-1;
+
             List<Pawn> list = SpawnPawns(parms);
             if (list.Count == 0)
             {

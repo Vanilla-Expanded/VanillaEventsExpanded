@@ -8,7 +8,7 @@ namespace VEE
     {
         protected override bool CanFireNowSub(IncidentParms parms)
         {
-            if (Find.World.GetComponent<WorldComp_Purple>() is WorldComp_Purple comp)
+            if (Find.World.GetComponent<WorldComp_Purple>() is WorldComp_Purple comp && def.baseChance>0)
             {
                 bool enoughDaysPassed = comp.tickLast == 0 || Find.TickManager.TicksGame - comp.tickLast > 60000 * Settings.VEEMod.settings.daysBetweenPurpleEvent;
                 bool colonyOldEnough = Find.TickManager.TicksGame >= 60000 * 180;

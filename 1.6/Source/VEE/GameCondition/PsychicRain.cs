@@ -7,7 +7,7 @@ namespace VEE.PurpleEvents
 {
     public class PsychicRain : GameCondition
     {
-        private SkyColorSet PsychicRainColors;
+        /*private SkyColorSet PsychicRainColors;
         private readonly List<SkyOverlay> overlays;
 
         public PsychicRain()
@@ -92,6 +92,6 @@ namespace VEE.PurpleEvents
         public override List<SkyOverlay> SkyOverlays(Map map)
         {
             return overlays;
-        }
+        }*/
     }
 }

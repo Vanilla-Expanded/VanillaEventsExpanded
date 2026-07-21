@@ -1,8 +1,10 @@
 ﻿using RimWorld;
 using RimWorld.Planet;
 using System.Collections.Generic;
+using System.Linq;
 using VEF.Buildings;
 using Verse;
+using Verse.AI.Group;
 using Verse.Noise;
 
 namespace VEE
@@ -11,7 +13,7 @@ namespace VEE
     {
         internal int tickLast = 0;
 
-        private int traitorLetterTickCounter = -1;
+        public int traitorLetterTickCounter = -1;
 
         public static WorldComp_Purple Instance;
 
@@ -41,10 +43,16 @@ namespace VEE
             }
         }
 
-        public void Notify_TraitorGroup(Faction faction)
+        public void Notify_TraitorGroup(Faction faction, Map checkingMap)
         {
             if (traitorLetterTickCounter == -1)
             {
+                List<Pawn> traitorsList = checkingMap.mapPawns.AllPawnsSpawned.Where(x => x.health?.hediffSet?.GetFirstHediffOfDef(VEE_DefOf.Traitor) != null)?.ToList();
+                foreach (Pawn traitor in traitorsList)
+                {
+                    traitor.SetFaction(faction);
+                }
+  
                 Find.LetterStack.ReceiveLetter("VEE_TraitorGroupLabel".Translate(), "VEE_TraitorGroupDesc".Translate(faction.Name), LetterDefOf.ThreatBig);
                 traitorLetterTickCounter = 0;
             }

@@ -31,6 +31,7 @@ namespace VEE
                 if (ticksToDisappear <= 0)
                 {
                     Faction faction;
+                    var map = pawn.Map;
                     if (forcedFaction != null)
                     {
                         faction=forcedFaction;
@@ -39,19 +40,18 @@ namespace VEE
                     {
                         faction = Find.FactionManager.RandomEnemyFaction(allowNonHumanlike: false);
                     }
-                    
-                    pawn.SetFaction(faction);
-
-                    var map = pawn.Map;
-                    LordMaker.MakeNewLord(faction, new LordJob_AssaultColony(faction, true, false, false, true, true, false, true), map, new List<Pawn> { pawn });
                     if (isGroup)
                     {
-                        Find.World.GetComponent<WorldComp_Purple>().Notify_TraitorGroup(faction);
+                        Find.World.GetComponent<WorldComp_Purple>().Notify_TraitorGroup(faction,map);
+                        LordMaker.MakeNewLord(faction, new LordJob_AssaultColony(faction, true, false, false, true, true, false, true), map, new List<Pawn> { pawn });
+
                     }
                     else
                     {
+                        pawn.SetFaction(faction);                     
+                        LordMaker.MakeNewLord(faction, new LordJob_AssaultColony(faction, true, false, false, true, true, false, true), map, new List<Pawn> { pawn });
                         Find.LetterStack.ReceiveLetter("VEE_TraitorLabel".Translate(pawn.Named("PAWN")).AdjustedFor(pawn), "VEE_TraitorDesc".Translate(pawn.Named("PAWN")).AdjustedFor(pawn), LetterDefOf.ThreatSmall, new TargetInfo(pawn.Position, map, false));
-                    }
+                    }                 
 
                     parent.pawn.health.hediffSet.hediffs.Remove(parent);
                 }
