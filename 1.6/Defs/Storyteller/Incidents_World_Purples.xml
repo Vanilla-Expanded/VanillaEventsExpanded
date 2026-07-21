@@ -92,11 +92,11 @@ A seemingly endless supernatural rain has begun, altering the very composition o
 It will last anywhere between a season to several years.</letterText>
 		<letterDef>PurpleEvent</letterDef>
 		<baseChance>0</baseChance>
-		<earliestDay>180</earliestDay>
-		<minRefireDays>300</minRefireDays>
+		<earliestDay>1800</earliestDay>
+		<minRefireDays>30000</minRefireDays>
 		<durationDays>
-			<min>15</min>
-			<max>120</max>
+			<min>1</min>
+			<max>1</max>
 		</durationDays>
 	</IncidentDef>
 </Defs>
