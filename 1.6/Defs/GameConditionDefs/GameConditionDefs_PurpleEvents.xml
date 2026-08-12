@@ -92,7 +92,7 @@
 		<conditionClass>VEE.GameCondition_MultiStage</conditionClass>
 		<label>Scorch</label>
 		<description>A catastrophic global heatwave that plunges the planet into extreme heat, halting all outdoor farming and travel while forcing the world to survive an extended, dangerous summer.</description>
-		<endMessage>The scorch ending</endMessage>
+		<endMessage>The scorch is ending</endMessage>
 		<canBePermanent>false</canBePermanent>
 		<allowUnderground>False</allowUnderground>
 		<exclusiveConditions>

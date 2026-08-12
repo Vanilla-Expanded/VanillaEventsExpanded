@@ -142,8 +142,8 @@ namespace VEE.Settings
                     {
                         foreach (GameCondition item in activeConditions)
                         {
-                            if (!item.Permanent)
-                                floatMenuOptions.Add(new FloatMenuOption(item.Label, () => item.End()));
+                            if (!item.Permanent || item is GameCondition_MultiStage)
+                                floatMenuOptions.Add(new FloatMenuOption(item.LabelCap, () => item.End()));
                         }
                     }
                 }
