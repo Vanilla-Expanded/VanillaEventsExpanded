@@ -3,6 +3,7 @@ using System.Linq;
 using RimWorld;
 using UnityEngine;
 using Verse;
+using static UnityEngine.UI.ContentSizeFitter;
 
 namespace VEE.Settings
 {
@@ -26,9 +27,18 @@ namespace VEE.Settings
         private readonly float sLineHeight = 24f;
         private readonly float borderOffsest = 30f;
 
+        public bool hideHazeVisualEffect = false;
+
         public void DoSettingsWindowContents(Rect inRect)
         {
             float y = startPos;
+
+            Rect hazeRect = new Rect(inRect.x, y, inRect.width, sLineHeight);
+            Widgets.CheckboxLabeled(hazeRect,"VEE_HideHazeVisualEffects".Translate(), ref hideHazeVisualEffect);
+            TooltipHandler.TipRegion(hazeRect, "VEE_HideHazeVisualEffectsDesc".Translate());
+
+            y += offset + sLineHeight;
+
             // Reset everything
             Rect resetRect = new Rect(inRect.x, y, inRect.width, sLineHeight);
             if (Widgets.ButtonText(resetRect, "VEE_ResetSettings".Translate()))
@@ -68,7 +78,7 @@ namespace VEE.Settings
             Widgets.IntEntry(entryRect, ref daysBetweenPurpleEvent, ref daysBetweenPurpleEventBuffer);
             y += offset + sLineHeight;
             // Incident settings
-            Rect outRect = new Rect(inRect.x, y, inRect.width, inRect.height - (offset + sLineHeight) * 4);
+            Rect outRect = new Rect(inRect.x, y, inRect.width, inRect.height - (offset + sLineHeight) * 5);
 
             Rect viewRect = new Rect(inRect.x, y, inRect.width - borderOffsest, (incidentsLoaded + numberOfMods) * lineHeight);
             Widgets.BeginScrollView(outRect, ref scrollPosition, viewRect, true);
@@ -114,6 +124,7 @@ namespace VEE.Settings
         {
             base.ExposeData();
             Scribe_Values.Look(ref daysBetweenPurpleEvent, "daysBetweenPurpleEvent");
+            Scribe_Values.Look(ref hideHazeVisualEffect, "hideHazeVisualEffect", false);
             Scribe_Collections.Look(ref incidentsStatus, "incidentsStatus", LookMode.Value, LookMode.Value);
             Scribe_Collections.Look(ref incidentsOccurence, "incidentsOccurence", LookMode.Value, LookMode.Value);
             Scribe_Collections.Look(ref incidentsOccurenceForReset, "incidentsOccurenceForReset", LookMode.Value, LookMode.Value);

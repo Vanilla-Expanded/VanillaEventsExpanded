@@ -5,4 +5,6 @@
     <VEE_StopWorldCondition>Stop world condition...</VEE_StopWorldCondition>
     <VEE_StopMapCondition>Stop map condition...</VEE_StopMapCondition>
     <VEE_DaysBetweenPurpleEvents>Number of day(s) in-between purple events:</VEE_DaysBetweenPurpleEvents>
+	<VEE_HideHazeVisualEffects>Hide haze visual effects</VEE_HideHazeVisualEffects>
+	<VEE_HideHazeVisualEffectsDesc>Remove the haze visual effect that appears with the "Scorch" purple event. This only affects the visual effect.</VEE_HideHazeVisualEffectsDesc>
 </LanguageData>

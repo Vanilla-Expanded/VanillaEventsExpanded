@@ -141,7 +141,7 @@
 		<label>earthquake</label>
 		<category>ThreatBig</category>
 		<requireColonistsPresent>true</requireColonistsPresent>
-		<canOccurOnAllPlanetLayers>true</canOccurOnAllPlanetLayers>
+		<canOccurOnAllPlanetLayers>false</canOccurOnAllPlanetLayers>
 		<earliestDay>30</earliestDay>
 		<minGreatestPopulation>0</minGreatestPopulation>
 		<targetTags>
