@@ -179,7 +179,7 @@ namespace VEE
         {
             foreach (var m in AffectedMaps)
             {
-                if(m.Tile.LayerDef == PlanetLayerDefOf.Surface)
+                if(m.Tile.LayerDef == PlanetLayerDefOf.Surface && m.Biome.generatesNaturally)
                 {
                     for (int i = 0; i < Rand.RangeInclusive(4, 6); i++)
                     {

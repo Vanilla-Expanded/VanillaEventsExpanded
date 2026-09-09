@@ -23,6 +23,7 @@ namespace VEE
         public static BiomeDef ExtremeDesert;
         public static BiomeDef AridShrubland;
         public static BiomeDef TropicalRainforest;
+        
 
         /* Hediff */
         public static HediffDef Traitor;
