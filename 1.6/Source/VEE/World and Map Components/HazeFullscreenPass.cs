@@ -2,7 +2,7 @@
 using UnityEngine;
 using Verse;
 
-namespace VEE.World_and_Map_Components
+namespace VEE
 {
     [StaticConstructorOnStartup]
     public static class HazeFullscreenPass

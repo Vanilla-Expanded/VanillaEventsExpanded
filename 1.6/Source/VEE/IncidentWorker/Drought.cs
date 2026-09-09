@@ -4,8 +4,7 @@ using Verse;
 namespace VEE.RegularEvents
 {
     public class Drought : GameCondition
-    {
-       
+    {      
 
         public override float PlantDensityFactor(Map map)
         {
