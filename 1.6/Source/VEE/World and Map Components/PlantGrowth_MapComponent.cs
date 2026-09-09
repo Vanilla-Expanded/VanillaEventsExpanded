@@ -22,7 +22,7 @@ namespace VEE
         public override void MapComponentTick()
         {
             base.MapComponentTick();
-            if (Find.TickManager.TicksGame % 6000 == 0)
+            if (Find.TickManager.TicksGame % 6000 == 0 && WorldComp_Purple.Instance.cachedPlantGrowthMultiplier != 1)
             {
                 if (map?.gameConditionManager?.ConditionIsActive(VEE_DefOf.VEE_Drought) == true)
                 {
