@@ -219,7 +219,7 @@
 						
 					</li>
 					<li>
-						<durationDays>5~10</durationDays>
+						<durationDays>10~15</durationDays>
 						<targetTempOffset>-15</targetTempOffset>
 						<tempLerpDays>5</tempLerpDays>
 						<letterLabel>the umbra</letterLabel>
@@ -229,7 +229,7 @@
 						
 					</li>
 					<li>
-						<durationDays>15~30</durationDays>
+						<durationDays>3~8</durationDays>
 						<targetTempOffset>-20</targetTempOffset>
 						<tempLerpDays>2</tempLerpDays>
 						<letterLabel>the totality</letterLabel>
@@ -251,7 +251,7 @@
 						</incidentChances>
 					</li>
 					<li>
-						<durationDays>5~10</durationDays>
+						<durationDays>10~20</durationDays>
 						<targetTempOffset>-15</targetTempOffset>
 						<tempLerpDays>5</tempLerpDays>
 						<letterLabel>the emergence</letterLabel>
