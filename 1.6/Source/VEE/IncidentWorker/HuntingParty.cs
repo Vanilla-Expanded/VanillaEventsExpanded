@@ -32,8 +32,8 @@ namespace VEE
             
             // Spawn hunters
             var lordPawns = new List<Pawn>();
-            var pawnNumber = new IntRange(2,3).RandomInRange;
-           
+            var pawnNumber = Math.Min(new IntRange(2, 3).RandomInRange, huntTargets.Count);
+
             var pawnKind = faction.def.techLevel >= TechLevel.Industrial ? VEE_DefOf.VEE_Hunter : VEE_DefOf.VEE_TribalHunter;
 
             for (int i = 0; i < pawnNumber; i++)
