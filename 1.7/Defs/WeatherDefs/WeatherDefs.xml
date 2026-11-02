@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<WeatherDef>
+		<defName>VEE_Whiteout</defName>
+		<label>whiteout</label>
+		<description>Heavy, chilling snow that severely reduces the accuracy of ranged weapons, extinguishes fire and slows people down.</description>
+		<temperatureRange>-999~-0.5</temperatureRange>
+		<snowRate>1.75</snowRate>
+		<windSpeedFactor>1.5</windSpeedFactor>
+		<windSpeedOffset>1.15</windSpeedOffset>
+		<rainRate>1</rainRate>
+		<accuracyMultiplier>0.5</accuracyMultiplier>
+		<moveSpeedMultiplier>0.5</moveSpeedMultiplier>
+		<maxRangeCap>29.9</maxRangeCap>
+		<preventsShuttleLaunch>true</preventsShuttleLaunch>
+		<ambientSounds>
+			<li>Ambient_Wind_Storm</li>
+		</ambientSounds>
+		<skyColorsDay>
+			<sky>(0.8,0.8,0.8)</sky>
+			<shadow>(0.92,0.92,0.92)</shadow>
+			<overlay>(0.7,0.7,0.7)</overlay>
+			<saturation>0.9</saturation>
+		</skyColorsDay>
+		<skyColorsDusk>
+			<sky>(1,1,1)</sky>
+			<shadow>(0.92,0.92,0.92)</shadow>
+			<overlay>(0.6,0.6,0.6)</overlay>
+			<saturation>0.9</saturation>
+		</skyColorsDusk>
+		<skyColorsNightEdge>
+			<sky>(0.35,0.40,0.45)</sky>
+			<shadow>(0.92,0.92,0.92)</shadow>
+			<overlay>(0.5,0.5,0.5)</overlay>
+			<saturation>0.9</saturation>
+		</skyColorsNightEdge>
+		<skyColorsNightMid>
+			<sky>(0.35,0.40,0.45)</sky>
+			<shadow>(0.92,0.92,0.92)</shadow>
+			<overlay>(0.5,0.5,0.5)</overlay>
+			<saturation>0.9</saturation>
+		</skyColorsNightMid>
+		<overlayClasses>
+			<li>VEF.Weathers.WeatherOverlay_Custom</li>
+		</overlayClasses>
+		<modExtensions>
+			<li Class="VEF.Weathers.WeatherOverlayExtension">
+				<overlayPath>Weather/WhiteoutOverlay</overlayPath>
+				<copyPropertiesFrom>Weather/SnowOverlayWorld</copyPropertiesFrom>
+				<worldOverlayPanSpeed1>0.015</worldOverlayPanSpeed1>
+				<worldPanDir1>(-0.25, -1)</worldPanDir1>
+				<worldOverlayPanSpeed2>0.022</worldOverlayPanSpeed2>
+				<worldPanDir2>(-0.24, -1)</worldPanDir2>
+			</li>
+		</modExtensions>
+	</WeatherDef>
+	<WeatherDef>
+		<defName>VEE_Swelter</defName>
+		<label>swelter</label>
+		<description>An unnatural, oppressive heat.</description>
+		<snowRate>0</snowRate>
+		<windSpeedFactor>1</windSpeedFactor>
+		<windSpeedOffset>1</windSpeedOffset>
+		<rainRate>0</rainRate>
+		<skyColorsDay>
+			<sky>(0.95,0.90,0.80)</sky>
+			<shadow>(0.92,0.90,0.90)</shadow>
+			<overlay>(0.85,0.80,0.75)</overlay>
+			<saturation>1.0</saturation>
+		</skyColorsDay>
+		<skyColorsDusk>
+			<sky>(1.0,0.85,0.70)</sky>
+			<shadow>(0.92,0.90,0.90)</shadow>
+			<overlay>(0.80,0.70,0.60)</overlay>
+			<saturation>1.0</saturation>
+		</skyColorsDusk>
+		<skyColorsNightEdge>
+			<sky>(0.45,0.40,0.35)</sky>
+			<shadow>(0.92,0.92,0.92)</shadow>
+			<overlay>(0.60,0.55,0.50)</overlay>
+			<saturation>0.95</saturation>
+		</skyColorsNightEdge>
+		<skyColorsNightMid>
+			<sky>(0.40,0.35,0.35)</sky>
+			<shadow>(0.92,0.92,0.92)</shadow>
+			<overlay>(0.55,0.50,0.50)</overlay>
+			<saturation>0.95</saturation>
+		</skyColorsNightMid>
+	</WeatherDef>
+	<WeatherDef>
+		<defName>VEE_Inferno</defName>
+		<label>inferno</label>
+		<description>A catastrophic, unnatural, oppressive heat.</description>
+		<snowRate>0</snowRate>
+		<windSpeedFactor>1</windSpeedFactor>
+		<windSpeedOffset>1</windSpeedOffset>
+		<rainRate>0</rainRate>
+		<ambientSounds>
+			<li>Ambient_Wind_Fog</li>
+		</ambientSounds>
+		<overlayClasses>
+			<li>WeatherOverlay_Fog</li>
+		</overlayClasses>
+		<eventMakers>
+			<li>
+				<averageInterval>12000</averageInterval>
+				<eventClass>WeatherEvent_LightningFlash</eventClass>
+			</li>
+			<li>
+				<averageInterval>12000</averageInterval>
+				<eventClass>WeatherEvent_LightningStrike</eventClass>
+			</li>
+		</eventMakers>
+		<skyColorsDay>
+			<sky>(0.95,0.90,0.80)</sky>
+			<shadow>(0.92,0.90,0.90)</shadow>
+			<overlay>(0.85,0.80,0.75)</overlay>
+			<saturation>1.0</saturation>
+		</skyColorsDay>
+		<skyColorsDusk>
+			<sky>(1.0,0.85,0.70)</sky>
+			<shadow>(0.92,0.90,0.90)</shadow>
+			<overlay>(0.80,0.70,0.60)</overlay>
+			<saturation>1.0</saturation>
+		</skyColorsDusk>
+		<skyColorsNightEdge>
+			<sky>(0.45,0.40,0.35)</sky>
+			<shadow>(0.92,0.92,0.92)</shadow>
+			<overlay>(0.60,0.55,0.50)</overlay>
+			<saturation>0.95</saturation>
+		</skyColorsNightEdge>
+		<skyColorsNightMid>
+			<sky>(0.40,0.35,0.35)</sky>
+			<shadow>(0.92,0.92,0.92)</shadow>
+			<overlay>(0.55,0.50,0.50)</overlay>
+			<saturation>0.95</saturation>
+		</skyColorsNightMid>
+	</WeatherDef>
+	<WeatherDef>
+		<defName>VEE_PsychicRain</defName>
+		<label>psychic rain</label>
+		<description>A seemingly supernatural rain that alters the very composition of time. Any person or creature not under a roof will age significantly faster.</description>
+		<overlayClasses>
+			<li>VEF.Weathers.WeatherOverlay_Custom</li>
+		</overlayClasses>
+		<windSpeedFactor>1.5</windSpeedFactor>
+		<accuracyMultiplier>0.8</accuracyMultiplier>
+		<favorability>VeryBad</favorability>
+		<perceivePriority>1</perceivePriority>
+		<weatherThought>SoakingWet</weatherThought>
+		<rainRate>1</rainRate>
+		<preventSkygaze>true</preventSkygaze>
+		<moveSpeedMultiplier>0.9</moveSpeedMultiplier>
+		<ambientSounds>
+			<li>Ambient_Rain</li>
+		</ambientSounds>
+		<modExtensions>
+			<li Class="VEF.Weathers.WeatherOverlayExtension">
+				<overlayPath>Weather/PsychicRainWorldOverlay</overlayPath>
+				<copyPropertiesFrom>Weather/RainOverlayWorld</copyPropertiesFrom>
+				<worldOverlayPanSpeed1>0.015</worldOverlayPanSpeed1>
+				<worldPanDir1>(-0.25, -1)</worldPanDir1>
+				<worldOverlayPanSpeed2>0.022</worldOverlayPanSpeed2>
+				<worldPanDir2>(-0.24, -1)</worldPanDir2>
+			</li>
+		</modExtensions>
+		<commonalityRainfallFactor>
+			<points>
+				<li>(0, 0)</li>
+				<li>(1300, 1)</li>
+				<li>(4000, 3.0)</li>
+			</points>
+		</commonalityRainfallFactor>
+		<skyColorsDay>
+			<sky>(0.84,0.78,0.90)</sky>
+			<shadow>(0.94,0.90,0.96)</shadow>
+			<overlay>(0.74,0.66,0.80)</overlay>
+			<saturation>0.9</saturation>
+		</skyColorsDay>
+		<skyColorsDusk>
+			<sky>(1.00,0.96,1.00)</sky>
+			<shadow>(0.95,0.90,0.97)</shadow>
+			<overlay>(0.68,0.58,0.74)</overlay>
+			<saturation>0.9</saturation>
+		</skyColorsDusk>
+		<skyColorsNightEdge>
+			<sky>(0.40,0.33,0.50)</sky>
+			<shadow>(0.94,0.90,0.96)</shadow>
+			<overlay>(0.54,0.45,0.60)</overlay>
+			<saturation>0.9</saturation>
+		</skyColorsNightEdge>
+		<skyColorsNightMid>
+			<sky>(0.32,0.25,0.42)</sky>
+			<shadow>(0.94,0.90,0.96)</shadow>
+			<overlay>(0.46,0.38,0.54)</overlay>
+			<saturation>0.9</saturation>
+		</skyColorsNightMid>
+	</WeatherDef>
+	<WeatherDef>
+		<defName>VEE_LongNight</defName>
+		<label>long night</label>
+		<description>A catastrophic celestial eclipse that blankets the world in an endless, freezing twilight, forcing the world to adapt to artificial light and increased psychic sensitivity as nocturnal predators and subterranean threats emerge in the darkness.</description>
+		
+		<repeatable>true</repeatable>
+		<favorability>VeryBad</favorability>
+		<perceivePriority>0</perceivePriority>
+		
+		<!-- Colors are Super Dark -->
+		<skyColorsDay>
+			<sky>(0.45,0.50,0.55)</sky>
+			<shadow>(0.92,0.92,0.92)</shadow>
+			<overlay>(0.5,0.5,0.5)</overlay>
+			<saturation>0.9</saturation>
+		</skyColorsDay>
+		<skyColorsDusk>
+			<sky>(0.35,0.40,0.45)</sky>
+			<shadow>(0.92,0.92,0.92)</shadow>
+			<overlay>(0.5,0.5,0.5)</overlay>
+			<saturation>0.9</saturation>
+		</skyColorsDusk>
+		<skyColorsNightEdge>
+			<sky>(0.1,0.1,0.1)</sky>
+			<shadow>(0.92,0.92,0.92)</shadow>
+			<overlay>(0.5,0.5,0.5)</overlay>
+			<saturation>0.6</saturation>
+		</skyColorsNightEdge>
+		<skyColorsNightMid>
+			<sky>(0.01,0.01,0.01)</sky>
+			<shadow>(0.92,0.92,0.92)</shadow>
+			<overlay>(0.5,0.5,0.5)</overlay>
+			<saturation>0.6</saturation>
+		</skyColorsNightMid>
+	</WeatherDef>
+</Defs>

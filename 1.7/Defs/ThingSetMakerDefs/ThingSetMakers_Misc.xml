@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThingSetMakerDef>
+		<defName>VEE_MeteoriteShowerMaker</defName>
+		<root Class="VEE.ThingSetMaker_MeteoriteShower"/>
+	</ThingSetMakerDef>
+	<ThingSetMakerDef>
+		<defName>VEE_ShuttleCrash_Resources</defName>
+		<root Class="ThingSetMaker_Sum">
+			<resolveInOrder>true</resolveInOrder>
+			<options>
+				<li>
+					<maxMarketValue>2500</maxMarketValue>
+					<thingSetMaker Class="ThingSetMaker_RandomOption">
+						<fixedParams>
+							<minSingleItemMarketValuePct>0.01</minSingleItemMarketValuePct>
+						</fixedParams>
+						<options>
+							<li>
+								<weight>1</weight>
+								<thingSetMaker Class="ThingSetMaker_MarketValue">
+									<fixedParams>
+										<filter>
+											<categories>
+												<li>ResourcesRaw</li>
+												<li>Manufactured</li>
+											</categories>
+											<disallowedThingDefs>
+												<li MayRequire="Ludeon.RimWorld.Odyssey">GravlitePanel</li>
+												<li MayRequire="Ludeon.RimWorld.Odyssey">BlocksVacstone</li>
+												<li MayRequire="Ludeon.RimWorld.Odyssey">ShuttleEngine</li>
+												<li MayRequire="Ludeon.RimWorld.Biotech">SubcoreHigh</li>
+												<li MayRequire="Ludeon.RimWorld.Biotech">SignalChip</li>
+												<li MayRequire="Ludeon.RimWorld.Biotech">PowerfocusChip</li>
+												<li MayRequire="Ludeon.RimWorld.Biotech">NanostructuringChip</li>
+											</disallowedThingDefs>
+											<disallowedCategories>
+												<li>PlantMatter</li>
+												<li>MortarShells</li>
+											</disallowedCategories>
+										</filter>
+									</fixedParams>
+								</thingSetMaker>
+							</li>
+						</options>
+					</thingSetMaker>
+				</li>
+			</options>
+		</root>
+	</ThingSetMakerDef>
+	<ThingSetMakerDef>
+		<defName>VEE_CrashlandedColonists</defName>
+		<root Class="VEE.ThingSetMaker_CrashlandedColonists"/>
+	</ThingSetMakerDef>
+</Defs>

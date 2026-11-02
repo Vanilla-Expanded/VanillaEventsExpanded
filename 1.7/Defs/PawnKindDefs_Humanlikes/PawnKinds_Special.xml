@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<PawnKindDef Name="HunterBase" Abstract="True">
+		<race>Human</race>
+		<initialWillRange>2~4</initialWillRange>
+		<initialResistanceRange>14~23</initialResistanceRange>
+		<combatPower>30</combatPower>
+		<minGenerationAge>20</minGenerationAge>
+		<maxGenerationAge>40</maxGenerationAge>
+		<!-- Hediffs -->
+		<techHediffsChance>0.15</techHediffsChance>
+		<techHediffsMoney>700~1200</techHediffsMoney>
+		<techHediffsTags>
+			<li>Simple</li>
+			<li>Advanced</li>
+			<li>ImplantEmpireCommon</li>
+		</techHediffsTags>
+		<!-- Apparel/weapons -->
+		<biocodeWeaponChance>1</biocodeWeaponChance>
+		<gearHealthRange>0.7~3.2</gearHealthRange>
+		<apparelMoney>1000~1500</apparelMoney>
+		<apparelAllowHeadgearChance>0.6</apparelAllowHeadgearChance>
+		<weaponMoney>330~850</weaponMoney>
+		<!-- Shooting required -->
+		<isFighter>true</isFighter>
+		<requiredWorkTags>
+			<li>Violent</li>
+			<li>Caring</li>
+		</requiredWorkTags>
+		<backstoryCryptosleepCommonality>0</backstoryCryptosleepCommonality>
+		<disallowedTraits>
+			<li>Brawler</li>
+			<li>Nudist</li>
+		</disallowedTraits>
+		<skills>
+			<li>
+				<skill>Shooting</skill>
+				<range>10~20</range>
+			</li>
+		</skills>
+		<!-- Inventory -->
+		<invNutrition>2.55</invNutrition>
+	</PawnKindDef>
+	<!-- Tribal Hunter -->
+	<PawnKindDef ParentName="HunterBase">
+		<defName>VEE_TribalHunter</defName>
+		<label>hunter</label>
+		<backstoryFiltersOverride>
+			<li>
+				<categoriesAdulthood>
+					<li>TribalHunter</li>
+				</categoriesAdulthood>
+			</li>
+		</backstoryFiltersOverride>
+		<invFoodDef>Pemmican</invFoodDef>
+		<apparelTags>
+			<li>Neolithic</li>
+		</apparelTags>
+		<weaponTags>
+			<li>VEE_HunterNeolithicWeapon</li>
+		</weaponTags>
+	</PawnKindDef>
+	<!-- Industrial Hunter -->
+	<PawnKindDef ParentName="HunterBase">
+		<defName>VEE_Hunter</defName>
+		<label>hunter</label>
+		<apparelTags>
+			<li>IndustrialAdvanced</li>
+			<li>IndustrialMilitaryBasic</li>
+			<li>IndustrialMilitaryAdvanced</li>
+		</apparelTags>
+		<weaponMoney>9999~9999</weaponMoney>
+		<weaponTags>
+			<li>VEE_HunterIndustrialWeapon</li>
+		</weaponTags>
+		<inventoryOptions>
+			<skipChance>0.9</skipChance>
+			<subOptionsChooseOne>
+				<li>
+					<thingDef>MedicineIndustrial</thingDef>
+					<countRange>1</countRange>
+				</li>
+			</subOptionsChooseOne>
+		</inventoryOptions>
+	</PawnKindDef>
+</Defs>
