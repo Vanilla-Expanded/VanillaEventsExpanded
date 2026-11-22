@@ -70,12 +70,18 @@ namespace VEE
 
         public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
         {
-            DeathBloom();
+            if (Map != null && Map.gameConditionManager.ConditionIsActive(VEE_DefOf.VEE_PsychicBloom))
+            {
+                DeathBloom();
+            }
             base.Destroy(mode);
         }
         public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish)
         {
-            DeathBloom();
+            if (Map != null && Map.gameConditionManager.ConditionIsActive(VEE_DefOf.VEE_PsychicBloom))
+            {
+                DeathBloom();
+            }
             base.DeSpawn(mode);
         }
 

@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Reflection.Emit;
-using HarmonyLib;
+﻿using HarmonyLib;
 using RimWorld;
+using System.Collections.Generic;
+using System.Reflection;
+using System.Reflection.Emit;
 using UnityEngine;
 using Verse;
 using Verse.AI;
@@ -13,8 +14,8 @@ namespace VEE
     {
         static HarmonyInit()
         {
-            Harmony harmonyInstance = new Harmony("Kikohi.VanillaEventExpanded");
-            harmonyInstance.PatchAll();
+            var harmony = new Harmony("Kikohi.VanillaEventExpanded");
+            harmony.PatchAll(Assembly.GetExecutingAssembly());
         }
     } 
 }
